@@ -168,17 +168,17 @@ source still says it.
 ## Add your own gear
 
 ```bash
-mkdir -p local                             # your private overlay (see below)
+napier init --git                          # your private overlay (see below)
 napier source add https://maker.example/module-manual.pdf --id maker_module_manual \
-    --device maker_module --version "v1.2" --local
+    --device maker_module --version "v1.2"
 napier ingest --source maker_module_manual
 napier facts add maker_module "Holding SHIFT at power-up resets calibration" --status manual \
     --source maker_module_manual --pages 12
 ```
 
 `source add` checks robots.txt and downloads the file. For a PDF it also pins the checksum and works
-out the printed-page offset, which is worth checking against a page you know. `--local` puts the
-entry in your private overlay. Once you have an overlay, `facts add` writes there too.
+out the printed-page offset, which is worth checking against a page you know. With an overlay,
+`source add` and `facts add` write there.
 
 For gear other people are likely to own too, send a pull request to the public list instead
 ([CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md)).
@@ -209,7 +209,7 @@ an assistant writes over MCP get a `via: mcp` stamp, which makes them easy to sp
 The rack commands show the example rack until you set up your own:
 
 ```bash
-mkdir -p local && cp -r examples/racks local/racks
+napier init --rack                         # copies the example rack into local/racks
 $EDITOR local/racks/layout.yaml            # your modules: slug, HP, power, position ("row 2, hp 43")
 $EDITOR local/racks/devices.yaml           # your cases: rows, how they're arranged, off-rack modules
 napier rack sync                           # writes the snapshot; reports moves and overlaps
@@ -223,11 +223,12 @@ how to write a plug-in that reads your rack from another tool.
 
 ## Your own data
 
-Anything personal goes in `local/`, a private overlay inside your clone. Git ignores it, and it can
-be its own private repo. Its `sources.yaml` and `facts/` merge with the public ones, with yours
-listed first. It also holds your rack, your notes and a `napier.toml` with your name.
-`source add --local` writes there, and so does `facts add`. Nothing in `local/` gets committed to
-the public repo.
+Anything personal goes in `local/`, a private overlay inside your clone. `napier init` creates it,
+and `--git` makes it its own repo, which you can push somewhere private. Git ignores it in the
+clone, so nothing in it gets committed to the public repo. Its `sources.yaml` and `facts/` merge
+with the public ones, with yours listed first. It also holds your rack, your notes and a
+`napier.toml` with your name. Once it exists, `source add` and `facts add` write there, and
+`source add --public` adds to the public list for a pull request.
 
 ## Updating
 

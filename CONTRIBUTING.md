@@ -34,7 +34,7 @@ The most useful contribution is the manual for gear you own:
 
 ```bash
 napier source add https://maker.example/manual.pdf --id maker_module_manual --device maker_module \
-    --title "Maker Module manual" --version "v1.2"     # fetches, pins, detects the page offset
+    --title "Maker Module manual" --version "v1.2" --public   # fetch, pin, find the page offset
 napier ingest --source maker_module_manual
 napier grep "a phrase you know is on page 12" --device maker_module   # does the cite say p. 12?
 ```
