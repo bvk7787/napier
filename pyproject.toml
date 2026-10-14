@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "napier"
-version = "0.1.1"
+version = "0.1.2"
 description = "Your gear's manuals and your Eurorack rack in one place: page-cited lookups and checked what-if rack layouts, as a CLI and an MCP server for your AI assistant"
 readme = "README.md"
 license = "Apache-2.0"
