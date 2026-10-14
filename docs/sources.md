@@ -8,7 +8,7 @@ Your own sources go in `local/sources.yaml` in your overlay, which napier reads 
 
 ```bash
 napier source add https://maker.example/module-manual.pdf --id maker_module_manual --device maker_module \
-    --title "Maker Module manual" --version "v1.2" --local
+    --title "Maker Module manual" --version "v1.2"
 napier ingest --source maker_module_manual          # --text-only to skip the search index
 napier grep "a phrase you know is on page 12" --device maker_module
 ```
@@ -19,9 +19,9 @@ extracts the text for `grep` and `read`, and with the `index` extra it also adds
 search index. To check the offset, grep for something on a page you know and see whether the cite
 matches.
 
-`--local` writes the entry to your overlay (create `local/` first). Leave it off only when you're
-preparing a pull request. Otherwise the public `sources.yaml` stays modified and `git pull` can
-conflict.
+Once you have an overlay (`napier init`), `source add` writes the entry there. Without one, it
+writes to the public `sources.yaml`, which leaves your clone modified and can make `git pull`
+conflict. `--public` adds to the public list on purpose, for a pull request.
 
 Ids are lowercase letters, digits and underscores. The convention is `<device>_manual`,
 `<device>_changelog` and `<device>_tips`. The device id (`maker_module`) groups a device's sources.
@@ -29,7 +29,7 @@ Ids are lowercase letters, digits and underscores. The convention is `<device>_m
 A local file works the same way, and only belongs in the overlay:
 
 ```bash
-napier source add ~/Documents/rig-notes.md --id my_rig_notes --device my_rig --kind note --local
+napier source add ~/Documents/rig-notes.md --id my_rig_notes --device my_rig --kind note
 ```
 
 ## Kinds
@@ -84,7 +84,7 @@ napier fetch --source maker_module_manual --from ~/Downloads/module-manual.pdf
 
 napier checks the file against the pin in `sources.yaml`, so you end up with the exact version the
 facts cite. For a document that isn't listed yet, add the downloaded file to your overlay with
-`napier source add ~/Downloads/module-manual.pdf --id ... --device ... --local`. Only use
+`napier source add ~/Downloads/module-manual.pdf --id ... --device ...`. Only use
 `--ignore-robots` if the publisher has told you it's fine.
 
 ## Keeping sources current
@@ -105,7 +105,7 @@ file name, find it on their download page and run `napier source apply ID --url 
 
 ## Contributing a source
 
-If other people are likely to own it too, add it to the public list: leave off `--local`, add a few
-facts with their printed pages, run `pytest -q` and open a pull request.
+If other people are likely to own it too, add it to the public list with `--public`, add a few
+facts with anchors and their printed pages, run `pytest -q` and open a pull request.
 [CONTRIBUTING.md](../CONTRIBUTING.md) has the checklist, and [data-policy.md](data-policy.md) covers
 what you can quote.

@@ -7,13 +7,21 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+### Added
+
+- `napier init` sets up your private overlay (`local/`, or `$NAPIER_LOCAL`): `facts/`, `notes/`, an
+  empty `sources.yaml` and a commented `napier.toml`. `--rack` copies in the example rack, `--git`
+  makes the overlay its own repo, and `--owner` fills in your name.
+
 ### Changed
 
 - Every public fact can be tested: it names a source, quotes anchors from it (with the printed page
   for a PDF) and has a question for the eval. Nine facts gained anchors, one duplicate is gone, and
   26 moved out of the public ledger: open questions, hardware observations, Elektronauts paraphrases
   and claims with no quotable source. A new test in `tests/test_data.py` keeps it that way.
-- With an overlay, `facts add` and the MCP `add_fact` write to `local/facts/` for every device.
+- With an overlay, `source add` writes to `local/sources.yaml`, and `facts add` and the MCP
+  `add_fact` write to `local/facts/` for every device. `source add --public` adds to the public
+  list for a pull request.
   `facts verify` refuses to mark a public fact `hardware` or `unverified`, and suggests adding your
   check as a new fact.
 

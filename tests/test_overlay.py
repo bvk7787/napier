@@ -118,3 +118,44 @@ def test_refresh_reports_only_public_items_in_public_commits(overlay, monkeypatc
     for private in ("my_notes", "token=x", "Secret Module", "secret-module", "abc"):
         assert private not in text, private
     assert "my_notes" in auto.render(rep)                             # the local report keeps everything
+
+
+def _cli(*args, code=0):
+    from click.testing import CliRunner
+
+    from napier import cli
+    r = CliRunner().invoke(cli.main, list(args))
+    assert r.exit_code == code, r.output
+    return r.output
+
+
+def test_source_add_writes_to_the_overlay_unless_public(overlay, tmp_path, monkeypatch):
+    pub, loc = overlay
+    (tmp_path / "rig.md").write_text("# Rig\n\nPatch notes.\n")
+    common = ["--device", "my_rig", "--kind", "note", "--format", "markdown"]
+    _cli("source", "add", str(tmp_path / "rig.md"), "--id", "rig_notes", *common)
+    assert "rig_notes" in (loc / "sources.yaml").read_text() and "rig_notes" not in (pub / "sources.yaml").read_text()
+    _cli("source", "add", str(tmp_path / "rig.md"), "--id", "rig_public", *common, "--public")
+    assert "rig_public" in (pub / "sources.yaml").read_text()
+    monkeypatch.setenv("NAPIER_LOCAL", "none")
+    assert "napier init" in _cli("source", "add", str(tmp_path / "rig.md"), "--id", "x", *common, "--local", code=1)
+    _cli("source", "add", str(tmp_path / "rig.md"), "--id", "rig_no_overlay", *common)
+    assert "rig_no_overlay" in (pub / "sources.yaml").read_text()
+
+
+def test_init_sets_up_an_overlay(tmp_path, monkeypatch):
+    import shutil
+    loc = tmp_path / "mine"
+    monkeypatch.setenv("NAPIER_LOCAL", str(loc))
+    monkeypatch.delenv("NAPIER_CONFIG")
+    git = ["--git"] if shutil.which("git") else []
+    out = _cli("init", "--rack", "--owner", "Sam", *git)
+    assert "napier.toml" in out and (loc / "facts").is_dir() and (loc / "notes").is_dir()
+    assert load_sources(loc / "sources.yaml") == [] and paths.owner() == "Sam"
+    assert not paths.using_examples() and (loc / "racks" / "layout.yaml").exists()
+    assert not git or (loc / ".git").is_dir()
+    (loc / "napier.toml").write_text('owner = "Kept"\n')
+    assert "already set up" in _cli("init")                         # running it again changes nothing
+    assert paths.owner() == "Kept"
+    monkeypatch.setenv("NAPIER_LOCAL", "none")
+    assert "unset it" in _cli("init", code=1)

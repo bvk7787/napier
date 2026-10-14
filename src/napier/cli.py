@@ -12,6 +12,7 @@
   napier source list | add | offset | check | apply
   napier rack sync | view | scenarios | ...   your rack (see docs/rack.md)
   napier mcp                                  the same tools, for assistants
+  napier init [--git] [--rack]                your private overlay, for your own data
 """
 from __future__ import annotations
 
@@ -103,6 +104,55 @@ def main():
         if os.environ.get("NAPIER_SOURCES"):
             raise click.ClickException(f"no source list at {paths.sources_file()} (NAPIER_SOURCES)")
         raise click.ClickException(f"this napier wasn't installed from a clone. {CLONE_HINT}")
+
+
+# ---------------------------------------------------------------- init
+
+TOML_TEMPLATE = """\
+# napier settings for your overlay. Both are optional.
+# owner names you in generated notes ("How <owner> uses ..."); rack_title heads the rack viewer.
+{owner}# rack_title = "My Rack"
+"""
+
+
+@main.command()
+@click.option("--git", "with_git", is_flag=True, help="Also make the overlay its own git repo")
+@click.option("--rack", "with_rack", is_flag=True, help="Start your rack from a copy of the example rack")
+@click.option("--owner", default="", help="Your name, for napier.toml")
+def init(with_git, with_rack, owner):
+    """Set up your private overlay: local/ in the clone, or $NAPIER_LOCAL. Your sources, facts, rack and
+    notes go there, and nothing in it is committed to the public repo."""
+    import shutil
+    import subprocess
+    env = os.environ.get("NAPIER_LOCAL", "")
+    if env.lower() == "none":
+        raise click.ClickException("NAPIER_LOCAL=none turns the overlay off; unset it first")
+    root = Path(env).expanduser() if env else paths.REPO_ROOT / "local"
+    made = []
+    for sub in ("facts", "notes"):
+        if not (root / sub).is_dir():
+            (root / sub).mkdir(parents=True)
+            made.append(f"{sub}/")
+    if not (root / "sources.yaml").exists():
+        (root / "sources.yaml").write_text("# Your own sources. `napier source add` writes here.\n")
+        made.append("sources.yaml")
+    if not (root / "napier.toml").exists():
+        line = f"owner = {json.dumps(owner)}\n" if owner else '# owner = "Your name"\n'
+        (root / "napier.toml").write_text(TOML_TEMPLATE.format(owner=line))
+        made.append("napier.toml")
+    if with_rack:
+        if (root / "racks").exists():
+            say(f"kept your rack in {root / 'racks'}")
+        else:
+            shutil.copytree(paths.examples_dir() / "racks", root / "racks")
+            made.append("racks/ (from the example)")
+    if with_git and not (root / ".git").exists():
+        subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+        made.append(".git (its own repo)")
+    say(f"overlay at {root}: " + (", ".join(made) if made else "already set up"))
+    say("next: napier source add URL --id ID --device DEVICE   (goes to your overlay; --public for a PR)")
+    if with_rack:
+        say(f"then edit {root / 'racks' / 'layout.yaml'} and run napier rack sync")
 
 
 # ---------------------------------------------------------------- status / fetch / ingest
@@ -392,14 +442,17 @@ def guess_format(ref: str) -> str:
 @click.option("--stop-at", default="", help="Regex: cut text at the first matching line")
 @click.option("--no-check", is_flag=True, help="A one-time snapshot: `source check` never re-fetches it")
 @click.option("--ignore-robots", is_flag=True, help="Fetch even if robots.txt disallows it (don't, normally)")
-@click.option("--local", "to_local", is_flag=True, help="Add it to the private overlay (local/sources.yaml)")
+@click.option("--local", "where", flag_value="local",
+              help="Add it to your overlay's local/sources.yaml (the default when you have an overlay)")
+@click.option("--public", "where", flag_value="public", help="Add it to the public sources.yaml, for a pull request")
 def source_add(ref, sid, device, kind, fmt, title, version, heading, no_pin, start_at, stop_at, no_check,
-               ignore_robots, to_local):
-    """Add a URL or local file to sources.yaml (or the overlay's, with --local): fetch it, pin it, and
-    detect the page offset."""
-    target = paths.local_sources_file() if to_local else paths.sources_file()
-    if target is None:
-        raise click.ClickException("--local needs a private overlay: create local/ (or set NAPIER_LOCAL)")
+               ignore_robots, where):
+    """Add a URL or local file to your overlay's source list (or the public one, without an overlay or
+    with --public): fetch it, pin it, and detect the page offset."""
+    overlay = paths.local_sources_file()
+    if where == "local" and overlay is None:
+        raise click.ClickException("--local needs a private overlay: run `napier init`")
+    target = overlay if overlay and where != "public" else paths.sources_file()
     if any(s.id == sid for s in load_sources()):
         raise click.ClickException(f"source {sid} already exists")
     fmt = fmt or guess_format(ref)
@@ -707,7 +760,7 @@ def _note_hint(name: str) -> str:
     except ValueError:
         rel = str(f)
     sid = "my_" + re.sub(r"[^a-z0-9]+", "_", Path(name).stem.lower()).strip("_")
-    return (f"next, so grep and search can read it: napier source add {rel} --local --id {sid} --device my_rig "
+    return (f"next, so grep and search can read it: napier source add {rel} --id {sid} --device my_rig "
             f"--kind note --format markdown --title \"{Path(name).stem} (generated)\" && napier ingest --source {sid}")
 
 

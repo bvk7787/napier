@@ -15,10 +15,10 @@ racks/
   scenarios/*.yaml    what-if layouts (hand-written)
 ```
 
-To start, copy the example and edit `layout.yaml` and `devices.yaml`:
+To start, copy the example into your overlay and edit `layout.yaml` and `devices.yaml`:
 
 ```bash
-mkdir -p local && cp -r examples/racks local/racks
+napier init --rack
 ```
 
 Your first `napier rack sync` replaces the copied snapshot (`example_rack.yaml`), and if you rename

@@ -81,7 +81,7 @@ other phrasings.
 | Downloaded sources, parse cache, text layer, search index, reports | `~/.napier` | `$NAPIER_HOME` |
 | Search models (with the `index` extra) | `~/.cache/huggingface` | `$HF_HOME` |
 | Your overlay | `local/` in the clone | `$NAPIER_LOCAL` |
-| Sources, facts and specs you add | the clone's YAML files, or the overlay's | |
+| Sources and facts you add | the overlay's YAML files, or the clone's without an overlay | |
 | `rack view` page | `~/.napier/rack-view.html` | `--out` |
 
 `src/napier/paths.py` documents every folder and the environment variables that move them.

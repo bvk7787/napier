@@ -58,7 +58,7 @@ def local_root() -> Path | None:
 
 
 def sources_file() -> Path:
-    """The public source list (where `source add` writes unless --local)."""
+    """The public source list (where `source add` writes without an overlay, or with --public)."""
     return Path(os.environ.get("NAPIER_SOURCES") or REPO_ROOT / "sources.yaml").expanduser()
 
 
