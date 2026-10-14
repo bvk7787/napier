@@ -47,7 +47,7 @@ and what you decided last time, propose a layout as a scenario file, and let nap
 it before you move anything.
 
 It's built for people with synths, grooveboxes and Eurorack who don't mind a terminal and git. The
-source list covers 101 devices: mostly Eurorack, plus the Dirtywave M8, Elektron Digitakt II, OXI
+source list covers 100+ devices: mostly Eurorack, plus the Dirtywave M8, Elektron Digitakt II, OXI
 One MKII and a handful of Strymon and other pedals. Adding a manual for anything else takes one
 command.
 
@@ -157,14 +157,12 @@ assistant like anything else you paste into it.
 
 ## What's in it
 
-149 sources for 101 devices: 113 manuals, 21 changelogs, 10 pinned firmware sources and 5 community
-docs. That includes the Dirtywave M8, Elektron Digitakt II, OXI One MKII and modules from
-Intellijel, Instruō, Make Noise, ALM, Steady State Fate, Noise Engineering, Squarp, WMD, Joranalogue
-and Erica Synths, plus Strymon and a few other pedals. `napier source list` shows everything.
-
-The ledger holds 713 facts: 624 from manuals, 50 from changelogs, 15 from the community, 6 from
-firmware source, 2 confirmed on hardware and 16 open questions. 88 modules have spec files, with
-manual-cited power draw for 77 and jack lists for 80.
+About 150 sources covering 100 devices. That includes the Dirtywave M8, Elektron Digitakt II, OXI
+One MKII and modules from Intellijel, Instruō, Make Noise, ALM, Steady State Fate, Noise
+Engineering, Squarp, WMD, Joranalogue and Erica Synths, plus Strymon and a few other pedals. Most
+facts come straight from a manual, with the printed page. The rest come from changelogs, community
+docs and firmware source, and a few are confirmed on the hardware or still open.
+`napier source list`, `napier status` and `napier facts list` show what's there today.
 
 ## Add your own gear
 
