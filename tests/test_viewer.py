@@ -1,4 +1,5 @@
 import json
+import re
 
 from napier.viewer import build_data, render
 
@@ -48,7 +49,7 @@ def test_render_is_safe_and_titled():
 def test_page_loads_nothing_unless_web_fonts_asked():
     page = render(EXPORT)
     assert "http://" not in page.replace('xmlns="http://www.w3.org', "") and "https://fonts" not in page
-    assert "fonts.googleapis.com" in render(EXPORT, web_fonts=True)
+    assert re.search(r'href="https://fonts\.googleapis\.com/', render(EXPORT, web_fonts=True))
 
 
 def test_rack_data_cannot_break_out_of_the_page():

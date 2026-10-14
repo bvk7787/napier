@@ -105,3 +105,18 @@ def test_html_to_md():
     assert "## 3 Inputs" in md and "Gate in jack." in md and "- One" in md
     assert "| A | B |" in md and "| 1 | 2 |" in md
     assert "menu" not in md and "x()" not in md and "T\n" not in md
+
+
+@pytest.mark.parametrize("ref, fmt", [
+    ("https://docs.google.com/document/d/abc/edit", "gdoc"),
+    ("https://github.com/maker/fw/releases", "github_releases"),
+    ("https://maker.example/manual.PDF?v=2", "pdf"),
+    ("https://drive.google.com/uc?id=abc", "pdf"),
+    ("https://maker.example/notes.md", "markdown"),
+    ("~/Documents/rig-notes.md", "markdown"),
+    ("https://evil.example/github.com/releases", "text"),       # the host decides, not a substring
+    ("https://maker.example/support/", "text"),
+])
+def test_source_add_guesses_the_format_from_host_and_extension(ref, fmt):
+    from napier.cli import guess_format
+    assert guess_format(ref) == fmt

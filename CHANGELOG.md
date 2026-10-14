@@ -7,6 +7,11 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+### Fixed
+
+- `source add` guesses a document's format from the URL's host and extension instead of
+  substrings anywhere in the URL (flagged by CodeQL).
+
 ## [0.1.1] - 2026-10-13
 
 ### Fixed
