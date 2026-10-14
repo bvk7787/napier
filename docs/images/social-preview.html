@@ -4,49 +4,34 @@
        python -c "from playwright.sync_api import sync_playwright as s; p=s().start(); b=p.chromium.launch();
        g=b.new_page(viewport={'width':1280,'height':640}); g.goto('file://'+__import__('os').path.abspath(
        'docs/images/social-preview.html')); g.screenshot(path='docs/images/social-preview.png'); b.close(); p.stop()"
-     then upload the PNG in Settings. The terminal text is real output from `napier grep` and `napier read`. -->
+     then upload the PNG in Settings. The rack is docs/images/example-rack.png, and the terminal
+     text is real `napier grep` output. -->
 <html><head><meta charset="utf-8"><style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{width:1280px;height:640px;background:#1b1c20;font-family:"DejaVu Sans",sans-serif;color:#f2f2f2;position:relative;overflow:hidden}
-.left{position:absolute;left:60px;top:92px;width:560px}
+.left{position:absolute;left:60px;top:92px;width:520px}
 h1{font-size:58px;font-weight:bold;letter-spacing:.5px}
-.tag{max-width:470px;margin-top:26px;font-size:26px;line-height:37px;color:#b9bcc4}
-.cmds{margin-top:44px;font-family:"DejaVu Sans Mono",monospace;font-size:24px;line-height:33px;color:#7fcf8e;white-space:pre}
+.tag{max-width:500px;margin-top:26px;font-size:26px;line-height:37px;color:#b9bcc4}
+.cmds{margin-top:40px;font-family:"DejaVu Sans Mono",monospace;font-size:22px;line-height:31px;color:#7fcf8e;white-space:pre}
 .foot{position:absolute;left:60px;bottom:32px;font-size:20px;line-height:23px;color:#8b8f99}
-.term{position:absolute;left:640px;top:131px;width:600px;height:378px;background:#26272b;border:1px solid #3a3b40;border-radius:4px;overflow:hidden}
-.bar{height:22px;position:relative;text-align:center;font-size:11px;line-height:22px;color:#c9cbd1}
-.dots{position:absolute;left:9px;top:7px}.dots span{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
-pre{font-family:"DejaVu Sans Mono",monospace;font-size:12.4px;line-height:17px;color:#d4d6db;padding:2px 4px 0 5px;white-space:pre}
-.p{color:#7fcf8e;font-weight:bold}.c{color:#f2f2f2;font-weight:bold}.s{color:#e6c07b}.d{color:#8b8f99}
+.rack{position:absolute;left:640px;top:104px;width:600px;height:290px;overflow:hidden;border-radius:4px;border:1px solid #3a3b40}
+.rack img{width:600px;display:block}
+.term{position:absolute;left:640px;top:412px;width:600px;height:106px;background:#26272b;border:1px solid #3a3b40;border-radius:4px;overflow:hidden}
+pre{font-family:"DejaVu Sans Mono",monospace;font-size:12.4px;line-height:17px;color:#d4d6db;padding:12px 10px 0 10px;white-space:pre}
+.p{color:#7fcf8e;font-weight:bold}.c{color:#f2f2f2;font-weight:bold}.s{color:#e6c07b}
 </style></head><body>
 <div class="left">
 <h1>napier</h1>
-<div class="tag">Page-cited answers from your music gear's manuals, for you and your AI assistant.</div>
-<div class="cmds">$ napier fetch --device m8_tracker
-$ napier grep "cue the"
+<div class="tag">Your gear's manuals<br>and your Eurorack rack,<br>for you and your AI assistant.</div>
+<div class="cmds">$ napier grep "cue the"
+$ napier rack view --open
 $ napier mcp</div>
 </div>
-<div class="term"><div class="bar"><div class="dots"><span style="background:#ff5f57"></span><span style="background:#febc2e"></span><span style="background:#28c840"></span></div>napier</div>
-<pre><span class="p">$</span> <span class="c">napier grep "cue the" --device m8_tracker -C 0</span>
+<div class="rack"><img src="example-rack.png" alt=""></div>
+<div class="term"><pre><span class="p">$</span> <span class="c">napier grep "cue the" --device m8_tracker -C 0</span>
 <span class="s">m8_tracker_manual</span> p. 11
   &gt; • [LEFT]+[PLAY] Cue the selected song row for playback.
 <span class="s">m8_tracker_tips</span> § Live Mode Shortcuts
-  &gt; * Hold Left and press Play to cue the whole row
-
-<span class="p">$</span> <span class="c">napier read m8_tracker --page 11</span>
-M8 Operation Manual, v6.5.2 (2026-04-21), p. 11
-Song View Shortcuts
-Navigating
-• [DIRECTION] Move cursor.
-• [OPTION]+[UP or DOWN] Move/scroll the cursor 16 rows up or down.
-Playing
-• [PLAY] Plays/stops all tracks.
-• [SHIFT]+[PLAY] In live mode - Stop a cued or playing track.
-• [LEFT]+[PLAY] Cue the selected song row for playback.
-• [OPTION]+[SHIFT] Mute current track (release option first to hold
-  the mute).
-• [OPTION]+[PLAY] Solo current track (release option first to hold
-  the solo).
-</pre></div>
-<div class="foot">101 devices · Dirtywave M8 · Digitakt II · Eurorack · pedals<br>CLI + MCP server · printed-page citations · Apache-2.0</div>
+  &gt; * Hold Left and press Play to cue the whole row</pre></div>
+<div class="foot">Page-cited lookups for 101 devices · what-if rack layouts, checked<br>CLI + MCP server · Apache-2.0</div>
 </body></html>
