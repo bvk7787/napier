@@ -66,12 +66,13 @@ downloads its own layout models the first time it runs.
 
 ## The eval
 
-A fact with `q` (a question) and `anchors` (short phrases quoted from its page) doubles as a search
-test. `napier eval` asks each question, filtered to the fact's device and its source's kind, and
-counts a hit when a result contains every anchor (or one of the fact's `alt` anchor sets). It
-reports hit@1, hit@3 and whether the matching result is on the cited page, and exits non-zero below
-90% hit@3 (`--min-hit3` changes that). Contributors write the questions knowing the answers, so the
-eval is best at catching regressions. It says less about how search handles other phrasings.
+Every public fact has `q` (a question) and `anchors` (short phrases quoted from its page), so each
+one doubles as a search test. `napier eval` asks each question, filtered to the fact's device and
+its source's kind, and counts a hit when a result contains every anchor (or one of the fact's `alt`
+anchor sets). It reports hit@1, hit@3 and whether the matching result is on the cited page, and
+exits non-zero below 90% hit@3 (`--min-hit3` changes that). Contributors write the questions knowing
+the answers, so the eval is best at catching regressions. It says less about how search handles
+other phrasings.
 
 ## What it writes, and where
 

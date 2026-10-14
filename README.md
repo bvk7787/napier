@@ -117,10 +117,10 @@ For looking things up:
   or your own notes), and you can filter on it.
 - The [facts ledger](#the-facts-ledger) records claims with where they came from and how far they've
   been checked. A claim that turns out wrong stays in the ledger marked `refuted`.
-- `napier eval` tests search against the ledger. Most facts carry a question and anchors, short
-  phrases quoted from the page that answers it. The eval fails if fewer than 90% of the questions
-  find their answer in the top three results. On 2026-10-13 all 681 did, 80% ranked it first, and
-  all 549 with a cited page found it on that page. The questions were written by people who knew the
+- `napier eval` tests search against the ledger. Every public fact carries a question and anchors,
+  short phrases quoted from the page that answers it. The eval fails if fewer than 90% of the
+  questions find their answer in the top three results. On 2026-10-13 all 686 did, 80% ranked it
+  first, and all 550 with a cited page found it on that page. The questions were written by people who knew the
   answers, so treat this as a regression test.
 - `napier source check` re-downloads each source and reports what changed. After you apply an
   update, `napier facts recheck` lists the facts whose quoted text moved or disappeared.
@@ -160,8 +160,9 @@ assistant like anything else you paste into it.
 About 150 sources covering 100 devices. That includes the Dirtywave M8, Elektron Digitakt II, OXI
 One MKII and modules from Intellijel, Instruō, Make Noise, ALM, Steady State Fate, Noise
 Engineering, Squarp, WMD, Joranalogue and Erica Synths, plus Strymon and a few other pedals. Most
-facts come straight from a manual, with the printed page. The rest come from changelogs, community
-docs and firmware source, and a few are confirmed on the hardware or still open.
+facts come straight from a manual, with the printed page, and the rest from changelogs, community
+docs and firmware source. Each one quotes a few words from its source, so napier can check that the
+source still says it.
 `napier source list`, `napier status` and `napier facts list` show what's there today.
 
 ## Add your own gear
@@ -177,7 +178,7 @@ napier facts add maker_module "Holding SHIFT at power-up resets calibration" --s
 
 `source add` checks robots.txt and downloads the file. For a PDF it also pins the checksum and works
 out the printed-page offset, which is worth checking against a page you know. `--local` puts the
-entry in your private overlay, and facts for that device go there too.
+entry in your private overlay. Once you have an overlay, `facts add` writes there too.
 
 For gear other people are likely to own too, send a pull request to the public list instead
 ([CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md)).
@@ -196,9 +197,12 @@ offsets, sites that don't allow automated downloads and keeping sources current.
 | `unverified` | an open question, or a claim with no source yet |
 | `refuted` | checked and found wrong |
 
-Record a check on your own hardware with `napier facts verify ID --hardware --note "..."`, or mark a
-claim wrong with `--refute`. Facts an assistant writes over MCP get a `via: mcp` stamp, which makes
-them easy to spot in the diff.
+The public ledger holds the first four kinds, plus `refuted`. Every fact in it quotes an anchor, a
+short phrase from its source on the cited page, so `napier facts recheck` can test it. What you
+confirm on your own gear, and questions you haven't settled, go in your overlay with
+`napier facts add DEVICE "..." --status hardware --notes "..."`. Settle one of your open questions
+with `napier facts verify ID --hardware --note "..."`, or mark a claim wrong with `--refute`. Facts
+an assistant writes over MCP get a `via: mcp` stamp, which makes them easy to spot in the diff.
 
 ## Your rack
 
@@ -222,8 +226,8 @@ how to write a plug-in that reads your rack from another tool.
 Anything personal goes in `local/`, a private overlay inside your clone. Git ignores it, and it can
 be its own private repo. Its `sources.yaml` and `facts/` merge with the public ones, with yours
 listed first. It also holds your rack, your notes and a `napier.toml` with your name.
-`source add --local` writes there, and so does `facts add` for any device only your overlay knows
-about. Nothing in `local/` gets committed to the public repo.
+`source add --local` writes there, and so does `facts add`. Nothing in `local/` gets committed to
+the public repo.
 
 ## Updating
 

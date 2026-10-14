@@ -13,11 +13,6 @@
   q: Which Atlantix input takes 1V/Oct pitch for VCO A?
   anchors:
   - PITCH A IN - This input controls the pitch of VCO A
-- id: atl-no-glide
-  claim: The Atlantix has no glide or portamento control, so slides must come from the pitch CV source
-  status: unverified
-  source: intellijel_atlantix_manual
-  notes: No glide, portamento or slew in the manual text; check the panel. Hermod+ 3.0 has a GLIDE effect.
 - id: atl-vcob-lfo-mode
   claim: Setting VCO B to LFO runs it at 1/1000 of its VCO frequency, for cycles as slow as about 50 seconds.
   status: manual

@@ -69,7 +69,8 @@ def test_markdown_section_levels(home, tmp_path):
     assert len(tx.grep("Left and", [s])) == 1               # a space matches a line break
 
 
-def test_facts_add_and_verify(home):
+def test_facts_add_and_verify(home, monkeypatch):
+    monkeypatch.setenv("NAPIER_LOCAL", str(home / "local"))           # your own checks go to the overlay
     f = factsmod.add("m8_tracker", "REPITCH STEPS counts bars", status="community", cite="https://x")
     assert f["id"] == "m8-repitch-steps-counts-bars"
     again = factsmod.add("m8_tracker", "REPITCH STEPS counts bars")
@@ -82,7 +83,8 @@ def test_facts_add_and_verify(home):
         factsmod.add("m8_tracker", "x", status="maybe")
 
 
-def test_cli_hardware_and_refuted_checks_need_a_note(home):
+def test_cli_hardware_and_refuted_checks_need_a_note(home, monkeypatch):
+    monkeypatch.setenv("NAPIER_LOCAL", str(home / "local"))
     from click.testing import CliRunner
 
     from napier import cli
@@ -94,6 +96,11 @@ def test_cli_hardware_and_refuted_checks_need_a_note(home):
     assert run("facts", "add", "m8_tracker", "a claim", "--status", "refuted").exit_code == 2
     assert run("facts", "add", "no_such_device", "a claim").exit_code == 1
     assert run("facts", "verify", f["id"], "--hardware", "--note", "tried on 6.5").exit_code == 0
+    pub = home / "facts" / "m8_tracker.yaml"                          # NAPIER_FACTS, the public folder
+    pub.parent.mkdir(exist_ok=True)
+    pub.write_text("- id: m8-pub\n  claim: c\n  status: manual\n")
+    r = run("facts", "verify", "m8-pub", "--hardware", "--note", "tried on 6.5")
+    assert r.exit_code == 1 and "public ledger" in r.output
 
 
 def test_html_to_md():

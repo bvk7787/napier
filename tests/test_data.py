@@ -89,6 +89,25 @@ def _anchors():
             yield name, str(a)
 
 
+PUBLIC_STATUSES = {"manual", "changelog", "community", "code", "refuted"}
+
+
+def test_every_public_fact_can_be_tested(srcs):
+    """Each public fact quotes an anchor from a listed source, with the printed page for a PDF, so
+    `napier facts recheck` can check it. Hardware checks, open questions and forum paraphrases go in
+    your overlay (CONTRIBUTING.md)."""
+    fmt = {s.id: s.format for s in srcs}
+    bad = []
+    for f in facts.load():
+        if f["status"] not in PUBLIC_STATUSES:
+            bad.append(f"{f['id']}: {f['status']} facts stay in your overlay")
+        elif not (f.get("source") and f.get("anchors")):
+            bad.append(f"{f['id']}: needs a source and anchors")
+        elif fmt.get(f["source"]) == "pdf" and not f.get("pages"):
+            bad.append(f"{f['id']}: needs the printed page its anchors are on")
+    assert not bad, "\n".join(bad)
+
+
 def test_forum_facts_quote_no_one(srcs):
     """Forum facts paraphrase and link the thread; they never quote an individual poster."""
     forums = {s.id for s in srcs if s.format == "discourse"}

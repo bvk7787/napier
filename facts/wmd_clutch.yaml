@@ -18,17 +18,14 @@
   q: Does the WMD Clutch respond to velocity?
   anchors:
   - 'Velocity: CV level control'
-- id: clutch-choke
-  claim: Whether a CLSD trigger chokes a ringing open hat on its own, or only the CHOKE input does
-  status: unverified
-  source: wmd_clutch_manual
-  notes: The manual describes the CHOKE input only. If CLSD does not choke OPEN, send the closed-hat trigger
-    to CHOKE too.
 - id: clutch-fw-1-10
-  claim: Firmware 1.10 (2026-07-09) adds Plate Reverb and Thick Chorus; the manual (rev 1.02) covers firmware
-    1.00
-  status: community
-  cite: https://wmdevices.com/products/clutch
+  claim: Firmware 1.10 (2026-07-09) makes a new Plate Reverb and a Thick Chorus the defaults
+  status: changelog
+  source: wmd_clutch_firmware_notes
+  q: what changed in Clutch firmware 1.10
+  anchors:
+  - Clutch firmware v1.10 is now available
+  - New Thick Chorus
 - id: clutch-sample-naming
   claim: Custom samples must be 16-bit 48kHz mono WAVs named
   status: manual

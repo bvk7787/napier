@@ -166,8 +166,10 @@ def facts(device_id: str | None = None, status: str | None = None) -> list[dict]
 def verify_fact(id: str, status: str, note: str = "", cite: str = "") -> dict:
     """Record a check on a fact, when the user tells you what they found. status 'hardware' means the
     user confirmed it on the device; 'refuted' means it was checked and is wrong (never delete facts).
-    note is required for hardware and refuted: what the user saw, and on which firmware. The fact is
-    stamped via: mcp so a reviewer can tell an assistant recorded it."""
+    note is required for hardware and refuted: what the user saw, and on which firmware. A fact in the
+    public ledger can't become hardware or unverified, so record the user's check with add_fact instead
+    (it goes to their overlay). The fact is stamped via: mcp so a reviewer can tell an assistant
+    recorded it."""
     if status in ("hardware", "refuted") and not note.strip():
         raise ValueError(f"status {status!r} needs a note: what was observed, and on which firmware")
     return factsmod.set_status(id, status, note, cite, via="mcp")
@@ -179,7 +181,8 @@ def add_fact(device_id: str, claim: str, status: str = "unverified", source: str
     """Add a claim to the ledger, when the user asks. status: manual | changelog | community | code | hardware
     | unverified | refuted. source is a napier source id; pages are printed pages; cite is a URL for
     community claims. Check facts first so you don't add a duplicate. A manual fact needs its source (and
-    printed pages for a PDF); hardware and refuted facts need notes saying what was observed. Stamped via: mcp."""
+    printed pages for a PDF); hardware and refuted facts need notes saying what was observed. With an
+    overlay, new facts go there. Stamped via: mcp."""
     _known_device(device_id)
     if status in ("hardware", "refuted") and not notes.strip():
         raise ValueError(f"a {status} fact needs notes: what was observed, and on which firmware")

@@ -188,67 +188,62 @@
   status: changelog
   source: m8_tracker_changelog
   cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+  q: which M8 firmware added the sampler SLI command
+  anchors:
+  - Sampler SLI command for cuing specific slice markers from file
 - id: m8-repitch-6-0
   claim: REPITCH play modes and the NXT command arrived in 6.0.0
   status: changelog
   source: m8_tracker_changelog
   cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+  q: when did the M8 get REPITCH play modes and the NXT command
+  anchors:
+  - PLAY:REPITCH modes to lock sample length to song tempo
+  - NXT fx command - Triggers specified instrument on the adjacent track
 - id: m8-a440
   claim: A-4 is A440, so M8 note names follow standard octave numbering (C-4 is middle C)
   status: changelog
   source: m8_tracker_changelog
   cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
-  notes: 1.1.1 "A-4 is now A440"
+  q: what octave numbering do M8 note names use
+  anchors:
+  - A-4 is now A440
 - id: m8-scale-view-location
   claim: The Scale view sits above Groove on the view map
   status: changelog
   source: m8_tracker_changelog
   cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
-  notes: 2.5.0; the manual's View Layout diagram agrees
+  q: where is the Scale view on the M8 view map
+  anchors:
+  - Scale and microtonal support, new view can be found above groove
+  notes: The manual's View Layout diagram agrees
 - id: m8-song-backups
   claim: Saving over a song keeps the previous version in a Backup folder (6.2.0+)
   status: changelog
   source: m8_tracker_changelog
   cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+  q: does the M8 keep a backup when I save over a song
+  anchors:
+  - When a song is overwritten, the previous version is saved in [path]/Backup
 - id: m8-clone-instruments
   claim: In Song view, a third EDIT in a clone also clones the instruments used (6.6.1+)
   status: changelog
   source: m8_tracker_changelog
   cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+  q: how do I clone the instruments used in a Song view selection on the M8
+  anchors:
+  - SELECT+EDIT a third time also clones instruments used in the selection
 
-# ---- community claims, not yet confirmed on hardware
-- id: m8-repitch-steps-bars
-  claim: REPITCH STEPS counts bars (so a 4-bar loop is 4)
-  status: community
-  cite: https://piqued.fm/m8-tracker-firmware-v6-beta-update-overview
-  notes: The manual only names the parameter; elsewhere it defines a step as a 16th. Check the help line on the device.
-- id: m8-lfo-timestretch
-  claim: An LFO on LOOP ST (RAMP UP, RETRIG, FREQ 10 per bar) with PLAY FWDLOOP fakes a time-stretch
-  status: community
-  source: m8_tracker_tips
-  cite: https://docs.google.com/document/d/1IpUeR2s9TpkwH9w2lfqfLLkUxLvXcQWipDR046DzOYk/edit
-- id: m8-fx-order
-  claim: FX columns run right to left, tables before the phrase, and DEL beats CHA
-  status: community
-  cite: Dirtywave Discord
+# ---- from the tips doc
 - id: m8-sort-fixes-glitches
   claim: Sorting a folder in the file browser (SHIFT+OPTION) fixes glitchy playback from it
   status: community
   source: m8_tracker_tips
+  q: how do I fix glitchy sample playback on the M8
+  anchors:
+  - do a directory sort (SHIFT + OPTION)
 
-# ---- open questions
-- id: m8-res-lphp-mapping
-  claim: How RES values map to frequency in the LP>HP filter (it is a 1-pole high-pass)
-  status: unverified
-  source: m8_tracker_manual
-  notes: Manual confirms the high-pass, not the Hz mapping.
-- id: m8-scale-labels-follow-key
-  claim: The Scale view's row labels change with KEY
-  status: unverified
-- id: m8-arp-scale-degrees
-  claim: With a scale set, ARP intervals count scale degrees instead of semitones
-  status: unverified
-  notes: Changelog says "ARP command now uses scale intervals"; manual example is chromatic.
+# ---- more from the changelog and the tips doc
 - id: m8-cl-660-sd-firmware-flash
   claim: Firmware 6.6.0 added flashing new firmware from the SD card via System Settings, working on 6.6 and up.
   status: changelog

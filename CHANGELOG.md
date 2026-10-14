@@ -7,6 +7,23 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+### Changed
+
+- Every public fact can be tested: it names a source, quotes anchors from it (with the printed page
+  for a PDF) and has a question for the eval. Nine facts gained anchors, one duplicate is gone, and
+  26 moved out of the public ledger: open questions, hardware observations, Elektronauts paraphrases
+  and claims with no quotable source. A new test in `tests/test_data.py` keeps it that way.
+- With an overlay, `facts add` and the MCP `add_fact` write to `local/facts/` for every device.
+  `facts verify` refuses to mark a public fact `hardware` or `unverified`, and suggests adding your
+  check as a new fact.
+
+### Fixed
+
+- A device with facts in both `facts/` and `local/facts/` now shows all of them. Before, the
+  overlay's file hid the public one in `facts list --device`, `eval --device` and
+  `facts recheck --device`, and `facts verify` and `facts recheck --fix-pages` couldn't find the
+  public facts.
+
 ## [0.1.2] - 2026-10-13
 
 ### Changed

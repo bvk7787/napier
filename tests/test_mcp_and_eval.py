@@ -65,8 +65,10 @@ def test_mcp_tools_grep_read_and_fact_guards(box):
         mcp.add_fact("not_a_device", "anything", status="community", cite="https://x.test")
     with pytest.raises(mcp.ToolError, match="no device '../../etc'"):
         mcp.add_fact("../../etc", "anything", status="community", cite="https://x.test")
-    v = mcp.verify_fact(f["id"], "hardware", note="tried on 1.2")
-    assert v["status"] == "hardware" and mcp.facts(status="hardware")[0]["id"] == f["id"]
+    with pytest.raises(mcp.ToolError, match="public ledger"):     # no overlay here, so f is public
+        mcp.verify_fact(f["id"], "hardware", note="tried on 1.2")
+    v = mcp.verify_fact(f["id"], "refuted", note="gone in 1.3")
+    assert v["status"] == "refuted" and mcp.facts(status="refuted")[0]["id"] == f["id"]
 
 
 def test_mcp_rack_tool_keeps_wishlist_flagged(monkeypatch):

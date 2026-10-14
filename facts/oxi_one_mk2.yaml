@@ -48,10 +48,6 @@
   pages: [10]
   q: How long does the OXI ONE MKII battery last?
   anchors: ["operate the ONE for up to 8 Hours"]
-- id: oxi-manual-vs-firmware
-  claim: The manual (v2.0a, May 2026) predates the current firmware; check the release notes for changes
-  status: unverified
-  source: oxi_one_mk2_releases
 - id: oxi-ab-logic-trig
   claim: Step trig conditions can be an A:B logic condition, where A is the cycle that triggers the step and the
     count resets after cycle B.

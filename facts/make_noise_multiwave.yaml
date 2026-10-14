@@ -99,15 +99,6 @@
   - simplest way to play MultiWAVE with a keyboard
   notes: Envelope length then comes from the PoliMATHS function, not the MIDI note length (no Note-Off). Same
     text in the MultiWAVE manual, p. 23.
-- id: mw-transpose-channel-conflict
-  claim: MIDI transpose channel is documented inconsistently; the 4.3.5 changelog says ch 9, the MIDI Inlet
-    manual says ch 10
-  status: unverified
-  source: make_noise_multiwave_manual
-  pages:
-  - 26
-  notes: Check on hardware by sending a note on ch 9 and ch 10.
-
 # ---- Firmware appendix
 - id: mw-435-crossmod
   claim: 'Firmware 4.3.5 added the Cross Mod mod shape (lime green): each oscillator modulates the other''s wave position'

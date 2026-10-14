@@ -42,22 +42,30 @@ def test_duplicate_ids_across_lists_are_refused(overlay):
         load_sources()
 
 
-def test_facts_go_where_their_device_lives(overlay):
+def test_new_facts_go_to_the_overlay_when_there_is_one(overlay, monkeypatch):
     pub, loc = overlay
-    (loc / "facts" / "my_rig.yaml").write_text(yaml.safe_dump([dict(id="rig-1", claim="c", status="hardware")]))
-    facts.add("dev", "public claim", status="manual", source="pub_manual", pages=[3])
+    facts.add("dev", "a claim from the manual", status="manual", source="pub_manual", pages=[3])
     facts.add("my_rig", "private claim", status="hardware")
-    assert (pub / "facts" / "dev.yaml").exists() and not (loc / "facts" / "dev.yaml").exists()
-    assert len(yaml.safe_load((loc / "facts" / "my_rig.yaml").read_text())) == 2
-    assert {f["id"] for f in facts.load()} >= {"rig-1"} and len(facts.load()) == 3
+    assert (loc / "facts" / "dev.yaml").exists() and not (pub / "facts" / "dev.yaml").exists()
+    assert (loc / "facts" / "my_rig.yaml").exists()
+    monkeypatch.setenv("NAPIER_LOCAL", "none")                      # no overlay: public, for a pull request
+    facts.add("dev", "another claim", status="manual", source="pub_manual", pages=[4])
+    assert (pub / "facts" / "dev.yaml").exists()
 
 
-def test_first_fact_for_gear_added_with_local_goes_to_the_overlay(overlay):
+def test_a_device_can_have_facts_in_both_folders(overlay):
     pub, loc = overlay
-    facts.add("my_rig", "first claim", status="unverified")      # no local/facts/my_rig.yaml yet
-    assert (loc / "facts" / "my_rig.yaml").exists() and not (pub / "facts" / "my_rig.yaml").exists()
-    facts.add("brand_new", "unknown to either list", status="unverified")
-    assert (pub / "facts" / "brand_new.yaml").exists()
+    (pub / "facts" / "dev.yaml").write_text("# public header\n- id: dev-pub\n  claim: p\n  status: manual\n")
+    (loc / "facts" / "dev.yaml").write_text(yaml.safe_dump([dict(id="dev-mine", claim="m", status="unverified")]))
+    assert [f["id"] for f in facts.load("dev")] == ["dev-pub", "dev-mine"]
+    assert {f["device"] for f in facts.load("dev")} == {"dev"}
+    facts.set_status("dev-pub", "manual", note="rechecked the page")    # edits stay in the file that has the fact
+    facts.set_status("dev-mine", "hardware", note="tried it")
+    assert yaml.safe_load((pub / "facts" / "dev.yaml").read_text())[0]["notes"].endswith("rechecked the page")
+    assert yaml.safe_load((loc / "facts" / "dev.yaml").read_text())[0]["status"] == "hardware"
+    assert facts.file_of("dev-pub") == pub / "facts" / "dev.yaml"
+    refresh.set_fact_pages("dev-pub", [7])
+    assert facts.find("dev-pub")["pages"] == [7] and len(facts.load("dev")) == 2
 
 
 def test_racks_notes_and_config_come_from_the_overlay(overlay, monkeypatch):
