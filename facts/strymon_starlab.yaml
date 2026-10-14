@@ -1,0 +1,113 @@
+# Facts for strymon_starlab. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: starlab-karplus-entry
+  claim: Karplus-Strong mode is entered by holding ECHO ON and turning DELAY/TUNE clockwise until TAP/TRIG turns
+    red, and turning it counterclockwise until TAP/TRIG blinks green returns to delay mode.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 15
+  q: How do I turn the StarLab into a plucked string voice?
+  anchors:
+  - 'To enter Karplus-Strong mode: Hold the ECHO ON button'
+- id: starlab-size-pitch-cv
+  claim: SIZE/PITCH CV tracks 1V/octave over plus or minus 2V, pitching the reverb up to 2 octaves up or down, with
+    the knob acting as an offset.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 8
+  q: What voltage range does the StarLab SIZE/PITCH CV input accept and how does it scale?
+  anchors:
+  - Modifies the SIZE/PITCH setting at 1V/octave
+- id: starlab-tap-clock-ratios
+  claim: With a clock at TAP/TRIG CV (25 ms to 3 s), DELAY/TUNE becomes a divider/multiplier from 1/4 to 5/2, allowing
+    up to 7.5 seconds of delay.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 13
+  q: How do I sync the StarLab delay to my clock and what ratios are available?
+  anchors:
+  - DELAY/TUNE acts as a clock divider/multiplier with the following ratios around the knob
+- id: starlab-texture-dense
+  claim: The TEXTURE switch picks sparse (granular), dense (plate-like with fast response) or diffuse (slow-building
+    wash) reverb structures.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 6
+  q: Which StarLab texture setting sounds like a plate reverb?
+  anchors:
+  - Plate-like reverb with a fast response and dense reflections
+- id: starlab-dry-level
+  claim: The DRY knob is an analog path with no dry at minimum, unity at 12 o clock and a 3dB boost at maximum.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 7
+  q: Where is unity gain on the StarLab DRY knob?
+  anchors:
+  - unity gain at 12 o'clock, and +3dB boost of the dry signal at maximum
+- id: starlab-pitch-quantize
+  claim: Holding INFINITE until it blinks amber enables PITCH QUANTIZE, which restricts the SIZE/PITCH knob to a
+    selected scale.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 10
+  q: How do I quantize the SIZE/PITCH knob to a scale on StarLab?
+  anchors:
+  - Press and hold the INFINITE button until it blinks AMBER
+- id: starlab-favorite-save
+  claim: To save a Favorite preset, hold FAVORITE until it flashes green, then press FAVORITE or one of the four
+    center buttons.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 12
+  q: How do I save a preset on the StarLab?
+  anchors:
+  - Press and hold FAVORITE until the button flashes GREEN
+- id: starlab-regen-shimmer
+  claim: REGEN chooses regenerative shimmer inside the reverb structure (LED green) or input shimmer applied before
+    the reverb (LED off).
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 17
+  q: What does the REGEN button do to the StarLab shimmer?
+  anchors:
+  - applies the pitch shifting at the input before the reverb structure
+- id: starlab-lfo-clock-div
+  claim: With a clock at LFO CLK IN, the SPEED knob divides by 8 to 2 on its first half and multiplies by 2 to 8
+    on its second half, with no change at noon.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 22
+  q: What clock divisions does the StarLab LFO offer when synced to a clock?
+  anchors:
+  - Clock divisions by 8, 6, 5, 4, 3, and 2
+- id: starlab-ingate-powerup
+  claim: Holding HIGH BAND at power up toggles the IN GATE CV between momentary (default) and latching response.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 31
+  q: How do I make the StarLab IN GATE input latching?
+  anchors:
+  - Press and hold the HIGH BAND button at power up
+- id: starlab-env-depth
+  claim: With the env LFO shape selected, DEPTH is off at 12 o clock and turns counterclockwise for negative and
+    clockwise for positive envelope depth.
+  status: manual
+  source: strymon_starlab_manual
+  pages:
+  - 23
+  q: Why does the StarLab envelope LFO do nothing with DEPTH at noon?
+  anchors:
+  - When env is selected, modulation is OFF at the 12 o'clock position.

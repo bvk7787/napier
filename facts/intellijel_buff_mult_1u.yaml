@@ -1,0 +1,44 @@
+# Facts for intellijel_buff_mult_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: bm1u-normalled-1x8
+  claim: The top input is normalled to the bottom input, so with nothing in the bottom input the top signal is copied
+    to all 8 outputs.
+  status: manual
+  source: intellijel_buff_mult_1u_manual
+  pages:
+  - 6
+  q: Can the Buff Mult 1U act as a single mult with eight outputs?
+  anchors:
+  - making Buff Mult act as a single 1 x 8 buffered signal multiplier
+- id: bm1u-buffered-vs-passive
+  claim: Buffered mults isolate outputs from the input so faults or shorts at the input do not pass to connected
+    modules, unlike a passive mult.
+  status: manual
+  source: intellijel_buff_mult_1u_manual
+  pages:
+  - 5
+  q: Why use a buffered mult instead of a passive mult for splitting CV?
+  anchors:
+  - any faults or shorts present at the input will not pass through to a connected module
+- id: bm1u-specs
+  claim: Buff Mult 1U is 14 hp wide, 29 mm deep, and draws 4 mA on each of +12V and -12V.
+  status: manual
+  source: intellijel_buff_mult_1u_manual
+  pages:
+  - 6
+  q: What is the Buff Mult 1U current draw in mA?
+  anchors:
+  - 4 mA @ +12V 4 mA @ -12V
+- id: bm1u-why-buffer-pitch-cv
+  claim: A buffered mult is recommended for 1V/Oct pitch CV because a passive mult's loading can slightly shift
+    the voltage and detune oscillators.
+  status: manual
+  source: intellijel_buff_mult_1u_manual
+  pages:
+  - 6
+  q: should I use a buffered or passive mult for sending pitch CV to multiple oscillators
+  anchors:
+  - for voltage-critical functions (like an oscillator, where only a slight change in voltage is easily heard)

@@ -1,0 +1,34 @@
+device: instruo_carn
+slugs: [instruo-carn]
+source: instruo_carn_manual
+hp: 8
+hp_page: 4
+hp_anchor: "Width: 8 HP"
+power:
+  plus12: 180
+  minus12: 180
+  page: 4
+  anchor: "+12V: 180mA"
+jacks:
+  - {name: "Primary Input (ch 1)", dir: in, type: audio, page: 10, label: "Primary Input", also: [cv]}
+  - {name: "Primary Input (ch 2)", dir: in, type: audio, page: 10, label: "Primary Input", also: [cv]}
+  - {name: "Primary Input (ch 3)", dir: in, type: audio, page: 10, label: "Primary Input", also: [cv]}
+  - {name: "Primary Input (ch 4)", dir: in, type: audio, page: 10, label: "Primary Input", also: [cv]}
+  - {name: "Secondary Input (ch 1)", dir: in, type: cv, page: 10, label: "Secondary Input", also: [audio]}
+  - {name: "Secondary Input (ch 2)", dir: in, type: cv, page: 10, label: "Secondary Input", also: [audio]}
+  - {name: "Secondary Input (ch 3)", dir: in, type: cv, page: 10, label: "Secondary Input", also: [audio]}
+  - {name: "Secondary Input (ch 4)", dir: in, type: audio, page: 10, label: "Secondary Input", also: [cv]}
+  - {name: "Mono Output (ch 1)", dir: out, type: audio, page: 12, label: "Mono Output", also: [cv]}
+  - {name: "Mono Output (ch 2)", dir: out, type: audio, page: 12, label: "Mono Output", also: [cv]}
+  - {name: "Mono Output (ch 3)", dir: out, type: audio, page: 12, label: "Mono Output", also: [cv]}
+  - {name: "Mono Output (ch 4)", dir: out, type: audio, page: 12, label: "Mono Output", also: [cv]}
+  - {name: "Stereo Output L", dir: out, type: audio, page: 12, label: "Stereo Outputs", also: [cv]}
+  - {name: "Stereo Output R", dir: out, type: audio, page: 12, label: "Stereo Outputs", also: [cv]}
+  - {name: "Level CV Input", dir: in, type: cv, page: 12}
+notes: >-
+  Front panel key (p. 5) lists Primary Inputs, Secondary Inputs, Mono Outputs, Stereo Outputs and Level CV Input;
+  per-channel jacks described generically on pp. 10-12. Secondary inputs: ch1 = pan CV, ch2 = unipolar VCA
+  modulator (normalled to an internal +6V reference when unpatched), ch3 = bipolar ring-mod modulator, ch4 =
+  crossfade second signal. Stereo Output L/R split assumed from "Stereo Outputs" (plural; p. 22 mentions "left
+  Stereo Output"). Stereo Input/Output Back Jacks (p. 16) are rear-mounted and excluded. Manual gives +12V/-12V
+  only; no +5V figure stated. Power matches ModularGrid.

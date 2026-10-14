@@ -1,0 +1,95 @@
+# Facts for ssf_vortices. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: vtx-pan-law
+  claim: The PAN and X-FADE controls use a linear law with only a -1.3dB dip at centre (about 0.86x gain), versus
+    the usual -6dB of a linear law.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 2
+  q: How much does the level drop when a channel is panned to the centre on Vortices?
+  anchors:
+  - Vortices offers a linear law with only a -1.3dB center dip
+- id: vtx-xfade-breakout
+  claim: Patching the X-FADE direct output pulls mono channels 2 and 3 out of the Mono Mix and Master Mix outputs,
+    so the crossfader can be used separately or sent out for processing.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 2
+  q: What happens to channels 2 and 3 when I patch the X-FADE output on Vortices?
+  anchors:
+  - Patching out here will break these channels out of all the associated MIX outputs
+- id: vtx-vcv-expander
+  claim: With the V-CV expander, the switch by the expansion header must be set to EXP, the 10-pin cable goes red
+    stripe down on both, and each channel knob then attenuates its CV, which should be near 10V for full scale.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 6
+  q: How do I set up the V-CV expander on Vortices?
+  anchors:
+  - must be set in the EXP position when the expander is connected
+- id: vtx-aux-pad
+  claim: The auxiliary mono and stereo inputs bypass the saturation-compression stage, keep the 12Vpp hard limiter,
+    and apply a -3dB pad to sit at nominal mix levels.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 1
+  q: do the aux inputs on Vortices get the saturation
+  anchors:
+  - Auxiliary Mono mix inputs bypass the saturation-compression in exchange for the hard peak limiter
+- id: vtx-pan-cv-range
+  claim: The PAN and X-FADE CV inputs expect a symmetrical +/-5V control voltage, though any signal is safe.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 2
+  q: what CV range do the pan inputs on Vortices expect
+  anchors:
+  - CV inputs expect a symmetrical +/-5V control voltage as standard
+- id: vtx-st-aux-normal
+  claim: Patching a mono source into only the left ST-AUX input normals it to both sides of the stereo mix.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 4
+  q: how do I get a mono signal into both sides of the Vortices stereo aux
+  anchors:
+  - while the Right (R) ST-AUX is unoccupied will normal the signal to both sides
+- id: vtx-master-rear-jack
+  claim: The MASTER MIX OUT sums every input on Vortices, available as split stereo jacks on the top row plus a
+    stereo jack on the back of the module.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 4
+  q: where is the master output on Vortices and is there a stereo jack
+  anchors:
+  - The MASTER MIX OUT offers the sum of every audio input on Vortices
+- id: vtx-amp-bias
+  claim: Adding a positive or negative DC offset to an input before Vortices causes asymmetrical saturation with
+    more even-order harmonics, without offsetting the summed outputs.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 9
+  q: how do I get even harmonics out of the Vortices saturation
+  anchors:
+  - asymmetrically distort a signal in order to enlist a dominance of Even Order
+  alt:
+  - - Vortices can produce asymmetrical saturation/compression when the input source is biased
+- id: vtx-power-specs
+  claim: Vortices draws 110mA on +12V and 105mA on -12V, is 16hp and 26mm deep, and the V-CV expander is 2hp with
+    no power draw.
+  status: manual
+  source: ssf_vortices_manual
+  pages:
+  - 9
+  q: how much power does SSF Vortices use
+  anchors:
+  - 'Power Consumption: +110mA, -105mA Width: 16hp'

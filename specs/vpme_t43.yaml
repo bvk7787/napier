@@ -1,0 +1,21 @@
+device: vpme_t43
+slugs: [vpme-de-t43]
+source: vpme_t43_manual
+hp: 4
+hp_page: 3
+hp_anchor: "T43 is a 4 hp Eurorack"
+power:
+  plus12: 20
+  minus12: 10
+  plus5: 0
+  page: 3
+  anchor: "consumes 20 mA from the +12V and 10 mA from the -12V supply, it does not use the +5V rail"
+jacks:
+  - {name: "A", dir: in, type: cv, also: [audio, pitch], page: 3, label: "A: CV/audio input A"}
+  - {name: "B", dir: in, type: cv, also: [audio, pitch], page: 3, label: "B: CV/audio input B"}
+  - {name: "C", dir: in, type: cv, also: [audio, pitch], page: 3, label: "C: CV/audio input C"}
+  - {name: "SUM", dir: out, type: cv, also: [audio, pitch], page: 3, label: "SUM sum of A + B"}
+notes: >-
+  Precision CV adder/transposer: SUM = A + B +/- C plus switched octave/semitone offsets (up to +/-43 semitones).
+  Inputs are documented as "CV/audio"; pitch added since the module is a V/oct transposer. Manual explicitly
+  states no +5V draw. Matches ModularGrid.

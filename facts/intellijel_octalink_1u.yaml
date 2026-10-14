@@ -1,0 +1,63 @@
+# Facts for intellijel_octalink_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: olk-cable-type
+  claim: Two Octalink 1U units link over a single RJ45 cable, which must be a shielded Cat-6a or Cat-7 cable if
+    you replace the supplied one.
+  status: manual
+  source: intellijel_octalink_1u_manual
+  pages:
+  - 4
+  q: What kind of network cable can I use to connect two Octalinks?
+  anchors:
+  - Make sure to use only shielded Cat-6a or Cat-7 RJ45 cables
+- id: olk-audio-buffer
+  claim: Because Octalink is passive, audio sent over it may pick up a slightly higher noise floor, so Intellijel
+    recommends running audio through a buffered mult first.
+  status: manual
+  source: intellijel_octalink_1u_manual
+  pages:
+  - 5
+  q: Is it OK to send audio between cases over Octalink?
+  anchors:
+  - we recommend first patching the audio signal into a buffered multiple
+- id: olk-doepfer-a180-9
+  claim: Octalink works with the Doepfer A-180-9; the top (1-8) RJ45 port maps jack for jack, while the bottom (A-F)
+    port only covers Octalink jacks 1 to 6.
+  status: manual
+  source: intellijel_octalink_1u_manual
+  pages:
+  - 6
+  q: Can I connect an Octalink 1U to a Doepfer A-180-9 multicore?
+  anchors:
+  - If an Octalink 1U is connected to the top (1-8) RJ45 port on the A-180-9
+- id: olk-no-power
+  claim: Octalink 1U is passive and needs no power connection.
+  status: manual
+  source: intellijel_octalink_1u_manual
+  pages:
+  - 2
+  q: Does the Octalink 1U need power?
+  anchors:
+  - Because Octalink 1U is a passive module, it requires no power to operate.
+- id: olk-gig-prepatch
+  claim: Connections between cases can be pre-patched into the Octalink modules so only one RJ45 cable is connected
+    at a gig.
+  status: manual
+  source: intellijel_octalink_1u_manual
+  pages:
+  - 4
+  q: How can I use Octalink to make gig setup faster with two cases?
+  anchors:
+  - can be pre-patched into the Octalink 1U modules
+- id: olk-more-modules
+  claim: To link more than two cases or carry more than 8 connections, add more Octalink 1U modules.
+  status: manual
+  source: intellijel_octalink_1u_manual
+  pages:
+  - 4
+  q: Can Octalink handle more than 8 signals or more than two cases?
+  anchors:
+  - If you need to connect more than two cases or access more than 8 patch connections

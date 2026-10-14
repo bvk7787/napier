@@ -1,0 +1,24 @@
+# The example rack, written by hand (rack_source: file). One entry per module; `at` holds one
+# position per copy, 'row N, hp N' counted from the top-left (row 1 is the 1U row, HP 1 is the left edge).
+# Power is in mA from the maker's spec; napier also checks it against the manual where specs/ has one.
+rack: {name: Example Rack, rows: 3, hp: 104, modified: 2026-10-12}
+modules:
+  # ---- row 1 (1U): hands-on controls and outputs
+  - {slug: intellijel-steppy-1u, vendor: Intellijel, name: Steppy 1U, hp: 28, format: 1U, power: {plus12: 15, minus12: 0, plus5: 0}, at: ["row 1, hp 1"]}
+  - {slug: intellijel-buff-mult-1u, vendor: Intellijel, name: Buff Mult 1U, hp: 14, format: 1U, power: {plus12: 4, minus12: 17, plus5: 0}, at: ["row 1, hp 29"]}
+  - {slug: ritual-electronics-pointeuse, vendor: Ritual Electronics, name: Pointeuse, hp: 10, format: 1U, power: {plus12: 20, minus12: 11, plus5: 0}, at: ["row 1, hp 43"]}
+  - {slug: intellijel-stereo-line-out-1u, vendor: Intellijel, name: Stereo Line Out 1U, hp: 8, format: 1U, power: {plus12: 19, minus12: 12, plus5: 0}, at: ["row 1, hp 97"]}
+  # ---- row 2 (3U): a voice and its modulation, then clock and level
+  - {slug: intellijel-atlantix, vendor: Intellijel, name: Atlantix, hp: 42, format: 3U, power: {plus12: 140, minus12: 138, plus5: 0}, at: ["row 2, hp 1"]}
+  - {slug: make-noise-maths-black-panel, vendor: Make Noise, name: Maths, hp: 20, format: 3U, power: {plus12: 60, minus12: 50, plus5: 0}, at: ["row 2, hp 43"]}
+  - {slug: intellijel-quadrax-, vendor: Intellijel, name: Quadrax, hp: 14, format: 3U, power: {plus12: 106, minus12: 9, plus5: 0}, at: ["row 2, hp 63"]}
+  - {slug: alm-busy-circuits-pamela-s-pro-workout, vendor: ALM Busy Circuits, name: Pamela's Pro Workout, hp: 8, format: 3U, power: {plus12: 60, minus12: 10, plus5: 0}, at: ["row 2, hp 77"]}
+  - {slug: alm-busy-circuits-ppexp1, vendor: ALM Busy Circuits, name: PPEXP1, hp: 4, format: 3U, power: {plus12: 40, minus12: 0, plus5: 0}, at: ["row 2, hp 85"]}
+  - {slug: intellijel-amps, vendor: Intellijel, name: Amps, hp: 6, format: 3U, power: {plus12: 40, minus12: 46, plus5: 0}, at: ["row 2, hp 89"]}
+  # ---- row 3 (3U): drums on the left, mixer and effect on the right
+  - {slug: steady-state-fate-entity-ultra-kick, vendor: Steady State Fate, name: Entity Ultra Kick, hp: 14, format: 3U, power: {plus12: 110, minus12: 110, plus5: 0}, at: ["row 3, hp 1"]}
+  - {slug: steady-state-fate-entity-ultra-perc, vendor: Steady State Fate, name: Entity Ultra Perc, hp: 14, format: 3U, power: {plus12: 125, minus12: 125, plus5: 0}, at: ["row 3, hp 15"]}
+  - {slug: erica-synths-sample-drum-, vendor: Erica Synths, name: Sample Drum, hp: 14, format: 3U, power: {plus12: 65, minus12: 2, plus5: 0}, at: ["row 3, hp 29"]}
+  - {slug: bastl-instruments-ikarie, vendor: Bastl Instruments, name: Ikarie, hp: 8, format: 3U, power: {plus12: 100, minus12: 95, plus5: 0}, at: ["row 3, hp 43"]}
+  - {slug: noise-engineering-xer-mixa, vendor: Noise Engineering, name: Xer Mixa, hp: 32, format: 3U, power: {plus12: 500, minus12: 250, plus5: 0}, at: ["row 3, hp 51"]}
+  - {slug: mutable-instruments-beads, vendor: Mutable Instruments, name: Beads, hp: 14, format: 3U, power: {plus12: 100, minus12: 10, plus5: 0}, at: ["row 3, hp 83"]}

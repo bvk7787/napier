@@ -1,0 +1,21 @@
+device: ne_xer_mixa
+slugs: [noise-engineering-expando-expandi]
+source: ne_xer_mixa_manual
+hp: 4
+hp_page: null
+hp_anchor: "supports up to 2 expanders at 4 HP each"
+power:
+  plus12: 70
+  minus12: 0
+  page: null
+  anchor: "+12 V: 70 mA"
+jacks:
+  - {name: "Input 1", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+  - {name: "Input 2", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+  - {name: "Input 3", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+  - {name: "Input 4", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+  - {name: "Input 5", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+  - {name: "Input 6", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+  - {name: "Input 7", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+  - {name: "Input 8", dir: in, type: cv, page: null, label: "Inputs 1-8"}
+notes: "Cited from the Expando Expandi sections of the Xer Mixa web manual (non-PDF, so page null). Interface lists 'Inputs 1-8' as CV inputs (-5V to +5V); the patch tutorial calls the first one 'the CV 1 jack', so panel labels may read CV 1-8. Width comes from the Xer Mixa overview ('up to 2 expanders at 4 HP each'). Power: +12V 70mA, -12V 0mA; +5V not stated. Rear 3-pin expansion headers excluded. Power matches ModularGrid."

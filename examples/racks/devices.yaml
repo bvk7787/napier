@@ -1,0 +1,30 @@
+# An example rack for trying napier: one 7U case, 104 HP wide (a 1U row over two 3U rows).
+# Your own rack lives in the private overlay (local/racks/devices.yaml), which replaces this folder.
+#
+# rack_source  where `napier rack sync` reads the rack from. `file` (built in) reads layout.yaml below;
+#              plug-ins add others (`napier rack sources` lists what's installed).
+# rack         settings passed to the rack source (here: which file).
+# geometry     how the rack splits into cases: grid [across, down] and each case's rows, top to bottom.
+# modules      optional: map a module slug to a napier device, or override catalog/modules.yaml.
+# off_rack     modules you own that aren't in the rack (scenarios can still place them).
+# wishlist     modules you don't own yet; scenarios can place them, and nothing treats them as owned.
+rack_source: file
+rack:
+  file: layout.yaml
+geometry:
+  grid: [1, 1]
+  case_rows: [1U, 3U, 3U]
+
+off_rack: []
+
+wishlist:
+  - slug: joranalogue-audio-design-step-8
+    vendor: Joranalogue Audio Design
+    name: Step 8
+    hp: 16
+    format: 3U
+    power: {plus12: 110, minus12: 45, plus5: 0}
+    device: joranalogue_step_8
+    role: sequencer
+    tags: [sequencer, switch]
+    status: considered; slider-per-step slice or pitch control, advanced by Steppy

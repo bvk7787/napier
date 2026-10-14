@@ -1,0 +1,36 @@
+device: boredbrain_optx_v2
+slugs: [boredbrain-music-optx-v2-]
+source: boredbrain_optx_v2_guide
+hp: 10
+hp_page: 1
+hp_anchor: "Width: 10 HP"
+power:
+  plus12: 260
+  minus12: 130
+  page: 1
+  anchor: "+12 V 260 mA, -12 V 130 mA"
+jacks:
+  - {name: "Rx", dir: in, type: other, page: 2, label: "Rx TOSLINK jack"}
+  - {name: "Tx", dir: out, type: other, page: 2, label: "Tx jack"}
+  - {name: "IN 1", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "IN 2", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "IN 3", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "IN 4", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "IN 5", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "IN 6", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "IN 7", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "IN 8", dir: in, type: audio, also: [cv], page: 2, label: "IN 1-8"}
+  - {name: "OUT 1", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+  - {name: "OUT 2", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+  - {name: "OUT 3", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+  - {name: "OUT 4", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+  - {name: "OUT 5", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+  - {name: "OUT 6", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+  - {name: "OUT 7", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+  - {name: "OUT 8", dir: out, type: audio, also: [cv], page: 2, label: "OUT 1-8"}
+notes: >-
+  Guide lists two power configs selected by rear jumper: (1) +5V generated on board (jumper OPTX):
+  +12V 260mA, -12V 130mA (used here, matches ModularGrid); (2) +5V from case (jumper CASE): +12V 130mA,
+  -12V 130mA, +5V 270mA. Rx/Tx are TOSLINK optical ADAT ports (type other). IN 1-8 accept audio and CV
+  (per-pair AUDIO/CV mode switch); OUT 1-8 are DC-coupled audio/CV. Per-jack names constructed from
+  "IN 1-8"/"OUT 1-8". Guide says EXT sync "requires a valid ADAT signal at the Tx jack", likely a typo for Rx.

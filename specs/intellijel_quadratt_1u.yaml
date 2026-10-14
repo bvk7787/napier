@@ -1,0 +1,23 @@
+device: intellijel_quadratt_1u
+slugs: [intellijel-quadratt-1u]
+source: intellijel_quadratt_1u_manual
+hp: 28
+hp_page: 11
+hp_anchor: "Width 28 hp"
+power:
+  plus12: 24
+  minus12: 23
+  page: 11
+  anchor: "24 mA @ +12V 23 mA @ -12V"
+jacks:
+  - {name: "IN A", dir: in, type: cv, also: [audio], page: 9}
+  - {name: "IN B", dir: in, type: cv, also: [audio], page: 9}
+  - {name: "IN C", dir: in, type: cv, also: [audio], page: 10}
+  - {name: "IN D", dir: in, type: cv, also: [audio], page: 10}
+  - {name: "OUT A", dir: out, type: cv, also: [audio], page: 10}
+  - {name: "OUT B", dir: out, type: cv, also: [audio], page: 10, normal: "OUT A"}
+  - {name: "OUT C", dir: out, type: cv, also: [audio], page: 10, normal: "OUT B"}
+  - {name: "OUT D", dir: out, type: cv, also: [audio], page: 10, normal: "OUT C"}
+notes: >-
+  Each IN is normalled to a +5V DC source when unpatched. Each OUT sums into the next channel's OUT
+  when left unpatched (A into B, cascading through D). Audio mixing use described on p7. +5V draw not stated.

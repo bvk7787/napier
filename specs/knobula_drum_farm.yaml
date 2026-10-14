@@ -1,0 +1,8 @@
+device: knobula_drum_farm
+slugs: [knobula-drum-farm]
+source: knobula_drum_farm_manual
+jacks: []
+notes: >-
+  The manual (Google Doc) states no power
+  draw or width; ModularGrid lists it at 24 HP. Fill power in from the manual or a maker spec sheet
+  when one is published.

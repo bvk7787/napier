@@ -1,0 +1,19 @@
+device: intellijel_dual_vca_1u
+slugs: [intellijel-dual-vca-1u]
+source: intellijel_dual_vca_1u_manual
+hp: 8
+hp_page: 7
+hp_anchor: "8 hp"
+power:
+  plus12: 37
+  minus12: 40
+  page: 7
+  anchor: "37 mA @ +12V 40 mA @ -12V"
+jacks:
+  - {name: "IN A", dir: in, type: audio, page: 6}
+  - {name: "IN B", dir: in, type: audio, page: 6, normal: "IN A"}
+  - {name: "CV A", dir: in, type: cv, page: 6}
+  - {name: "CV B", dir: in, type: cv, page: 6, normal: "CV A"}
+  - {name: "VCA A out", dir: out, type: audio, page: 6}
+  - {name: "VCA B out", dir: out, type: audio, page: 6}
+notes: "1U (Intellijel format). If VCA A out is unpatched, VCA A is mixed into VCA B out. CV range 0-10V (5V unity, 10V +6dB). No +5V draw stated. Power matches ModularGrid."

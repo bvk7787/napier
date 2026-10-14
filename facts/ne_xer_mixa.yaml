@@ -1,0 +1,82 @@
+# Facts for ne_xer_mixa. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: xm-cue-mode
+  claim: Setting Cue Mode to Mute turns Out B into a cue output, so muted channels are removed from the main mix
+    but still heard on Out B at their fader level.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: How do I preview a channel in headphones before bringing it into the Xer Mixa main mix?
+  anchors:
+  - Set the Cue Mode to Mute
+- id: xm-pre-post-send
+  claim: Each channel's A and B sends can be set to pre or post fader in its Config menu; with Pre, moving the channel
+    fader does not change the level going to the bus.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: Can I send a channel to the reverb on Xer Mixa without the fader affecting the send level?
+  anchors:
+  - If set to Pre, adjusting the channel fader will not change the level of the signal going to bus A
+- id: xm-expandi-action-scale
+  claim: On the Expando Expandi, an Action of Scale makes the parameter setting the maximum for incoming CV, so
+    a channel fader still caps the level when an envelope drives volume, while Add treats it as an offset and Over
+    ignores it.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: How do I use Expando Expandi CV as a VCA on a Xer Mixa channel while keeping the fader as a level control?
+  anchors:
+  - Scale attenuates the CV value with the current value of the parameter setting the maximum
+- id: xm-clk-mute-sync
+  claim: The Clk Mute setting quantizes mute and unmute changes to a MIDI clock division such as each 4/4 measure.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: Can I make Xer Mixa mutes happen in time with MIDI clock?
+  anchors:
+  - When set to a division (like 4/4), muting/unmuting will occur at that division
+- id: xm-scene-program-change
+  claim: Xer Mixa stores seven scenes (A-G) and can recall them with MIDI Program Change 0-6.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: How do I recall Xer Mixa scenes from a sequencer?
+  anchors:
+  - Xer Mixa can change scene via MIDI Program Change messages 0-6.
+- id: xm-quad-outputs
+  claim: In Quad panning mode, Main L/R are the front speakers, the B outputs are the rear, and A remains a stereo
+    aux send.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: Which outputs are front and rear when Xer Mixa is in quad mode?
+  anchors:
+  - the B L and R outs are the back left and right
+- id: xm-hex-no-aux
+  claim: In Hex mode all outputs drive monitors, so cue and aux sends are unavailable and the Pan encoder rotates
+    the source in a circle.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: Why can't I use aux sends when Xer Mixa is set to hex panning?
+  anchors:
+  - Since all outputs are used for monitors in hex mode, Cue and aux sends are not available.
+- id: xm-expander-scan
+  claim: After connecting a new Expando Expandi, run Scan from the Expander menu so Xer Mixa detects it.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: I connected an Expando Expandi but Xer Mixa doesn't see it, what do I do?
+  anchors:
+  - Xer Mixa needs to scan for new expanders
+- id: xm-double-tap-solo
+  claim: Double tapping a channel select button solos that channel, and tapping any channel button unsolos it.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: How do I solo a channel on Xer Mixa?
+  anchors:
+  - Double tap a channel select button to solo the channel.
+- id: xm-input-headroom
+  claim: Xer Mixa's audio inputs have high headroom and clip around 22 V peak to peak, and Expando Expandi CV inputs
+    accept -5 V to +5 V.
+  status: manual
+  source: ne_xer_mixa_manual
+  q: How hot a signal can Xer Mixa's inputs take before clipping?
+  anchors:
+  - audio inputs have incredibly high headroom and clip around 22 V peak to peak

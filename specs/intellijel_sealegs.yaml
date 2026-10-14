@@ -1,0 +1,12 @@
+device: intellijel_sealegs
+slugs: [intellijel-sealegs]
+source: intellijel_sealegs_manual
+hp: 20
+power:
+  plus12: 116
+  minus12: 10
+  anchor: "116 mA @ +12V"
+jacks: []
+notes: >-
+  Stereo delay with reverb. Jacks not listed yet;
+  add them from the manual.

@@ -1,0 +1,69 @@
+# Facts for strymon_superkar_plus. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: sk-midi-solo
+  claim: MIDI plays the Solo Voice, up to 16 voices with velocity; unplug the Solo Voice TRIG and V/OCT
+    CVs when using MIDI
+  status: manual
+  source: strymon_superkar_plus_manual
+  pages:
+  - 3
+  - 6
+  q: What does MIDI control on the Strymon SuperKar+?
+  anchors:
+  - MIDI input controls the Solo Voice
+- id: sk-midi-ch1
+  claim: SuperKar+ receives MIDI on channel 1 only; the channel cannot be changed
+  status: hardware
+  verified: '2026-09-30'
+  notes: Observed on the hardware; the manual does not mention a channel setting.
+- id: sk-chord-voice
+  claim: The Chord Voice builds chords from the root on its own V/OCT (0 to 5 V, quantized to half steps),
+    with smart harmonies
+  status: manual
+  source: strymon_superkar_plus_manual
+  pages:
+  - 3
+  - 7
+  q: How does the SuperKar+ Chord Voice pick its chord?
+  anchors:
+  - Chord Voice plays chord structures based on the root
+- id: sk-out-config
+  claim: The (out config) secondary function selects wide stereo, narrow stereo, split outputs (Solo on L, Chord
+    on R) or mono depending on knob position.
+  status: manual
+  source: strymon_superkar_plus_manual
+  pages:
+  - 4
+  q: how do I get the solo voice on one output and the chord voice on the other
+  anchors:
+  - '2 o''clock: Split outputs (the Solo Voice is heard on OUT L'
+- id: sk-tertiary-voct-cal
+  claim: Holding the left TIMBRE button and turning SOLO DAMP adjusts V/Oct compensation, neutral at 12 o'clock,
+    to sharpen or flatten tracking.
+  status: manual
+  source: strymon_superkar_plus_manual
+  pages:
+  - 5
+  q: how do I calibrate the V/Oct tracking if it's going flat
+  anchors:
+  - Turn clockwise to sharpen the response, turn counter clockwise to flatten the response
+- id: sk-audio-in-resonator
+  claim: The IN jacks feed audio straight into the strings in parallel with the trigger, for audio excitation or
+    use as a sympathetic resonator array, best with polyphony at minimum.
+  status: manual
+  source: strymon_superkar_plus_manual
+  pages:
+  - 6
+  q: can I run external audio through the strings as a resonator
+  anchors:
+  - use SuperKar+ as a sympathetic resonator array. Best results
+- id: sk-fw-102
+  claim: SuperKar+ firmware v1.02, released September 2025, improved trigger tracking and MIDI stability.
+  status: changelog
+  source: strymon_superkar_plus_releases
+  q: what changed in the latest SuperKar+ firmware
+  anchors:
+  - Improved trigger tracking and MIDI stability

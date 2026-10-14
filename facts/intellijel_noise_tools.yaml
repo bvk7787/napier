@@ -1,0 +1,73 @@
+# Facts for intellijel_noise_tools. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: nt-slew-portamento
+  claim: Patching a sequencer pitch CV into SLEW IN and setting SLEW TIME gives portamento; the slew has
+    no gate or on/off input of its own
+  status: manual
+  source: intellijel_noise_tools_manual
+  pages:
+  - 10
+  q: How do I get portamento from the Noise Tools 1U slew?
+  anchors:
+  - achieve a portamento effect if you plug the pitch output
+- id: nt-pulse-rate-clock-range
+  claim: In CLOCK mode the PULSE RATE knob runs from a 15 second pulse up to audio rate pulses topping out at 2.5
+    kHz.
+  status: manual
+  source: intellijel_noise_tools_manual
+  pages:
+  - 7
+  q: how slow and how fast can the Noise Tools clock go
+  anchors:
+  - audio rate pulses that top out at 2.5 kHz
+- id: nt-random-mode-probability
+  claim: In RANDOM mode the knob sets the probability that an internal pulse generated every 10 ms is passed to
+    the output.
+  status: manual
+  source: intellijel_noise_tools_manual
+  pages:
+  - 7
+  q: what does the pulse rate knob do in random mode on Noise Tools
+  anchors:
+  - Internally, Noise Tools generates a pulse every 10 ms
+- id: nt-track-and-hold
+  claim: In TRACK mode the input is sampled on the falling edge and passes through unaffected while the pulse is
+    high.
+  status: manual
+  source: intellijel_noise_tools_manual
+  pages:
+  - 8
+  q: how does track and hold mode work on Intellijel Noise Tools
+  anchors:
+  - samples the SAMPLE IN voltage at the falling edge of each pulse
+- id: nt-slew-time-range
+  claim: SLEW TIME ranges from nearly instantaneous to a maximum of about 1 second for a 5V change.
+  status: manual
+  source: intellijel_noise_tools_manual
+  pages:
+  - 8
+  q: what's the longest slew time on Noise Tools
+  anchors:
+  - a maximum of about 1 second for a 5V change
+- id: nt-sample-in-normal-white
+  claim: With nothing in SAMPLE IN, the sample and hold samples the white noise output; patch PINK in for more subdued
+    random values.
+  status: manual
+  source: intellijel_noise_tools_manual
+  pages:
+  - 9
+  q: what does the sample and hold sample if nothing is plugged into sample in
+  anchors:
+  - then Noise Tools' WHITE noise output is used as the sample source
+- id: nt-bitcrush
+  claim: Feeding an oscillator into SAMPLE IN and adjusting the clock rate produces bit crush style effects at HOLD.
+  status: manual
+  source: intellijel_noise_tools_manual
+  pages:
+  - 10
+  q: can I use Noise Tools as a bitcrusher
+  anchors:
+  - then adjust the clock rate to get varying "bit crush" effects

@@ -1,0 +1,73 @@
+# Facts for ssf_metalloid. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: metal-two-channels
+  claim: Two channels, A and B, each with a TRIG input and a VCA CV input
+  status: manual
+  source: ssf_metalloid_manual
+  pages:
+  - 2
+  q: Does the Metalloid have two separate channels?
+  anchors:
+  - associated channel A or B VCA CV input
+- id: metal-choke-ducking
+  claim: The CHOKE switch ducks rather than kills the choked channel, using the opposite channel's envelope, so
+    setting CHOKE to A lets B's envelope duck A's level.
+  status: manual
+  source: ssf_metalloid_manual
+  pages:
+  - 2
+  q: how does the choke switch work on Metalloid
+  anchors:
+  - setting CHOKE to A will use B's envelope to choke A's amplitude
+- id: metal-trigger-level
+  claim: The trigger input responds to voltage level, with 8 to 10V triggers giving maximum peak output and lower
+    levels reducing loudness, though 5V triggers still give nominal output.
+  status: manual
+  source: ssf_metalloid_manual
+  pages:
+  - 2
+  q: do lower trigger voltages make the Metalloid quieter
+  anchors:
+  - Peak levels are then reduced as the max trig/gate level falls below 8V
+- id: metal-decay-range
+  claim: The A-DECAY and B-DECAY controls set envelope decay from 10ms to over a minute and can be voltage controlled
+    through matching CV inputs.
+  status: manual
+  source: ssf_metalloid_manual
+  pages:
+  - 2
+  q: what is the decay time range on the Metalloid envelopes
+  anchors:
+  - Decay time spans from 10ms to over a minute
+- id: metal-aout-mix
+  claim: A-OUT carries a mix of both voices when B-OUT is unpatched; patching B-OUT separates them and gives a bit
+    more gain.
+  status: manual
+  source: ssf_metalloid_manual
+  pages:
+  - 2
+  q: how do I get the two Metalloid voices out separately
+  anchors:
+  - Patching out of the B-OUT breaks this normalization
+- id: metal-material-fm
+  claim: MATERIAL is a non-linear FM bus macro with three modes selected by its switch, mixing linear and exponential
+    FM to move the sound from solid and dense to sparse and thin.
+  status: manual
+  source: ssf_metalloid_manual
+  pages:
+  - 3
+  q: what does the MATERIAL knob and switch do on Metalloid
+  anchors:
+  - MATERIAL is a non-linear FM bus macro
+- id: metal-tune-no-voct
+  claim: TUNE shifts all three VCOs together and accepts CV, but Metalloid is not designed to track 1V/oct.
+  status: manual
+  source: ssf_metalloid_manual
+  pages:
+  - 3
+  q: can I sequence Metalloid pitch with 1v/oct
+  anchors:
+  - Metalloid should not be expected to track v/oct

@@ -1,0 +1,84 @@
+# Facts for ssf_steady_state_gate. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: ssg-excite-level
+  claim: EXCITE sources around 8 to 10V give similar percussive dynamics, while levels below about 6V reduce the
+    attack and gain down to full attenuation at 0V, and the input is sensitive to trigger or gate length up to roughly
+    50mS.
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 2
+  q: How does the voltage of the trigger I send to EXCITE change the Steady State Gate's response?
+  anchors:
+  - sensitive to the length of the applied trigger or gate up to roughly 50mS
+- id: ssg-standalone-vcf
+  claim: With nothing patched into EXCITE the module works as a standalone VCF, and the RESPONSE switch selects
+    6dB band-pass, 6dB low-pass (1PLP) or 12dB low-pass (2PLP).
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 2
+  q: What does the Steady State Gate do when nothing is patched into EXCITE?
+  anchors:
+  - operate as a stand alone VCF
+- id: ssg-timbre-ducking
+  claim: In FOLD or SAT timbre modes, a sufficiently negative voltage at the TIMBRE CV input attenuates the input
+    signal, which can be used for tremolo or side-chain ducking.
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 4
+  q: How can I side-chain duck a signal with the Steady State Gate?
+  anchors:
+  - a sufficiently negative control voltage will attenuate the input signal
+- id: ssg-kick-patch
+  claim: The Steady State Gate can make a kick with no input by exciting it, raising Q-FACTOR past the sine icon,
+    and setting pitch with FREQ and tail with DECAY.
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 3
+  q: can I get a kick drum out of the Steady State Gate without an audio input
+  anchors:
+  - The Steady State Gate can make a great kick! No signal input needed
+- id: ssg-env-to-freq-292
+  claim: Patching ENV out into the FREQ CV input keeps the LPG open longer, closer to faster classic Buchla 292
+    style responses.
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 3
+  q: how do I make the Steady State Gate stay open longer like a Buchla 292
+  anchors:
+  - Patch the ENV out back into the FREQ CV input
+- id: ssg-qaos-upright-bass
+  claim: In QAOS mode with Q-FACTOR at minimum, TIMBRE around 70-75 percent and a low triangle wave gives a plucked
+    upright bass sound.
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 4
+  q: what is a good QAOS setting for plucked upright bass sounds
+  anchors:
+  - think upright bass-like sounds
+- id: ssg-vca-mode-response
+  claim: Standalone VCA mode rolls off highs around 10kHz and requires the RESPONSE switch on 1PLP or 2PLP.
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 5
+  q: which response setting do I need to use the Steady State Gate as a VCA
+  anchors:
+  - with a high frequency roll off around 10kHz
+- id: ssg-cv-range
+  claim: All CV inputs accept a full plus or minus 10V, and the sliders act as positive offsets to their CV inputs.
+  status: manual
+  source: ssf_steady_state_gate_manual
+  pages:
+  - 5
+  q: what voltage range can the Steady State Gate CV inputs take
+  anchors:
+  - All CV inputs will accept a full +/-10V range without damage

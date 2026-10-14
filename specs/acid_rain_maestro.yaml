@@ -1,0 +1,35 @@
+device: acid_rain_maestro
+slugs: [acid-rain-technology-maestro]
+source: acid_rain_maestro_manual
+hp: 20
+hp_page: 2
+hp_anchor: "Maestro requires 20hp of space"
+power:
+  plus12: 65
+  minus12: 18
+  page: 2
+  anchor: "65mA of current on the +12V rail and 18mA on the -12V rail"
+jacks:
+  - {name: "Clock In", dir: in, type: clock, page: 3, label: "inputs (2) and outputs (1) for the clock and reset"}
+  - {name: "Reset In", dir: in, type: trigger, page: 3, label: "inputs (2) and outputs (1) for the clock and reset"}
+  - {name: "Clock Out", dir: out, type: clock, page: 3, label: "inputs (2) and outputs (1) for the clock and reset"}
+  - {name: "Reset Out", dir: out, type: trigger, page: 3, label: "inputs (2) and outputs (1) for the clock and reset"}
+  - {name: "Channel 1 In", dir: in, type: trigger, also: [gate], page: 3, label: "channel trigger inputs"}
+  - {name: "Channel 2 In", dir: in, type: trigger, also: [gate], page: 3, label: "channel trigger inputs"}
+  - {name: "Channel 3 In", dir: in, type: trigger, also: [gate], page: 3, label: "channel trigger inputs"}
+  - {name: "Channel 4 In", dir: in, type: trigger, also: [gate], page: 3, label: "channel trigger inputs"}
+  - {name: "Channel 5 In", dir: in, type: trigger, also: [gate], page: 3, label: "channel trigger inputs"}
+  - {name: "Channel 6 In", dir: in, type: trigger, also: [gate], page: 3, label: "channel trigger inputs"}
+  - {name: "Channel 1 Out", dir: out, type: cv, page: 3, label: "channel signal outputs"}
+  - {name: "Channel 2 Out", dir: out, type: cv, page: 3, label: "channel signal outputs"}
+  - {name: "Channel 3 Out", dir: out, type: cv, page: 3, label: "channel signal outputs"}
+  - {name: "Channel 4 Out", dir: out, type: cv, page: 3, label: "channel signal outputs"}
+  - {name: "Channel 5 Out", dir: out, type: cv, page: 3, label: "channel signal outputs"}
+  - {name: "Channel 6 Out", dir: out, type: cv, page: 3, label: "channel signal outputs"}
+notes: >-
+  Hardware overview (p.3) describes jacks generically: clock and reset inputs and outputs, plus a trigger input
+  and signal output per channel (6 channels, p.2). Names are descriptive; the manual does not print per-jack
+  labels in text. Clock/reset outputs inferred from "outputs (1) for the clock and reset" (changelog p.11 also
+  mentions a clock output). Channel inputs put the channel in one-shot mode (rising edge of trigger or gate, p.8),
+  also usable for sample-and-hold gating. Outputs 0 to +5V or -5V to +5V bipolar. Power +12V 65 mA, -12V 18 mA;
+  +5V not stated. Matches ModularGrid.

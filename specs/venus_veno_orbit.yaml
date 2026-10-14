@@ -1,0 +1,40 @@
+device: venus_veno_orbit
+slugs: [venus-instruments-veno-orbit]
+source: venus_veno_orbit_manual
+hp: 22
+hp_page: 1
+hp_anchor: "Width: 22hp"
+power:
+  plus12: 225
+  minus12: 15
+  plus5: 0
+  page: 1
+  anchor: "+12V 225mA, -12V 15mA (5V 0mA)"
+jacks:
+  - {name: "IN 1", dir: in, type: audio, also: [cv], page: 13}
+  - {name: "IN 2", dir: in, type: audio, also: [cv], page: 13, normal: "IN 1"}
+  - {name: "OUT 1", dir: out, type: audio, also: [cv], page: 14, label: "AUDIO / CV OUTPUT Jacks"}
+  - {name: "OUT 2", dir: out, type: audio, also: [cv], page: 14, label: "AUDIO / CV OUTPUT Jacks"}
+  - {name: "PLAY GATE INPUT (ch 1)", dir: in, type: gate, page: 14, label: "PLAY GATE INPUT Jacks"}
+  - {name: "PLAY GATE INPUT (ch 2)", dir: in, type: gate, page: 14, label: "PLAY GATE INPUT Jacks"}
+  - {name: "RECORD GATE INPUT (ch 1)", dir: in, type: gate, page: 14, label: "RECORD GATE INPUT Jacks"}
+  - {name: "RECORD GATE INPUT (ch 2)", dir: in, type: gate, page: 14, label: "RECORD GATE INPUT Jacks"}
+  - {name: "REVERSE GATE INPUT (ch 1)", dir: in, type: gate, page: 14, label: "REVERSE GATE INPUT Jacks"}
+  - {name: "REVERSE GATE INPUT (ch 2)", dir: in, type: gate, page: 14, label: "REVERSE GATE INPUT Jacks"}
+  - {name: "SUMMED EOC OUTPUT (ch 1)", dir: out, type: trigger, page: 14, label: "SUMMED EOC OUTPUT Jacks"}
+  - {name: "SUMMED EOC OUTPUT (ch 2)", dir: out, type: trigger, page: 14, label: "SUMMED EOC OUTPUT Jacks"}
+  - {name: "V/OCT PITCH CV INPUT (ch 1)", dir: in, type: pitch, page: 14, label: "V/OCT PITCH CV INPUT Jacks"}
+  - {name: "V/OCT PITCH CV INPUT (ch 2)", dir: in, type: pitch, page: 14, label: "V/OCT PITCH CV INPUT Jacks"}
+  - {name: "START CV INPUT (ch 1)", dir: in, type: cv, page: 14, label: "START CV INPUT Jacks"}
+  - {name: "START CV INPUT (ch 2)", dir: in, type: cv, page: 14, label: "START CV INPUT Jacks"}
+  - {name: "LENGTH CV INPUT (ch 1)", dir: in, type: cv, page: 14, label: "LENGTH CV INPUT Jacks"}
+  - {name: "LENGTH CV INPUT (ch 2)", dir: in, type: cv, page: 14, label: "LENGTH CV INPUT Jacks"}
+  - {name: "LAYER CV INPUT (ch 1)", dir: in, type: cv, page: 15, label: "LAYER CV INPUT Jacks"}
+  - {name: "LAYER CV INPUT (ch 2)", dir: in, type: cv, page: 15, label: "LAYER CV INPUT Jacks"}
+  - {name: "CLOCK INPUT", dir: in, type: clock, page: 15, label: "CLOCK INPUT Jack"}
+  - {name: "MIDI INPUT", dir: in, type: midi, page: 15, label: "MIDI INPUT Jack"}
+notes: >-
+  22 jacks: 10 per channel (described generically as "... Jacks" for each channel, names constructed
+  with ch 1/ch 2) plus global CLOCK INPUT and TRS type A MIDI INPUT. IN 1/IN 2 are AC (audio) or DC (CV)
+  coupled per the INPUT TYPE switch; IN 2 is normalled to IN 1. SUMMED EOC OUTPUT sends a 50ms ~8V
+  pulse. microSD socket is not a jack.

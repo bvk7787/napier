@@ -1,0 +1,264 @@
+# Facts for digitakt_2. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+# ---- from the manual
+- id: dt-drive-size
+  claim: The +Drive holds 20 GB
+  status: manual
+  source: digitakt_2_manual
+  pages: [29]
+  q: How much sample storage does the Digitakt II +Drive have?
+  anchors: ["total size of the +Drive is 20 GB"]
+  alt: [["sample bank that can hold up to 20 GB"]]
+- id: dt-project-ram
+  claim: A project loads up to 400 MB of samples (about 72 min mono, 36 min stereo)
+  status: manual
+  source: digitakt_2_manual
+  pages: [17, 29]
+  q: How much sample memory can a Digitakt II project load?
+  anchors: ["400 MB", "72 minutes in mono, 36 minutes in stereo"]
+- id: dt-slots
+  claim: A project has 1016 sample slots
+  status: manual
+  source: digitakt_2_manual
+  pages: [17]
+  q: How many sample slots does a Digitakt II project have?
+  anchors: ["maximum of 1016 sample slots"]
+  alt: [["Any of the 1016 samples loaded to a project"], ["1016 sample slots of the active project"]]
+- id: dt-native-format
+  claim: Samples are stored as 16-bit 48 kHz audio, mono or stereo
+  status: manual
+  source: digitakt_2_manual
+  pages: [73]
+  q: What audio format does Digitakt II store samples in?
+  anchors: ["16 bit, 48 kHz audio files", "native audio format"]
+  alt: [["A 16 bit, 48 kHz, mono or stereo audio file"]]
+- id: dt-sample-def
+  claim: A sample is a 16-bit 48 kHz mono or stereo audio file
+  status: manual
+  source: digitakt_2_manual
+  pages: [29]
+  q: What counts as a sample on the Digitakt II?
+  anchors: ["A 16 bit, 48 kHz, mono or stereo audio file"]
+  alt: [["16 bit, 48 kHz audio files", "native audio format"]]
+- id: dt-converters
+  claim: The converters are 48 kHz, 24-bit (sample storage is 16-bit)
+  status: manual
+  source: digitakt_2_manual
+  pages: [91]
+  q: What are the Digitakt II's D/A and A/D converter specifications?
+  anchors: ["48 kHz, 24-bit D/A and A/D converters"]
+- id: dt-psu
+  claim: The recommended power supply is the PSU-3c, 12 V DC 2 A
+  status: manual
+  source: digitakt_2_manual
+  pages: [91]
+  q: What power supply is recommended for the Digitakt II?
+  anchors: ["Recommended power supply: PSU-3c", "12 V DC, 2A"]
+- id: dt-sampling-time
+  claim: Maximum sampling time is 66 seconds
+  status: manual
+  source: digitakt_2_manual
+  pages: [68]
+  q: What is the maximum sampling time on the Digitakt II?
+  anchors: ["maximum sampling time is 66 seconds"]
+  alt: [["max sampling time (66 seconds)"]]
+- id: dt-slice-grid
+  claim: The slice grid snaps to 2, 4, 8, 16, 32 or 64 slices
+  status: manual
+  source: digitakt_2_manual
+  pages: [99]
+  q: What slice counts can the Digitakt II slice grid snap to?
+  anchors: ["snaps the slice count to values 2, 4, 8, 16, 32, and 64"]
+- id: dt-drive-projects
+  claim: The +Drive stores up to 128 projects and 1024 kits
+  status: manual
+  source: digitakt_2_manual
+  pages: [16]
+  q: How many projects and kits can the Digitakt II +Drive store?
+  anchors: ["up to 128 projects and 1024 kits"]
+- id: dt-pool-diagram
+  claim: A project pool holds 128 presets and 1016 samples
+  status: manual
+  source: digitakt_2_manual
+  pages: [16]
+  q: How many presets and samples does a Digitakt II project pool hold?
+  anchors: ["128 Presets", "1016 Samples"]
+  alt: [["Any of the 1016 samples loaded to a project"]]
+- id: dt-tune-range
+  claim: TUNE on the audio machines is +/- 5 octaves (the same text is on each machine's page)
+  status: manual
+  source: digitakt_2_manual
+  pages: [93, 95, 96, 98, 100]
+  q: What is the tune range of a Digitakt II audio machine?
+  anchors: ["The range is +/- 5 octaves"]
+- id: dt-presets
+  claim: The +Drive library holds 2048 presets (256 per bank A-H)
+  status: manual
+  source: digitakt_2_manual
+  pages: [29]
+  q: How many presets can the Digitakt II +Drive library hold?
+  anchors: ["2048 presets (256 presets in each"]
+
+# ---- workflow facts for chopping and playing breaks
+- id: dt-linear-locks
+  claim: CREATE LINEAR LOCKS assigns slices to placed note trigs in order, from slice one
+  status: manual
+  source: digitakt_2_manual
+  pages: [99]
+  q: How do I assign slices to trigs in order on the Digitakt II?
+  anchors: ["CREATE LINEAR LOCKS automatically applies any created slices linearly"]
+- id: dt-temp-save
+  claim: TEMPORARY SAVE and RELOAD PATTERN are for live improvising and don't save permanently
+  status: manual
+  source: digitakt_2_manual
+  pages: [50]
+  q: How do I take a restore point of a pattern while improvising?
+  anchors: ["TEMPORARY SAVE PATTERN and TEMPORARY RELOAD PATTERN commands are"]
+- id: dt-delay-time
+  claim: Delay TIME is relative to BPM and measured in 128th notes
+  status: manual
+  source: digitakt_2_manual
+  pages: [61]
+  q: What unit is the Digitakt II delay TIME in?
+  anchors: ["measured in 128th notes"]
+- id: dt-sidechain
+  claim: The compressor's SCS sets the sidechain source, such as the kick's track
+  status: manual
+  source: digitakt_2_manual
+  pages: [64]
+  q: How do I sidechain the compressor to the kick on the Digitakt II?
+  anchors: ["Sidechain Source decides what audio source the compressor analyzes"]
+- id: dt-keyboard-setup
+  claim: FUNC+KEYBOARD opens KEYBOARD SETUP (scale, root note, fold)
+  status: manual
+  source: digitakt_2_manual
+  pages: [13]
+  q: Where do I set the keyboard scale and fold on the Digitakt II?
+  anchors: ["KEYBOARD SETUP", "scale, root note, and keyboard fold"]
+- id: dt-bars
+  claim: On REPITCH and STRETCH, BARS sets the sample's total length in bars, relative to BPM
+  status: manual
+  source: digitakt_2_manual
+  pages: [95, 96, 97]
+  q: What does the BARS parameter do on the Digitakt II?
+  anchors: ["Bars sets the total duration of the sample measured in bars"]
+
+# ---- community claims and open questions
+- id: dt-bars-values
+  claim: BARS only offers 1, 2, 4 and 8
+  status: community
+  notes: Reported by Digitakt II users on Elektronauts.
+- id: dt-strt-len-range
+  claim: STRT and LEN run 0 to 120 across the file
+  status: community
+  notes: Forum reports.
+- id: dt-repitch-tune
+  claim: The REPITCH machine has no TUNE parameter
+  status: unverified
+  source: digitakt_2_manual
+  notes: The manual lists none; midi.guide lists one.
+- id: dt-trig-len-two-bars
+  claim: Trig LEN shows two bars as "2", and AMP HOLD NOTE lets one trig play a 2-bar REPITCH loop
+  status: unverified
+- id: dt-legato-ties
+  claim: SETUP > TRACK > LEGATO ties overlapping sequencer notes
+  status: unverified
+- id: dt-slice-tune-resolution
+  claim: TUNE on the SLICE machine can reach +2.44 or +2.45 semitones
+  status: unverified
+- id: dt-empty-src-knobs
+  claim: Which SRC knobs (C, G) are empty on each machine, and the AMP page layout
+  status: unverified
+- id: dt-ptim-port-knobs
+  claim: PTIM and PORT sit on knobs G and H of TRIG page 2
+  status: unverified
+- id: dt-vel-audio-level
+  claim: Trig VEL changes an audio track's level by default
+  status: unverified
+  notes: If velocity doesn't change the level, lock AMP VOL instead.
+- id: dt-transfer-folder-name
+  claim: Samples dropped onto Transfer's Drop page land in a dated /transfers-YYMMDD folder and are auto-converted
+    to the device's native format.
+  status: manual
+  source: elektron_transfer_manual
+  pages:
+  - 8
+  q: what folder do samples go in when I drop them on the Transfer Drop page
+  anchors:
+  - Transfer creates a target folder with the name /transfers-YYMMDD
+- id: dt-transfer-sysex-os-recovery
+  claim: If Transfer can't detect the device, the SYSEX TRANSFER page can upgrade the OS, including from the device's
+    EARLY STARTUP menu via a MIDI interface.
+  status: manual
+  source: elektron_transfer_manual
+  pages:
+  - 6
+  q: how do I update the Digitakt OS when Transfer won't detect it
+  anchors:
+  - click 'OS Upgrade via device startup menu' and then follow the instructions
+- id: dt-transfer-edited-wav-hash
+  claim: Backed-up samples are bit-accurate wav files, and editing them changes their hash so the device projects
+    can no longer match them.
+  status: manual
+  source: elektron_transfer_manual
+  pages:
+  - 10
+  q: what happens if I edit backed up sample wav files from Transfer before sending them back
+  anchors:
+  - Should you edit the files, they end up with a different hash sum
+- id: dt-transfer-dtprj-export
+  claim: Transfer can export a whole project as a single .dtprj file containing pattern data and all samples used.
+  status: manual
+  source: elektron_transfer_manual
+  pages:
+  - 4
+  q: how do I share a Digitakt project with all its samples as one file
+  anchors:
+  - a project can be exported as a single file containing all project and pattern data
+
+# ---- Firmware release notes, forum snapshots
+- id: dt-os117-outbox8
+  claim: OS 1.17 added routing the Main outputs' audio through Outbox 8
+  status: changelog
+  source: digitakt_2_os_release_notes
+  q: What did Digitakt II OS 1.17 add?
+  anchors:
+  - route the audio from the Main outputs using Outbox 8
+- id: dt-os117-outbox8-nav
+  claim: FUNC + UP/DOWN moves between channels in the Outbox 8 channel configuration menus (OS 1.17)
+  status: changelog
+  source: digitakt_2_os_release_notes
+  q: How do I move between channels in the Digitakt II Outbox 8 channel config menu?
+  anchors:
+  - '[FUNC] + [UP/DOWN] to navigate between channels'
+- id: dt-forum-stretch-pitch
+  claim: 'Some Elektronauts users find the STRETCH machine doesn''t hold pitch: loops sound out of tune at other tempos'
+  status: community
+  source: elektronauts_213312
+  q: Does the Digitakt II stretch machine keep loops in tune at a different BPM?
+  anchors:
+  - the Stretch Machine doesn't preserve the pitch at all really
+- id: dt-forum-repitch-1bar
+  claim: 'A common REPITCH complaint: the shortest loop interval is 1 bar'
+  status: community
+  source: elektronauts_218348
+  q: What do people find limiting about Digitakt II repitch loop lengths?
+  anchors:
+  - the shortest interval being 1 bar
+- id: dt-forum-stretch-ableton
+  claim: Some users give up on STRETCH and prepare samples to tempo in Ableton instead
+  status: community
+  source: elektronauts_222887
+  q: Does anyone actually use the Digitakt II Stretch machine or do they prep samples elsewhere?
+  anchors:
+  - always end up prepering my samples in Ableton
+- id: dt-forum-preset-trig-jungle
+  claim: 'Jungle idea: 8 to 16 presets holding slices in order, played live with preset trig mode'
+  status: community
+  source: elektronauts_214549
+  q: How can I play jungle breaks live with Digitakt II preset trig mode?
+  anchors:
+  - creating 8-16 presets of slices in order

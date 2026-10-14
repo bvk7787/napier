@@ -1,0 +1,124 @@
+# Facts for venus_veno_orbit. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: orbit-record-detect
+  claim: Holding the REC button for 2 seconds arms record detect, shown by a blinking red REC button, so recording
+    starts on the next detected transient.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 10
+  q: How do I get the Veno-Orbit to start recording exactly when a sound begins?
+  anchors:
+  - pressing and holding the REC button for 2 seconds arms record detect
+- id: orbit-input-type-toggle
+  claim: The INPUT TYPE toggle sets both channels to AC coupled audio on the left, both to DC coupled modulation
+    on the right, and channel 1 audio with channel 2 modulation in the centre.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 13
+  q: What does the center position of the Veno-Orbit INPUT TYPE toggle do?
+  anchors:
+  - sets the left channel (1) to AUD
+- id: orbit-sd-file-naming
+  claim: Samples on the microSD card go in folders named by bank colour and must be 16-bit 48kHz PCM WAV files named
+    like BLUE_SLOT0_L0.wav (colour, preset slot 0 to 7, channel L/R/LR, layer number).
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 16
+  q: How do I name WAV files so the Veno-Orbit loads them from the SD card?
+  anchors:
+  - will load a sample into the first preset of the BLUE bank
+- id: orbit-play-modes
+  claim: The PLAY MODE toggle selects POLY one-shot playback (up to 4 notes per channel), LATCH looping like a pedal
+    looper, or MOM momentary looping.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 7
+  q: what are the three play modes on Veno-Orbit
+  anchors:
+  - Up to 4 note polyphony per channel, samples can be triggered from any layer
+- id: orbit-overdub-decay
+  claim: The overdub decay trim sets feedback gain when overdubbing; fully CW never decays and fully CCW replaces
+    the original immediately.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 12
+  q: what does the OVERDUB DELAY trim pot do on Veno-Orbit
+  anchors:
+  - controls how quickly the recorded audio is replaced by the overdub recording
+- id: orbit-undo-grouping
+  claim: UNDO rolls back the last overdub on one layer and a second press redoes it; overdubs within 5 seconds of
+    each other count as one action.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 12
+  q: does undo on Orbit remove all my overdubs or just the last one
+  anchors:
+  - within 5 seconds of each other
+- id: orbit-clock-quantise
+  claim: With CLK IN patched, recordings are trimmed to an exact number of clocks and start/end markers snap to
+    a grid set by the clock frequency.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 15
+  q: how do I record loops in sync with my clock on Veno-Orbit
+  anchors:
+  - start and end markers will snap to a grid of equal length regions
+- id: orbit-midi-channels
+  claim: Over TRS type A MIDI, channel 1 (left) responds to MIDI channel 1 and channel 2 to MIDI channel 2; use
+    channel 1 when stereo linked.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 15
+  q: what MIDI channel does Veno-Orbit listen on
+  anchors:
+  - When stereo linking MIDI channel 1 should be used
+- id: orbit-voct-range
+  claim: The V/OCT input tracks 1V/octave and multiplies the knob speed, with a pitch range of +/- 5 octaves.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 14
+  q: how far can I repitch a sample with V/OCT on Veno-Orbit
+  anchors:
+  - Pitch range is +/- 5 octaves from the original recording speed
+- id: orbit-firmware-update
+  claim: Firmware updates load from a single .bin file in the SD card root on power cycle, and success is logged
+    to daisy_boot_log.txt.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 18
+  q: how do I update Veno-Orbit firmware and check it worked
+  anchors:
+  - Copy the new firmware file (.bin) into the root directory of the SD card
+- id: orbit-calibration-entry
+  claim: Calibration is entered by powering on while holding the BANK encoder button, and holding BANK plus both
+    REC buttons at startup resets calibration to factory default.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 19
+  q: how do I calibrate or reset calibration on the Venus Veno-Orbit
+  anchors:
+  - Turn on module whilst holding BANK encoder button down
+- id: orbit-sd-format
+  claim: The microSD card must be FAT32, V30 cards are recommended, and hot-swapping is not supported so power cycle
+    after changing cards.
+  status: manual
+  source: venus_veno_orbit_manual
+  pages:
+  - 17
+  q: what format does the Veno-Orbit SD card need to be
+  anchors:
+  - must be formatted to use the FAT32 file system

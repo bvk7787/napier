@@ -1,0 +1,31 @@
+device: intellijel_tangrams
+slugs: [intellijel-tangrams]
+source: intellijel_tangrams_manual
+hp: 14
+hp_page: 27
+hp_anchor: "14 hp"
+power:
+  plus12: 66
+  minus12: 49
+  page: 27
+  anchor: "66 mA @ +12V 49 mA @ -12V"
+jacks:
+  - {name: "ENV 1 GATE IN", dir: in, type: gate, page: 9}
+  - {name: "ENV 1 RETRIG IN", dir: in, type: trigger, page: 9}
+  - {name: "ENV 1 LEVEL IN", dir: in, type: cv, page: 9, also: [audio]}
+  - {name: "ENV 1 OUT", dir: out, type: cv, page: 10, also: [audio]}
+  - {name: "ENV 2 GATE IN", dir: in, type: gate, page: 15, normal: "ENV 1 GATE IN"}
+  - {name: "ENV 2 RETRIG IN", dir: in, type: trigger, page: 9, label: "RETRIG IN"}
+  - {name: "ENV 2 LEVEL IN", dir: in, type: cv, page: 9, label: "LEVEL IN", also: [audio]}
+  - {name: "ENV 2 OUT", dir: out, type: cv, page: 10, label: "OUT", also: [audio]}
+  - {name: "T1 CV IN", dir: in, type: cv, page: 16}
+  - {name: "T2 CV IN", dir: in, type: cv, page: 16, normal: "T1 CV IN"}
+  - {name: "START IN", dir: in, type: trigger, page: 16}
+  - {name: "PULSE OUT", dir: out, type: gate, page: 17}
+notes: >-
+  Envelope 2 is documented only by reference (p10: "all the same inputs, outputs and parameter
+  controls as Envelope 1", read ENV 1 as ENV 2); only ENV 2 GATE IN [2.A] is named explicitly (p15).
+  ENV 2 RETRIG IN / LEVEL IN / OUT are therefore cited to the Envelope 1 jack descriptions (p9-10) and
+  named by substitution. ENV 1 GATE IN is normalled to Envelope 2's gate; T1 CV IN normals to T2 CV IN.
+  LEVEL IN jacks have 8V normalled internally and accept audio (built-in VCA). No +5V draw stated.
+  Power matches ModularGrid (66/49 mA).

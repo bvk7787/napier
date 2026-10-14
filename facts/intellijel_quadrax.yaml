@@ -1,0 +1,112 @@
+# Facts for intellijel_quadrax. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: quadrax-modes
+  claim: 'Each of the four channels runs in one of five modes: AD, AHR, CYCLE, BURST or LFO'
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 9
+  - 17
+  q: What are the channel mode options on Quadrax?
+  anchors:
+  - Each of the five modes (AD, AHR, Cycling, Burst and LFO)
+  alt:
+  - - four channels can be assigned to operate in one of five modes
+- id: quadrax-ahr
+  claim: AHR mode holds at maximum while the gate is high, then releases
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 18
+  q: Which Quadrax mode follows gate length?
+  anchors:
+  - holds (sustains) its maximum value for as long as the gate signal is high
+- id: quadrax-cycle
+  claim: CYCLE mode free-runs like a unipolar LFO; a trigger resets it
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 19
+  q: Does Quadrax CYCLE mode need a trigger?
+  anchors:
+  - The Cycle is free running, and does not require a TRIG input
+- id: quadrax-utility-output-level
+  claim: In Utility Mode (hold RISE and LEVEL for 1 second), long-press a right-column button to toggle a channel
+    between 10V and 5V max, and short presses attenuate it 20% per press.
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 43
+  q: how do I set a Quadrax channel output to 5V instead of 10V
+  anchors:
+  - toggle the channel's maximum output voltage between 10V and 5V
+- id: quadrax-cv-invert
+  claim: In CV Assignment mode, long-pressing a destination button inverts the CV, glowing red for inverted and
+    green for normal, giving 8 attenuverted levels plus off.
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 35
+  q: how do I invert a CV assignment on Quadrax
+  anchors:
+  - The destination button glows red when the CV input is inverted
+- id: quadrax-trigger-link
+  claim: With the LINK button red, a channel's trigger is normalled to the previous channel's TRIG input, so one
+    gate can fire two envelopes (e.g. VCA and filter).
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 22
+  q: can one gate trigger two Quadrax envelopes at once
+  anchors:
+  - channel triggering/gating is normalled to the previous envelope's TRIG input
+- id: quadrax-burst-retrigger
+  claim: Burst Retrigger is a global System Mode option (hold LEVEL at power-on, then press RISE); off by default
+    so bursts must finish, on lets a new trigger restart the burst envelope.
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 44
+  q: how do I enter system mode on Quadrax
+  anchors:
+  - hold down the LEVEL button (Channel 4's MODE/DESTINATION) button while you power on the module
+- id: quadrax-lfo-reset-chain
+  claim: When LFOs are chained to one clock, patching a trigger into a downstream channel's unused TRIG input resets
+    the phase of that channel and all previous channels in the chain.
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 29
+  q: how do I resync linked LFOs back to their starting phase
+  anchors:
+  - it also acts as a RESET for all the previous channels in the chain
+- id: quadrax-firmware-version-display
+  claim: Quadrax shows its firmware version in binary for about 2 seconds at power-on, left column as the x and
+    right column as the y of 1.x.y, top LED as bit 0.
+  status: manual
+  source: intellijel_quadrax_manual
+  pages:
+  - 47
+  q: how can I check which firmware version my Quadrax is running
+  anchors:
+  - current firmware version is displayed for approximately 2 seconds when you power on
+
+# ---- Firmware changelog
+- id: qx-145-return-home
+  claim: 'Firmware 1.4.5.0: long-press both channel 1 and 2 MODE buttons to leave any alternate view and return home'
+  status: changelog
+  source: intellijel_quadrax_firmware_notes
+  q: What is the Quadrax shortcut to get back to the home view?
+  anchors:
+  - Long-press both Channel 1 and 2 MODE buttons
+- id: qx-145-clear-all
+  claim: 'Firmware 1.4.5.0: long-press both channel 3 and 4 MODE buttons to clear all channel settings (SYSTEM MODE options
+    are kept)'
+  status: changelog
+  source: intellijel_quadrax_firmware_notes
+  q: How do I clear all channel settings on Quadrax at once?
+  anchors:
+  - Long-press both Channel 3 and 4 MODE buttons

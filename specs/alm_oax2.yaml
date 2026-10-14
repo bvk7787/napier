@@ -1,0 +1,17 @@
+device: alm_oax2
+slugs: [alm-busy-circuits-o-a-x2]
+source: alm_oax2_manual
+hp: 4
+hp_page: 3
+hp_anchor: "Size: 4 HP"
+jacks:
+  - {name: "IN (ch 1)", dir: in, type: cv, also: [audio], page: 5, label: "patched into an input"}
+  - {name: "OUT (ch 1)", dir: out, type: cv, also: [audio], page: 5, label: "upper output"}
+  - {name: "IN (ch 2)", dir: in, type: cv, also: [audio], page: 5, label: "patched into an input", normal: "OUT (ch 1)"}
+  - {name: "OUT (ch 2)", dir: out, type: cv, also: [audio], page: 5, label: "outgoing signal"}
+notes: >-
+  Power omitted: page 3 gives only "Current Draw: ~80ma" on a +/-12V supply with no per-rail split
+  (ModularGrid lists 50/50). Panel layout (p4) is an image only, so jack names are generic from the
+  General Usage text: two sections, each with an input and an output. Primary use is control signals,
+  with audio use (attenuation, inversion, mixing) also described. The IN (ch 2) normal from the
+  upper output exists only when the rear MIX jumper is closed.

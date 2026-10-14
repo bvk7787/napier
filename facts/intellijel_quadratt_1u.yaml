@@ -1,0 +1,74 @@
+# Facts for intellijel_quadratt_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: quadratt1u-polarity-switch
+  claim: In the UNI position a channel is a plain attenuator, while in the -/+ position it becomes a bipolar attenuverter
+    where fully counterclockwise outputs the inverse of the input and 12:00 passes nothing.
+  status: manual
+  source: intellijel_quadratt_1u_manual
+  pages:
+  - 8
+  q: Where is zero on the Quadratt 1U knob when the switch is set to -/+?
+  anchors:
+  - the channel acts as a bipolar attenuverter
+- id: quadratt1u-5v-normal
+  claim: With nothing plugged into an input, Quadratt sends a 5V DC voltage into that channel, so the knob produces
+    0V to +5V in UNI mode or -5V to +5V in -/+ mode.
+  status: manual
+  source: intellijel_quadratt_1u_manual
+  pages:
+  - 9
+  q: Can I use Quadratt 1U as a manual voltage source with nothing patched in?
+  anchors:
+  - Quadratt sends a 5V DC voltage into Channel A
+- id: quadratt1u-output-summing
+  claim: Each output is normalled into the next channel's output, so OUT D carries the sum of all four channels
+    unless a cable is plugged into an earlier output, which removes that channel and those before it from the sum.
+  status: manual
+  source: intellijel_quadratt_1u_manual
+  pages:
+  - 10
+  q: If I plug a cable into OUT C on the Quadratt 1U, what happens to OUT D?
+  anchors:
+  - removes OUTS A through C from OUT D
+- id: quadratt1u-invert-envelope
+  claim: To invert an envelope, patch it into IN A, set the polarity switch to -/+ and turn the knob counterclockwise
+    past 12:00.
+  status: manual
+  source: intellijel_quadratt_1u_manual
+  pages:
+  - 6
+  q: how do I get an inverted envelope out of the Quadratt
+  anchors:
+  - What if you want some sonic attribute to get more pronounced as the signal decays
+- id: quadratt1u-sh-range-offset
+  claim: Random S&H notes can be squeezed into a bass range by attenuating them on Channel B and adding a negative
+    offset from the unpatched Channel A.
+  status: manual
+  source: intellijel_quadratt_1u_manual
+  pages:
+  - 6
+  q: can I use Quadratt to limit random sample and hold notes to a couple of octaves in the bass
+  anchors:
+  - constrain that unruly 10+ octave range of notes to just one or two octaves
+- id: quadratt1u-audio-mixing
+  claim: For audio mixing, set all switches to UNI, patch sources into the inputs and take only OUT D, leaving OUTS
+    A to C unpatched.
+  status: manual
+  source: intellijel_quadratt_1u_manual
+  pages:
+  - 7
+  q: can Quadratt work as a 4 channel audio mixer
+  anchors:
+  - Plug only OUT D into your audio amplifier, leaving OUTS A-C unconnected
+- id: quadratt1u-specs
+  claim: The Quadratt 1U is 28 hp wide, 25 mm deep and draws 24 mA on +12V and 23 mA on -12V.
+  status: manual
+  source: intellijel_quadratt_1u_manual
+  pages:
+  - 11
+  q: how much power does the Quadratt 1U draw and how wide is it
+  anchors:
+  - 24 mA @ +12V 23 mA @ -12V

@@ -1,0 +1,53 @@
+# Facts for ne_lapsus_os. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: los-uni-bi-switch
+  claim: In the unipolar (left) switch position a channel just attenuates, while in the bipolar (right) position
+    the upper half of the fader attenuates and the lower half inverts and attenuates.
+  status: manual
+  source: ne_lapsus_os_manual
+  q: How does the Uni/Bi switch change what the Lapsus Os fader does?
+  anchors:
+  - the lower half of the fader inverts and attenuates the signal
+- id: los-offset-ranges
+  claim: With nothing patched, an output generates an offset of 0 V to 5 V in unipolar mode or ±5 V in bipolar mode;
+    with voltage applied, outputs reach 0 V to 10 V or ±10 V.
+  status: manual
+  source: ne_lapsus_os_manual
+  q: What voltage does Lapsus Os put out when nothing is plugged into a channel?
+  anchors:
+  - with nothing patched to its input, generate a 0 V to 5 V or ±5 V offset
+- id: los-rear-reverse-switches
+  claim: Rear-board switches invert each channel's fader behavior so the module can be mounted upside down, and
+    each channel has to be switched independently.
+  status: manual
+  source: ne_lapsus_os_manual
+  q: Can I mount Lapsus Os upside down and still have the faders work the right way?
+  anchors:
+  - each channel must be switched independently to fully reverse the functionality
+- id: los-fader-led-zero
+  claim: The fader LEDs show the CV passing through, and in attenuverter mode the LED goes off at zero so you can
+    easily park a fader near 0.
+  status: manual
+  source: ne_lapsus_os_manual
+  q: how can I tell when a Lapsus Os fader is at zero in bipolar mode
+  anchors:
+  - When in attenuverter mode, the LED will be off at 0
+- id: los-offset-input
+  claim: Each channel has an offset (+) input that adds an offset controlled by the fader and mode switch, plus
+    a separate attenuverting (x) input, and two identical outputs.
+  status: manual
+  source: ne_lapsus_os_manual
+  q: what's the difference between the plus and x inputs on Lapsus Os
+  anchors:
+  - Sending a signal to these inputs adds an offset to the input
+- id: los-patch-attenuvert-lfo
+  claim: To scale an LFO, patch it into a channel's attenuverting input, set the switch right (bipolar), and send
+    the output to a bipolar CV input.
+  status: manual
+  source: ne_lapsus_os_manual
+  q: how do I use Lapsus Os to dial in the depth of an LFO
+  anchors:
+  - Patch a CV signal (such as an LFO) into the attenuverting input of a channel

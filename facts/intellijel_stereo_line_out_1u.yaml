@@ -1,0 +1,84 @@
+# Facts for intellijel_stereo_line_out_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: slo-gain-levels
+  claim: With a 10Vpp 1kHz sine in, the gain knob at 12 o'clock gives about +4 dBu, at 10 o'clock about -10 dBV
+    unbalanced, and fully clockwise up to +21 dBu.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 13
+  q: Where should I set the Stereo Line Out gain knob for +4 dBu or -10 dBV gear?
+  anchors:
+  - reaching a top-of-spec limit of +21 dBu at maximum clockwise rotation
+- id: slo-headphones-jumper
+  claim: When linking to a v2 Headphones 1U over the 3-pin Link cable, remove the JP1 jumper on the Headphones module
+    because the Stereo Line Out already does its own left to right normalling.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 12
+  q: Do I need to change anything on the Headphones 1U when linking it to the Stereo Line Out 1U?
+  anchors:
+  - This jumper is what normals the Headphones 1U module's Left input to its Right input
+- id: slo-mono-normal
+  claim: The L input is normalled to the R input, so a mono signal into L alone feeds both 1/4 inch outputs.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 14
+  q: If I only patch the left input on the Stereo Line Out, do I get sound on both sides?
+  anchors:
+  - a mono signal fed into the L Input jack will feed both
+- id: slo-input-leds
+  claim: The input activity LEDs start lighting at about 400mV of input and get brighter as level rises, and both
+    light when only L is patched because of the L to R normal.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 13
+  q: at what level do the input LEDs on Stereo Line Out 1U light up
+  anchors:
+  - The LEDs first light with about 400mV of input signal
+- id: slo-7u-gen2-only
+  claim: The Stereo Line Out 1U only connects to 7U cases with a 2nd generation Audio Jacks Board; 1st generation
+    boards, from cases built before early 2019, have a single connector along the bottom and must be replaced.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 8
+  q: will Stereo Line Out 1U work with my older 7U case jacks
+  anchors:
+  - 1st generation boards (included with cases built before early 2019)
+- id: slo-two-modules-7u
+  claim: A 7U case's 2nd generation Audio Jacks board has two 6-pin connectors, so two Stereo Line Out 1U modules
+    can be connected for four audio outputs.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 9
+  q: can I use two Stereo Line Out 1U modules in one 7U case
+  anchors:
+  - giving you four audio outputs in a 7U case
+- id: slo-link-not-input
+  claim: The 3-pin Link connector on the back of the Stereo Line Out 1U is an output only and must not be connected
+    to the 3-pin outputs of modules like the Mixup.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 11
+  q: can I connect my Mixup link output to the Stereo Line Out 1U link header
+  anchors:
+  - is NOT an input connector, and is therefore NOT meant for connecting
+- id: slo-out-jacks-passive
+  claim: The Stereo Out Jacks 1U is a passive 8 hp module with no current draw, while the Stereo Line Out 1U draws
+    19 mA on +12V and 12 mA on -12V at maximum amplification.
+  status: manual
+  source: intellijel_stereo_line_out_1u_manual
+  pages:
+  - 16
+  q: how much current does the Stereo Out Jacks module draw
+  anchors:
+  - 0 mA (passive module)

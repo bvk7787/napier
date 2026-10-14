@@ -1,0 +1,41 @@
+# Facts for acid_rain_constellation. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: const-overview
+  claim: Constellation is an 8-channel pattern generator combining dense and sparse euclidean rhythms with logic
+  status: manual
+  source: acid_rain_constellation_manual
+  pages:
+  - 3
+  q: What does the Acid Rain Constellation do?
+  anchors:
+  - 8 channel pattern generator that combines multiple dense and sparse euclidean rhythms
+- id: const-power
+  claim: Constellation is 28hp and draws 75mA on +12V and 18mA on -12V
+  status: manual
+  source: acid_rain_constellation_manual
+  pages:
+  - 3
+  q: How much power does Constellation draw?
+  anchors:
+  - 75mA of current on the +12V rail and 18mA on the -12V rail
+- id: const-live-mode
+  claim: The live button lets you play save slots like a keyboard without losing sync
+  status: manual
+  source: acid_rain_constellation_manual
+  pages:
+  - 5
+  q: How do I switch between Constellation patterns live without losing time?
+  anchors:
+  - play the save slots like a keyboard
+- id: const-bank-000
+  claim: Bank 000 holds the quick start patterns; bank 001 onward start at system defaults
+  status: manual
+  source: acid_rain_constellation_manual
+  pages:
+  - 5
+  q: Which Constellation bank has the factory quick start patterns?
+  anchors:
+  - quick start patterns in bank 000

@@ -1,0 +1,145 @@
+# Facts for squarp_hermod_plus. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: hp-8-voices
+  claim: Hermod+ has 8 CV/Gate voices, each controlled by a track
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 7
+  q: How many CV/Gate voices does Hermod+ have?
+  anchors:
+  - Each of the 8 voices of Hermod+ (CV/Gate outputs) is controlled by a track
+- id: hp-poly-track
+  claim: A track can drive more than one voice, for polyphonic use
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 7
+  q: Can one Hermod+ track play polyphonically across several outputs?
+  anchors:
+  - A track can be configured to control more than 1 voice, for polyphonic use
+- id: hp-track-input
+  claim: Each track sets its own MIDI INPUT PORT and INPUT CHANNEL
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 68
+  q: Which MIDI input port and channel does a Hermod+ track listen to?
+  anchors:
+  - Sets the MIDI input channel of the above INPUT PORT
+- id: hp-track-midi-out
+  claim: 'A track can send MIDI out: set its MIDI Out port and channel (p. 69), or place a MIDI Output
+    effect anywhere in its FX chain (p. 51)'
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 51
+  - 52
+  q: Can a Hermod+ track send MIDI to an external synth?
+  anchors:
+  - Sends MIDI at any point in the FX chain
+  alt:
+  - - Sets the MIDI output port of the current track
+- id: hp-glide
+  claim: The GLIDE effect interpolates note pitch; GLIDE TIME runs 0 to 2500 ms, then 3 s up to 60 s
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 48
+  q: How do I add glide to a bass line on Hermod+?
+  anchors:
+  - Interpolates note pitch
+  - GLIDE TYPE
+- id: xp32-outputs
+  claim: The xp32 expander adds 32 fully configurable CV outputs
+  status: manual
+  source: squarp_xp32_manual
+  pages:
+  - 3
+  q: How many outputs does the Squarp xp32 add?
+  anchors:
+  - offers 32 fully-configurable CV
+- id: hp-cv-calibration
+  claim: CV outputs are calibrated with a voltmeter by powering on while holding X, and CV inputs auto-calibrate
+    by powering on while holding Y.
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 14
+  q: how do I calibrate the Hermod+ CV outputs
+  anchors:
+  - power on Hermod+ while pressing X to start calibrating the CV outputs
+- id: hp-tuner-range
+  claim: The built-in tuner reads an oscillator on any of the four CV inputs from E0 to E6, roughly 20 Hz to 1400
+    Hz.
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 89
+  q: can I tune my VCO with the Hermod+ and what range does the tuner cover
+  anchors:
+  - operates within a range from E0 to E6
+- id: hp-daw-audio-sync
+  claim: For sample-accurate DAW sync, send an audio clock from a soundcard output at full volume into a CV input
+    and set SYNC IN clock source to that CV input.
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 96
+  q: how do I sync Hermod+ to Ableton without MIDI clock jitter
+  anchors:
+  - Use an audio cable to connect the computer audio output to Hermod+ CV input 1
+- id: hp-register-chaos
+  claim: The Register effect is a Turing Machine style shift register where CHAOS sets the bit flip probability,
+    from locked at 0% to maximum randomness at 50%.
+  status: manual
+  source: squarp_hermod_plus_manual
+  pages:
+  - 55
+  q: what CHAOS percentage locks the Register pattern on Hermod+
+  anchors:
+  - Probability that the fed-back bit flips at each step
+- id: xp32-hzv-octave-range
+  claim: On the xp32, the default -5V to +5V pitch span gives 10 octaves of V/oct, 8 of 1.2V/oct, and only 3 octaves
+    of Hz/V.
+  status: manual
+  source: squarp_xp32_manual
+  pages:
+  - 8
+  q: can the xp32 output Hz/V pitch for a Korg MS-20 and how many octaves
+  anchors:
+  - and only 3 octaves of HZ/V notes
+- id: xp32-invert-min-max
+  claim: Setting an xp32 velocity, mod or CC output's MIN higher than its MAX inverts the signal.
+  status: manual
+  source: squarp_xp32_manual
+  pages:
+  - 10
+  q: how do I invert a CV output on the xp32
+  anchors:
+  - If the MIN is higher than the MAX, the output signal will be inverted
+- id: hp-os30-cv-input-5v-fix
+  claim: Hermod+OS 3.0 fixed CV inputs above 5V being read as about 4.8V.
+  status: changelog
+  source: squarp_hermod_plus_releases
+  q: why does my Hermod+ CV input clip around 4.8 volts
+  anchors:
+  - voltages above 5V are now correctly read
+- id: hp-os210-mute-affects-input
+  claim: Hermod+OS 2.10 added the MUTE AFFECTS INPUT setting, defaulting to NO so incoming MIDI still passes through
+    a muted track's effects.
+  status: changelog
+  source: squarp_hermod_plus_releases
+  q: why does live MIDI still play through a muted track on Hermod+
+  anchors:
+  - only sequenced events are muted; incoming MIDI continues to pass through the effects chain
+- id: hp-os201-scope-hold-y
+  claim: Hermod+OS 2.01 changed the xp32 scope view to open by holding Y instead of X+Y.
+  status: changelog
+  source: squarp_hermod_plus_releases
+  q: which firmware changed the xp32 scope shortcut on Hermod+
+  anchors:
+  - now accessible by holding Y instead of X+Y

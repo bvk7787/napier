@@ -1,0 +1,46 @@
+device: ne_xer_mixa
+slugs: [noise-engineering-xer-mixa]
+source: ne_xer_mixa_manual
+hp: 32
+hp_page: null
+hp_anchor: "Size: 32 HP"
+power:
+  plus12: 500
+  minus12: 250
+  page: null
+  anchor: "+12 V: 500 mA"
+jacks:
+  - {name: "In 1 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 1 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 1 L"}
+  - {name: "In 2 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 2 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 2 L"}
+  - {name: "In 3 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 3 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 3 L"}
+  - {name: "In 4 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 4 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 4 L"}
+  - {name: "In 5 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 5 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 5 L"}
+  - {name: "In 6 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 6 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 6 L"}
+  - {name: "In 7 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 7 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 7 L"}
+  - {name: "In 8 L", dir: in, type: audio, page: null, label: "Inputs L/R 1-8"}
+  - {name: "In 8 R", dir: in, type: audio, page: null, label: "Inputs L/R 1-8", normal: "In 8 L"}
+  - {name: "In A L", dir: in, type: audio, page: null, label: "Inputs L/R A-B"}
+  - {name: "In A R", dir: in, type: audio, page: null, label: "Inputs L/R A-B", normal: "In A L"}
+  - {name: "In B L", dir: in, type: audio, page: null, label: "Inputs L/R A-B"}
+  - {name: "In B R", dir: in, type: audio, page: null, label: "Inputs L/R A-B", normal: "In B L"}
+  - {name: "MIDI A In", dir: in, type: midi, page: null, label: "MIDI A In/Out"}
+  - {name: "MIDI A Out", dir: out, type: midi, page: null, label: "MIDI A In/Out"}
+  - {name: "Out A L", dir: out, type: audio, page: null, label: "Outputs L/R A-B"}
+  - {name: "Out A R", dir: out, type: audio, page: null, label: "Outputs L/R A-B"}
+  - {name: "Out B L", dir: out, type: audio, page: null, label: "Outputs L/R A-B"}
+  - {name: "Out B R", dir: out, type: audio, page: null, label: "Outputs L/R A-B"}
+  - {name: "Main Out L", dir: out, type: audio, page: null, label: "Output L/R"}
+  - {name: "Main Out R", dir: out, type: audio, page: null, label: "Output L/R"}
+notes: >-
+  Web manual (no page numbers). Jack names derived from the Interface section's grouped labels
+  (Inputs L/R 1-8, Inputs L/R A-B, MIDI A In/Out, Outputs L/R A-B, Output L/R). R inputs normal from L
+  when unpatched. MIDI jacks are TRS MIDI type A. Out B becomes cue output when Cue is enabled.
+  Power +12V 500 mA, -12V 250 mA; +5V not stated. Expando Expandi (8 CV inputs, 70 mA +12V) is a
+  separate expander and its jacks are not listed here. Matches ModularGrid.

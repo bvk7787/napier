@@ -1,0 +1,10 @@
+name: Step 8 in place of Beads
+date: 2026-10-12
+description: What the rack looks like if Step 8 joins for slice selection and Beads leaves (see c001, rejected for now).
+notes:
+  - Kept as a scenario so the trade-off stays visible; the owner rejected selling Beads in c001.
+remove:
+  - mutable-instruments-beads
+place:
+  - slug: joranalogue-audio-design-step-8
+    at: ["row 3, hp 83"]

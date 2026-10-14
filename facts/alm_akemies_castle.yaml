@@ -1,0 +1,74 @@
+# Facts for alm_akemies_castle. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: akc-input-ranges
+  claim: All Akemie's Castle inputs expect 0 to 5V except the chord and V/Oct inputs, which expect roughly 0 to
+    10V.
+  status: manual
+  source: alm_akemies_castle_manual
+  pages:
+  - 5
+  q: What CV range should I send into the Akemie's Castle modulation inputs?
+  anchors:
+  - All inputs expect 0-5v except chord and V/Oct inputs which expect approx. 0-10v
+- id: akc-feedback-normal
+  claim: VCO B's feedback follows VCO A's feedback setting by default, and patching into VCO B's Fb jack breaks
+    that link for independent control.
+  status: manual
+  source: alm_akemies_castle_manual
+  pages:
+  - 10
+  q: What happens to VCO B feedback on Akemie's Castle when nothing is patched into its Fb jack?
+  anchors:
+  - By patching into VCO B's 'Fb' jack this connection is broken
+- id: akc-tuning-calibration
+  claim: To calibrate tracking, apply 1V and tune to C1 with the front panel, then apply 3V and adjust the rear
+    trimmer until the oscillator reads C3.
+  status: manual
+  source: alm_akemies_castle_manual
+  pages:
+  - 14
+  q: How do I recalibrate the V/Oct tracking on Akemie's Castle?
+  anchors:
+  - Next change the input voltage to 3V and now adjust trimmer on reverse until you get C3
+- id: akc-algorithm-button
+  claim: The six operator algorithms are stepped through with the blue button on the left of the panel, with an
+    LED showing the current one.
+  status: manual
+  source: alm_akemies_castle_manual
+  pages:
+  - 7
+  q: How do I change the FM algorithm on Akemie's Castle?
+  anchors:
+  - The algorithms are stepped through by pressing the blue button
+- id: akc-operator-level-bleed
+  claim: Operator level ranges 0 to 63, and very low levels may not fully mute the operator due to bleed.
+  status: manual
+  source: alm_akemies_castle_manual
+  pages:
+  - 10
+  q: Why can I still hear an operator on Akemie's Castle with its level turned all the way down?
+  anchors:
+  - Very low levels will not always completely mute a operator
+- id: akc-chord-types
+  claim: VCO A chord mode offers 16 chord types from fifths and octaves to 7ths, a 9th and detuned stacks of up
+    to 5 voices.
+  status: manual
+  source: alm_akemies_castle_manual
+  pages:
+  - 11
+  q: What chord types can Akemie's Castle play?
+  anchors:
+  - VCO A is able to produce up to 5 voice chords
+- id: akc-chord-inversion
+  claim: Chords are inverted by applying voltage to the Chord Inv input, and multi-voice chords can raise levels
+    enough to distort.
+  status: manual
+  source: alm_akemies_castle_manual
+  pages:
+  - 12
+  q: How do I do chord inversions on Akemie's Castle?
+  anchors:
+  - Chords may be inverted by applying a voltage to the Chord 'Inv' input

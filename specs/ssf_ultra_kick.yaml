@@ -1,0 +1,25 @@
+device: ssf_ultra_kick
+slugs: [steady-state-fate-entity-ultra-kick]
+source: ssf_ultra_kick_manual
+hp: 14
+hp_page: 8
+hp_anchor: "WIDTH: 14hp"
+power:
+  plus12: 110
+  minus12: 110
+  page: 8
+  anchor: "POWER CONSUMPTION: +/- 110mA"
+jacks:
+  - {name: "TRIG", dir: in, type: trigger, page: 3}
+  - {name: "V/OCT", dir: in, type: pitch, page: 3}
+  - {name: "DECAY CV", dir: in, type: cv, page: 8}
+  - {name: "RESONATE CV", dir: in, type: cv, page: 8}
+  - {name: "PUNCH CV", dir: in, type: cv, page: 5}
+  - {name: "CHAR CV", dir: in, type: cv, page: 6}
+  - {name: "BASS", dir: in, type: cv, page: 7}
+  - {name: "GAIN", dir: in, type: cv, page: 7}
+  - {name: "SDCHN", dir: in, type: audio, page: 8}
+  - {name: "ENV", dir: out, type: cv, page: 4}
+  - {name: "DUCK", dir: out, type: cv, page: 4}
+  - {name: "MAIN OUTPUT", dir: out, type: audio, page: 3, label: "MAIN OUTPUTS"}
+notes: "Power stated as '+/- 110mA' (both rails); no +5V stated. Matches ModularGrid. Manual says all functions except DEPTH and RIPPLE are voltage controllable via CV inputs with abbreviated labels at the bottom, but only names PUNCH, CHAR, BASS, GAIN, SDCHN explicitly; DECAY and RESONATE CV inputs are inferred from the tech-spec CV range table. FREQUENCY appears to be handled by V/OCT, and whether DYNAMICS has a CV input is not stated in the text, so the jack list may be incomplete (panel image not in text). Exact panel labels for DECAY/RESONATE CV and the main output are not printed in text."

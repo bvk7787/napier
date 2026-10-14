@@ -1,0 +1,23 @@
+device: ritual_pointeuse
+slugs: [ritual-electronics-pointeuse]
+source: ritual_pointeuse_manual
+hp: 10
+hp_page: 5
+hp_anchor: "10HP of free space"
+power:
+  plus12: 20
+  minus12: 11
+  plus5: 0
+  page: 5
+  anchor: "20mA on +12V 11mA on -12V 0mA on +5V"
+jacks:
+  - {name: "Trig In", dir: in, type: gate, page: 6}
+  - {name: "In/Out", dir: io, type: audio, also: [cv, gate], page: 6}
+  - {name: "Out/In I", dir: io, type: audio, also: [cv, gate], page: 6}
+  - {name: "Out/In II", dir: io, type: audio, also: [cv, gate], page: 6}
+notes: >-
+  1U module (Intellijel/Pulplogic). Controls page (p7) is image-only; jacks taken from the overview text.
+  Trig In switches state above 2.5V (held in Mom mode, toggles in Latch mode). The switch is bidirectional
+  and signal-agnostic; with nothing patched to In/Out, a 5V signal appears alternately at Out/In I and II.
+  The footswitch pedal jack lives on the separate 4HP expander (not counted here). Rear FOOT, MASTER and
+  SLAVE headers are not jacks.

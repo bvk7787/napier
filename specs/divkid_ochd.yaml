@@ -1,0 +1,22 @@
+device: divkid_ochd
+slugs: [divkid-ochd]
+source: divkid_ochd_manual
+hp: 4
+hp_page: 4
+hp_anchor: "Width: 4 HP"
+power:
+  plus12: 80
+  minus12: 80
+  page: 4
+  anchor: "+12V: 80mA"
+jacks:
+  - {name: "Rate CV Input", dir: in, type: cv, page: 7}
+  - {name: "LFO Output (1)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+  - {name: "LFO Output (2)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+  - {name: "LFO Output (3)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+  - {name: "LFO Output (4)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+  - {name: "LFO Output (5)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+  - {name: "LFO Output (6)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+  - {name: "LFO Output (7)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+  - {name: "LFO Output (8)", dir: out, type: cv, page: 7, label: "LFO Outputs"}
+notes: "Manual (Instruo-published) lists 8 bipolar triangle LFO Outputs generically, fastest (1) to slowest (8) top to bottom, 10Vpp. LFO 1 reaches 160Hz, so audio-rate use is possible but not documented as a primary use. No +5V draw stated. Power matches ModularGrid."

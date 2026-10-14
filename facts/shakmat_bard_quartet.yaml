@@ -1,0 +1,93 @@
+# Facts for shakmat_bard_quartet. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: bard-output-norm
+  claim: Each channel's output can be set to V/Oct, Hz/V or 1.2V/Oct by entering the Microtuning menu and holding
+    uTune while pressing the Channel button, with the blink pattern showing the current standard.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 10
+  q: Can the Bard Quartet drive a Buchla or Korg Hz/V synth?
+  anchors:
+  - To change the Output norm of a specific channel, enter the Microtuning menu
+- id: bard-shift-register
+  claim: With the Shift Register interaction option and Gate in enabled, a channel seeing 0V at its CV input follows
+    the previous channel's input each time it receives a trigger.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 9
+  q: How do I set up the Bard Quartet channels as a shift register?
+  anchors:
+  - This function thus acts as a shift register
+- id: bard-sample-hold
+  claim: Pressing the C key in the Options menu switches the Gate input from Track and Hold (default) to Sample
+    and Hold, which reacts to rising edges.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 12
+  q: Can the Bard Quartet gate input do sample and hold instead of track and hold?
+  anchors:
+  - In Sample & Hold, the Gate input reacts to rising edges
+- id: bard-group-channels
+  claim: Hold one Channel button and press another to group them, copying the first channel's scale so edits apply
+    to both; grouped channel LEDs light together.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 4
+  q: how do I link two channels so they share the same scale
+  anchors:
+  - the scale of the first channel is copied to the second one
+- id: bard-arp-enable
+  claim: To turn a channel into an arpeggiator, hold Arpg and press that Channel button; arpeggiated channels blink
+    and respond to triggers, with five modes and 1 to 4 octave spread.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 6
+  q: how do I make a Bard Quartet channel arpeggiate instead of quantize
+  anchors:
+  - press the corresponding Channel button [C] while holding the Arpg button [F]
+- id: bard-microtune-clear
+  claim: Microtuning detunes each note up to +/- 50 cents with the Harmony knob, and holding uTune for 4 seconds
+    clears all microtuning for that channel and harmony.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 7
+  q: how do I clear the microtuning on a channel
+  anchors:
+  - holding the μTune button for 4 seconds, and waiting for it to blink
+- id: bard-factory-reset
+  claim: To restore factory memory, hold Arpg while powering up and then press uTune to apply.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 11
+  q: how do I factory reset the Bard Quartet
+  anchors:
+  - hold the Arpg button while powering up the module
+- id: bard-tuning-mode
+  claim: Firmware 1.1 adds a Tuning Mode that outputs a precise 0V for tuning VCOs, entered by holding Edit for
+    2 seconds in the Scale edit menu.
+  status: manual
+  source: shakmat_bard_quartet_manual
+  pages:
+  - 12
+  q: is there a way to output 0V so I can tune my oscillators
+  anchors:
+  - hold the Edit button for 2 seconds while in the Scale edit menu
+
+# ---- Firmware versions
+- id: bq-112-trigger-pass
+  claim: Firmware 1.1.2 (July 2025) added Trigger Pass Through in Quantizer S&H mode
+  status: changelog
+  source: shakmat_bard_quartet_firmware_notes
+  q: What did Bard Quartet firmware 1.1.2 add?
+  anchors:
+  - Added Trigger Pass Through in Quantizer S&H Mode

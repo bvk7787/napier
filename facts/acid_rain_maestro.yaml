@@ -1,0 +1,109 @@
+# Facts for acid_rain_maestro. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: maestro-six-channels
+  claim: Maestro is a 6-channel clocked modulation controller that keeps all waveforms phase-synced to the clock
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 2
+  q: How many channels does Acid Rain Maestro have?
+  anchors:
+  - Maestro is a 6 channel clocked modulation controller
+- id: maestro-bipolar
+  claim: The Bipolar modifier switches a channel from 0 to 5 V to -5 to 5 V
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 5
+  q: What voltage range do Maestro outputs have?
+  anchors:
+  - Bipolar modifies the waveform output of a channel to output between -5V to 5V
+- id: maestro-ppqn
+  claim: Pulses per quarter note for the clock input are set in the clock menu
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 4
+  q: How do I set the clock PPQN on Maestro?
+  anchors:
+  - The number of clock pulses Maestro uses to define a quarter note can be set by the user
+- id: maestro-tap-tempo
+  claim: In the clock menu, Ramp up acts as tap tempo from the last two taps, and Random picks a tempo between 60
+    and 180 bpm.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 6
+  q: Does Maestro have tap tempo?
+  anchors:
+  - where the bpm determined by space between last 2 taps
+- id: maestro-save-slots
+  claim: The save menu stores the module state in one of 14 save slots on the micro SD card without interrupting
+    playback.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 7
+  q: How many save slots does Maestro have?
+  anchors:
+  - store the current state of the module in one of 14 save slots
+- id: maestro-one-shot-input
+  claim: Patching a cable into a channel input automatically puts that channel into one shot mode.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 8
+  q: How do I put a Maestro channel into one shot mode?
+  anchors:
+  - When a cable is inserted into this input, the channel automatically enters
+- id: maestro-chain-length
+  claim: A Maestro chain can be up to 32 waveforms long.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 8
+  q: What is the maximum length of a chain on Maestro?
+  anchors:
+  - A chain may be a maximum of 32 waveforms long
+- id: maestro-config-menu
+  claim: Pressing high and mute together opens the channel configuration menu for attenuation and other per channel
+    options.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 9
+  q: How do I open the channel configuration menu on Maestro?
+  anchors:
+  - buttons together will open up the channel config menu
+- id: maestro-sample-hold
+  claim: In the channel config menu, pressing bipolar enables a gate at the channel input to sample and hold the
+    output.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 10
+  q: Can Maestro sample and hold its channel outputs?
+  anchors:
+  - enable a gate signal on the channel input to sample and hold
+- id: maestro-v21-sync-fix
+  claim: Firmware V2.1 fixed a floating point accumulation error that made channels drift out of sync over long
+    periods.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 11
+  q: Why do my Maestro channels drift out of sync over time?
+  anchors:
+  - Eliminated sneaky floating point accumulation error
+- id: maestro-firmware-sd
+  claim: Firmware updates are done by copying the FW.BIN file to the root of the micro SD card and powering up.
+  status: manual
+  source: acid_rain_maestro_manual
+  pages:
+  - 11
+  q: How do I update Maestro firmware?
+  anchors:
+  - Inside you will find a FW.BIN file

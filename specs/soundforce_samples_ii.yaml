@@ -1,0 +1,29 @@
+device: soundforce_samples_ii
+slugs: [soundforce-samples-ii-]
+source: soundforce_samples_ii_manual
+hp: 4
+hp_page: 17
+hp_anchor: "Width: 4HP"
+power:
+  plus12: 85
+  minus12: 11
+  page: 17
+  anchor: "+12V 85mA, -12V 11mA"
+jacks:
+  - {name: "I (ch 1)", dir: in, type: trigger, also: [gate], page: 5, label: "trigger/gate inputs labelled"}
+  - {name: "I (ch 2)", dir: in, type: trigger, also: [gate], page: 5, label: "trigger/gate inputs labelled"}
+  - {name: "I (ch 3)", dir: in, type: trigger, also: [gate], page: 5, label: "trigger/gate inputs labelled"}
+  - {name: "I (ch 4)", dir: in, type: trigger, also: [gate], page: 5, label: "trigger/gate inputs labelled"}
+  - {name: "I (ch 5)", dir: in, type: trigger, also: [gate], page: 5, label: "trigger/gate inputs labelled"}
+  - {name: "O (ch 1)", dir: out, type: audio, page: 5, label: "single mono output is available and labelled"}
+  - {name: "O (ch 2)", dir: out, type: audio, page: 5, label: "single mono output is available and labelled"}
+  - {name: "O (ch 3)", dir: out, type: audio, page: 5, label: "single mono output is available and labelled"}
+  - {name: "O (ch 4)", dir: out, type: audio, page: 5, label: "single mono output is available and labelled"}
+  - {name: "O (ch 5)", dir: out, type: audio, page: 5, label: "single mono output is available and labelled"}
+  - {name: "USB port", dir: io, type: usb, page: 6, label: "USB PORT USAGE AND CARE"}
+notes: >-
+  Inputs are labelled "I" and outputs "O" on the panel, one per channel (5 channels); names are constructed
+  per channel. Inputs take 0 to 5V triggers/gates (up to 12V tolerated). Any unpatched output 1-4 is summed
+  into the channel 5 output jack (MIX out). Inputs 2 and 4 can optionally track an LFO frequency to modulate
+  playback speed of channels 1 and 3 (settings file). The front USB-A port is for USB memory sticks only.
+  Power from manual (85mA +12V, 11mA -12V) disagrees with ModularGrid (135/15). +5V not stated.

@@ -1,0 +1,21 @@
+device: knobula_monumatic
+slugs: [knobula-monumatic]
+source: knobula_monumatic_manual
+hp: 12
+hp_page: 3
+hp_anchor: "12hp synthesizer voice"
+jacks:
+  - {name: "Gate In", dir: in, type: gate, also: [trigger], page: 14}
+  - {name: "V/Oct", dir: in, type: pitch, page: 14}
+  - {name: "Filter", dir: in, type: cv, page: 14}
+  - {name: "CV A", dir: in, type: cv, page: 14}
+  - {name: "CV B", dir: in, type: cv, page: 14}
+  - {name: "Midi In", dir: in, type: midi, page: 14}
+  - {name: "Out L", dir: out, type: audio, page: 4, label: "left and right outputs"}
+  - {name: "Out R", dir: out, type: audio, page: 4, label: "left and right outputs"}
+notes: >-
+  Manual does not state current draw (p.4 only says standard +/-12V Eurorack supply), so power is omitted;
+  ModularGrid's 130/5 mA is unverified. Width taken from intro text "12hp synthesizer voice" (p.3).
+  Inputs from Inputs and Outputs page (p.14); stereo outputs only described on p.4 as "left and right outputs",
+  so names Out L/Out R are descriptive. Midi In is TRS-A (p.4). CV A/B are bipolar assignable inputs; Filter is
+  dedicated cutoff CV. Micro USB for firmware is on the rear Daisy board, not listed.

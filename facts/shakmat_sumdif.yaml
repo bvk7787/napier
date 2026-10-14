@@ -1,0 +1,23 @@
+# Facts for shakmat_sumdif. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: sumdif-sum-difference
+  claim: SumDif outputs both A+B and A-B, so 3V at A and 1V at B gives 4V and 2V respectively.
+  status: manual
+  source: shakmat_sumdif_manual
+  pages:
+  - 2
+  q: What voltages come out of the SumDif if I patch 3V into A and 1V into B?
+  anchors:
+  - then the A+B will output 4V while A-B will output 2V
+- id: sumdif-gain-jumpers
+  claim: Two jumpers on the back reduce the gain of the A+B and A-B outputs by 6dB when installed.
+  status: manual
+  source: shakmat_sumdif_manual
+  pages:
+  - 2
+  q: Can I lower the output level of the SumDif outputs?
+  anchors:
+  - allow to reduce the A+B and A-B outputs gain by 6dB

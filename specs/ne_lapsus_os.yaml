@@ -1,0 +1,33 @@
+device: ne_lapsus_os
+slugs: [noise-engineering-lapsus-os-black]
+source: ne_lapsus_os_manual
+hp: 10
+hp_page: null
+hp_anchor: "Size: 10HP Eurorack"
+power:
+  plus12: 60
+  minus12: 50
+  page: null
+  anchor: "+12 V: 60 mA"
+jacks:
+  - {name: "Offset input (ch 1)", dir: in, type: cv, page: null, label: "Offset inputs"}
+  - {name: "Attenuating/attenuverting input (ch 1)", dir: in, type: cv, page: null, label: "Attenuating/attenuverting inputs"}
+  - {name: "Output 1 (ch 1)", dir: out, type: cv, page: null, label: "Outputs"}
+  - {name: "Output 2 (ch 1)", dir: out, type: cv, page: null, label: "Outputs"}
+  - {name: "Offset input (ch 2)", dir: in, type: cv, page: null, label: "Offset inputs"}
+  - {name: "Attenuating/attenuverting input (ch 2)", dir: in, type: cv, page: null, label: "Attenuating/attenuverting inputs"}
+  - {name: "Output 1 (ch 2)", dir: out, type: cv, page: null, label: "Outputs"}
+  - {name: "Output 2 (ch 2)", dir: out, type: cv, page: null, label: "Outputs"}
+  - {name: "Offset input (ch 3)", dir: in, type: cv, page: null, label: "Offset inputs"}
+  - {name: "Attenuating/attenuverting input (ch 3)", dir: in, type: cv, page: null, label: "Attenuating/attenuverting inputs"}
+  - {name: "Output 1 (ch 3)", dir: out, type: cv, page: null, label: "Outputs"}
+  - {name: "Output 2 (ch 3)", dir: out, type: cv, page: null, label: "Outputs"}
+  - {name: "Offset input (ch 4)", dir: in, type: cv, page: null, label: "Offset inputs"}
+  - {name: "Attenuating/attenuverting input (ch 4)", dir: in, type: cv, page: null, label: "Attenuating/attenuverting inputs"}
+  - {name: "Output 1 (ch 4)", dir: out, type: cv, page: null, label: "Outputs"}
+  - {name: "Output 2 (ch 4)", dir: out, type: cv, page: null, label: "Outputs"}
+notes: >-
+  HTML manual (no page numbers). Jacks from the Interface section: per channel an Offset input (+), an
+  Attenuating/attenuverting input (x), and "a pair of identical outputs" (named Output 1/2 here; the manual gives
+  them no individual labels). With nothing patched to either input a channel outputs a 0-5V or +/-5V offset.
+  Rear-board fader-direction switches are not jacks. No +5V figure stated. Power matches ModularGrid.

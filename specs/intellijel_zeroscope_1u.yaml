@@ -1,0 +1,20 @@
+device: intellijel_zeroscope_1u
+slugs: [intellijel-zeroscope-1u]
+source: intellijel_zeroscope_1u_manual
+hp: 16
+hp_page: 14
+hp_anchor: "Width 16 hp"
+power:
+  plus12: 8
+  minus12: 0
+  page: 14
+  anchor: "8 mA @ +12V 0 mA @ -12V"
+jacks:
+  - {name: "CH 1 input", dir: in, type: audio, also: [cv], page: 6}
+  - {name: "CH 2 input", dir: in, type: audio, also: [cv], page: 6}
+  - {name: "CH 1 output", dir: out, type: audio, also: [cv], page: 6, normal: "CH 1 input"}
+  - {name: "CH 2 output", dir: out, type: audio, also: [cv], page: 6, normal: "CH 2 input"}
+notes: >-
+  Inputs DC coupled, -10V to +10V, accept CV or audio. Each input is normalled through to its output
+  (pass-through monitoring). Firmware updates are "over USB" (p13) but the manual does not show or name a
+  front-panel USB port, so none is listed. +5V draw not stated.

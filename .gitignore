@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.DS_Store
+# the private overlay (its own repo) and private agent notes
+/local/
+/CLAUDE.local.md
+.coverage
+coverage.xml
+.mypy_cache/
+.ruff_cache/

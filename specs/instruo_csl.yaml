@@ -1,0 +1,46 @@
+device: instruo_csl
+slugs: [instruo-cs-l]
+source: instruo_csl_manual
+hp: 26
+hp_page: 4
+hp_anchor: "Width: 26 HP"
+power:
+  plus12: 200
+  minus12: 80
+  page: 4
+  anchor: "+12V: 200mA"
+jacks:
+  - {name: "Osc A 1V/Oct Input", dir: in, type: pitch, page: 5}
+  - {name: "Osc A Sine Output", dir: out, type: audio, page: 5}
+  - {name: "Osc A Triangle Output", dir: out, type: audio, page: 5}
+  - {name: "Osc A Sawtooth Output", dir: out, type: audio, page: 5}
+  - {name: "Osc A Final Output", dir: out, type: audio, page: 5}
+  - {name: "Osc A PWM Output", dir: out, type: audio, page: 5}
+  - {name: "Osc A PWM CV Input", dir: in, type: cv, page: 5}
+  - {name: "Osc B 1V/Oct Input", dir: in, type: pitch, page: 5}
+  - {name: "Osc B Sine Output", dir: out, type: audio, page: 5}
+  - {name: "Osc B Square Output", dir: out, type: audio, page: 5}
+  - {name: "Osc B Triangle Output", dir: out, type: audio, page: 5}
+  - {name: "Osc B Final Output", dir: out, type: audio, page: 5}
+  - {name: "Osc B PWM Output", dir: out, type: audio, page: 5}
+  - {name: "Osc B PWM CV Input", dir: in, type: cv, page: 5}
+  - {name: "Multiply Output", dir: out, type: audio, page: 5}
+  - {name: "Multiply Modulator Input", dir: in, type: audio, page: 5, also: [cv], normal: "Osc A Sine Output"}
+  - {name: "Multiply Carrier Input", dir: in, type: audio, page: 5, also: [cv], normal: "Osc B Sine Output"}
+  - {name: "Osc A FM Input", dir: in, type: cv, page: 6, also: [audio], normal: "Osc B Sine Output"}
+  - {name: "Osc B FM Input", dir: in, type: cv, page: 6, also: [audio], normal: "Osc A Sine Output"}
+  - {name: "Index CV Input", dir: in, type: cv, page: 6}
+  - {name: "Hard Sync Input", dir: in, type: gate, page: 6, also: [audio]}
+  - {name: "Soft Sync Input", dir: in, type: gate, page: 6, also: [audio]}
+  - {name: "Osc A Symmetry Bias Input", dir: in, type: cv, page: 6, also: [audio]}
+  - {name: "Osc A Wavefold CV Input", dir: in, type: cv, page: 6}
+  - {name: "Osc B Symmetry Bias Input", dir: in, type: cv, page: 6, also: [audio]}
+  - {name: "Osc B Wavefold CV Input", dir: in, type: cv, page: 6}
+notes: >-
+  Names from the panel key (p5-6). Normals: each oscillator's sine is normalled to the other's FM Input
+  (p14) and to "its corresponding" Multiply Input (p19); the manual ties the Modulator Input to
+  Oscillator A (p20), so Carrier = Oscillator B is inferred. Switchable normals not encoded: Link Button
+  cross-normals the two 1V/Oct Inputs (p13); Sync Button normals Osc A saw to Soft Sync Input (amber)
+  or Osc B square to Hard Sync Input (white) (p18). Hard Sync is Osc A (2.5V threshold), Soft Sync is
+  Osc B (2V threshold). Symmetry Bias Inputs can process external audio through the wavefolder (p16).
+  Osc B PWM Output is a stepped triangle. No +5V draw stated. Power matches ModularGrid (200/80 mA).

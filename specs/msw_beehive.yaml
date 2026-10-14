@@ -1,0 +1,26 @@
+device: msw_beehive
+slugs: [michigan-synth-works-beehive-micro-plaits-black]
+source: mutable_plaits_manual
+power:
+  plus12: 50
+  minus12: 5
+  page: null
+  anchor: "draws 50mA from the +12V rail, and 5mA from the -12V rail"
+jacks:
+  - {name: "MODEL CV", dir: in, type: cv, page: null, label: "Model selection CV input"}
+  - {name: "TIMBRE CV", dir: in, type: cv, page: null, label: "CV inputs for the timbre, frequency, morph and harmonics parameters"}
+  - {name: "FM CV", dir: in, type: cv, page: null, label: "CV inputs for the timbre, frequency, morph and harmonics parameters"}
+  - {name: "MORPH CV", dir: in, type: cv, page: null, label: "CV inputs for the timbre, frequency, morph and harmonics parameters"}
+  - {name: "HARMONICS CV", dir: in, type: cv, page: null, label: "CV inputs for the timbre, frequency, morph and harmonics parameters"}
+  - {name: "TRIG", dir: in, type: trigger, also: [gate], page: null, label: "Trigger input"}
+  - {name: "LEVEL", dir: in, type: cv, page: null, label: "Level CV input"}
+  - {name: "V/OCT", dir: in, type: pitch, page: null, label: "V/Oct CV input"}
+  - {name: "OUT", dir: out, type: audio, page: null, label: "produced on OUT"}
+  - {name: "AUX", dir: out, type: audio, page: null, label: "AUX output"}
+notes: >-
+  Source is the Mutable Instruments Plaits manual (web page), not a Beehive-specific document. Beehive is
+  a Plaits clone in a smaller panel; the jack set is taken from Plaits' inputs/outputs list and assumes the
+  Beehive keeps all of them. The power figures (50mA +12V, 5mA -12V) are for Plaits; Beehive's own draw may
+  differ (ModularGrid lists the same 50/5). Width not stated in source (Plaits HP does not apply to Beehive).
+  +5V not stated. Jack names are constructed from the manual's descriptions; the frequency CV is called FM
+  per the attenuverter description.

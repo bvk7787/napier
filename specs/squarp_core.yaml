@@ -1,0 +1,20 @@
+device: squarp_core
+slugs: [squarp-instruments-core]
+source: squarp_core_product_page
+hp: 6
+hp_anchor: "Width: 6 HP"
+power:
+  plus12: 5
+  minus12: 5
+  plus5: 150
+  anchor: "+5V → 150mA"
+jacks:
+  - {name: "USB DEVICE", dir: io, type: usb, also: [midi], label: "USB Device"}
+  - {name: "USB HOST", dir: io, type: usb, also: [midi], label: "USB Host"}
+  - {name: "MIDI IN", dir: in, type: midi, label: "TRS (type A) input and output"}
+  - {name: "MIDI OUT", dir: out, type: midi, label: "TRS (type A) input and output"}
+notes: >-
+  Power is without any xp32 connected; add up to 500mA on +5V when
+  Core powers a USB Host device. Core has no CV jacks of its own: all CV/Gate outputs come from one
+  or two xp32 expanders on the rear SLOT A / SLOT B 14-pin headers (not listed). The manual is
+  web-only (squarp_core_manual*), split into six sources.

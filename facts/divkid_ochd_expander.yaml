@@ -1,0 +1,64 @@
+# Facts for divkid_ochd_expander. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: ochdx-cascading-triggers
+  claim: The third set of outputs produces roughly 8ms triggers on the rising edges of the even-numbered LFOs, cascading
+    clockwise so an unpatched output's triggers layer into the next.
+  status: manual
+  source: divkid_ochd_expander_manual
+  pages:
+  - 8
+  q: How long are the trigger outputs on the ochd expander and how do they combine?
+  anchors:
+  - trigger signals are produced at the start of all even-numbered LFOs' rising edges
+- id: ochdx-full-wave-rectifier
+  claim: The first set of outputs full-wave rectifies the odd-numbered LFOs into 0V to 5V unipolar triangles at
+    twice the original frequency.
+  status: manual
+  source: divkid_ochd_expander_manual
+  pages:
+  - 6
+  q: What do the rectifier outputs on the ochd expander produce?
+  anchors:
+  - creates fully unipolar positive triangle waveforms at twice the frequency
+- id: ochdx-r2r-random
+  claim: The R-2R outputs build stepped random voltages from four LFOs each, with the LFO rates setting the rate
+    and the MSB to LSB ordering shaping the step size.
+  status: manual
+  source: divkid_ochd_expander_manual
+  pages:
+  - 9
+  q: How does the ochd expander generate its random stepped voltages?
+  anchors:
+  - the ordering of Most Significant Bit (MSB) to Least Significant Bit (LSB) affects the size
+- id: ochdx-diode-logic-pairs
+  claim: The analog diode logic outputs give the max (OR) and min (AND) of LFO 2/3 and LFO 6/7 as bipolar +/- 5V
+    signals.
+  status: manual
+  source: divkid_ochd_expander_manual
+  pages:
+  - 7
+  q: which LFOs feed the min and max logic outputs on the ochd expander
+  anchors:
+  - The maximum voltage (OR logic) between LFO 2 and LFO 3
+- id: ochdx-expander-cable
+  claim: The expander connects to ochd with IDC cables on the 2x4 headers, red stripe toward the bottom of the expander
+    and the back edge of ochd.
+  status: manual
+  source: divkid_ochd_expander_manual
+  pages:
+  - 4
+  q: how do I connect the ochd expander ribbon cable to ochd
+  anchors:
+  - red stripe is pointed towards the bottom of
+- id: ochdx-features-count
+  claim: The expander adds 16 outputs to ochd, all driven by ochd's single frequency control and CV attenuverter.
+  status: manual
+  source: divkid_ochd_expander_manual
+  pages:
+  - 3
+  q: what does the ochd expander actually add and how is it controlled
+  anchors:
+  - controlled by øchd's single frequency control and CV attenuverter

@@ -1,0 +1,64 @@
+# Facts for instruo_eas. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: eas-and-normalling
+  claim: AND Input 1 is normalled to AND Input 2, so the AND gate works with only one cable, and the NAND output
+    carries the inverted AND result.
+  status: manual
+  source: instruo_eas_manual
+  pages:
+  - 6
+  q: Do I need to patch both AND inputs on the eas for it to work?
+  anchors:
+  - The signal present at AND Input 1 normals to AND Input 2
+- id: eas-xor-not-normal
+  claim: The NOR output is normalled to XOR Input 2, and the XOR output is normalled to the NOT input.
+  status: manual
+  source: instruo_eas_manual
+  pages:
+  - 7
+  q: What gets fed into the eas NOT gate when nothing is plugged into it?
+  anchors:
+  - The XOR Output normals to the NOT Input.
+- id: eas-cmos-ring-mod
+  claim: Patching two different audio signals into the XOR inputs gives CMOS-style ring modulation, useful for cymbal
+    sounds.
+  status: manual
+  source: instruo_eas_manual
+  pages:
+  - 14
+  q: How can I get ring modulation out of a logic module like the eas?
+  anchors:
+  - Connect two different audio signals to both XOR Inputs
+- id: eas-or-input1-required
+  claim: When using the OR gate on its own, a signal must be present at OR Input 1 for OR Input 2 to work, and the
+    NAND output is normalled to OR Input 1.
+  status: manual
+  source: instruo_eas_manual
+  pages:
+  - 6
+  q: why isn't the OR gate responding to OR input 2
+  anchors:
+  - a signal must be present at OR Input 1 for OR Input 2 to function
+- id: eas-pulse-sync-and
+  claim: Patching a steady clock into AND Input 1 and faster random pulses into AND Input 2 gives random pulses
+    only while the clock is high.
+  status: manual
+  source: instruo_eas_manual
+  pages:
+  - 11
+  q: how do I sync random triggers to a clock with a logic module
+  anchors:
+  - connecting a faster random pulse signal to AND Input 2
+- id: eas-cheapnis-1bit
+  claim: Combining audio-rate signals at any logic gate yields 1-bit pulse code modulation tones, with unipolar
+    positive signals giving cheap digital sounds.
+  status: manual
+  source: instruo_eas_manual
+  pages:
+  - 15
+  q: can I feed audio rate signals into eas for lo-fi digital tones
+  anchors:
+  - audio rate signals at any of the logic gates for 1-bit pulse code modulation

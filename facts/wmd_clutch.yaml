@@ -1,0 +1,109 @@
+# Facts for wmd_clutch. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: clutch-inputs
+  claim: Separate CLSD and OPEN trigger/gate inputs, plus ACCENT (fires both) and CHOKE
+  status: manual
+  source: wmd_clutch_manual
+  q: Which inputs does the WMD Clutch have for closed and open hats?
+  anchors:
+  - 'CLSD: Trigger/Gate input for closed hi-hat sounds'
+  - 'OPEN: Trigger/Gate input for open hi-hat sounds'
+- id: clutch-velocity-cv
+  claim: A Velocity CV input sets level, -5 V to +5 V by default (unipolar is an option in HIHAT.INI)
+  status: manual
+  source: wmd_clutch_manual
+  q: Does the WMD Clutch respond to velocity?
+  anchors:
+  - 'Velocity: CV level control'
+- id: clutch-choke
+  claim: Whether a CLSD trigger chokes a ringing open hat on its own, or only the CHOKE input does
+  status: unverified
+  source: wmd_clutch_manual
+  notes: The manual describes the CHOKE input only. If CLSD does not choke OPEN, send the closed-hat trigger
+    to CHOKE too.
+- id: clutch-fw-1-10
+  claim: Firmware 1.10 (2026-07-09) adds Plate Reverb and Thick Chorus; the manual (rev 1.02) covers firmware
+    1.00
+  status: community
+  cite: https://wmdevices.com/products/clutch
+- id: clutch-sample-naming
+  claim: Custom samples must be 16-bit 48kHz mono WAVs named
+  status: manual
+  source: wmd_clutch_manual
+  q: how do I name my own hi-hat samples for Clutch
+  anchors:
+  - 'Closed hi-hat samples: ##CH.wav (01–16)'
+- id: clutch-firmware-update
+  claim: To update firmware, replace CLUTCH.bin in the root of the memory card with the latest release; the LED
+    flashes yellow and orange until the update finishes.
+  status: manual
+  source: wmd_clutch_manual
+  q: how do I update the firmware on WMD Clutch
+  anchors:
+  - replace the CLUTCH.bin file in the root of the memory card
+- id: clutch-fx-mode
+  claim: Holding the Bank / Hold FX button enters or exits FX mode (or gives momentary FX while held); the LED flashes
+    in the effect's color and the bottom two knobs control FX parameters.
+  status: manual
+  source: wmd_clutch_manual
+  q: how do I enter FX mode on Clutch
+  anchors:
+  - Hold to enter or exit FX mode; hold and use the FX controls for momentary FX
+- id: clutch-feel-toggle
+  claim: Holding the bottom toggle right turns Feel on, tapping left or right cycles Feel patterns, and holding
+    left changes accent behavior.
+  status: manual
+  source: wmd_clutch_manual
+  q: how do I enable the Feel groove patterns on Clutch
+  anchors:
+  - Hold the toggle switch to the right to turn Feel on
+- id: clutch-cv-switch
+  claim: The CV ON / OFF switch blocks CV to the top four knob parameters, while Velocity and FX PARAM stay active
+    by default unless changed in HIHAT.INI.
+  status: manual
+  source: wmd_clutch_manual
+  q: can I temporarily disable all CV on Clutch without unpatching
+  anchors:
+  - No CV will reach the parameters of the top four knobs
+- id: clutch-filter-ranges
+  claim: The HPF covers 100Hz to 14kHz and the LPF covers 200Hz to 20kHz on the output, selected with the BAL /
+    HPF and SRFB / LPF switches.
+  status: manual
+  source: wmd_clutch_manual
+  q: what's the frequency range of the filters on Clutch
+  anchors:
+  - 'HPF: A high-pass filter on the output, 100Hz – 14kHz (default)'
+- id: clutch-gate-threshold
+  claim: Clutch gate inputs use a 2V Schmitt trigger threshold, and CV inputs are 100k ohm and sum with the knobs
+    with a 5V full sweep.
+  status: manual
+  source: wmd_clutch_manual
+  q: what gate voltage does Clutch need to trigger
+  anchors:
+  - 'Gate Threshold: 2V Schmitt Trigger'
+
+# ---- Product updates (firmware news)
+- id: clutch-110-plate
+  claim: Clutch v1.10 made a new plate reverb the default; FX_REVERB_TYPE = 0 in HIHAT.INI brings back the old one
+  status: changelog
+  source: wmd_clutch_firmware_notes
+  q: How do I get the old reverb back on Clutch after the 1.10 update?
+  anchors:
+  - Set FX_REVERB_TYPE = 0 in HIHAT.INI
+- id: clutch-110-release-mode
+  claim: RELEASE_MODE = 2 makes the RELEASE control shape only closed hats, with a fixed open release
+  status: changelog
+  source: wmd_clutch_firmware_notes
+  q: Can Clutch's release CV affect only the closed hats?
+  anchors:
+  - RELEASE_MODE = 2
+- id: clutch-110-red-led
+  claim: Since v1.10 the bank LED flashes red while an unsupported-format sample plays
+  status: changelog
+  source: wmd_clutch_firmware_notes
+  q: Why is the Clutch bank LED flashing red?
+  anchors:
+  - bank LED flashes red while a sample in an unsupported format plays

@@ -1,0 +1,107 @@
+# Facts for intellijel_atlantix. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: atl-pitch-inputs
+  claim: PITCH A IN and PITCH B IN take 1 V/Oct for VCO A and VCO B
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 10
+  - 13
+  q: Which Atlantix input takes 1V/Oct pitch for VCO A?
+  anchors:
+  - PITCH A IN - This input controls the pitch of VCO A
+- id: atl-no-glide
+  claim: The Atlantix has no glide or portamento control, so slides must come from the pitch CV source
+  status: unverified
+  source: intellijel_atlantix_manual
+  notes: No glide, portamento or slew in the manual text; check the panel. Hermod+ 3.0 has a GLIDE effect.
+- id: atl-vcob-lfo-mode
+  claim: Setting VCO B to LFO runs it at 1/1000 of its VCO frequency, for cycles as slow as about 50 seconds.
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 13
+  q: How slow can VCO B on the Atlantix go in LFO mode?
+  anchors:
+  - allowing for cycles as slow as approximately 50 seconds
+- id: atl-sub-or-mode
+  claim: The SUB TYPE switch center OR position gives a pulse wave two octaves down with a 75% pulse width instead
+    of a square.
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 16
+  q: What does the middle OR setting on the Atlantix sub oscillator switch do?
+  anchors:
+  - results in a PULSE wave 2 octaves below the pitch
+- id: atl-aux2-vca-routing
+  claim: With AUX 2 ROUTING set to VCA, the attenuated AUX 2 signal skips the mixer and is summed into the VCA input,
+    post filter.
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 15
+  q: Can I send the AUX 2 input on Atlantix past the filter straight to the VCA?
+  anchors:
+  - the attenuated AUX 2 signal is summed with the signal feeding the VCA IN
+- id: atl-hp-always-4pole
+  claim: The 4P/2P switch only affects LP and BP; the highpass filter is always 4-pole.
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 19
+  q: Does the 2-pole/4-pole switch change the Atlantix highpass filter?
+  anchors:
+  - which always operates as 4-pole filter
+- id: atl-tzfm-ac-dc
+  claim: 'The AC/DC switch picks the TZFM variant: DC is deepest and suits slow modulators, AC is shallower but
+    tracks pitch more accurately.'
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 9
+  q: What is the difference between AC and DC through-zero FM on Atlantix?
+  anchors:
+  - AC (which is not as deep, but is more accurate at tracking pitch)
+- id: atl-vca-drive-asym
+  claim: The VCA DRIVE switch adds symmetrical clipping (top), no drive (middle), or asymmetrical clipping (bottom).
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 24
+  q: How do I add distortion to the Atlantix VCA?
+  anchors:
+  - Select whether to add drive into the VCA
+  alt:
+  - - the signal is boosted (driven) and any clipping that occurs is asymmetrical
+- id: atl-track-and-hold
+  claim: In T&H mode the circuit passes the SAMP voltage while HOLD is high and freezes it only while the HOLD pulse
+    is low.
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 28
+  q: How does track and hold mode work on the Atlantix sample and hold?
+  anchors:
+  - holds that sampled voltage only for as long as the pulse remains low
+- id: atl-vcf-keytrack-normal
+  claim: With nothing in the VCF FM 2 input, VCO A pitch is normalled there so the filter can track the keyboard.
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 17
+  q: Does the Atlantix filter track pitch by default?
+  anchors:
+  - the PITCH of VCO A is used as the FM 2 source, allowing the filter to track pitch
+- id: atl-atlx-passive
+  claim: The ATLX expander connects with the included 20-pin ribbon cable, is passive, and needs no power connection.
+  status: manual
+  source: intellijel_atlantix_manual
+  pages:
+  - 29
+  q: Does the Atlx expander need its own power cable?
+  anchors:
+  - The ATLX expander is passive and does not need a power connection

@@ -1,0 +1,96 @@
+# Facts for msw_nrings. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: nrings-single-cv-play
+  claim: With nothing in STRUM or IN, Rings strums on V/OCT note changes and generates its own excitation, so a
+    single sequencer CV is enough to play it.
+  status: manual
+  source: mutable_rings_manual
+  q: Can I play the nRings with just a pitch CV from my sequencer and no gate or audio input?
+  anchors:
+  - you can perfectly play Rings with just one CV output taken from a sequencer or S&H module
+- id: nrings-odd-even-outputs
+  claim: The ODD and EVEN outputs carry complementary parts of the signal (odd and even partials in monophonic mode);
+    with only one jack patched, both are mixed together.
+  status: manual
+  source: mutable_rings_manual
+  q: What do the Rings odd and even outputs carry?
+  anchors:
+  - Odd and even audio outputs
+  alt:
+  - - both signals are mixed together
+- id: nrings-calibration
+  claim: Calibration is entered by holding both buttons for two seconds with a cable in the FREQUENCY CV input,
+    then sending 1V (C2) and 3V (C4) and pressing the polyphony button after each.
+  status: manual
+  source: mutable_rings_manual
+  q: How do I calibrate V/oct tracking on the nRings?
+  anchors:
+  - Hold both the polyphony and resonator type buttons for two seconds
+- id: nrings-polyphony-strum
+  claim: Four-note polyphony only lets successive notes overlap; to play chords you strum by sending a rapid sequence
+    of notes.
+  status: manual
+  source: mutable_rings_manual
+  q: how do I play chords on Rings in 4 voice polyphony
+  anchors:
+  - To play chords, you will need to "strum" the module
+- id: nrings-damping-range
+  claim: The DAMPING knob sets decay time from under 100ms up to about 10 seconds.
+  status: manual
+  source: mutable_rings_manual
+  q: how long can Rings ring out, what's the damping range
+  anchors:
+  - from less than 100ms to about 10s
+- id: nrings-position-hollow
+  claim: Exciting the string at its middle position cancels even harmonics for a hollow, square-like tone, similar
+    to PWM.
+  status: manual
+  source: mutable_rings_manual
+  q: why does Rings sound hollow when the position is in the middle of the string
+  anchors:
+  - resulting in a "hollow" sound reminiscent of a square wave
+  alt:
+  - - Applying the excitation right in the middle of the surface
+- id: nrings-firmware-update
+  claim: To update firmware, power on with the polyphony button held so both LEDs blink orange, then play the update
+    file into the IN jack.
+  status: manual
+  source: mutable_rings_manual
+  q: how do I update the firmware on Rings with an audio file
+  anchors:
+  - Power on your modular system with the polyphony button (A) pressed
+- id: nrings-continuous-noise
+  claim: If the module makes a continuous noise with nothing patched, recalibrate the normalization detector using
+    a two-button hold sequence.
+  status: manual
+  source: mutable_rings_manual
+  q: why is Rings making noise constantly when nothing is plugged in
+  anchors:
+  - Recalibrate the normalization detector with the following procedure
+
+# ---- Mutable Instruments Rings source code (nRings runs Rings firmware)
+- id: nrings-code-polyphony
+  claim: The Rings firmware caps polyphony at 4 voices (8 strings)
+  status: code
+  source: mutable_rings_dsp_part_h
+  q: How many voices of polyphony (kMaxPolyphony) and strings does the Rings resonator Part support?
+  anchors:
+  - const int32_t kMaxPolyphony = 4
+- id: nrings-code-bonus-models
+  claim: 'Bonus (hidden) resonator models: FM voice, quantized sympathetic strings, and string with reverb'
+  status: code
+  source: mutable_rings_dsp_part_h
+  q: Which bonus resonator models does the Rings firmware have?
+  anchors:
+  - RESONATOR_MODEL_FM_VOICE
+  - RESONATOR_MODEL_STRING_AND_REVERB
+- id: nrings-code-calibration
+  claim: Releasing one button while the other is held starts calibration
+  status: code
+  source: mutable_rings_ui_cc
+  q: How does the Rings code enter calibration from the two buttons?
+  anchors:
+  - Check if the other switch is still pressed

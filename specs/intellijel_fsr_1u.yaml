@@ -1,0 +1,12 @@
+device: intellijel_fsr_1u
+slugs: [intellijel-fsr-1u]
+source: intellijel_fsr_1u_manual
+hp: 10
+power:
+  plus12: 24
+  minus12: 9
+  anchor: "24mA @ +12V"
+jacks: []
+notes: >-
+  1U tile. Max depth 23 mm. Jacks not listed yet;
+  add them from the manual.

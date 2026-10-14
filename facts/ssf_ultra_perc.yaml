@@ -1,0 +1,103 @@
+# Facts for ssf_ultra_perc. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: up-trig-threshold
+  claim: TRIG fires on any positive signal rising from 0 to at least 1.5 V
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 3
+  q: What trigger voltage does the SSF Ultra-Perc need?
+  anchors:
+  - transitions between 0 and at least 1.5V
+- id: up-noise-trig
+  claim: The NOISE section has its own trigger (N-TRIG), normalled from TRIG
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 2
+  - 3
+  q: Can the Ultra-Perc noise section be triggered separately from the body?
+  anchors:
+  - independently trigger-able NOISE section
+- id: up-trig-delay
+  claim: TRIG DELAY delays only the BODY trigger by up to 75ms, leaving noise timing unaffected, which helps with
+    claps and snaps.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 3
+  q: how much delay can trig delay add on Ultra-Perc and what is it for
+  anchors:
+  - Up to 75ms of delay (more than enough) is available
+- id: up-delay-cv-skip
+  claim: A negative voltage at DELAY CV can skip BODY triggers, as long as the TRIG DELAY control is turned up a
+    little.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 3
+  q: can I make the Ultra-Perc skip body hits with CV
+  anchors:
+  - DELAY CV can also be used to skip BODY triggers
+- id: up-body-bias-sustain
+  claim: With BODY BIAS and LENGTH both at maximum the signal sustains for several minutes; negative BIAS attenuates
+    the body about 30dB.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 4
+  q: how do I get a long sustained tone out of Ultra-Perc
+  anchors:
+  - Setting BODY BIAS and LENGTH control to maximum will sustain the signal for several minutes
+- id: up-master-tune-range
+  claim: MASTER TUNE covers about 25 to 800 Hz, and the V/OCT input tracks reliably over 4 to 5 octaves.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 5
+  q: what's the pitch range of the Ultra-Perc body and how many octaves does V/OCT track
+  anchors:
+  - The range of this control is approximately 25-800 Hz
+- id: up-noise-body-mode
+  claim: The NOISE FREQ switch selects LP, HP, or BODY, which routes lowpassed noise into the body resonators; BODY
+    mode can mute the body tone even with noise attenuated.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 6
+  q: why does my Ultra-Perc body sound muted and less resonant
+  anchors:
+  - When the VCF is set to BODY mode, this can also change the character of the BODY sound
+- id: up-duck-output
+  claim: The DUCK output is an inverted, offset envelope from the body VCA for ducking external VCAs, stronger when
+    BIAS is low.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 6
+  q: how do I use Ultra-Perc to sidechain duck other sounds
+  anchors:
+  - the ducking effect is magnified when the BIAS is low
+- id: up-acid-patch
+  claim: For acid bass, patch a sequenced saw or square VCO into EXT IN, a related trigger into TRIG, and shape
+    resonance with LENGTH and BODY BIAS.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 7
+  q: how do I use the Ultra-Perc as an acid filter for a bassline
+  anchors:
+  - Patch a pitch sequenced VCO into EXT IN
+- id: up-voct-cal
+  claim: To fix V/OCT scaling, turn the trimmer near LENGTH clockwise if it goes flat going up in voltage and counterclockwise
+    if it goes sharp.
+  status: manual
+  source: ssf_ultra_perc_manual
+  pages:
+  - 8
+  q: how do I calibrate V/OCT tracking on the Ultra-Perc
+  anchors:
+  - Turn LENGTH and BODY BIAS and DETUNE up all of the way

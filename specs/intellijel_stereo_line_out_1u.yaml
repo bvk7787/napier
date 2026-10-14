@@ -1,0 +1,19 @@
+device: intellijel_stereo_line_out_1u
+slugs: [intellijel-stereo-line-out-1u]
+source: intellijel_stereo_line_out_1u_manual
+hp: 8
+hp_page: 16
+hp_anchor: "Stereo Line Out 1U | Width | 8 hp"
+power:
+  plus12: 19
+  minus12: 12
+  page: 16
+  anchor: "19 mA @ +12V | 12 mA @ -12V (at maximum amplification)"
+jacks:
+  - {name: "L Input", dir: in, type: audio, page: 14}
+  - {name: "R Input", dir: in, type: audio, page: 14, normal: "L Input"}
+notes: >-
+  1U (Intellijel format) module. Only two front-panel 1/8" jacks; the 1/4" TRS line outputs live on the separate
+  Stereo Out Jacks 1U module (or a Palette/7U case jacks board) connected via rear 6-pin ribbon, and the 3-pin Link
+  output is a rear connector, so neither is listed. Power figures are at maximum amplification; +5V not stated.
+  Matches ModularGrid.

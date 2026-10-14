@@ -1,0 +1,74 @@
+# Facts for intellijel_duatt_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: duatt-out-a-sum
+  claim: When nothing is plugged into OUT A, Channel A's voltage is bussed into Channel B so OUT B carries the sum
+    of both channels.
+  status: manual
+  source: intellijel_duatt_1u_manual
+  pages:
+  - 7
+  q: What happens to Duatt channel A when OUT A is unpatched?
+  anchors:
+  - its voltage is bussed to Channel B
+- id: duatt-ax2-switch
+  claim: The Ax2 switch doubles the voltage at Channel A's input, so with the input unpatched it turns the internal
+    5V into a full +10V or -10V offset.
+  status: manual
+  source: intellijel_duatt_1u_manual
+  pages:
+  - 6
+  q: How can I get a 10V offset out of the Duatt?
+  anchors:
+  - In the up (on) position, this switch doubles the voltage appearing at Channel A's input
+- id: duatt-polarity-switch
+  claim: In UNI mode the knob is a plain attenuator from 0V to full, while in -/+ mode it is a bipolar attenuverter
+    with zero output at noon and full inversion fully counterclockwise.
+  status: manual
+  source: intellijel_duatt_1u_manual
+  pages:
+  - 6
+  q: What is the difference between the UNI and -/+ positions on the Duatt?
+  anchors:
+  - the corresponding Channel Attenuator Knob [1] acts as a bipolar attenuverter
+- id: duatt-invert-envelope
+  claim: To invert an envelope, patch it into IN A, set Channel A's polarity switch to -/+, and turn the knob counterclockwise
+    past noon.
+  status: manual
+  source: intellijel_duatt_1u_manual
+  pages:
+  - 8
+  q: how do I flip an envelope upside down with Duatt
+  anchors:
+  - an inverted envelope now appears at Duatt's OUT A
+- id: duatt-constrain-sh-range
+  claim: To tame a random S&H pitch source, scale it on Channel B and use unpatched Channel A as a negative offset,
+    since OUT B sums both channels when OUT A is empty.
+  status: manual
+  source: intellijel_duatt_1u_manual
+  pages:
+  - 8
+  q: how can I limit random sample and hold notes to a bass range using Duatt
+  anchors:
+  - constrain that unruly 10 octave range of notes
+- id: duatt-audio-mixing
+  claim: Duatt can mix two audio signals by setting both switches to UNI, patching oscillators into IN A and IN
+    B, leaving OUT A empty and taking the mix from OUT B.
+  status: manual
+  source: intellijel_duatt_1u_manual
+  pages:
+  - 9
+  q: can I use Duatt as a two channel audio mixer
+  anchors:
+  - Set both of Duatt's polarity switches to UNI and turn both its knobs fully counterclockwise
+- id: duatt-power-draw
+  claim: Duatt 1U is 14 hp wide, 22 mm deep, and draws 12 mA on +12V and 10 mA on -12V.
+  status: manual
+  source: intellijel_duatt_1u_manual
+  pages:
+  - 9
+  q: how much current does the Duatt 1U draw
+  anchors:
+  - 12 mA @ +12V 10 mA @ -12V

@@ -1,0 +1,202 @@
+# Facts for oxi_one_mk2. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: oxi-8-sequencers
+  claim: ONE MKII has 8 independent sequencers
+  status: manual
+  source: oxi_one_mk2_manual
+  pages: [2]
+  q: How many sequencers does the OXI ONE MKII have?
+  anchors: ["consists of 8 independent sequencers"]
+  notes: The intro says each takes "one of 6 sequencer modes"; the Sequencer Setup section lists 9 (see oxi-modes).
+- id: oxi-modes
+  claim: Sequencer modes are Mono, Poly, Chord, Multitrack, Stochastic, Matriceal, Domino, Saga and MIDI Player
+  status: manual
+  source: oxi_one_mk2_manual
+  pages: [123, 126, 127]
+  q: What sequencer modes does the OXI ONE MKII have?
+  anchors: ["one of nine unique sequencer modes"]
+  alt: [["Mode types available", "Domino, Saga and MIDI Player"]]
+  notes: The quick-start (p. 22) and intro (p. 2) still list the older 6.
+- id: oxi-no-audio
+  claim: ONE is a sequencer only and makes no sound of its own
+  status: manual
+  source: oxi_one_mk2_manual
+  pages: [2]
+  q: Does the OXI ONE MKII make any sound?
+  anchors: ["ONE is a sequencer and in itself does not generate any audio output"]
+- id: oxi-cv-gate
+  claim: 8 CV and 8 Gate outputs, assignable per sequencer; CV range -3 V to 5 V
+  status: manual
+  source: oxi_one_mk2_manual
+  pages: [236]
+  q: How many CV outputs does the OXI ONE MKII have and what is their range?
+  anchors: ["8 CV and 8 Gate outputs", "-3V to 5V"]
+- id: oxi-midi-trs
+  claim: MIDI in and out are TRS Type A (DIN adapter included); MIDI out is 5 V
+  status: manual
+  source: oxi_one_mk2_manual
+  pages: [2]
+  q: What are the OXI ONE MKII's MIDI input and output specs?
+  anchors: ["MIDI TRS input & output", "MIDI Out is 5V"]
+- id: oxi-power
+  claim: A full charge runs the ONE for up to about 8 hours; it charges over USB-C (5 V 1.7 A, 2200 mAh battery)
+  status: manual
+  source: oxi_one_mk2_manual
+  pages: [10]
+  q: How long does the OXI ONE MKII battery last?
+  anchors: ["operate the ONE for up to 8 Hours"]
+- id: oxi-manual-vs-firmware
+  claim: The manual (v2.0a, May 2026) predates the current firmware; check the release notes for changes
+  status: unverified
+  source: oxi_one_mk2_releases
+- id: oxi-ab-logic-trig
+  claim: Step trig conditions can be an A:B logic condition, where A is the cycle that triggers the step and the
+    count resets after cycle B.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 51
+  q: how do A:B logic trig conditions work on the OXI One
+  anchors:
+  - The count is reset after sequencer completes cycle number B
+- id: oxi-trig-probability
+  claim: Trig probability is set per step by holding steps and turning knob 4; 100% always triggers and 0% never
+    does.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 51
+  q: what does trig probability % do on the OXI One, does 0% ever trigger
+  anchors:
+  - Default is 100% meaning a step will trigger on each sequence cycle
+- id: oxi-snapshots
+  claim: Snapshots temporarily capture all sequencer settings, notes, mutes and modulation so you can return to
+    the original state after live changes.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 120
+  q: what do snapshots do on the OXI One
+  anchors:
+  - capture the state of all of the sequencers at a point in time
+- id: oxi-midi-player-limits
+  claim: MIDI Player files must be single track, at most 8 bars and 7-note polyphony, and only note on/off data
+    is imported.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 185
+  q: what are the limits on MIDI files I load into the OXI One MIDI player
+  anchors:
+  - maximum length of 8 bars, single track and a maximum polyphony of 7 notes
+- id: oxi-midi-player-folder
+  claim: MIDI files go in the midifiles folder at the SD card root and are loaded via Load MIDI File in the project
+    menu (Shift + Perf).
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 185
+  q: where do I put midi files on the SD card for the OXI One
+  anchors:
+  - Root / midifiles folder
+- id: oxi-accumulator-modes
+  claim: The accumulator is available in mono, poly, domino and saga modes and adds scale-based pitch intervals
+    to a step each time it triggers.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 186
+  q: what does the accumulator do on OXI One and which modes have it
+  anchors:
+  - The accumulator function is available in sequencer modes, mono, poly, domino and saga
+- id: oxi-lfo-only-running
+  claim: Each sequencer has 2 LFOs, and they only run while the sequencers are playing.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 210
+  q: why isn't my OXI One LFO doing anything
+  anchors:
+  - The LFOs only operate while the sequencers are running
+- id: oxi-clock-reset-modes
+  claim: The analog clock reset setting can be Off, Pulse Reset (4ms pulse out before the first clock), or Run-Stop;
+    CV In 2 can act as reset via a TRS splitter.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 250
+  q: how do I get reset or run stop working with analog clock on OXI One
+  anchors:
+  - Short 4ms pulse is sent out as the reset signal
+- id: oxi-ble-midi
+  claim: OXI One supports BLE MIDI as central or peripheral, enabled in Config > System > Bluetooth, and a WIDI
+    dongle is advised for iPads.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 255
+  q: how do I connect OXI One to my iPad over bluetooth MIDI
+  anchors:
+  - OXI ONE is a dual role device and can operate with BLE
+- id: oxi-firmware-update
+  claim: Firmware updates run through the OXI App's Firmware page over USB with ONE in USB device mode and take
+    15 to 60 seconds.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 270
+  q: how do I update OXI One MKII firmware
+  anchors:
+  - Update takes between 15 - 60 seconds
+- id: oxi-calibration-entry
+  claim: Calibration mode is entered by holding Shift and Gen for over 2 seconds; CV covers -3V to +5V for C-1 to
+    C7.
+  status: manual
+  source: oxi_one_mk2_manual
+  pages:
+  - 273
+  q: how do I enter CV calibration mode on the OXI One
+  anchors:
+  - Hold [Shift] + hold [Gen] > 2 seconds
+- id: oxi-rel-0180-perf-layer
+  claim: Firmware 0.18.0 added a second PERF layer for Poly and Chord modes, toggled by holding PERF and tapping
+    the sequencer button, plus 3 USB MIDI virtual ports.
+  status: changelog
+  source: oxi_one_mk2_releases
+  q: which OXI One firmware added the second performance layer
+  anchors:
+  - second PERFormance layer for Poly and Chord modes
+- id: oxi-rel-0197-accumulator
+  claim: Firmware 0.19.7 added the Accumulator for Poly mode, a Groove length parameter, and project master scale
+    and root.
+  status: changelog
+  source: oxi_one_mk2_releases
+  q: when did OXI One get the poly accumulator and project master scale
+  anchors:
+  - NEW Accumulator for Poly mode
+- id: oxi-rel-0173-perf-solos
+  claim: Firmware 0.17.3 added PERF solos for Multitrack, holding SHIFT and pressing track mutes to solo, with held
+    Mute overriding solos.
+  status: changelog
+  source: oxi_one_mk2_releases
+  q: can I solo tracks in multitrack mode on the OXI One
+  anchors:
+  - New PERF Solos for Multitrack
+- id: oxi-rel-226-microtonal
+  claim: Firmware 2.2.6 added new microtonal scales and the ability to assign multiple sequencers to CV and Gate.
+  status: changelog
+  source: oxi_one_mk2_releases
+  q: which OXI One update added microtonal scales
+  anchors:
+  - New microtonal scales
+- id: oxi-rel-0180-gate-retrig
+  claim: Firmware 0.18.0 added gate retriggering for MONO mode and retrigger behavior when Gate is set to ALL in
+    UNI and LOW CV modes.
+  status: changelog
+  source: oxi_one_mk2_releases
+  q: do OXI One gate outputs retrigger on consecutive mono notes
+  anchors:
+  - Add Gate retriggering for MONO mode

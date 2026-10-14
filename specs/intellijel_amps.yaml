@@ -1,0 +1,19 @@
+device: intellijel_amps
+slugs: [intellijel-amps]
+source: intellijel_amps_manual
+hp: 6
+hp_page: 14
+hp_anchor: "6 hp"
+power:
+  plus12: 40
+  minus12: 46
+  page: 14
+  anchor: "40 mA @ +12V 46 mA @ -12V"
+jacks:
+  - {name: "CV A IN", dir: in, type: cv, page: 9}
+  - {name: "CV B IN", dir: in, type: cv, page: 9, normal: "CV A IN"}
+  - {name: "IN A", dir: in, type: audio, page: 9}
+  - {name: "IN B", dir: in, type: audio, page: 9, normal: "IN A"}
+  - {name: "OUT A", dir: out, type: audio, page: 9}
+  - {name: "OUT B", dir: out, type: audio, page: 9}
+notes: "If OUT A is unpatched, VCA A is mixed into OUT B (OUT B carries A+B). CV A IN also documented as an audio-rate modulator input for ring mod (p11). Rear 4-pin CHAIN IN/OUT link connectors are not front-panel jacks and are excluded. No +5V draw stated. Power matches ModularGrid."

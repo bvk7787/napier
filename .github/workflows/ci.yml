@@ -1,0 +1,139 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+# Actions minutes are free on a public repository and metered on a private one, where the
+# maintainer runs the same checks locally: every job skips while the repository is private.
+jobs:
+  test:
+    name: test (${{ matrix.os }}, ${{ matrix.python-version }})
+    if: ${{ !github.event.repository.private }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      PYTHONNOUSERSITE: "1"
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {os: ubuntu-latest, python-version: "3.11"}
+          - {os: ubuntu-latest, python-version: "3.12", coverage: true}
+          - {os: ubuntu-latest, python-version: "3.13"}
+          - {os: ubuntu-latest, python-version: "3.14"}
+          - {os: macos-latest, python-version: "3.12"}
+          - {os: macos-latest, python-version: "3.14"}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      # the versions in uv.lock, base + dev (which includes mcp): the tests need no network, models
+      # or manuals, so the [index] extra stays out
+      - name: Install (locked versions)
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip uv
+          uv export --frozen --no-hashes --extra dev --no-emit-project > "$RUNNER_TEMP/requirements.lock.txt"
+          python -m pip install -r "$RUNNER_TEMP/requirements.lock.txt"
+          python -m pip install -e . --no-deps
+      - name: Lint
+        run: ruff check src tests
+      - name: Tests
+        if: ${{ !matrix.coverage }}
+        run: pytest -q
+      - name: Tests, with coverage
+        if: ${{ matrix.coverage }}
+        shell: bash
+        run: |
+          # 71% when this began (2026-10-13): the floor stops a drop, raise it as it climbs
+          pytest -q --cov --cov-report=term --cov-fail-under=70
+          coverage report --format=markdown >> "$GITHUB_STEP_SUMMARY"
+      - name: The CLI starts and finds its data
+        run: |
+          napier --version
+          napier status > /dev/null
+          napier source list --json > /dev/null
+          napier rack scenarios --brief
+
+  typecheck:
+    name: typecheck (mypy)
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Install (locked versions)
+        shell: bash
+        run: |
+          python -m pip install --upgrade pip uv
+          uv export --frozen --no-hashes --extra dev --no-emit-project > "$RUNNER_TEMP/requirements.lock.txt"
+          python -m pip install -r "$RUNNER_TEMP/requirements.lock.txt"
+          python -m pip install -e . --no-deps
+      - name: mypy (settings in pyproject.toml)
+        run: mypy
+
+  package:
+    # what `pip install napier` gives someone who hasn't cloned: the sdist and wheel build, their
+    # metadata passes twine, and the installed command runs and points at the clone it needs
+    name: package (build, install, run)
+    if: ${{ !github.event.repository.private }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Build the sdist and wheel
+        run: |
+          python -m pip install --upgrade pip uv
+          uv build
+          ls -l dist
+      - name: Check the metadata
+        run: uvx twine check --strict dist/*
+      - name: Check what the sdist holds
+        shell: bash
+        run: |
+          tar tzf dist/*.tar.gz > "$RUNNER_TEMP/sdist.txt"
+          for f in sources.yaml facts/ specs/ catalog/modules.yaml examples/racks/layout.yaml LICENSE NOTICE uv.lock; do
+            grep -q "$f" "$RUNNER_TEMP/sdist.txt" || { echo "missing from the sdist: $f"; exit 1; }
+          done
+          if grep -q "/local/" "$RUNNER_TEMP/sdist.txt"; then echo "the sdist holds a local/ overlay"; exit 1; fi
+      - name: Install the wheel into a clean venv
+        run: |
+          python -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install dist/*.whl
+      - name: The installed command says where to get the data
+        working-directory: ${{ runner.temp }}     # away from the checkout
+        shell: bash
+        run: |
+          export PATH="$RUNNER_TEMP/venv/bin:$PATH" NAPIER_HOME="$RUNNER_TEMP/home"
+          napier --version
+          napier --help > /dev/null
+          if napier status > out.txt 2>&1; then echo "status should fail outside a clone"; exit 1; fi
+          cat out.txt
+          grep -q "git clone https://github.com/bvk7787/napier" out.txt
+          if grep -q Traceback out.txt; then exit 1; fi

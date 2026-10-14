@@ -1,0 +1,26 @@
+# Challenge log: every challenge to a rack default and the owner's response, newest last.
+# kind: layout | swap | role | purchase | sale. outcome: open | testing | accepted | partial | rejected.
+# Check this log before proposing a challenge: don't re-raise a rejected one without new evidence.
+
+challenges:
+  - id: c001
+    date: 2026-10-01
+    kind: sale
+    title: Sell Beads
+    default: Beads stays on send B of the Xer Mixa
+    hypothesis: Beads is used on one patch in five; selling it frees 14 HP for Step 8 and 110 mA of +12V
+    outcome: rejected
+    response: The granular send is what makes the drum loops feel alive; it stays until something replaces that job
+    modules: [mutable-instruments-beads]
+
+  - id: c002
+    date: 2026-10-05
+    kind: layout
+    title: Swap Ikarie and Sample Drum
+    default: Ikarie at row 3 HP 29, the Sample Drum to its right
+    hypothesis: The Sample Drum is played more than Ikarie, so it should sit nearer the centre
+    test: Play two sessions with them swapped
+    outcome: accepted
+    response: Better reach, and the patch cable from the Sample Drum out to Ikarie got shorter
+    learned: Placement follows which module is touched most, not signal order alone
+    modules: [erica-synths-sample-drum-, bastl-instruments-ikarie]

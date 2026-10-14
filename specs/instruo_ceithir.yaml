@@ -1,0 +1,87 @@
+device: instruo_ceithir
+slugs: [instruo-ceithir]
+source: instruo_ceithir_manual
+hp: 58
+hp_page: 4
+hp_anchor: "Width: 58HP"
+power:
+  plus12: 410
+  minus12: 390
+  page: 4
+  anchor: "+12: 410mA"
+jacks:
+  - {name: "Input (alpha)", dir: in, type: audio, page: 5, label: "Input"}
+  - {name: "Inverting Input (alpha)", dir: in, type: audio, page: 5, label: "Inverting Input"}
+  - {name: "Low Pass Output (alpha)", dir: out, type: audio, page: 5, label: "Low Pass Output"}
+  - {name: "Band Pass Output (alpha)", dir: out, type: audio, page: 5, label: "Band Pass Output"}
+  - {name: "High Pass Output (alpha)", dir: out, type: audio, page: 5, label: "High Pass Output"}
+  - {name: "Notch Output (alpha)", dir: out, type: audio, page: 5, label: "Notch Output"}
+  - {name: "FM Input (alpha)", dir: in, type: cv, page: 5, label: "FM Input", also: [audio]}
+  - {name: "1V/Oct Input (alpha)", dir: in, type: pitch, page: 5, label: "1V/Oct Input"}
+  - {name: "Q CV Input (alpha)", dir: in, type: cv, page: 5, label: "Q CV Input"}
+  - {name: "Strike Input (alpha)", dir: in, type: trigger, page: 5, label: "Strike Input", also: [gate, audio]}
+  - {name: "Morph CV Input (alpha)", dir: in, type: cv, page: 5, label: "Morph CV Input"}
+  - {name: "Width CV Input (alpha)", dir: in, type: cv, page: 5, label: "Width CV Input"}
+  - {name: "Phase Shift CV Input (alpha)", dir: in, type: cv, page: 5, label: "Phase Shift CV Input"}
+  - {name: "Stereo Output L (alpha)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Stereo Output R (alpha)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Level CV Inputs (alpha)", dir: in, type: cv, page: 5, label: "Level CV Inputs"}
+  - {name: "Input (beta)", dir: in, type: audio, page: 5, label: "Input"}
+  - {name: "Inverting Input (beta)", dir: in, type: audio, page: 5, label: "Inverting Input"}
+  - {name: "Low Pass Output (beta)", dir: out, type: audio, page: 5, label: "Low Pass Output"}
+  - {name: "Band Pass Output (beta)", dir: out, type: audio, page: 5, label: "Band Pass Output"}
+  - {name: "High Pass Output (beta)", dir: out, type: audio, page: 5, label: "High Pass Output"}
+  - {name: "Notch Output (beta)", dir: out, type: audio, page: 5, label: "Notch Output"}
+  - {name: "FM Input (beta)", dir: in, type: cv, page: 5, label: "FM Input", also: [audio]}
+  - {name: "1V/Oct Input (beta)", dir: in, type: pitch, page: 5, label: "1V/Oct Input"}
+  - {name: "Q CV Input (beta)", dir: in, type: cv, page: 5, label: "Q CV Input"}
+  - {name: "Strike Input (beta)", dir: in, type: trigger, page: 5, label: "Strike Input", also: [gate, audio]}
+  - {name: "Morph CV Input (beta)", dir: in, type: cv, page: 5, label: "Morph CV Input"}
+  - {name: "Width CV Input (beta)", dir: in, type: cv, page: 5, label: "Width CV Input"}
+  - {name: "Phase Shift CV Input (beta)", dir: in, type: cv, page: 5, label: "Phase Shift CV Input"}
+  - {name: "Stereo Output L (beta)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Stereo Output R (beta)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Level CV Inputs (beta)", dir: in, type: cv, page: 5, label: "Level CV Inputs"}
+  - {name: "Input (gamma)", dir: in, type: audio, page: 5, label: "Input"}
+  - {name: "Inverting Input (gamma)", dir: in, type: audio, page: 5, label: "Inverting Input"}
+  - {name: "Low Pass Output (gamma)", dir: out, type: audio, page: 5, label: "Low Pass Output"}
+  - {name: "Band Pass Output (gamma)", dir: out, type: audio, page: 5, label: "Band Pass Output"}
+  - {name: "High Pass Output (gamma)", dir: out, type: audio, page: 5, label: "High Pass Output"}
+  - {name: "Notch Output (gamma)", dir: out, type: audio, page: 5, label: "Notch Output"}
+  - {name: "FM Input (gamma)", dir: in, type: cv, page: 5, label: "FM Input", also: [audio]}
+  - {name: "1V/Oct Input (gamma)", dir: in, type: pitch, page: 5, label: "1V/Oct Input"}
+  - {name: "Q CV Input (gamma)", dir: in, type: cv, page: 5, label: "Q CV Input"}
+  - {name: "Strike Input (gamma)", dir: in, type: trigger, page: 5, label: "Strike Input", also: [gate, audio]}
+  - {name: "Morph CV Input (gamma)", dir: in, type: cv, page: 5, label: "Morph CV Input"}
+  - {name: "Width CV Input (gamma)", dir: in, type: cv, page: 5, label: "Width CV Input"}
+  - {name: "Phase Shift CV Input (gamma)", dir: in, type: cv, page: 5, label: "Phase Shift CV Input"}
+  - {name: "Stereo Output L (gamma)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Stereo Output R (gamma)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Level CV Inputs (gamma)", dir: in, type: cv, page: 5, label: "Level CV Inputs"}
+  - {name: "Input (delta)", dir: in, type: audio, page: 5, label: "Input"}
+  - {name: "Inverting Input (delta)", dir: in, type: audio, page: 5, label: "Inverting Input"}
+  - {name: "Low Pass Output (delta)", dir: out, type: audio, page: 5, label: "Low Pass Output"}
+  - {name: "Band Pass Output (delta)", dir: out, type: audio, page: 5, label: "Band Pass Output"}
+  - {name: "High Pass Output (delta)", dir: out, type: audio, page: 5, label: "High Pass Output"}
+  - {name: "Notch Output (delta)", dir: out, type: audio, page: 5, label: "Notch Output"}
+  - {name: "FM Input (delta)", dir: in, type: cv, page: 5, label: "FM Input", also: [audio]}
+  - {name: "1V/Oct Input (delta)", dir: in, type: pitch, page: 5, label: "1V/Oct Input"}
+  - {name: "Q CV Input (delta)", dir: in, type: cv, page: 5, label: "Q CV Input"}
+  - {name: "Strike Input (delta)", dir: in, type: trigger, page: 5, label: "Strike Input", also: [gate, audio]}
+  - {name: "Morph CV Input (delta)", dir: in, type: cv, page: 5, label: "Morph CV Input"}
+  - {name: "Width CV Input (delta)", dir: in, type: cv, page: 5, label: "Width CV Input"}
+  - {name: "Phase Shift CV Input (delta)", dir: in, type: cv, page: 5, label: "Phase Shift CV Input"}
+  - {name: "Stereo Output L (delta)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Stereo Output R (delta)", dir: out, type: audio, page: 5, label: "Stereo Outputs"}
+  - {name: "Level CV Inputs (delta)", dir: in, type: cv, page: 5, label: "Level CV Inputs"}
+  - {name: "Primary 1V/Oct Input", dir: in, type: pitch, page: 5}
+  - {name: "Secondary 1V/Oct Input", dir: in, type: pitch, page: 5}
+  - {name: "Master Stereo Output L", dir: out, type: audio, page: 5, label: "Master Stereo Outputs"}
+  - {name: "Master Stereo Output R", dir: out, type: audio, page: 5, label: "Master Stereo Outputs"}
+notes: >-
+  Jack names from the panel key (p5); four filter channels named alpha, beta, gamma, delta (p7).
+  Depth 27mm and -12V 390mA (p4); no +5V draw stated. ModularGrid lists 380/380mA and 30mm, so the
+  manual draw is higher on both rails. Input of alpha normals to all other inputs; gamma Input normals
+  to delta (p6). Strike Input pings on rising edges; audio-rate signals act like hard sync (p11).
+  Patching a filter's Stereo Outputs removes it from the Master Stereo Outputs mix (p14).
+  Level CV Inputs are unipolar positive (p18).

@@ -1,0 +1,82 @@
+# Facts for instruo_cnoc. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: cnoc-mode-toggle
+  claim: The Mode toggle selects ASR (left), AR (centre) or Looping (right), and Looping cycle times range from
+    about 1ms (about 1 kHz) to about 20s (about 0.05 Hz).
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 8
+  q: How fast and slow can cnoc cycle when used as an LFO?
+  anchors:
+  - Cycle times in Looping Mode range between ~1ms
+- id: cnoc-slew-portamento
+  claim: For portamento, run pitch CV into the Signal input in ASR mode; Attack sets glide on ascending notes and
+    Release sets glide on descending notes.
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 14
+  q: Can I set different glide amounts for rising and falling notes with cnoc?
+  anchors:
+  - The Attack fader will set the amount of portamento between ascending notes
+- id: cnoc-eoc-gate
+  claim: The EOC output gives a 1ms 10V trigger at the end of each cycle, while the Gate output is high during either
+    the Attack or Release stage as chosen by the Stage Gate toggle.
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 6
+  q: What does the end of cycle output on cnoc put out?
+  anchors:
+  - The EOC output will output a 1ms trigger signal at the end of each cycle
+- id: cnoc-response-curve
+  claim: The Response Curve switch selects linear (left) or log/exp (right), where the right position gives a logarithmic
+    attack and an exponential release.
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 7
+  q: how do I make the cnoc envelope curve exponential
+  anchors:
+  - This setting will have a logarithmic Attack stage and an exponential Release stage
+- id: cnoc-output-ranges
+  claim: The Bipolar output swings 10Vpp while the Unipolar Positive output runs 0V to 10V.
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 6
+  q: what voltage range does the cnoc unipolar output have
+  anchors:
+  - 'Unipolar Positive: The Unipolar Positive output is a unipolar positive control voltage output'
+- id: cnoc-trigger-button
+  claim: The Trigger/Charge Direction button manually fires the function and also soft-syncs its charge direction.
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 8
+  q: what does the button on cnoc do
+  anchors:
+  - manual soft synchronization of the function's charge direction
+- id: cnoc-quadrature
+  claim: Two cnocs in AR mode with Stage Gate set to release and each Gate output patched into the other's Signal
+    input retrigger each other to produce two triangle LFOs 90 degrees apart.
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 15
+  q: how do I get two LFOs 90 degrees out of phase with two cnocs
+  anchors:
+  - creates two triangle waveforms that are 90 degrees out of phase
+- id: cnoc-cv-summed
+  claim: The Attack CV and Release CV inputs are bipolar and sum with their fader positions.
+  status: manual
+  source: instruo_cnoc_manual
+  pages:
+  - 7
+  q: does the attack cv input on cnoc add to the fader
+  anchors:
+  - The Attack CV input is a bipolar control voltage input for the Attack parameter

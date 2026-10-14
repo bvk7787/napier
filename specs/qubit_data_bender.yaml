@@ -1,0 +1,33 @@
+device: qubit_data_bender
+slugs: [qu-bit-electronix-data-bender]
+source: qubit_data_bender_manual
+hp: 14
+hp_page: 2
+hp_anchor: "Width: 14HP"
+power:
+  plus12: 58
+  minus12: 60
+  plus5: 0
+  page: 2
+  anchor: "+12V=58mA, -12V=60mA, +5V=0mA"
+jacks:
+  - {name: "Time CV Input", dir: in, type: cv, page: 5}
+  - {name: "Repeats CV Input", dir: in, type: cv, page: 6}
+  - {name: "Mix CV Input", dir: in, type: cv, page: 6}
+  - {name: "Bend CV Input", dir: in, type: cv, page: 7, also: [pitch]}
+  - {name: "Bend Gate Input", dir: in, type: gate, page: 7}
+  - {name: "Break CV Input", dir: in, type: cv, page: 8}
+  - {name: "Break Gate Input", dir: in, type: gate, page: 8}
+  - {name: "Corrupt CV Input", dir: in, type: cv, page: 11}
+  - {name: "Corrupt Gate Input", dir: in, type: gate, page: 11, also: [trigger]}
+  - {name: "Freeze Gate Input", dir: in, type: gate, page: 12}
+  - {name: "Clock Input", dir: in, type: clock, page: 12}
+  - {name: "Audio Input Left", dir: in, type: audio, page: 17}
+  - {name: "Audio Input Right", dir: in, type: audio, page: 17, normal: "Audio Input Left"}
+  - {name: "Audio Output Left", dir: out, type: audio, page: 17}
+  - {name: "Audio Output Right", dir: out, type: audio, page: 17}
+notes: >-
+  Front panel diagram (p. 4) is image-only; jacks taken from the per-function descriptions (pp. 5-17), named as
+  the manual's "<X> CV Input"/"<X> Gate Input" spec lines. Bend CV tracks 1V/Oct in Micro Mode (p. 9). Corrupt
+  Gate can be reconfigured as a clock/buffer reset input (p. 15). Left audio input normals to both channels when
+  Right is unpatched (p. 17). Power matches ModularGrid.

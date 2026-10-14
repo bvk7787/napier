@@ -1,0 +1,41 @@
+device: strymon_starlab
+slugs: [strymon-starlab]
+source: strymon_starlab_manual
+hp: 28
+hp_page: 25
+hp_anchor: "28hp"
+power:
+  plus12: 210
+  minus12: 210
+  plus5: 0
+  page: 25
+  anchor: "+12V rail: 210mA"
+jacks:
+  - {name: "LEFT IN", dir: in, type: audio, page: 5}
+  - {name: "RIGHT IN", dir: in, type: audio, page: 5, label: "LEFT/RIGHT IN"}
+  - {name: "LEFT OUT", dir: out, type: audio, page: 5}
+  - {name: "RIGHT OUT", dir: out, type: audio, page: 5}
+  - {name: "INFINITE CV", dir: in, type: trigger, page: 33, label: "INFINITE"}
+  - {name: "IN GATE CV", dir: in, type: gate, page: 33, label: "IN GATE"}
+  - {name: "FAVORITE CV", dir: in, type: trigger, page: 33, label: "FAVORITE"}
+  - {name: "SHIMMER CV", dir: in, type: cv, page: 33, label: "SHIMMER"}
+  - {name: "INTERVAL CV", dir: in, type: cv, page: 33, label: "INTERVAL"}
+  - {name: "HIGH DAMP CV", dir: in, type: cv, page: 34, label: "HIGH DAMP"}
+  - {name: "GLIMMER CV", dir: in, type: cv, page: 34, label: "GLIMMER"}
+  - {name: "LFO CLK IN", dir: in, type: clock, page: 34}
+  - {name: "SPEED CV", dir: in, type: cv, page: 34, label: "SPEED"}
+  - {name: "DEPTH CV", dir: in, type: cv, page: 34, label: "DEPTH"}
+  - {name: "EXT LFO IN", dir: in, type: cv, page: 34}
+  - {name: "TAP/TRIG CV", dir: in, type: clock, page: 34, label: "TAP/TRIG", also: [trigger]}
+  - {name: "ECHO ON CV", dir: in, type: gate, page: 35, label: "ECHO ON"}
+  - {name: "FEEDBACK CV", dir: in, type: cv, page: 35, label: "FEEDBACK"}
+  - {name: "CLEAR CV", dir: in, type: trigger, page: 35, label: "CLEAR"}
+  - {name: "DECAY CV", dir: in, type: cv, page: 35, label: "DECAY"}
+  - {name: "WET CV", dir: in, type: cv, page: 35, label: "WET"}
+  - {name: "SIZE/PITCH CV", dir: in, type: pitch, page: 36, label: "SIZE/PITCH"}
+notes: >-
+  Audio I/O from p. 5; CV jacks from the Control Voltage Inputs Quick Reference (Appendix 3, pp. 33-36), 18 inputs.
+  The manual has no jack-by-jack panel legend in text, so names follow the manual's "<PARAM> CV" wording. No outputs
+  besides LEFT/RIGHT OUT. RIGHT IN is not described as normalled; manual only says use LEFT IN for mono. TAP/TRIG
+  CV is a delay clock in delay mode and a pluck trigger in Karplus-Strong mode (p. 35). SIZE/PITCH CV is 1V/oct.
+  INFINITE/IN GATE/ECHO ON CV can be latching or momentary (p. 31). Power matches ModularGrid.

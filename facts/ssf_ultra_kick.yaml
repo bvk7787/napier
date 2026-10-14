@@ -1,0 +1,78 @@
+# Facts for ssf_ultra_kick. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: uk-trig-threshold
+  claim: TRIG fires on any positive signal rising from 0 to 2.5 V
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 3
+  q: What trigger voltage does the SSF Ultra-Kick need?
+  anchors:
+  - transitions between 0 and 2.5V
+- id: uk-voct
+  claim: A V/OCT input lets the Ultra-Kick track pitch for bass and pitched percussion
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 3
+  q: Can the Ultra-Kick play pitched notes from a sequencer?
+  anchors:
+  - V/OCT input is included for properly pitch tracking
+- id: uk-resonate-self-osc
+  claim: Triggers are needed to make sound except when RESONATE is at or near MAX, where the core self-oscillates.
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 4
+  q: Can the Ultra Kick make sound without a trigger?
+  anchors:
+  - This is the special case when feedback is high enough to support self-oscillation.
+- id: uk-duck-output
+  claim: The DUCK output provides a scaled, inverted and offset copy of the envelope for ducking external VCAs.
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 4
+  q: what does the DUCK output jack on the Ultra Kick put out
+  anchors:
+  - A scaled, inverted and positively offset version of the envelope for ducking external VCAs
+- id: uk-frequency-range
+  claim: The FREQUENCY control sets the main resonator base pitch over roughly 8 to 80Hz, acting as an offset to
+    envelope and V/OCT modulation.
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 5
+  q: What frequency range does the Ultra Kick FREQUENCY knob cover?
+  anchors:
+  - The range of this control is approximately 8 to 80Hz.
+- id: uk-bass-drive-range
+  claim: The BASS DRIVE side-chain high pass filter ranges from about 20Hz to 530Hz.
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 7
+  q: What's the cutoff range of the bass drive sidechain filter?
+  anchors:
+  - The frequency range of the BASS DRIVE filter is approximately 20Hz-530Hz.
+- id: uk-dynamics-bypass
+  claim: With DYNAMICS fully at bypass, BASS DRIVE and GAIN-DIST do nothing because they are part of the compressor.
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 8
+  q: Why don't the bass drive and gain knobs do anything on my Ultra Kick?
+  anchors:
+  - these features will do nothing when the DYNAMICS control is set to 100% bypass
+- id: uk-calibration-flat
+  claim: During V/OCT calibration, if tuning goes flat as voltage rises, turn the trimmer clockwise in tiny steps.
+  status: manual
+  source: ssf_ultra_kick_manual
+  pages:
+  - 8
+  q: Which way do I turn the Ultra Kick trimmer if the V/OCT tracking goes flat?
+  anchors:
+  - If falling flat as you go up in voltage

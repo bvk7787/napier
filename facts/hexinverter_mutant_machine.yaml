@@ -1,0 +1,33 @@
+# Facts for hexinverter_mutant_machine. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: mm-overview
+  claim: Mutant Machine is a 29HP microcontroller-free analog percussion engine built from MEMBRANE (two VCOs) and SNAPPY
+    (noise) sections
+  status: manual
+  source: hexinverter_mutant_machine_manual
+  pages:
+  - 1
+  q: What is the Hexinverter Mutant Machine?
+  anchors:
+  - 29HP eurorack format synthesizer module
+- id: mm-wavescanner
+  claim: The WAVESCANNER scans the MEMBRANE waveforms automatically, and the ENABLE input gates it on and off
+  status: manual
+  source: hexinverter_mutant_machine_manual
+  pages:
+  - 2
+  q: How do I turn the Mutant Machine wavescanner on and off with a gate?
+  anchors:
+  - The scanner can be gated on and off via CV or gate with the ENABLE input
+- id: mm-wave1-ext
+  claim: Patching audio into the WAVE 1 input replaces WAVE 1 in the signal path
+  status: manual
+  source: hexinverter_mutant_machine_manual
+  pages:
+  - 2
+  q: Can I run an external sound through the Mutant Machine membrane?
+  anchors:
+  - An external audio source can replace WAVE 1 in the signal path

@@ -1,0 +1,22 @@
+device: intellijel_steppy_1u
+slugs: [intellijel-steppy-1u]
+source: intellijel_steppy_1u_manual
+hp: 28
+hp_page: 39
+hp_anchor: "Width | 28 hp"
+power:
+  plus12: 15
+  minus12: 1
+  page: 39
+  anchor: "15 mA @ +12V | <1 mA @ -12V"
+jacks:
+  - {name: "OUT A", dir: out, type: gate, page: 11}
+  - {name: "OUT B", dir: out, type: gate, page: 11}
+  - {name: "OUT C", dir: out, type: gate, page: 11}
+  - {name: "OUT D", dir: out, type: gate, page: 11}
+  - {name: "CLOCK (CLK) IN", dir: in, type: clock, page: 11}
+  - {name: "RESET (RST) IN", dir: in, type: trigger, also: [gate], page: 11}
+notes: >-
+  1U (Intellijel format) module. Manual states -12V draw as "<1 mA"; recorded as 1 (upper bound).
+  ModularGrid lists 0mA on -12V. +5V not stated. Gate outputs are +5V. Steppy will not play without a
+  CLK input. RST input acts as reset (default) or run/stop gate in RUN mode.

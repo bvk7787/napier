@@ -1,0 +1,28 @@
+device: intellijel_buff_mult_1u
+slugs: [intellijel-buff-mult-1u]
+source: intellijel_buff_mult_1u_manual
+hp: 14
+hp_page: 6
+hp_anchor: "14 hp"
+power:
+  plus12: 4
+  minus12: 4
+  page: 6
+  anchor: "4 mA @ -12V"
+jacks:
+  - {name: "Upper IN [1]", dir: in, type: cv, also: [audio], page: 6, label: "upper section's left-most jack [1]"}
+  - {name: "Upper OUT 1 [2]", dir: out, type: cv, also: [audio], page: 6, label: "other four jacks [2]"}
+  - {name: "Upper OUT 2 [2]", dir: out, type: cv, also: [audio], page: 6, label: "other four jacks [2]"}
+  - {name: "Upper OUT 3 [2]", dir: out, type: cv, also: [audio], page: 6, label: "other four jacks [2]"}
+  - {name: "Upper OUT 4 [2]", dir: out, type: cv, also: [audio], page: 6, label: "other four jacks [2]"}
+  - {name: "Lower IN [3]", dir: in, type: cv, also: [audio], page: 6, label: "bottom section's left-most jack [3]", normal: "Upper IN [1]"}
+  - {name: "Lower OUT 1 [4]", dir: out, type: cv, also: [audio], page: 6, label: "jacks [4]"}
+  - {name: "Lower OUT 2 [4]", dir: out, type: cv, also: [audio], page: 6, label: "jacks [4]"}
+  - {name: "Lower OUT 3 [4]", dir: out, type: cv, also: [audio], page: 6, label: "jacks [4]"}
+  - {name: "Lower OUT 4 [4]", dir: out, type: cv, also: [audio], page: 6, label: "jacks [4]"}
+notes: >-
+  Manual identifies jacks only by callout numbers [1]-[4], no printed labels; names are
+  descriptive. Dual 1x4 per the title and "duplicated across all 8 outputs"; the manual text says
+  the lower section duplicates to "the other three jacks [4]", which conflicts with 1x4 and 8
+  outputs, so 4 lower outputs are listed. Accepts audio or CV. Power per spec table: 4 mA @ +12V,
+  4 mA @ -12V. ModularGrid lists -12V as 17mA, which disagrees with the manual; +5V not stated.

@@ -1,0 +1,81 @@
+# Facts for instruo_larachd. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: larachd-source-toggle
+  claim: The Source Toggle picks the normalled source for the Enhance and Envelope Follower inputs, with up selecting
+    a mono sum of the Stereo Line Input, centre muting it, and down selecting the Microphone.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 7
+  q: How do I make the larachd envelope follower listen to the built-in mic?
+  anchors:
+  - If the toggle is in the down position, the Microphone is the normalled input source
+- id: larachd-stereo-level-gain
+  claim: The Stereo Level knob gives roughly unity gain fully anticlockwise and about +40dB of available gain for
+    bringing line level up to modular level.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 6
+  q: How much gain can larachd add to a line level signal?
+  anchors:
+  - The available gain range is approximately +40dB
+- id: larachd-trigger-duration
+  claim: The A Button Trigger Duration knob sets the length of the footswitch trigger from 5ms to 500ms.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 10
+  q: How long can the trigger from the larachd footswitch A button be?
+  anchors:
+  - Trigger duration range is 5ms to 500ms
+- id: larachd-right-out-mono
+  claim: If the Right Output is unpatched, its signal is summed into the Left Output as a mono source.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 6
+  q: What happens to the right channel on larachd if I only use the left output?
+  anchors:
+  - If the Right Output is unpatched then its signal will sum with the Left Output
+- id: larachd-enhance-tanh
+  claim: The Enhance circuit uses tanh[3]-style tangential distortion limiting for soft clipping, limiting and waveshaping.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 7
+  q: What kind of processing does the larachd Enhance section do?
+  anchors:
+  - This circuit is used for soft clipping, limiting, and waveshaping.
+- id: larachd-response-curve
+  claim: The Response Curve switch selects linear (left) or logarithmic attack with exponential release (right)
+    for the envelope follower.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 8
+  q: How do I change the envelope follower curve on larachd?
+  anchors:
+  - a logarithmic attack/exponential release response curve will be selected
+- id: larachd-comparator-gate
+  claim: The Comparator Gate Output goes high whenever the input exceeds the Comparator Threshold.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 9
+  q: Can larachd make a gate from an audio signal?
+  anchors:
+  - If an input signal exceeds the Comparator Threshold
+- id: larachd-latching-flip
+  claim: The Latching Gate Button and the footswitch B button each flip the B gate output, so pressing one while
+    the other holds it high pulls it low.
+  status: manual
+  source: instruo_larachd_manual
+  pages:
+  - 11
+  q: Why does the larachd B gate turn off when I press the latch button?
+  anchors:
+  - pressing the Latching Gate Button will flip the state of the B - Button Gate Output

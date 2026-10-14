@@ -1,0 +1,25 @@
+device: intellijel_noise_tools
+slugs: [intellijel-noise-tools-1u]
+source: intellijel_noise_tools_manual
+hp: 22
+hp_page: 11
+hp_anchor: "22 hp"
+power:
+  plus12: 20
+  minus12: 15
+  page: 11
+  anchor: "20 mA @ +12V 15 mA @ -12V"
+jacks:
+  - {name: "PULSE", dir: out, type: gate, page: 9}
+  - {name: "PINK", dir: out, type: audio, page: 9, also: [cv]}
+  - {name: "WHITE", dir: out, type: audio, page: 9, also: [cv]}
+  - {name: "TRIG", dir: in, type: trigger, page: 9, also: [clock], normal: "PULSE"}
+  - {name: "SAMPLE IN", dir: in, type: cv, page: 9, also: [audio], normal: "WHITE"}
+  - {name: "HOLD", dir: out, type: cv, page: 10}
+  - {name: "SLEW IN", dir: in, type: cv, page: 10, also: [pitch], normal: "HOLD"}
+  - {name: "SLEW OUT", dir: out, type: cv, page: 10}
+notes: >-
+  1U (Intellijel) module. PULSE is a 5V gate; TRIG falls back to the internal pulse generator when
+  unpatched; SAMPLE IN is normalled to WHITE noise; SLEW IN is normalled to HOLD. Noise outputs are
+  documented as modulation sources too. Manual power (20 mA +12V, 15 mA -12V, no +5V stated) is lower
+  than ModularGrid's 30/30 mA.

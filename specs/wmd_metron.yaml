@@ -1,0 +1,42 @@
+device: wmd_metron
+slugs: [wmd-metron-black]
+source: wmd_metron_manual
+hp: 36
+hp_page: null
+hp_anchor: "Width: 36HP"
+power:
+  plus12: 240
+  minus12: 0
+  plus5: 0
+  page: null
+  anchor: "Maximum Power Consumption: +12V: 240mA, -12V: 0mA"
+jacks:
+  - {name: "CLOCK IN", dir: in, type: clock, page: null}
+  - {name: "RESET IN", dir: in, type: trigger, page: null}
+  - {name: "ASSGN1 IN", dir: in, type: gate, also: [cv], page: null}
+  - {name: "ASSGN2 IN", dir: in, type: gate, also: [cv], page: null}
+  - {name: "Channel Output 1", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 2", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 3", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 4", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 5", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 6", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 7", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 8", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 9", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 10", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 11", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 12", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 13", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 14", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 15", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "Channel Output 16", dir: out, type: gate, also: [trigger], page: null, label: "Channel Outputs 1-16"}
+  - {name: "CLOCK OUT", dir: out, type: clock, page: null}
+  - {name: "RESET OUT", dir: out, type: trigger, page: null}
+notes: >-
+  Web manual (no page numbers). Power is the stated maximum (typical is +12V 180mA); rear-connections
+  section says no power is drawn from +5V or -12V. Front panel overview lists no jacks; the jack list
+  comes from the Specs Inputs/Outputs sections: CLOCK IN, RESET IN, ASSGN1/2 IN (0-5V analog, used as
+  gates and as CV for ROLL/LOOP), Channel Outputs 1-16 (0/10V gates or bursts; per-output names
+  constructed), CLOCK OUT, RESET OUT (END/RST/PRE/RUN modes; RUN holds high). SyncBus header normals to
+  CLOCK IN/RESET IN. USB Mini, SyncBus, EXP and S.Bus are rear connections and not listed.

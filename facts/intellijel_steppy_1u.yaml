@@ -1,0 +1,141 @@
+# Facts for intellijel_steppy_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: steppy-run-mode
+  claim: Holding the SAVE RST button at boot toggles the RST input between Reset mode and Run mode, where a high
+    gate both resets and plays the patterns and a low gate stops them.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 12
+  q: Can I start and stop Steppy remotely with a gate?
+  anchors:
+  - Hold the SAVE RST button on boot up to toggle between RUN and RESET modes
+- id: steppy-pattern-length
+  claim: In Play Mode, long-pressing a step button for over a second makes it the last step of the pattern, with
+    the final step pulsing yellow.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 14
+  q: How do I change the number of steps in a Steppy track?
+  anchors:
+  - You can set the length of the pattern by long-pressing (>1 sec) the button you wish to be the final step
+- id: steppy-loopy
+  claim: With Loopy enabled, holding two step buttons in Play mode loops playback between them, and on release the
+    pattern resumes where it would have been without the loop.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 18
+  q: What happens to Steppy's timing when I let go of a Loopy loop?
+  anchors:
+  - the pattern reverts to playing exactly the step it would have played had you not looped a section
+- id: steppy-clock-div
+  claim: Each track has its own clock division in Edit mode, from /1 on the leftmost value button to /64 on the
+    rightmost, and long-pressing a value applies it to all four tracks.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 22
+  q: how do I set the clock division for each track on Steppy
+  anchors:
+  - with no clock division (/1) occurring at the leftmost button
+- id: steppy-swing-range
+  claim: Swing follows MPC-style values from 50% (none) to 78% and delays every other step; when combined with Delay
+    the offsets add up and Steppy shortens gates so every step still fires.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 23
+  q: what swing amounts can Steppy do
+  anchors:
+  - Swing options conform to MPC "standard" (with the addition of 78%)
+- id: steppy-ratchets
+  claim: Ratchets are set per step in Step Edit mode via the flashing CLK button, with values of 1, 2, 4, 6, 8,
+    12 or random repeats per step.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 32
+  q: how many ratchets can a Steppy step have
+  anchors:
+  - Ratchets range from 1 (no ratcheting, at the far left); to 2, 4, 6, 8, 12, and random
+- id: steppy-tap-record
+  claim: Holding SELECT while pressing EDIT enters Tap Recording mode, where the top-left buttons record triggers
+    live into tracks A to D in sync with the clock and EDIT exits.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 34
+  q: how do I enter Tap Recording mode on Steppy
+  anchors:
+  - Hold the SELECT button while pressing the EDIT button
+- id: steppy-panic
+  claim: In Select mode, long-pressing RESET for over a second sends gate off to all outputs, a panic for stuck
+    gates when the clock stops.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 19
+  q: one of my Steppy outputs is stuck high, how do I clear it
+  anchors:
+  - you'll send a gate off to all the outputs
+- id: steppy-erase-presets
+  claim: To erase all presets, power Steppy on while long-pressing LOAD; unsaved changes are lost at power off since
+    it reloads the last saved or loaded preset.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 29
+  q: how do I wipe all presets on Steppy
+  anchors:
+  - To erase ALL presets from memory, turn off Steppy
+- id: steppy-delayed-load
+  claim: Long-pressing a preset button on the LOAD page queues that preset to load when the current pattern on Track
+    1 finishes its cycle.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 28
+  q: how do I delay loading a Steppy preset until the current pattern finishes its cycle
+  anchors:
+  - the new preset will not load until the current pattern completes the cycle on Track 1
+- id: steppy-1u-3u-toggle
+  claim: If Steppy 1U's button functions seem inverted it is running the 3U orientation, and holding SELECT at startup
+    toggles back to the 1U layout.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 37
+  q: why are all the buttons on my Steppy 1U doing the wrong thing
+  anchors:
+  - simply hold the SELECT button at startup, and the orientation will toggle back
+- id: steppy-copy-track
+  claim: In Select mode, holding a source track button and pressing a destination track button copies the gate pattern
+    only, not parameters like swing or probability.
+  status: manual
+  source: intellijel_steppy_1u_manual
+  pages:
+  - 36
+  q: how do I copy a pattern from track A to track B on Steppy
+  anchors:
+  - While holding the source track's button, press the button corresponding to the track you want to copy to
+
+# ---- Firmware changelog
+- id: steppy-124-reset
+  claim: Firmware 1.2.4 improved reset handling
+  status: changelog
+  source: intellijel_steppy_1u_firmware_notes
+  q: What changed in Steppy 1U firmware 1.2.4?
+  anchors:
+  - Improved Reset handling
+- id: steppy-1230-first-gate
+  claim: Since 1.2.3.0 the first gate after the clock stops is no longer extra long
+  status: changelog
+  source: intellijel_steppy_1u_firmware_notes
+  q: Why did Steppy play a really long first gate when the sequence started?
+  anchors:
+  - prevent a really long gate when the sequence starts

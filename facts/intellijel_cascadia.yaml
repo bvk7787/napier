@@ -1,0 +1,165 @@
+# Facts for intellijel_cascadia. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: cas-midi-channel
+  claim: Cascadia receives on MIDI channel 1 by default; a learn step sets it to the next channel message
+    received
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 11
+  q: How do I set the Cascadia MIDI channel?
+  anchors:
+  - By default, Cascadia is set to receive on MIDI Channel 1
+- id: cas-midi-glide
+  claim: Over MIDI, CC65 turns portamento on and CC5 sets its time
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 18
+  - 121
+  q: Which MIDI CCs switch portamento on and set the portamento time on Cascadia?
+  anchors:
+  - CC 65 (Portamento Control)
+- id: cas-midi-clk-out
+  claim: MIDI CLK outputs a division of incoming MIDI clock, or a tap tempo when no MIDI clock arrives
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 20
+  q: What does the Cascadia MIDI CLK output do?
+  anchors:
+  - Outputs a clock signal based either on a user-selectable division
+- id: cas-vco-a-octave-selector
+  claim: VCO A's OCTAVE selector is an 8-position knob that shifts coarse tuning by one octave per step.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 22
+  q: How many octaves can I switch VCO A through on Cascadia?
+  anchors:
+  - This 8-position selector knob sets the coarse tuning of VCO A
+- id: cas-pwm-default-lfo-y
+  claim: With nothing patched into VCO A's PWM IN, LFO Y is normalled to the pulse width modulation input.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 23
+  q: What's modulating the pulse width on Cascadia when nothing is plugged into PWM IN?
+  anchors:
+  - then the output of LFO Y [12.4.B] is patched into the PWM input
+- id: cas-tzfm-dc-vs-ac
+  claim: Cascadia offers DC and AC flavours of thru-zero FM; DC is deepest and suits slow modulators, AC tracks
+    pitch more accurately.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 80
+  q: What's the difference between DC and AC thru-zero FM on Cascadia?
+  anchors:
+  - DC (which is the deepest variant - ideal for slower modulators, such as LFOs)
+- id: cas-env-a-sustain-range
+  claim: Envelope A's sustain slider sets a level from 0 V at the bottom to 5 V at the top.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 28
+  q: What voltage does the Envelope A sustain level go up to?
+  anchors:
+  - This slider sets the level of the sustain stage. It is 0 V at the bottom and 5 V at the top.
+- id: cas-vcf-fm2-keytracking
+  claim: The VCF FM 2 input is normalled to the external pitch (MIDI or CV), so the filter can track the keyboard
+    at 1V/oct.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 45
+  q: How do I make Cascadia's filter keytrack so I can play it when it self-resonates?
+  anchors:
+  - the EXTERNAL PITCH [13.1.A] (either MIDI or CV) is used as the modulation source
+- id: cas-wavefolder-normal-vca
+  claim: The wave folder output is normalled to VCA A IN 1 and is also available on the FOLD output jack.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 51
+  q: Where does the wave folder output go by default on Cascadia?
+  anchors:
+  - The Wave Folder's output is normalled to the VCA A IN 1
+- id: cas-sh-default-trigger
+  claim: With nothing in the S&H TRIG IN, the MIDI CLK output clocks the sample and hold, and the input defaults
+    to built-in digital noise.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 56
+  q: What clocks Cascadia's sample and hold if I don't patch a trigger?
+  anchors:
+  - then the MIDI CLK [1.D] output is used as the trigger input
+- id: cas-fx-send-level-switch
+  claim: The FX SEND LEVEL switch chooses between line level for pro effects and pedal/instrument level for guitar
+    pedals on the rear Pedal I/O send.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 72
+  q: Can I use a guitar pedal with Cascadia's FX send, and what level should I set?
+  anchors:
+  - at LINE level (required by pro-level effects devices) or at PEDAL/INST level
+- id: cas-cycle-midi-modes
+  claim: Holding the MIDI CC button while powering on cycles Cascadia's MIDI mode through Single, Dual Mono, MPE
+    Lower and MPE Upper.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 100
+  q: How do I switch Cascadia into Dual Mono or MPE mode without the config app?
+  anchors:
+  - Hold down the MIDI CC button while turning on Cascadia.
+- id: cas-dual-mono-voice2-jacks
+  claim: In Dual Mono mode the second voice's pitch comes out of the MIDI CC jack and its gate out of the MIDI MOD
+    jack.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 100
+  q: In dual mono mode which jacks carry the second voice's pitch and gate?
+  anchors:
+  - Use the MIDI MOD jack to output Voice 2's Gate signal.
+- id: cas-factory-reset
+  claim: To factory reset Cascadia, hold the MIDI CLK button while powering it on.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 117
+  q: How do I factory reset Cascadia?
+  anchors:
+  - Hold down the MIDI CLK [1.D] button while you turn Cascadia back on.
+- id: cas-fw-141-mpe-member-channels
+  claim: Firmware 1.4.1 added an MPE Member Channels selector in the Config App to limit how many MIDI channels
+    Cascadia uses for MPE.
+  status: manual
+  source: intellijel_cascadia_manual
+  pages:
+  - 118
+  q: Can I limit the number of MPE channels Cascadia listens on when sharing a MIDI bus?
+  anchors:
+  - MPE Member Channels selector added to Config App
+
+# ---- Firmware changelog
+- id: cas-1440-lfv
+  claim: Firmware 1.4.4.0 fixed the LFV freezing under extreme modulation
+  status: changelog
+  source: intellijel_cascadia_firmware_notes
+  q: Which Cascadia firmware fixed the LFV freezing with heavy modulation?
+  anchors:
+  - LFV Freezing up at with extreme modulation
+- id: cas-1430-velocity
+  claim: Firmware 1.4.3.0 fixed velocity arriving late on some settings
+  status: changelog
+  source: intellijel_cascadia_firmware_notes
+  q: Was there a Cascadia firmware fix for delayed MIDI velocity?
+  anchors:
+  - Velocity value was delayed on certain settings

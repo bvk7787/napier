@@ -1,0 +1,108 @@
+# Facts for bastl_ikarie. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: ikr-voct-calibration
+  claim: To calibrate the V/OCT input, set resonance to max and input to min, tune the self-oscillating R OUT with
+    a tuner, and turn the rear trimmer CW if flat or CCW if sharp.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 10
+  q: How do I calibrate Ikarie so it tracks 1V/oct when self-oscillating?
+  anchors:
+  - If the resulting pitch is flat, turn the trimmer CW
+- id: ikr-vca-cv-range
+  claim: Patching into VCA CV makes the filter silent until positive CV is applied, responding from 0V (silence)
+    to 5V (unity gain).
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 11
+  q: What voltage range does Ikarie's output VCA respond to?
+  anchors:
+  - This input is responsive from 0 volts (silence) to 5 volts
+- id: ikr-follow-modes
+  claim: The envelope follower has SLOW (natural release, pumping), MID (tighter, for midrange signals) and FAST
+    (near full-wave rectifier) settings, and its output is normalled to the MOD input.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 11
+  q: What do the three FOLLOW switch positions on Ikarie do?
+  anchors:
+  - The SLOW setting has natural release, resulting in pumping effects
+- id: ikr-cutoff-lp-hp
+  claim: The CUTOFF knob is open at center, sweeps lowpass when turned counterclockwise and highpass when turned
+    clockwise.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 8
+  q: how do I switch Ikarie between lowpass and highpass
+  anchors:
+  - renders LP (lowpass) filter sweep when turning CCW
+- id: ikr-follow-normalled-mod
+  claim: The FOLLOW envelope output is normalled into the MOD input, so the cutoff is already modulated by the follower
+    unless MOD is patched.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 9
+  q: why is the Ikarie cutoff moving on its own when nothing is in the MOD jack
+  anchors:
+  - the filter is already modulated by the FOLLOW
+- id: ikr-resonance-cv-cap
+  claim: Once a cable is in the RESONANCE CV input, the fader becomes an attenuator that caps how much resonance
+    the CV can reach.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 9
+  q: what does the resonance fader do when I patch CV into resonance on Ikarie
+  anchors:
+  - the fader turns into an attenuator for the input voltage
+- id: ikr-stereo-spread-pan
+  claim: In SPREAD the STEREO knob detunes the left and right cutoffs in opposite directions; in PAN it balances
+    the two filter levels, crossfading inputs when only L OUT is used.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 10
+  q: what's the difference between spread and pan on the Ikarie stereo switch
+  anchors:
+  - the stereo knob crossfades between the L and R inputs
+- id: ikr-beyond-bandpass
+  claim: The BEYOND output subtracts the two filters, giving a bandpass whose width is set by STEREO in SPREAD mode
+    (a twin peak filter).
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 1
+  - 2
+  q: what comes out of the Beyond jack on Ikarie
+  anchors:
+  - The Beyond output gives you the spectral difference of the two filters
+  alt:
+  - - you can only hear the signal inbetween the two cutoff frequencies
+- id: ikr-input-gain
+  claim: The INPUT knob ranges from silent to 5x gain; mid position is clean while higher settings overdrive, and
+    it can bring line level up to modular level.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 8
+  q: can I run line level audio into Ikarie, how much gain does the input have
+  anchors:
+  - Going from silent to 5 times gain
+- id: ikr-sidechain-follow
+  claim: Because the follower only listens to the left input, it can sidechain the filter on a signal at the right
+    input.
+  status: manual
+  source: bastl_ikarie_manual
+  pages:
+  - 11
+  q: can I sidechain the filter on Ikarie
+  anchors:
+  - it can be used to side-chain filter the signal on the right input

@@ -1,0 +1,20 @@
+device: wmd_bus_rider
+slugs: [wmd-bus-rider]
+source: wmd_bus_rider_product_page
+hp: 4
+hp_anchor: "Width4HP"
+power:
+  plus12: 74
+  minus12: 12
+  anchor: "Power+74mA, -12mA"
+jacks:
+  - {name: "LOW CUT", dir: in, type: cv, label: "LOW CUT: CV input"}
+  - {name: "CV", dir: in, type: cv, label: "CV: Assignable CV input"}
+  - {name: "IN L", dir: in, type: audio, label: "IN L / IN R: Stereo input"}
+  - {name: "IN R", dir: in, type: audio, label: "IN L / IN R: Stereo input"}
+  - {name: "OUT L", dir: out, type: audio, label: "OUT L / OUT R: Stereo output"}
+  - {name: "OUT R", dir: out, type: audio, label: "OUT L / OUT R: Stereo output"}
+notes: >-
+  In production; WMD hasn't published a
+  manual yet, so everything here is from the product page (Isolator EQ, multiband compressor,
+  saturation, lookahead limiter). Swap in the manual when it ships.

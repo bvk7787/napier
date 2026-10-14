@@ -1,0 +1,48 @@
+device: squarp_hermod_plus
+slugs: [squarp-instruments-hermod-5v-mode]
+source: squarp_hermod_plus_manual
+power:
+  plus12: 300
+  plus5: 600
+  page: 10
+  anchor: "600mA minimum"
+jacks:
+  - {name: "CV OUT (voice 1)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 1)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV OUT (voice 2)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 2)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV OUT (voice 3)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 3)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV OUT (voice 4)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 4)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV OUT (voice 5)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 5)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV OUT (voice 6)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 6)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV OUT (voice 7)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 7)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV OUT (voice 8)", dir: out, type: pitch, also: [cv], page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "GATE OUT (voice 8)", dir: out, type: gate, page: 14, label: "8 pairs of CV/Gate"}
+  - {name: "CV A", dir: in, type: cv, also: [gate, clock, pitch], page: 80}
+  - {name: "CV B", dir: in, type: cv, also: [gate, clock, pitch], page: 80}
+  - {name: "CV C", dir: in, type: cv, also: [gate, clock, pitch], page: 80}
+  - {name: "CV D", dir: in, type: cv, also: [gate, clock, pitch], page: 80}
+  - {name: "Reset", dir: out, type: trigger, page: 14}
+  - {name: "Clock", dir: out, type: clock, page: 14}
+  - {name: "MIDI IN", dir: in, type: midi, page: 91}
+  - {name: "MIDI OUT", dir: out, type: midi, page: 69, label: "MIDI output port"}
+  - {name: "USB HOST (USB-A)", dir: io, type: usb, also: [midi], page: 91}
+  - {name: "USB DEVICE (USB-B)", dir: io, type: usb, also: [midi], page: 91}
+notes: >-
+  Power (p10): +5V rail "600mA minimum" with the rear 5V switch in the top position, and +12V
+  "300mA"; add up to +500mA (+5V) and +220mA (+12V) when a controller is attached to USB host,
+  so worst case is about 1100mA +5V / 520mA +12V. -12V draw is not stated. ModularGrid (5V mode)
+  lists 20/20/600mA; its +12V figure disagrees badly with the manual's 300mA. The manual
+  doesn't tie the 300mA to the 5V switch position, so budget 300mA on +12V to be safe. HP not stated.
+  Jack list assembled from text since the architecture/panel pages are images: 8 CV/Gate output
+  pairs (p7, p14), Reset and Clock gate outputs (p14), four CV inputs A-D usable as gate/clock
+  inputs (p68, p80, p90; -5V to +5V default), MIDI IN on TRS (p90, p91), a MIDI output port (p69;
+  connector type not stated), USB-A host and
+  USB-B device, both class-compliant MIDI (p15, p91). Individual panel labels for the CV/Gate
+  outputs are not printed in text. SD card slot not counted. xp32 expander jacks are in their
+  own spec.

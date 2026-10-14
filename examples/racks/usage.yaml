@@ -1,0 +1,94 @@
+# How the example rack is used. Hand-written by the rack's owner; napier never regenerates this file.
+# Keyed by module slug. Only write what the owner has said; anything unconfirmed goes under `open`.
+# `napier rack usage` checks this file and writes notes/rack-usage.md.
+# Status: anchor (never fire) | keep | candidate (could go) | leaving | planned (buying) | considered.
+
+stance: >-
+  Everything here is a working default, not an axiom. Challenge any rule, case mode or module job when
+  there's a clear hypothesis for an alternative: name the default, what changes, and what should play
+  better as a result. The owner decides; an accepted challenge gets written back here.
+
+rules:
+  - id: left-to-right
+    text: Signal flows left to right in each row, sources on the left and processing toward the right.
+  - id: drums-bottom
+    text: The drums sit in the bottom row, nearest the hands, because they're played live.
+    modules: [steady-state-fate-entity-ultra-kick, steady-state-fate-entity-ultra-perc, erica-synths-sample-drum-]
+  - id: 1u-row
+    text: The 1U row holds hands-on controls and the output.
+
+cases:
+  main:
+    power: example figures, not a real supply
+    limits: {plus12: 2000, minus12: 1000, plus5: 500}
+    mode: one bass voice, a small drum kit and a mixer with one effect
+    layout:
+      - "Row 1: Steppy for hand-played gates, a buffered mult, Pointeuse, the line out"
+      - "Row 2: Atlantix with Maths and Quadrax for modulation, Pam's as master clock"
+      - "Row 3: kick, perc, Sample Drum and Ikarie into the Xer Mixa; Beads on a send"
+
+modules:
+  intellijel-atlantix:
+    job: bass and acid voice, self-contained
+    status: anchor
+    pairs_with: [ritual-electronics-pointeuse]
+  make-noise-maths-black-panel:
+    job: envelopes and slew for the Atlantix
+    status: keep
+    pairs_with: [intellijel-atlantix]
+  intellijel-quadrax-:
+    job: four envelopes or LFOs for drums and filter movement
+    status: keep
+  alm-busy-circuits-pamela-s-pro-workout:
+    job: master clock and clock divisions
+    status: anchor
+    pairs_with: [alm-busy-circuits-ppexp1]
+    keep_near: [steady-state-fate-entity-ultra-kick]
+    notes: [Clock runs to every drum voice]
+  alm-busy-circuits-ppexp1:
+    job: Pam's expander
+    status: keep
+    keep_near: [alm-busy-circuits-pamela-s-pro-workout]
+  intellijel-amps:
+    job: two VCAs for the Atlantix and a drone
+    status: keep
+  steady-state-fate-entity-ultra-kick:
+    job: kick
+    status: keep
+  steady-state-fate-entity-ultra-perc:
+    job: snares, hats and toms
+    status: keep
+  erica-synths-sample-drum-:
+    job: breakbeat slicing
+    status: keep
+    pairs_with: [intellijel-steppy-1u]
+    open: ["Would a slider per step (Step 8) make slice selection more playable than CV from Quadrax?"]
+  bastl-instruments-ikarie:
+    job: stereo filter on the Sample Drum
+    status: candidate
+    pairs_with: [erica-synths-sample-drum-]
+  noise-engineering-xer-mixa:
+    job: main mixer, two sends
+    status: anchor
+    keep_near: [intellijel-stereo-line-out-1u, mutable-instruments-beads]
+    distance_ok: [intellijel-stereo-line-out-1u]
+    notes: [The line out sits in the 1U row above; the owner accepts the cable run]
+  mutable-instruments-beads:
+    job: granular texture on a send
+    status: candidate
+  intellijel-steppy-1u:
+    job: hand-played gates for the Sample Drum
+    status: keep
+  intellijel-buff-mult-1u:
+    job: fans out pitch and clock
+    status: keep
+  ritual-electronics-pointeuse:
+    job: switches between two Atlantix patterns
+    status: keep
+  intellijel-stereo-line-out-1u:
+    job: output to the audio interface
+    status: anchor
+  joranalogue-audio-design-step-8:
+    job: slider per step for Sample Drum slices, advanced by Steppy
+    status: considered
+    pairs_with: [intellijel-steppy-1u, erica-synths-sample-drum-]

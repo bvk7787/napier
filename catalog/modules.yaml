@@ -1,0 +1,358 @@
+# Module catalog: what napier knows about Eurorack modules, keyed by ModularGrid-style module slugs.
+# Shared by every rack: a rack's racks/devices.yaml can add or override entries.
+#   device  napier device whose docs cover the module (null: nothing to index; say why in `note`)
+#   role    one of voice, filter, effect, rhythm, sequencer, modulation, utility, mixer, midi, expander
+#   tags    finer categories (ModularGrid's vocabulary); the rack viewer colors modules by role
+#   parent  for expanders: the module it attaches to (the pairs-adjacent rule keeps them side by side)
+# A racked slug missing here shows up as "unmapped" in `rack sync`: add its manual, then map it.
+
+modules:
+  # Mapped so each module's docs, specs and facts attach to it in any rack.
+  intellijel-fsr-1u:
+    device: intellijel_fsr_1u
+    role: modulation
+    tags: [controller, cv modulation, 1U]
+  intellijel-multigrain:
+    device: intellijel_multigrain
+    role: effect
+    tags: [granular, sampler, dual/stereo]
+  intellijel-planar-2:
+    device: intellijel_planar_2
+    role: modulation
+    tags: [controller, cv modulation]
+  intellijel-sealegs:
+    device: intellijel_sealegs
+    role: effect
+    tags: [delay, reverb, dual/stereo]
+  intellijel-swells:
+    device: intellijel_swells
+    role: effect
+    tags: [reverb, dual/stereo]
+  knobula-drum-farm:
+    device: knobula_drum_farm
+    role: rhythm
+    tags: [drum, synth voice]
+  wmd-bus-rider:
+    device: wmd_bus_rider
+    role: effect
+    tags: [eq, dynamics, dual/stereo]
+  squarp-instruments-core:
+    device: squarp_core
+    role: midi
+    tags: [midi, clock generator, envelope generator, lfo, quantizer, random, sequencer]
+  joranalogue-audio-design-step-8:
+    device: joranalogue_step_8
+    role: sequencer
+    tags: [sequencer, sample and hold, sequential switch, shift register]
+  mylar-melodies-random8:
+    device: befaco_random8
+    role: modulation
+    tags: [random, sample and hold, quantizer]
+  acid-rain-technology-maestro:
+    device: acid_rain_maestro
+    role: sequencer
+    tags: [clock generator, clock modulator, controller, cv modulation, envelope generator, lfo, random, sequencer]
+  alm-busy-circuits-akemie-s-castle:
+    device: alm_akemies_castle
+    role: voice
+    tags: [oscillator]
+  alm-busy-circuits-mfd:
+    device: alm_mfd
+    role: mixer
+    tags: [mixer, crossfader, dual/stereo]
+  alm-busy-circuits-o-a-x2:
+    device: alm_oax2
+    role: utility
+    tags: [attenuator, dual/stereo, mixer, polarizer, utility]
+  alm-busy-circuits-pamela-s-pro-workout:
+    device: alm_pams_pro_workout
+    role: sequencer
+    tags: [clock generator, clock modulator, function generator, lfo, sequencer, digital, quantizer, random]
+  alm-busy-circuits-ppexp1:
+    device: alm_pams_pro_workout
+    role: expander
+    tags: [expander, midi]
+    parent: alm-busy-circuits-pamela-s-pro-workout
+  bastl-instruments-ikarie:
+    device: bastl_ikarie
+    role: filter
+    tags: [envelope follower, filter, dual/stereo, vca]
+  boredbrain-music-optx-v2-:
+    device: boredbrain_optx_v2
+    role: utility
+    tags: [external, adat, audio interface]
+  divkid-manic:
+    device: divkid_manic
+    role: effect
+    tags: [distortion, dual/stereo, effect, polarizer, ring modulator, utility, vca, waveshaper]
+  divkid-ochd:
+    device: divkid_ochd
+    role: modulation
+    tags: [cv modulation, lfo]
+  divkid-ochd-expander:
+    device: divkid_ochd_expander
+    role: expander
+    tags: [cv modulation, expander, logic, random, utility]
+    parent: divkid-ochd
+  entineering-midi-mult-1u:
+    device: entineering_midi_mult_1u
+    role: midi
+    tags: [midi, multiple]
+  erica-synths-sample-drum-:
+    device: erica_sample_drum
+    role: rhythm
+    tags: [drum, sampling]
+  instruo-cnoc:
+    device: instruo_cnoc
+    role: modulation
+    tags: [envelope follower, envelope generator, function generator, lfo, logic, slew limiter]
+  instruo-cs-l:
+    device: instruo_csl
+    role: voice
+    tags: [lfo, oscillator, ring modulator, waveshaper, vca]
+  instruo-carn:
+    device: instruo_carn
+    role: mixer
+    tags: [attenuator, dual/stereo, dynamics, mixer, panning, ring modulator, utility, vca]
+  instruo-eas:
+    device: instruo_eas
+    role: utility
+    tags: [logic, utility]
+  instruo-larachd:
+    device: instruo_larachd
+    role: utility
+    tags: [external, preamp, comparator, envelope follower, waveshaper]
+  instruo-neoni:
+    device: instruo_neoni
+    role: voice
+    tags: [lfo, oscillator, waveshaper]
+  instruo-aradh:
+    device: instruo_aradh
+    role: effect
+    tags: [comparator, distortion, dynamics, envelope follower, envelope generator, filter, low pass gate, vca]
+  intellijel-amps:
+    device: intellijel_amps
+    role: utility
+    tags: [vca, preamp, dual/stereo]
+  intellijel-atlantix:
+    device: intellijel_atlantix
+    role: voice
+    tags: [oscillator, filter, vca, envelope generator, lfo, synth voice]
+  intellijel-atlx-1u:
+    device: intellijel_atlantix
+    role: expander
+    tags: [expander, oscillator]
+    parent: intellijel-atlantix
+  intellijel-buff-mult-1u:
+    device: intellijel_buff_mult_1u
+    role: utility
+    tags: [multiple]
+  intellijel-dual-vca-1u:
+    device: intellijel_dual_vca_1u
+    role: utility
+    tags: [dual/stereo, vca, mixer]
+  intellijel-duatt:
+    device: intellijel_duatt_1u
+    role: utility
+    tags: [cv modulation, dual/stereo, mixer, utility, attenuator]
+  intellijel-noise-tools-1u:
+    device: intellijel_noise_tools
+    role: modulation
+    tags: [clock generator, noise, random, sample and hold, slew limiter]
+  intellijel-octalink-1u:
+    device: intellijel_octalink_1u
+    role: utility
+    tags: [multiple, external]
+  intellijel-passive-lpg-1u:
+    device: intellijel_passive_lpg_1u
+    role: filter
+    tags: [filter, low pass gate, utility, vca]
+  intellijel-quadratt-1u:
+    device: intellijel_quadratt_1u
+    role: utility
+    tags: [attenuator, mixer, utility, cv modulation]
+  intellijel-quadrax-:
+    device: intellijel_quadrax
+    role: modulation
+    tags: [envelope generator, function generator, quad, lfo, clock generator, cv modulation]
+  intellijel-steppy-1u:
+    device: intellijel_steppy_1u
+    role: sequencer
+    tags: [digital, sequencer, clock modulator, quad, random]
+  intellijel-stereo-line-out-1u:
+    device: intellijel_stereo_line_out_1u
+    role: mixer
+    tags: [attenuator, dual/stereo, external, utility]
+  intellijel-tangrams:
+    device: intellijel_tangrams
+    role: modulation
+    tags: [clock generator, cv modulation, envelope generator, function generator, lfo, vca]
+  intellijel-zeroscope-1u:
+    device: intellijel_zeroscope_1u
+    role: utility
+    tags: [utility, tuner]
+  joranalogue-audio-design-add-2:
+    device: joranalogue_add_2
+    role: mixer
+    tags: [mixer]
+  knobula-monumatic:
+    device: knobula_monumatic
+    role: voice
+    tags: [synth voice, oscillator]
+  koma-elektronik-kmndr:
+    device: koma_kmndr
+    role: modulation
+    tags: [controller, cv modulation, gate]
+  make-noise-maths-black-panel:
+    device: make_noise_maths
+    role: modulation
+    tags: [envelope generator, function generator, lfo, slew limiter, mixer]
+  make-noise-multiwave--:
+    device: make_noise_multiwave
+    role: voice
+    tags: [oscillator]
+  make-noise-multiwave-midi-inlet:
+    device: make_noise_multiwave
+    role: expander
+    tags: [expander, midi]
+    parent: make-noise-multiwave--
+  make-noise-polimaths:
+    device: make_noise_polimaths
+    role: modulation
+    tags: [envelope generator, lfo, oscillator]
+  make-noise-qxg:
+    device: make_noise_qxg
+    role: filter
+    tags: [low pass gate, mixer, dual/stereo, quad]
+  michigan-synth-works-beehive-micro-plaits-black:
+    device: msw_beehive
+    role: voice
+    tags: [digital, oscillator, dual/stereo, drum, synth voice]
+  michigan-synth-works-nrings-black-panel:
+    device: msw_nrings
+    role: voice
+    tags: [oscillator]
+  mutable-instruments-beads:
+    device: mutable_beads
+    role: effect
+    tags: [delay, digital, dual/stereo, effect, random, reverb]
+  neutron-sound-qvca:
+    device: neutron_qvca
+    role: utility
+    tags: [vca, quad]
+  noise-engineering-expando-expandi:
+    device: ne_xer_mixa
+    role: expander
+    tags: [expander]
+    parent: noise-engineering-xer-mixa
+    note: covered by the Xer Mixa manual
+  noise-engineering-lapsus-os-black:
+    device: ne_lapsus_os
+    role: utility
+    tags: [attenuator, controller, multiple, utility]
+  noise-engineering-xer-mixa:
+    device: ne_xer_mixa
+    role: mixer
+    tags: [mixer, panning, dual/stereo, dynamics]
+  qu-bit-electronix-data-bender:
+    device: qubit_data_bender
+    role: effect
+    tags: [digital, distortion, sampling, dual/stereo, effect]
+  ritual-electronics-guillotine:
+    device: ritual_guillotine
+    role: effect
+    tags: [distortion, dual/stereo, effect, preamp]
+  ritual-electronics-pointeuse:
+    device: ritual_pointeuse
+    role: modulation
+    tags: [clock modulator, logic, cv modulation]
+  shakmat-bard-quartet:
+    device: shakmat_bard_quartet
+    role: sequencer
+    tags: [quantizer, quad]
+  shakmat-bard-quartet-expander:
+    device: shakmat_bard_quartet_expander
+    role: expander
+    tags: [expander, digital, quantizer, quad]
+    parent: shakmat-bard-quartet
+  shakmat-modular-sumdif:
+    device: shakmat_sumdif
+    role: utility
+    tags: [dual/stereo, mixer, multiple, utility]
+  soundforce-samples-ii-:
+    device: soundforce_samples_ii
+    role: rhythm
+    tags: [drum, sampling]
+  squarp-instruments-hermod-5v-mode:
+    device: squarp_hermod_plus
+    role: midi
+    tags: [clock generator, lfo, looper, midi, quantizer, random, sequencer, tuner]
+  squarp-instruments-xp32:
+    device: squarp_hermod_plus
+    role: expander
+    tags: [expander]
+    parent: squarp-instruments-hermod-5v-mode
+  steady-state-fate-entity-ultra-kick:
+    device: ssf_ultra_kick
+    role: rhythm
+    tags: [drum, envelope generator, synth voice]
+  steady-state-fate-entity-ultra-perc:
+    device: ssf_ultra_perc
+    role: rhythm
+    tags: [drum, dynamics, filter, noise, oscillator, synth voice, waveshaper]
+  steady-state-fate-metalloid-percussion-entity:
+    device: ssf_metalloid
+    role: rhythm
+    tags: [drum, dual/stereo, noise, oscillator, synth voice]
+  steady-state-fate-steady-state-gate:
+    device: ssf_steady_state_gate
+    role: filter
+    tags: [distortion, drum, dynamics, envelope generator, filter, low pass gate, vca, waveshaper]
+  steady-state-fate-stereo-dipole-black-and-gold:
+    device: ssf_stereo_dipole
+    role: filter
+    tags: [filter, dual/stereo, phase shifter, panning, oscillator]
+    note: complex stereo filter (ModularGrid files it as a voice)
+  steady-state-fate-v-cv:
+    device: null
+    role: utility
+    tags: [utility, cv modulation]
+    note: utility module, no manual of its own in napier
+  steady-state-fate-vortices:
+    device: ssf_vortices
+    role: mixer
+    tags: [distortion, mixer, panning, vca]
+  strymon-superkar:
+    device: strymon_superkar_plus
+    role: voice
+    tags: [synth voice, digital, dual/stereo]
+  strymon-magneto:
+    device: strymon_magneto
+    role: effect
+    tags: [delay, dual/stereo, effect, reverb, sampling, looper]
+  strymon-starlab:
+    device: strymon_starlab
+    role: effect
+    tags: [digital, dual/stereo, effect, reverb, synth voice, delay]
+  venus-instruments-veno-orbit:
+    device: venus_veno_orbit
+    role: effect
+    tags: [looper, sampling, dual/stereo]
+    note: tape-style looper/sampler. Not a reverb.
+  vpme-de-t43:
+    device: vpme_t43
+    role: utility
+    tags: [utility, cv modulation, mixer]
+  wmd-clutch-:
+    device: wmd_clutch
+    role: rhythm
+    tags: [drum, sampling]
+  wmd-metron-black:
+    device: wmd_metron
+    role: sequencer
+    tags: [sequencer]
+  wmd-voltera:
+    device: wmd_voltera
+    role: expander
+    tags: [expander, cv recorder]
+    parent: wmd-metron-black

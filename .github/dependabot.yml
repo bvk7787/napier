@@ -1,0 +1,12 @@
+# GitHub Actions only. The Python dependencies are lower bounds in pyproject.toml and locked in
+# uv.lock for CI, updated by hand (`uv lock --upgrade`); the repository's Dependabot security
+# updates open a PR for any locked version with a published advisory.
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]

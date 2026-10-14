@@ -1,0 +1,29 @@
+device: mutable_beads
+slugs: [mutable-instruments-beads]
+source: mutable_beads_manual
+power:
+  plus12: 100
+  minus12: 10
+  page: null
+  anchor: "draws 100mA from the +12V rail, and 10mA from the -12V rail"
+jacks:
+  - {name: "IN L", dir: in, type: audio, page: null, label: "IN L input"}
+  - {name: "IN R", dir: in, type: audio, page: null, label: "both, of the audio inputs (1)"}
+  - {name: "FREEZE gate IN", dir: in, type: gate, page: null, label: "corresponding gate input (3)"}
+  - {name: "SEED IN", dir: in, type: gate, also: [trigger, clock], page: null, label: "SEED input (4)"}
+  - {name: "DENSITY CV IN", dir: in, type: cv, page: null, label: "DENSITY CV input (5)"}
+  - {name: "TIME CV IN", dir: in, type: cv, page: null, label: "TIME CV input"}
+  - {name: "PITCH CV IN", dir: in, type: cv, also: [pitch], page: null, label: "PITCH CV input"}
+  - {name: "SIZE CV IN", dir: in, type: cv, page: null, label: "corresponding CV input (6)"}
+  - {name: "SHAPE CV IN", dir: in, type: cv, page: null, label: "corresponding CV input (6)"}
+  - {name: "Assignable CV IN", dir: in, type: cv, page: null, label: "assignable CV input (7)"}
+  - {name: "OUT L", dir: out, type: audio, page: null, label: "L output"}
+  - {name: "OUT R", dir: out, type: audio, also: [trigger], page: null, label: "R output"}
+notes: >-
+  Web manual (no pages). HP not stated in the manual, so omitted (ModularGrid says 14). Power matches
+  ModularGrid (100/10 mA); +5V not stated. Jack numbers in the manual: (1) audio inputs L/R (mono if
+  only one patched), (3) FREEZE gate, (4) SEED (gate, trigger, or clock), (5) DENSITY CV (1V/oct
+  exponential FM at audio-rate densities), (6) CV inputs for TIME, SIZE, SHAPE, PITCH (PITCH tracks
+  V/O with its attenurandomizer fully CW, and always in wavetable mode), (7) assignable CV to
+  feedback/dry-wet/reverb, (8) L/R outputs. With R unpatched both channels are summed to L; R can
+  optionally output a grain trigger signal.

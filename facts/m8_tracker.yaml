@@ -1,0 +1,304 @@
+# Facts for m8_tracker. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+# ---- from the manual (eval cases)
+- id: m8-wav-only
+  claim: The Sampler loads only 1 or 2 channel PCM .wav files
+  status: manual
+  source: m8_tracker_manual
+  pages: [54]
+  q: What sample file formats does the M8 Sampler support?
+  anchors: ["Only 1 or 2 channel (stereo)", "PCM .wav files are supported"]
+- id: m8-streaming
+  claim: Samples stream from the SD card instead of loading into memory
+  status: manual
+  source: m8_tracker_manual
+  pages: [4]
+  q: Does the M8 load samples into RAM?
+  anchors: ["streamed directly from the SD card", "not read from memory"]
+- id: m8-bitdepth
+  claim: Convert 32 or 24-bit samples to 16 or 8-bit where possible
+  status: manual
+  source: m8_tracker_manual
+  pages: [4]
+  q: What bit depth should samples be for M8 playback?
+  anchors: ["Convert 32-bit or 24-bit samples to 16-bit or 8-bit"]
+- id: m8-mono-kicks
+  claim: Convert stereo samples to mono where stereo isn't needed, such as kicks
+  status: manual
+  source: m8_tracker_manual
+  pages: [4]
+  q: Should kick drums be mono on the M8?
+  anchors: ["Convert stereo samples to mono where stereo is not necessary", "Kick"]
+- id: m8-slice-markers
+  claim: A sample can hold up to 128 slice markers, stored in the wav file
+  status: manual
+  source: m8_tracker_manual
+  pages: [57]
+  q: How many slice markers can an M8 sample have?
+  anchors: ["up to 128 markers that are stored within the wav file"]
+- id: m8-render
+  claim: Renders are 16-bit 44.1 kHz stereo wav files in /Renders
+  status: manual
+  source: m8_tracker_manual
+  pages: [47]
+  q: What format does the M8 render audio to?
+  anchors: ["16-bit 44.1kHz stereo wav file", "/Renders"]
+- id: m8-instruments
+  claim: A song has 128 instruments
+  status: manual
+  source: m8_tracker_manual
+  pages: [16]
+  q: How many instruments does an M8 song have?
+  anchors: ["128 instruments available per song"]
+- id: m8-pitch-limit
+  claim: Sample pitch has an upper limit that depends on bit depth and channel count, because of streaming
+  status: manual
+  source: m8_tracker_manual
+  pages: [54]
+  q: Why is there an upper pitch limit on M8 samples?
+  anchors: ["upper-pitch limitation enforced based on bit-depth"]
+- id: m8-path-limit
+  claim: A sample's whole path must be under 128 characters
+  status: manual
+  source: m8_tracker_manual
+  pages: [67]
+  q: What is the maximum sample path length on the M8?
+  anchors: ["The entire path length of the sample is under 128 characters"]
+- id: m8-accepted-depths
+  claim: Samples can be 8, 16, 24 or 32-bit, mono or stereo, uncompressed PCM
+  status: manual
+  source: m8_tracker_manual
+  pages: [67]
+  q: Which sample bit depths will the M8 load?
+  anchors: ["Sample is 8,16, 24, or 32 bit and is mono or stereo"]
+
+# ---- workflow facts for chopping and playing breaks
+- id: m8-live-cue-row
+  claim: LEFT+PLAY in Song view cues the whole selected song row
+  status: manual
+  source: m8_tracker_manual
+  pages: [11]
+  q: How do I cue a whole song row at once in live mode?
+  anchors: ["[LEFT]+[PLAY] Cue the selected song row"]
+- id: m8-live-stop-track
+  claim: SHIFT+PLAY in Live mode stops a cued or playing track
+  status: manual
+  source: m8_tracker_manual
+  pages: [11]
+  q: How do I stop one track in live mode?
+  anchors: ["In live mode - Stop a cued or playing track"]
+- id: m8-live-quantize
+  claim: LIVE QUANTIZE in Project sets when cued chains start
+  status: manual
+  source: m8_tracker_manual
+  pages: [38]
+  q: Where do I set when a cued chain starts playing in live mode?
+  anchors: ["LIVE QUANTIZE", "cue-waiting behavior"]
+- id: m8-deep-clone
+  claim: SHIFT+OPTION then double-tap EDIT in Song view clones a chain and all its phrases
+  status: manual
+  source: m8_tracker_manual
+  pages: [11]
+  q: How do I deep clone a chain with its phrases?
+  anchors: ["contents of all phrases inside the chain into a new chain"]
+- id: m8-randomize-notes
+  claim: In a phrase, OPTION+UP/DOWN on a selected note column randomizes the notes
+  status: manual
+  source: m8_tracker_manual
+  pages: [15]
+  q: How do I randomize notes in a phrase selection?
+  anchors: ["Randomize the note value up or down"]
+- id: m8-paste-undo
+  claim: After a fill or randomize in selection mode, paste undoes it
+  status: manual
+  source: m8_tracker_manual
+  pages: [15]
+  q: How do I undo a random fill in a phrase?
+  anchors: ["after a fill action, perform a paste to undo"]
+- id: m8-mixer-snapshot
+  claim: In Mixer, SHIFT+OPTION stores a snapshot of the whole song and SHIFT+EDIT recalls it
+  status: manual
+  source: m8_tracker_manual
+  pages: [31]
+  q: How do I take a snapshot of the song in the mixer?
+  anchors: ["Creates a song snapshot for temporarily storing entire"]
+- id: m8-pool-reorder
+  claim: In the Instrument Pool, EDIT+UP/DOWN on the instrument name column moves the instrument up or down the list
+  status: manual
+  source: m8_tracker_manual
+  pages: [23]
+  q: How do I move an instrument up or down the instrument list on the M8?
+  anchors: ["On the instrument name column, move the current instrument up or down on the instrument list"]
+- id: m8-swing
+  claim: Groove 07,05 or 08,04 gives a common swing
+  status: manual
+  source: m8_tracker_manual
+  pages: [26]
+  q: What groove values give swing on the M8?
+  anchors: ["A common swing setting is 07,05 or 08,04"]
+- id: m8-cha
+  claim: CHA's first digit sets the odds for everything to its left, the second for everything to its right
+  status: manual
+  source: m8_tracker_manual
+  pages: [69]
+  q: How does the CHA chance command work?
+  anchors: ["CHA1F", "10% chance"]
+- id: m8-arp-intervals
+  claim: ARP37 on C-4 plays C-4, D#4 and G-4 (semitones, without a scale)
+  status: manual
+  source: m8_tracker_manual
+  pages: [69]
+  q: What notes does ARP37 play?
+  anchors: ["ARP37", "D#4 (+3), and G-4 (+7)"]
+- id: m8-hop-table
+  claim: In a table, HOP jumps to a row; in a phrase, HOPFF stops the track
+  status: manual
+  source: m8_tracker_manual
+  pages: [70]
+  q: What does HOP do in a table?
+  anchors: ["HOPFF stops playback of the current track", "In table: Jumps the play position"]
+- id: m8-table-tic
+  claim: TABLE TIC sets the instrument's table speed; default 01, one tick per step
+  status: manual
+  source: m8_tracker_manual
+  pages: [16]
+  q: What does TABLE TIC do and what is its default?
+  anchors: ["TABLE TIC", "one tick per table step"]
+- id: m8-detune-center
+  claim: DETUNE 80 is the center; first digit steps semitones, second steps 1/16 semitone
+  status: manual
+  source: m8_tracker_manual
+  pages: [55]
+  q: What is the center value of sample DETUNE?
+  anchors: ["80", "being the center frequency"]
+- id: m8-repitch
+  claim: REPITCH/BPM pitches a sample to the song tempo, set with the STEPS/BPM parameter
+  status: manual
+  source: m8_tracker_manual
+  pages: [54]
+  q: How does the REPITCH play mode work?
+  anchors: ["REPITCH/BPM - Pitches the sample based on the current song tempo"]
+
+# ---- from the firmware changelog
+- id: m8-sli-2-5
+  claim: The Sampler SLI command arrived in 2.5.0, not 6.0
+  status: changelog
+  source: m8_tracker_changelog
+  cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+- id: m8-repitch-6-0
+  claim: REPITCH play modes and the NXT command arrived in 6.0.0
+  status: changelog
+  source: m8_tracker_changelog
+  cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+- id: m8-a440
+  claim: A-4 is A440, so M8 note names follow standard octave numbering (C-4 is middle C)
+  status: changelog
+  source: m8_tracker_changelog
+  cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+  notes: 1.1.1 "A-4 is now A440"
+- id: m8-scale-view-location
+  claim: The Scale view sits above Groove on the view map
+  status: changelog
+  source: m8_tracker_changelog
+  cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+  notes: 2.5.0; the manual's View Layout diagram agrees
+- id: m8-song-backups
+  claim: Saving over a song keeps the previous version in a Backup folder (6.2.0+)
+  status: changelog
+  source: m8_tracker_changelog
+  cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+- id: m8-clone-instruments
+  claim: In Song view, a third EDIT in a clone also clones the instruments used (6.6.1+)
+  status: changelog
+  source: m8_tracker_changelog
+  cite: https://github.com/Dirtywave/M8Firmware/blob/main/changelog.txt
+
+# ---- community claims, not yet confirmed on hardware
+- id: m8-repitch-steps-bars
+  claim: REPITCH STEPS counts bars (so a 4-bar loop is 4)
+  status: community
+  cite: https://piqued.fm/m8-tracker-firmware-v6-beta-update-overview
+  notes: The manual only names the parameter; elsewhere it defines a step as a 16th. Check the help line on the device.
+- id: m8-lfo-timestretch
+  claim: An LFO on LOOP ST (RAMP UP, RETRIG, FREQ 10 per bar) with PLAY FWDLOOP fakes a time-stretch
+  status: community
+  source: m8_tracker_tips
+  cite: https://docs.google.com/document/d/1IpUeR2s9TpkwH9w2lfqfLLkUxLvXcQWipDR046DzOYk/edit
+- id: m8-fx-order
+  claim: FX columns run right to left, tables before the phrase, and DEL beats CHA
+  status: community
+  cite: Dirtywave Discord
+- id: m8-sort-fixes-glitches
+  claim: Sorting a folder in the file browser (SHIFT+OPTION) fixes glitchy playback from it
+  status: community
+  source: m8_tracker_tips
+
+# ---- open questions
+- id: m8-res-lphp-mapping
+  claim: How RES values map to frequency in the LP>HP filter (it is a 1-pole high-pass)
+  status: unverified
+  source: m8_tracker_manual
+  notes: Manual confirms the high-pass, not the Hz mapping.
+- id: m8-scale-labels-follow-key
+  claim: The Scale view's row labels change with KEY
+  status: unverified
+- id: m8-arp-scale-degrees
+  claim: With a scale set, ARP intervals count scale degrees instead of semitones
+  status: unverified
+  notes: Changelog says "ARP command now uses scale intervals"; manual example is chromatic.
+- id: m8-cl-660-sd-firmware-flash
+  claim: Firmware 6.6.0 added flashing new firmware from the SD card via System Settings, working on 6.6 and up.
+  status: changelog
+  source: m8_tracker_changelog
+  q: can I update M8 firmware from the SD card without a computer
+  anchors:
+  - Flash firmware from SD card via System Settings
+- id: m8-cl-660-hypersynth-shape
+  claim: Firmware 6.6.0 added a Shape parameter to Hypersynth with waveforms like SAW, DARK SAW, SINE FOLD and SINE
+    ORGAN.
+  status: changelog
+  source: m8_tracker_changelog
+  q: which M8 firmware added the Hypersynth Shape parameter
+  anchors:
+  - Hypersynth - Shape parameter (SAW, SOFT SAW, DARK SAW
+- id: m8-cl-662-eq-spectrum-stereo
+  claim: Firmware 6.6.2 made the EQ View spectrum show both left and right channels instead of left only.
+  status: changelog
+  source: m8_tracker_changelog
+  q: does the M8 EQ spectrum analyzer show both channels
+  anchors:
+  - Spectrum now includes left and right (was left only)
+- id: m8-tip-timestretch-breaks
+  claim: To time-stretch a break, set the sampler to FWDLOOP with LENGTH 00 and drive LOOP ST with a RAMP UP LFO
+    on RETRIG, with FRQ 10 per bar.
+  status: community
+  source: m8_tracker_tips
+  q: how do I time stretch a drum break loop on the M8
+  anchors:
+  - adjust to bar length. 1 bar = 10 (16 steps), 2 bars = 20 (32 steps)
+- id: m8-tip-tape-stop
+  claim: A tape stop effect uses PIT to set the starting pitch and PSL on the next row to slide to a lower target
+    pitch, with velocity ramping volume.
+  status: community
+  source: m8_tracker_tips
+  q: how do I make a tape stop effect on M8
+  anchors:
+  - Use a combo of PIT and PSL on a sample instrument
+- id: m8-tip-round-robin-slices
+  claim: Round robin drums can be made by putting variations in one sliced WAV and using a TIC 00 table whose note
+    offset column steps to the next slice each hit.
+  status: community
+  source: m8_tracker_tips
+  q: can I do round robin drum samples on the M8
+  anchors:
+  - an increasing number each time to auto jump to next slice
+- id: m8-tip-tap-tempo
+  claim: With the Tempo parameter highlighted on the Project page, tapping EDIT sets a tapped tempo.
+  status: community
+  source: m8_tracker_tips
+  q: is there tap tempo on the M8
+  anchors:
+  - tapping [ EDIT ] will allow you to insert a tapped tempo

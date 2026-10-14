@@ -1,0 +1,74 @@
+# Facts for ssf_stereo_dipole. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: ssfdp-input-normal
+  claim: Input A is normalled to Input B, so a mono signal feeds both channels for stereo or quad peak output; patch
+    a dummy cable into B to break it.
+  status: manual
+  source: ssf_stereo_dipole_cheatsheet
+  pages:
+  - 1
+  q: Do I need to patch both inputs on the Stereo Dipole to get stereo out?
+  anchors:
+  - Input A is normalized into Input B
+- id: ssfdp-sprd-cv
+  claim: The SPRD CV input sets the secondary cutoff separately from FM and has no attenuator so it can track 1V/oct
+    accurately.
+  status: manual
+  source: ssf_stereo_dipole_cheatsheet
+  pages:
+  - 2
+  q: Why is there no attenuator on the Stereo Dipole spread CV input?
+  anchors:
+  - An attenuator is not provided to allow accurate use as a 1V/OCT tracking input
+- id: ssfdp-stereo-res-bipolar
+  claim: STEREO RES is a bipolar control over all four filters that can add or remove resonance relative to each
+    channel's setting, so its default position is roughly center.
+  status: manual
+  source: ssf_stereo_dipole_cheatsheet
+  pages:
+  - 3
+  q: Where should I leave the Stereo Dipole STEREO RES knob by default?
+  anchors:
+  - the default location for STEREO RES control is roughly center position
+- id: ssfdp-drive-sine
+  claim: The DRIVE control squares up sine or triangle inputs to add harmonics the filters can then shape, and at
+    minimum passes the signal without gain.
+  status: manual
+  source: ssf_stereo_dipole_cheatsheet
+  pages:
+  - 1
+  q: why does the Stereo Dipole barely do anything to a sine wave and how do I fix it
+  anchors:
+  - DRIVE is especially useful when filtering a Sine or Triangle wave
+- id: ssfdp-led-colors
+  claim: The RGB LEDs show cutoff in red (above zero volts) or green (below zero volts) and resonance depth in blue.
+  status: manual
+  source: ssf_stereo_dipole_cheatsheet
+  pages:
+  - 1
+  q: what do the red green and blue LED colors mean on the Stereo Dipole
+  anchors:
+  - BLUE indicates Depth of resonance
+- id: ssfdp-stereo-freq-range
+  claim: STEREO FREQ moves all four filters with roughly +/- 10 octaves of range, giving about 17 usable octaves
+    up to a 50kHz cutoff.
+  status: manual
+  source: ssf_stereo_dipole_cheatsheet
+  pages:
+  - 3
+  q: what is the total cutoff range of the Stereo Dipole filters
+  anchors:
+  - the total usable range is approximately 17 octaves
+- id: ssfdp-24db-patch
+  claim: For a 24dB/octave 4-pole response, set POLE and DIPOLE to the same type, SPREAD to center, and select SERIAL
+    routing.
+  status: manual
+  source: ssf_stereo_dipole_cheatsheet
+  pages:
+  - 4
+  q: how do I get a 24dB per octave lowpass out of the Stereo Dipole
+  anchors:
+  - Set both POLE and DIPOLE to the same filter type

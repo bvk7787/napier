@@ -1,0 +1,112 @@
+# Facts for make_noise_maths. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: maths-cycle-input
+  claim: The Cycle input on channels 1 and 4 turns cycling on while the gate is high (or while the Cycle button
+    is engaged)
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 7
+  q: How do I make MATHS cycle from a gate?
+  anchors:
+  - 'Cycle Input: On Gate HIGH, Cycles on'
+- id: maths-eor
+  claim: End Of Rise goes high (10 V) at the end of the rise portion of channel 1
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 7
+  q: What does the MATHS End Of Rise output do?
+  anchors:
+  - Goes high at the end of the Rise portion of the function
+- id: maths-both-cv
+  claim: The BOTH CV input is exponential and positive voltages make the whole function faster, unlike the linear
+    Rise and Fall inputs
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 6
+  q: How does the MATHS Both CV input respond?
+  anchors:
+  - BOTH has an Exponential response
+- id: maths-ch2-offset-normal
+  claim: CH. 2 signal input is normalled to a +10V reference and CH. 3 to +5V, so with nothing patched they generate
+    offsets.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 10
+  q: What voltage does MATHS channel 2 output with nothing patched in?
+  anchors:
+  - Normalized to a +10V reference for generation of voltage offsets
+- id: maths-no-retrigger-rise
+  claim: MATHS retriggers during the falling portion but ignores triggers during the rise, which enables clock and
+    gate division.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 12
+  q: Why does MATHS ignore some triggers when used as an envelope?
+  anchors:
+  - does NOT re-trigger on the rising portion of the function
+- id: maths-eoc-default-high
+  claim: The End Of Cycle output on CH. 4 sits at +10V when idle, so its LED is lit when nothing is happening.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 14
+  q: Why is the EOC LED on MATHS always lit when nothing is running?
+  anchors:
+  - It defaults to +10V, or High, when there is no activity.
+- id: maths-or-rectify
+  claim: The OR output passes the highest of the channel voltages and ignores negative voltages, so it can rectify
+    a signal.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 14
+  q: Can I use MATHS to rectify a bipolar signal?
+  anchors:
+  - It does not respond to negative voltages, therefore it could also be used to rectify a signal
+- id: maths-unity-out-bus
+  claim: Patching the CH. 1 or 4 Unity output does not remove that signal from the SUM and OR buses, unlike the
+    Variable outputs.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 14
+  q: Does patching the MATHS unity output take the channel off the SUM bus?
+  anchors:
+  - Patching into this output does NOT remove the signal from the SUM and OR Buses.
+- id: maths-unused-offset
+  claim: When using the SUM and OR outputs, set unused CH. 2 or 3 to 12:00 or insert a dummy cable to avoid unwanted
+    offsets.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 15
+  q: Why is there an offset on my MATHS SUM output?
+  anchors:
+  - set any unused CH. 2 or 3 to 12:00 or insert a dummy patch cable
+- id: maths-adsr-patch
+  claim: In the ADSR patch, CH1 Attenuverter sets the sustain level, which must be lower than CH4, and CH1 Fall
+    sets the release time.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 22
+  q: How do I make an ADSR envelope with MATHS?
+  anchors:
+  - CH1 Attenuverter sets the Sustain level which must be lower
+- id: maths-clock-divider
+  claim: A clock into CH1 or 4 Trigger is divided by an amount set by Rise, with Fall setting the output width.
+  status: manual
+  source: make_noise_maths_manual
+  pages:
+  - 24
+  q: How do I use MATHS as a voltage controlled clock divider?
+  anchors:
+  - processed by a divisor as set by Rise parameter

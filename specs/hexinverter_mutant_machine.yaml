@@ -1,0 +1,34 @@
+device: hexinverter_mutant_machine
+slugs: [hexinverter-electronique-mutant-machine]
+source: hexinverter_mutant_machine_manual
+hp: 29
+hp_page: 1
+hp_anchor: "Width: 29HP"
+power:
+  plus12: 139
+  minus12: 115
+  page: 1
+  anchor: "+139mA, -115mA @ 12V"
+jacks:
+  - {name: "ENABLE", dir: in, type: gate, also: [cv], page: 1, label: "The ENABLE input allows you to gate the wavescanner"}
+  - {name: "SCAN FREQ CV", dir: in, type: cv, page: 1, label: "SCAN FREQ CV"}
+  - {name: "Wavescanner Clock I/O", dir: io, type: clock, page: 4, label: "The clock I/O is accessible for use elsewhere"}
+  - {name: "Pitch CV", dir: in, type: cv, also: [audio], page: 4, label: "adjust the pitch of both membrane waveforms at once with this control and CV input"}
+  - {name: "Pitch Decay CV", dir: in, type: cv, page: 4, label: "Vary the amount and duration with the controls and CV input"}
+  - {name: "Membrane Decay CV", dir: in, type: cv, page: 4, label: "Membrane decay - use the control and CV input"}
+  - {name: "WAVE 1 audio input", dir: in, type: audio, page: 4, label: "WAVE 1 audio input"}
+  - {name: "Snappy Pitch CV", dir: in, type: cv, page: 5, label: "change the pitch of the snappy noise generator with this control and the CV modulation input"}
+  - {name: "Snappy Decay CV", dir: in, type: cv, page: 5, label: "by way of this control and modulation input"}
+  - {name: "SNAPPY IN", dir: in, type: audio, page: 3, label: "plugging into the SNAPPY IN"}
+  - {name: "WAVES output", dir: out, type: audio, page: 1, label: "complex oscillator at its WAVES output"}
+  - {name: "Noise output", dir: out, type: audio, page: 5, label: "Noise output - the snappy noise generator is always available at this output"}
+  - {name: "Final output", dir: out, type: audio, page: 2, label: "summed together at the final output"}
+notes: >-
+  Manual text is thin: it states 13 CV/audio inputs and 7 audio and CV/gate outputs (p.1) but the panel diagrams on
+  pp.4-5 are images, so only jacks described in text are listed (10 inputs incl. the clock, 3 outputs plus the clock).
+  Missing from the text: the trigger input that fires the voice, roughly two further inputs, and about three outputs
+  (p.1 mentions "dedicated outputs for each WAVE and NOISE oscillator" but only WAVES and Noise are named). The
+  wavescanner "clock I/O" (p.4; p.1 says an external clock or VCO can drive the scanner) is listed as one io jack
+  because the text does not say whether it is one jack or a separate in and out. Names are descriptive where the
+  manual gives no label. Pitch CV is analog and audio-rate modulation is encouraged (p.4). Scan freq CV is exponential.
+  Power +12V 139 mA, -12V 115 mA (p.1); +5V not stated. Matches ModularGrid (29HP, 139/115).

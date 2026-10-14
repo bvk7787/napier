@@ -1,0 +1,106 @@
+# Facts for soundforce_samples_ii. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: sf2-mix-out
+  claim: Five trigger/gate inputs and five mono outputs; any unpatched output 1-4 is summed into output 5 (analog
+    mix)
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 5
+  q: Does Samples II have a mix output?
+  anchors:
+  - will be summed together with output 5 and sent to the channel 5 output jack
+  notes: The manual has no printed page numbers; pages are PDF pages.
+- id: sf2-file-assign
+  claim: Files in a folder are sorted alphabetically and the first five go to channels 1-5; prefix names 1_ to
+    5_ to control assignment, and you can't skip a channel (use a placeholder file)
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 7
+  q: How do I assign wave files to channels on Samples II with a filename prefix?
+  anchors:
+  - The first character in the new file name will automatically adapt the alphabetical order
+- id: sf2-limits
+  claim: Up to 50 folders on the stick, 50 WAV files per folder, and 50 characters per path (folder plus file
+    name)
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 8
+  q: How many folders and files can Samples II read from a USB stick?
+  anchors:
+  - The module is able to list and scan a maximum of 50 folders from the USB stick
+- id: sf2-stereo
+  claim: Stereo is off by default (stereo files are converted to mono); enable it per pair for outputs 1/2 and
+    3/4 in settings.txt, giving 5 mono, 1 stereo + 3 mono, or 2 stereo + 1 mono
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 8
+  q: Can Samples II play stereo files?
+  anchors:
+  - The stereo playback is disabled by default
+- id: sf2-convert
+  claim: Playback format is 16-bit/44.1 kHz; other WAVs are auto-converted to .cvt files on first load, but files
+    over 30 seconds are not converted and the channel stays silent
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 10
+  q: What bit depth and sample rate does the Samples II auto-converter convert wave files to?
+  anchors:
+  - convert them to 16bits/44.1khz as needed by the module playback system
+- id: sf2-attenuation
+  claim: Hold the switch 1 s to enter attenuation mode; each press steps the last-triggered channel through 8
+    levels from 0 to -30 dB; levels are saved per folder in mix.txt
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 11
+  q: How does the Samples II attenuation mode set mix levels between channels with the tactile switch?
+  anchors:
+  - The module will scroll through the 8 different attenuation ratios
+- id: sf2-playback-modes
+  claim: 'Playback modes per channel in settings.txt: rewind, rewind_fade (fades on gate fall), loop_reset (fw
+    1.3+), toggle_pause, gate_pause, multi_sample (random file per trigger), multi_sample_linear'
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 13
+  - 14
+  q: Which Samples II playback mode fades the sample out when the gate goes low?
+  anchors:
+  - the playback starts fading when the trigger signal is going down
+- id: sf2-multi-sample
+  claim: multi_sample picks a random file per trigger from files prefixed with the channel number and a letter
+    (3a_, 3b_...); with the supplied stick, at most 2 mono channels (or 1 stereo pair) should run multi-sample
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 14
+  q: How does multi-sample mode work on Samples II?
+  anchors:
+  - play back a randomly picked file every time a trigger is going up
+- id: sf2-speed-mod
+  claim: Channels 1 and 3 can take playback speed from the frequency at input 2 or 4 (100 Hz is normal speed,
+    200 Hz double); that input's own channel can no longer be triggered
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 16
+  q: Can I change Samples II playback speed?
+  anchors:
+  - An incoming frequency of 100hz plays back the wave file at approximatively normal speed
+- id: sf2-mute-source
+  claim: From firmware 1.3, each channel can have a mute source channel in settings.txt, for hi-hat chokes
+  status: manual
+  source: soundforce_samples_ii_manual
+  pages:
+  - 17
+  q: Can Samples II choke an open hat with a closed hat?
+  anchors:
+  - This allows to create hihat chokes and similar effects

@@ -1,0 +1,35 @@
+device: make_noise_qxg
+slugs: [make-noise-qxg]
+source: make_noise_qxg_manual
+hp: 12
+hp_page: 4
+hp_anchor: "find 12HP in your Eurorack synthesizer case"
+power:
+  plus12: 65
+  minus12: 75
+  page: 4
+  anchor: "65mA of +12VDC and 75mA of -12VDC"
+jacks:
+  - {name: "Left (Mono) Aux IN", dir: in, type: audio, page: 7, label: "Left (Mono) and Right Aux Inputs"}
+  - {name: "Right Aux IN", dir: in, type: audio, page: 7, label: "Left (Mono) and Right Aux Inputs", normal: "Left (Mono) Aux IN"}
+  - {name: "Left Mix OUT", dir: out, type: audio, page: 7, label: "Left and Right Mix Outputs"}
+  - {name: "Right Mix OUT", dir: out, type: audio, page: 7, label: "Left and Right Mix Outputs"}
+  - {name: "Signal IN 1", dir: in, type: audio, page: 8, label: "Signal Inputs 1-4"}
+  - {name: "Signal IN 2", dir: in, type: audio, page: 8, label: "Signal Inputs 1-4"}
+  - {name: "Signal IN 3", dir: in, type: audio, page: 8, label: "Signal Inputs 1-4"}
+  - {name: "Signal IN 4", dir: in, type: audio, page: 8, label: "Signal Inputs 1-4"}
+  - {name: "Control IN 1", dir: in, type: cv, page: 8, label: "Control Inputs 1-4"}
+  - {name: "Control IN 2", dir: in, type: cv, page: 8, label: "Control Inputs 1-4"}
+  - {name: "Control IN 3", dir: in, type: cv, page: 8, label: "Control Inputs 1-4"}
+  - {name: "Control IN 4", dir: in, type: cv, page: 8, label: "Control Inputs 1-4"}
+  - {name: "Channel OUT 1", dir: out, type: audio, page: 8, label: "Channel outputs 1-4"}
+  - {name: "Channel OUT 2", dir: out, type: audio, page: 8, label: "Channel outputs 1-4"}
+  - {name: "Channel OUT 3", dir: out, type: audio, page: 8, label: "Channel outputs 1-4"}
+  - {name: "Channel OUT 4", dir: out, type: audio, page: 8, label: "Channel outputs 1-4"}
+  - {name: "XPREAD CV IN", dir: in, type: cv, page: 9, label: "XPREAD CV Input"}
+notes: >-
+  Power matches ModularGrid (65/75 mA); +5V not stated. Signal Inputs 1-4 and Control Inputs 1-4 are
+  normalled to rear N.U.S.S. Signal/Control input headers (not jacks), broken per channel by patching.
+  Right Aux has no explicit normal statement; the manual says patching only the Left input gives mono
+  at both Mix outputs, recorded as Right Aux normalled to Left (Mono) Aux. Patching a Channel output
+  removes that channel from the Mix outputs.

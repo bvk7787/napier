@@ -1,0 +1,122 @@
+# Facts for make_noise_polimaths. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: pm-channel-index-out
+  claim: Channel Index out sends the most recently Activated channel at 0.5 V per channel; patched to another
+    N.U.S.S. module's Span input it Activates the same channel(s) at the same time
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 26
+  q: How do I make another N.U.S.S. module fire the same channels as PoliMATHS?
+  anchors:
+  - Activate the target module's same channel(s) at the same time(s) as PoliMATHS
+- id: pm-follower-setup
+  claim: 'To follow another module: Channel Index mode (Span window white), Span CV attenuator full CW, Span
+    panel at 12:00, nothing patched to Activate, Accumulate or Reset; the Span window turns bright white'
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 13
+  q: How do I set PoliMATHS to follow MultiWAVE's Channel Index output?
+  anchors:
+  - Patch the Channel Index Out from the leading module to the Span CV In on the following module
+- id: pm-span-modes
+  claim: 'Three Span modes on the Mode button: Channel Index (white), Round (yellow), Parallel (cyan/blue)'
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 13
+  - 14
+  - 15
+  q: What Span modes does PoliMATHS have?
+  anchors:
+  - PoliMATHS features three unique Span modes
+- id: pm-firmware-update-dfu
+  claim: To update PoliMATHS firmware, connect USB-C in Chrome, power on while holding CYCLE, then pick DFU in FS
+    Mode and download the version.
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 31
+  q: how do I put PoliMATHS into firmware update mode
+  anchors:
+  - Power on the module while holding down the CYCLE button
+- id: pm-oscillation-bias
+  claim: Holding Mode for one second toggles Oscillation Bias between unipolar (off) and bipolar (orange), which
+    is faster and suited to vibrato, FM or audio.
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 21
+  q: how do I make the PoliMATHS oscillation bipolar for vibrato
+  anchors:
+  - Oscillation is bipolar and biased around 0V. The rate is also increased
+- id: pm-rate-1voct
+  claim: With the Rate attenuverter fully clockwise and CV patched, the oscillation tracks 1V/octave.
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 20
+  q: can PoliMATHS oscillations track 1v/oct pitch
+  anchors:
+  - the oscillation will track 1 volt per octave
+- id: pm-submix-enable
+  claim: Holding Cycle and Mode for one second toggles submixing, where patching an output removes that channel
+    from outputs further down the line.
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 25
+  q: how do I turn on submixing on PoliMATHS
+  anchors:
+  - Submixing can be enabled or disabled by holding both the Cycle and Mode buttons
+  alt:
+  - - Patching into a channel output removes it from all outputs further down the line
+- id: pm-follow-the-leader
+  claim: In Follow the Leader cycle mode (pink), each channel's Fall ending activates the channel to its right,
+    with Channel 8 looping back to Channel 1.
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 17
+  q: what does follow the leader cycle mode do on PoliMATHS
+  anchors:
+  - Channel 8 Activates channel 1 upon the end of its Fall stage
+- id: pm-strength-range
+  claim: Strength is bipolar, sweeping the output from -9V through 0V at noon to +9V.
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 22
+  q: what is the maximum output voltage of the PoliMATHS strength control
+  anchors:
+  - CW from 12:00 the output will be of increasingly positive polarity from 0VDC up to +9VDC
+- id: pm-settings-save-delay
+  claim: Button settings are saved through a power cycle, but you should wait ten seconds after a change for it
+    to save.
+  status: manual
+  source: make_noise_polimaths_manual
+  pages:
+  - 29
+  q: does PoliMATHS save button settings through a power cycle
+  anchors:
+  - Allow ten seconds after changing a setting for it to be saved
+
+# ---- Firmware appendix
+- id: pm-173-dc-strength
+  claim: Firmware 1.7.3 adds DC offset behaviour to the Strength pot when Submixing is off
+  status: changelog
+  source: make_noise_polimaths_firmware_notes
+  q: What does the PoliMATHS Strength knob do past noon with Submixing off?
+  anchors:
+  - Implements DC features on Strength pot
+- id: pm-173-slow-osc
+  claim: Firmware 1.7.3 allows slower Oscillations, up to 4 seconds per cycle on the knob
+  status: changelog
+  source: make_noise_polimaths_firmware_notes
+  q: How slow can PoliMATHS Oscillations go?
+  anchors:
+  - up to 4 seconds per cycle on knob

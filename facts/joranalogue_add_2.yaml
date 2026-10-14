@@ -1,0 +1,21 @@
+# Facts for joranalogue_add_2. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: add2-averager-jumpers
+  claim: Each Add 2 section can be set to work as an averager instead of an adder using jumpers on the rear of the
+    module.
+  status: manual
+  source: joranalogue_add_2_product_page
+  q: How do I switch Add 2 from adding signals to averaging them?
+  anchors:
+  - each section can be configured as an averager using the jumpers on the rear
+- id: add2-top-into-bottom-normal
+  claim: When the bottom section's first input is unpatched, the top output is fed into the bottom section, letting
+    Add 2 combine 5 signals into 2 outputs.
+  status: manual
+  source: joranalogue_add_2_product_page
+  q: Is the top section of Add 2 normalled into the bottom one?
+  anchors:
+  - the top output is injected into the bottom

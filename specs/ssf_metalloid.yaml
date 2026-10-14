@@ -1,0 +1,23 @@
+device: ssf_metalloid
+slugs: [steady-state-fate-metalloid-percussion-entity]
+source: ssf_metalloid_manual
+jacks:
+  - {name: "A-TRIG", dir: in, type: trigger, also: [gate], page: 2}
+  - {name: "B-TRIG", dir: in, type: trigger, also: [gate], page: 2, normal: "A-TRIG"}
+  - {name: "A-VCA CV", dir: in, type: cv, also: [audio], page: 2, label: "A or B-VCA CV inputs"}
+  - {name: "B-VCA CV", dir: in, type: cv, also: [audio], page: 2, label: "B-VCA CV inputs"}
+  - {name: "A-DECAY CV", dir: in, type: cv, page: 2, label: "A-DECAY"}
+  - {name: "B-DECAY CV", dir: in, type: cv, page: 2, label: "B-DECAY"}
+  - {name: "A-CUTOFF", dir: in, type: cv, page: 3, label: "A and B-CUTOFF input jacks"}
+  - {name: "B-CUTOFF", dir: in, type: cv, page: 3, label: "B-CUTOFF input jacks"}
+  - {name: "VARIANT CV", dir: in, type: cv, page: 3, label: "VARIANT CV input"}
+  - {name: "TUNE", dir: in, type: cv, also: [audio], page: 3, label: "TUNE input jack"}
+  - {name: "A-OUT", dir: out, type: audio, page: 2}
+  - {name: "B-OUT", dir: out, type: audio, page: 2}
+notes: >-
+  Quickstart guide only: no width or current draw stated, so hp and power are omitted (ModularGrid's 72/125 mA
+  unverified). Jack list assembled from prose; manual has no jack table, so it may be incomplete (no CV input
+  for MATERIAL is mentioned). Decay CV inputs are described as "CV inputs bearing the same labeling" as the
+  A-DECAY/B-DECAY knobs. A-OUT carries a mix of A and B (labelled MIX) until B-OUT is patched. VCA CV inputs
+  accept audio-rate AM; TUNE accepts audio-rate FM and does not track V/oct. Trigger inputs respond to level
+  (8-10V for max).

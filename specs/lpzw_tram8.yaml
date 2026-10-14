@@ -1,0 +1,33 @@
+device: lpzw_tram8
+slugs: [lpzw-modules-tram8]
+source: lpzw_tram8_manual
+hp: 5
+hp_page: 1
+hp_anchor: "3U 5HP format"
+power:
+  plus12: 25
+  minus12: 0
+  page: 7
+  anchor: "+12V max. 25mA"
+jacks:
+  - {name: "MIDI Input", dir: in, type: midi, page: 4}
+  - {name: "Gate 1", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Gate 2", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Gate 3", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Gate 4", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Gate 5", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Gate 6", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Gate 7", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Gate 8", dir: out, type: gate, also: [trigger], page: 7, label: "Gate Outputs"}
+  - {name: "Velocity 1", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+  - {name: "Velocity 2", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+  - {name: "Velocity 3", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+  - {name: "Velocity 4", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+  - {name: "Velocity 5", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+  - {name: "Velocity 6", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+  - {name: "Velocity 7", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+  - {name: "Velocity 8", dir: out, type: cv, page: 7, label: "Velocity Outputs"}
+notes: >-
+  Stock panel is a 1U Intellijel tile; the 3U 5HP panel
+  is an alternative (p1). Power is +12V 25mA with the onboard 5V regulator, or +5V 70mA when the
+  rear switch selects bus power (p7). Gates 0/5V, velocity 0-5V (up to 10V with alternative firmware).

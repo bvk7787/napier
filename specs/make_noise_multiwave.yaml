@@ -1,0 +1,36 @@
+device: make_noise_multiwave
+slugs: [make-noise-multiwave--]
+source: make_noise_multiwave_manual
+hp: 26
+hp_page: 5
+hp_anchor: "26HP"
+power:
+  plus12: 230
+  minus12: 5
+  page: 5
+  anchor: "230mA of +12VDC and 5mA of -12VDC"
+jacks:
+  - {name: "Activate Input", dir: in, type: gate, page: 8, also: [clock]}
+  - {name: "Accumulate Input", dir: in, type: gate, page: 8}
+  - {name: "Span CV Input", dir: in, type: cv, page: 8}
+  - {name: "Channel Index Output", dir: out, type: cv, page: 8, label: "Channel Index Ouput"}
+  - {name: "Spread CV Input", dir: in, type: cv, page: 8}
+  - {name: "A-Wave CV Input", dir: in, type: cv, page: 9}
+  - {name: "Pitch Exponential Input", dir: in, type: cv, page: 9, also: [pitch]}
+  - {name: "Glide CV Input", dir: in, type: cv, page: 10}
+  - {name: "TRPS. Transpose input", dir: in, type: pitch, page: 10}
+  - {name: "V/Oct Input", dir: in, type: pitch, page: 10}
+  - {name: "B-Wave CV Input", dir: in, type: cv, page: 10}
+  - {name: "Channel 1 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Channel 2 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Channel 3 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Channel 4 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Channel 5 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Channel 6 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Channel 7 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Channel 8 Output", dir: out, type: audio, page: 11, label: "Channel 1-8 Outputs"}
+  - {name: "Reset Input", dir: in, type: trigger, page: 11}
+  - {name: "Mod Time CV Input", dir: in, type: cv, page: 11}
+  - {name: "Blend CV Input", dir: in, type: cv, page: 11}
+  - {name: "Detune CV Input", dir: in, type: cv, page: 11}
+notes: "Manual states 230mA +12V / 5mA -12V; ModularGrid lists 250mA +12V (disagrees, manual used). No +5V stated. Activate is a gate input that also takes a clock in Parallel mode. Pitch Exponential Input (Osc A) tracks 1V/oct only when Follow is off and its attenuverter is fully CW. With Page 2 output mixing on, outputs 5-8 carry submixes. The USB-C jack is on the bottom left behind the panel (not front panel) and is excluded; the rear QXG output header is also excluded. 'Channel Index Ouput' is the manual's spelling."

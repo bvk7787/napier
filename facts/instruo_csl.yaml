@@ -1,0 +1,126 @@
+# Facts for instruo_csl. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: csl-fold-per-osc
+  claim: Dual VCO with a wavefolder per oscillator, internal sync, and a Ring/AM/Rect stage
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 3
+  q: Does the Instruo Cs-L have wavefolding on both oscillators?
+  anchors:
+  - Wavefolder per oscillator
+- id: csl-power-specs
+  claim: The Cs-L is 26 HP and 35mm deep and draws 200mA on +12V and 80mA on -12V.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 4
+  q: how much current does the Instruo Cs-L draw
+  anchors:
+  - Locate 26 HP of space in your Eurorack synthesizer case
+- id: csl-lfo-mode
+  claim: The LFO button drops Oscillator A to sub-audio range while it keeps tracking 1V/oct, and the LFO resets
+    on each rising edge at Oscillator A's Hard Sync input.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 9
+  q: does oscillator A still track 1V/oct in LFO mode on Cs-L
+  anchors:
+  - Oscillator A will continue to track 1V/Octave when set to LFO Mode
+- id: csl-sub-button
+  claim: The Sub button sets Oscillator B's square output to the fundamental (off), one octave down (white) or two
+    octaves down (amber).
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 10
+  q: what do the Sub button colors mean on Cs-L oscillator B
+  anchors:
+  - the square waveform is set to two octaves below the fundamental frequency of Oscillator B
+- id: csl-link-button
+  claim: With the Link button lit, a 1V/oct signal into either oscillator's input controls both, and patching a
+    second 1V/oct signal breaks the link so they track independently.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 13
+  q: what does the Link button do on Cs-L
+  anchors:
+  - the Link routing normal is broken and the oscillators will track independently
+- id: csl-fm-normal-exp
+  claim: Each oscillator's sine is normalled to the other's FM input, and in exponential mode with the FM attenuator
+    fully clockwise the FM input roughly tracks 1V/oct.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 14
+  q: what is normalled to the FM inputs on Cs-L
+  anchors:
+  - the sine waveform of Oscillator A is normalled to the FM Input Oscillator B
+- id: csl-sync-thresholds
+  claim: Oscillator B's soft sync (frequency lock) locks to integer multiples of the external signal, works best
+    at octaves, 4ths and 5ths, and has a 2V threshold, versus 2.5V for Oscillator A's hard sync.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 18
+  q: what does soft sync do on oscillator B of the Cs-L
+  anchors:
+  - Oscillator B will lock to integer multiples of the external signal
+- id: csl-sync-button
+  claim: The Sync button selects no internal sync, amber to soft-sync Oscillator B to A's sawtooth, or white to
+    hard-sync Oscillator A to B's square.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 30
+  - 31
+  q: how do I hard sync the two oscillators internally on Cs-L
+  anchors:
+  - Hard synchronise Oscillator A to the square waveform of Oscillator B
+  alt:
+  - - hard synchronising Oscillator A to Oscillator B
+- id: csl-depth-unity
+  claim: The multiplier has extra input gain, with unity at roughly 2 o'clock on the Depth knob and pleasant clipping
+    beyond that.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 19
+  q: where is unity gain on the Cs-L multiply depth knob
+  anchors:
+  - the multiplied signals will clip in a harmonically pleasing way
+- id: csl-rectify-modes
+  claim: The Ring/AM/Rect button selects ring modulation (off), half wave rectification (white) or full wave rectification
+    (amber) for the multiplier.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 20
+  q: how do I set the Cs-L multiplier to full wave rectification
+  anchors:
+  - If the button is illuminated amber, Full Wave Rectification Mode is selected
+- id: csl-index-shift
+  claim: Holding the Index button acts as a shift that shows and toggles the internal modulation routings using
+    the other six buttons.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 22
+  q: how do I enable internal modulation routings on the Cs-L
+  anchors:
+  - The Index Button functions as a "shift" control
+- id: csl-external-wavefolder
+  claim: To use an oscillator's wavefolder on external audio, set its Wavefold fader fully left, patch the signal
+    into Symmetry Bias, and use the Symmetry Bias attenuverter as the fold amount.
+  status: manual
+  source: instruo_csl_manual
+  pages:
+  - 16
+  q: can I wavefold an external signal with the Cs-L
+  anchors:
+  - The wavefold circuit can be isolated for processing external signals via the Symmetry Bias Input

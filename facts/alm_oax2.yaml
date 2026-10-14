@@ -1,0 +1,54 @@
+# Facts for alm_oax2. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: oax2-mix-jumper
+  claim: Closing the rear MIX jumper normals the top section output into the lower section as an extra input, so
+    with nothing patched to the upper output the module works as a simple mixer.
+  status: manual
+  source: alm_oax2_manual
+  pages:
+  - 5
+  q: How do I use the O/A/x2 as a mixer?
+  anchors:
+  - closing this jumper will normalise the top section output to the lower section
+- id: oax2-offset-range
+  claim: Each section's Off knob adds or subtracts a DC offset of roughly 8V at its extremes, and the offset is
+    not affected by the Atten control.
+  status: manual
+  source: alm_oax2_manual
+  pages:
+  - 5
+  q: How much DC offset can the O/A/x2 add, and does the attenuverter scale it?
+  anchors:
+  - Note the actual offset is not affected by the Atten control
+- id: oax2-led-colors
+  claim: The LEDs show the outgoing signal's level by brightness and its polarity by color, red for positive and
+    green for negative.
+  status: manual
+  source: alm_oax2_manual
+  pages:
+  - 5
+  q: What do the red and green LEDs on the O/A/x2 mean?
+  anchors:
+  - polarity (red +ive, green -ive) of the final outgoing signal
+- id: oax2-atten-invert
+  claim: The Atten knob scales the input from x+1 at one extreme to x-1 at the other, so each section can both attenuate
+    and invert a signal.
+  status: manual
+  source: alm_oax2_manual
+  pages:
+  - 5
+  q: how do I invert an LFO with the O/A/x2 atten knob
+  anchors:
+  - inverted (Atten knob full CCW is X -1)
+- id: oax2-power-depth
+  claim: The O/A/x2 is 4 HP, about 32mm deep including the power header, and draws around 80mA on a +/-12V supply.
+  status: manual
+  source: alm_oax2_manual
+  pages:
+  - 3
+  q: how much current does O/A/x2 draw and how deep is it
+  anchors:
+  - 'Depth: 32mm (including power header)'

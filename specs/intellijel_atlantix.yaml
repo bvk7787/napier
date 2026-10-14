@@ -1,0 +1,59 @@
+device: intellijel_atlantix
+slugs: [intellijel-atlantix]
+source: intellijel_atlantix_manual
+hp: 42
+hp_page: 34
+hp_anchor: "Atlantix: 42 hp"
+power:
+  plus12: 140
+  minus12: 138
+  page: 34
+  anchor: "140 mA @ +12V 138 mA @ -12V"
+jacks:
+  # VCO A
+  - {name: "PITCH A IN", dir: in, type: pitch, page: 10}
+  - {name: "SYNC A IN", dir: in, type: gate, page: 10, also: [audio]}
+  - {name: "IM IN", dir: in, type: cv, page: 10, normal: "ENVELOPE Out"}
+  - {name: "VCO A FM 1 IN", dir: in, type: cv, page: 10, label: "FM 1 IN", also: [audio], normal: "MOD X OUT"}
+  - {name: "VCO A FM 2 IN", dir: in, type: cv, page: 10, label: "FM 2 IN", also: [audio], normal: "ENVELOPE Out"}
+  - {name: "PWM IN", dir: in, type: cv, page: 10}
+  - {name: "VCO A SINE out", dir: out, type: audio, page: 11}
+  # VCO B
+  - {name: "PITCH B IN", dir: in, type: pitch, page: 13}
+  - {name: "FM B IN", dir: in, type: cv, page: 13, also: [audio]}
+  - {name: "SYNC B IN", dir: in, type: gate, page: 13, also: [audio]}
+  - {name: "VCO B SPIKE out", dir: out, type: audio, page: 13}
+  # MIXER
+  - {name: "AUX 1 IN", dir: in, type: audio, page: 16}
+  - {name: "AUX 2 IN", dir: in, type: audio, page: 16}
+  - {name: "MIXER output", dir: out, type: audio, page: 16}
+  # VCF
+  - {name: "VCF FM 1 IN", dir: in, type: cv, page: 21, label: "FM 1 IN", normal: "MOD Y OUT"}
+  - {name: "VCF FM 2 IN", dir: in, type: cv, page: 21, label: "FM 2 IN"}
+  - {name: "VCF IN", dir: in, type: audio, page: 21, normal: "MIXER output"}
+  - {name: "Q IN", dir: in, type: cv, page: 21}
+  - {name: "VCF OUT", dir: out, type: audio, page: 21}
+  # ENVELOPE / VCA
+  - {name: "GATE Input", dir: in, type: gate, page: 25}
+  - {name: "RETRIGGER Input", dir: in, type: trigger, page: 25}
+  - {name: "LEVEL Input", dir: in, type: cv, page: 25}
+  - {name: "ENVELOPE Out", dir: out, type: cv, page: 25}
+  - {name: "INVERSE ENVELOPE Out", dir: out, type: cv, page: 25}
+  - {name: "VCA IN", dir: in, type: audio, page: 25, normal: "VCF OUT"}
+  - {name: "OUT", dir: out, type: audio, page: 25}
+  # MODS
+  - {name: "S&H HOLD input", dir: in, type: gate, page: 28}
+  - {name: "S&H SAMP input", dir: in, type: cv, page: 28, also: [audio]}
+  - {name: "S&H OUT", dir: out, type: cv, page: 28}
+  - {name: "NOISE OUT", dir: out, type: audio, page: 28, also: [cv]}
+  - {name: "MOD X OUT", dir: out, type: cv, page: 28, also: [audio]}
+  - {name: "MOD Y OUT", dir: out, type: cv, page: 28, also: [audio]}
+notes: >-
+  Main 42hp module only; the manual's "32 individual patch points" (p6) all appear here. The 6hp ATLX
+  expander's 16 jacks are a separate spec. VCO A and VCF both label jacks "FM 1 IN"/"FM 2 IN", so names
+  are prefixed. Fixed normals encoded; switch-dependent normals left as notes: SYNC A IN gets VCO B saw
+  or GATE (SYNC A SOURCE), PWM IN source set by PWM SOURCE switch, AUX 1 IN gets VCO A tri or VCO B
+  square, AUX 2 IN gets VCO A sine or VCO B saw, S&H HOLD gets VCO B square or GATE (HOLD SOURCE),
+  S&H SAMP defaults to internal white noise, VCF FM 2 tracks the pitch input, PITCH B is summed with
+  PITCH A in A+B mode. LEVEL Input expects 0-5V (5V normalled); ENVELOPE Out 0-5V, INVERSE 0 to -5V;
+  OUT max 10Vpp. Manual gives no +5V draw. Power matches ModularGrid (140/138 mA).

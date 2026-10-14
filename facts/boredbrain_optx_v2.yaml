@@ -1,0 +1,73 @@
+# Facts for boredbrain_optx_v2. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: optx2-cv-mode-calibration
+  claim: Switching an input pair to CV mode makes it DC-coupled and runs a 5 second self-calibration to cancel DC
+    offset, and recalibrating after a 25 minute warm-up improves pitch CV accuracy.
+  status: manual
+  source: boredbrain_optx_v2_guide
+  pages:
+  - 2
+  q: How do I get accurate 1V/oct pitch CV into my DAW through the Optx v2 inputs?
+  anchors:
+  - the input pair undergoes a self-calibration period of 5 seconds
+- id: optx2-sync-switch
+  claim: The rear SYNC switch chooses external ADAT clock (EXT, default) or internal clock (INT), and the RATE switch
+    sets the internal clock to 44.1 or 48 kHz; two linked Optx modules need one on INT and one on EXT.
+  status: manual
+  source: boredbrain_optx_v2_guide
+  pages:
+  - 2
+  q: How should I set the Optx v2 clock switches when connecting two Optx modules together?
+  anchors:
+  - one Optx must be set to internal sample clock sync
+- id: optx2-5v-jumper
+  claim: A jumper on the back selects the +5V source, either generated from +12V (OPTX) or taken from the case PSU
+    (CASE).
+  status: manual
+  source: boredbrain_optx_v2_guide
+  pages:
+  - 1
+  q: Does the Optx v2 need a +5V rail from my power supply?
+  anchors:
+  - When set to OPTX, the module will create +5 V from the +12 V power rail
+- id: optx2-led-polarity
+  claim: Each output has a pair of LEDs showing polarity and strength; gates and positive envelopes light only the
+    right LED.
+  status: manual
+  source: boredbrain_optx_v2_guide
+  pages:
+  - 1
+  q: What do the two LEDs per output on Optx v2 mean?
+  anchors:
+  - Gates, triggers and positive-going envelopes will generally light only the right LED
+- id: optx2-level-dbfs
+  claim: I/O scaling is 20 Vpp, so a 10 Vpp eurorack audio signal converts to exactly -6 dBFS.
+  status: manual
+  source: boredbrain_optx_v2_guide
+  pages:
+  - 2
+  q: What dBFS level does a 10Vpp signal show up at through Optx?
+  anchors:
+  - a typical eurorack audio signal of 10 Vpp will translate to exactly -6 dBFS
+- id: optx2-audio-mode-ac
+  claim: In AUDIO mode an input pair is AC-coupled via high-pass filters in the ADC for no DC offset and best SNR.
+  status: manual
+  source: boredbrain_optx_v2_guide
+  pages:
+  - 2
+  q: Is the Optx v2 input AC or DC coupled in audio mode?
+  anchors:
+  - the selected input pair is AC-coupled by enabling high-pass filters within the ADC
+- id: optx2-smux-96k
+  claim: Optx v2 runs at 96 or 192 kHz using S/MUX only when set to EXT sync, since the internal clock does not
+    produce those rates.
+  status: manual
+  source: boredbrain_optx_v2_guide
+  pages:
+  - 2
+  q: Can Optx v2 run at 96 kHz?
+  anchors:
+  - This requires Optx v2 to be set to EXT sync because the on-board clock

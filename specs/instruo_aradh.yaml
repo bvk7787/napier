@@ -1,0 +1,23 @@
+device: instruo_aradh
+slugs: [instruo-aradh]
+source: instruo_aradh_manual
+hp: 6
+hp_page: 4
+hp_anchor: "Width: 6 HP"
+power:
+  plus12: 60
+  minus12: 40
+  page: 4
+  anchor: "+12V: 60mA"
+jacks:
+  - {name: "Input (In)", dir: in, type: audio, page: 6}
+  - {name: "Output (Out)", dir: out, type: audio, page: 6}
+  - {name: "1V/Oct Input", dir: in, type: pitch, page: 6}
+  - {name: "Strike Input", dir: in, type: trigger, also: [gate, audio], page: 8}
+  - {name: "CV Input", dir: in, type: cv, page: 9, normal: "Gate/Follow Output"}
+  - {name: "Gate/Follow Output", dir: out, type: cv, also: [gate], page: 12}
+notes: >-
+  Input and Output are AC coupled. Strike Input takes gates/triggers (rising edge) and can be driven at
+  audio rate. CV Input is bipolar and assignable (VCA level, cutoff, resonance, decay); when unpatched the
+  envelope follower or comparator gate signal is normalled to it. Gate/Follow Output gives envelope
+  follower (about 0V to +8V) or comparator gate per the toggle. +5V draw not stated.

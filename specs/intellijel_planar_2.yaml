@@ -1,0 +1,12 @@
+device: intellijel_planar_2
+slugs: [intellijel-planar-2]
+source: intellijel_planar_2_manual
+hp: 14
+power:
+  plus12: 5
+  minus12: 32
+  anchor: "32 mA @ -12V"
+jacks: []
+notes: >-
+  Joystick controller. The manual states 5 mA @ +12V and 32 mA @ -12V (more on -12V than +12V, as printed). Max depth 40 mm. Jacks not listed yet;
+  add them from the manual.

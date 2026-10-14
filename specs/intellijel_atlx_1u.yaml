@@ -1,0 +1,31 @@
+device: intellijel_atlantix
+slugs: [intellijel-atlx-1u]
+source: intellijel_atlantix_manual
+power:
+  plus12: 0
+  minus12: 0
+  plus5: 0
+  page: 29
+  anchor: "passive and does not need a power connection"
+jacks:
+  - {name: "LP out", dir: out, type: audio, page: 29}
+  - {name: "HP out", dir: out, type: audio, page: 29}
+  - {name: "BP out", dir: out, type: audio, page: 29}
+  - {name: "PHZ out", dir: out, type: audio, page: 29}
+  - {name: "SUB out", dir: out, type: audio, page: 29}
+  - {name: "RING out", dir: out, type: audio, page: 29}
+  - {name: "X in", dir: in, type: audio, page: 29, normal: "A SIN out"}
+  - {name: "Y in", dir: in, type: audio, page: 29, normal: "B SIN out"}
+  - {name: "A SIN out", dir: out, type: audio, page: 30}
+  - {name: "A TRI out", dir: out, type: audio, page: 30}
+  - {name: "A SAW out", dir: out, type: audio, page: 30}
+  - {name: "A PULSE out", dir: out, type: audio, page: 30}
+  - {name: "B SIN out", dir: out, type: audio, page: 30}
+  - {name: "B TRI out", dir: out, type: audio, page: 30}
+  - {name: "B SAW out", dir: out, type: audio, page: 30}
+  - {name: "B SQUARE out", dir: out, type: audio, page: 30}
+notes: >-
+  Jacks from the ATLX EXPANDER MODULE section (pp. 29-30, [X.A]-[X.P]); p. 6 confirms 16 patch points on the
+  expander. Manual says ATLX is passive and needs no power connection (recorded as 0 on all rails). HP omitted:
+  the tech specs (p. 34) list "ATLX expander: 6 hp", which conflicts with ModularGrid's 20 HP 1U listing for
+  this slug; the manual does not describe a 1U version, so the panel format/width is unconfirmed.

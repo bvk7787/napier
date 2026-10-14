@@ -1,0 +1,34 @@
+# Facts for vpme_t43. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: t43-transpose-switches
+  claim: The transposition switches add or subtract 2 octaves, 1 octave, 4, 2 and 1 semitones, allowing any offset
+    from -43 to +43 semitones, and the middle position adds nothing.
+  status: manual
+  source: vpme_t43_manual
+  pages:
+  - 3
+  q: How do I transpose by a fifth or a major seventh on the T43?
+  anchors:
+  - any number of steps between -43 semitones and +43 semitones
+- id: t43-input-c
+  claim: Inputs A and B are always added to the SUM output while input C can be added or subtracted using its switch.
+  status: manual
+  source: vpme_t43_manual
+  pages:
+  - 3
+  q: Can the T43 subtract one of its inputs?
+  anchors:
+  - CV/audio input C which can be added or subtracted from the SUM
+- id: t43-calibration
+  claim: To recalibrate, warm up for 10 minutes, set all switches to the middle, set +2 oct, and adjust the rear
+    multi-turn trimmer until SUM reads 2.000V.
+  status: manual
+  source: vpme_t43_manual
+  pages:
+  - 3
+  q: How do I recalibrate the T43?
+  anchors:
+  - adjust the multi-turn trim potentiometer on the back of the module

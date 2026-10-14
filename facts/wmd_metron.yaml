@@ -1,0 +1,104 @@
+# Facts for wmd_metron. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: metron-tracks
+  claim: Metron has 16 standard tracks plus an S.BUS track, each up to 256 steps, at 48 PPQN with shuffle and triplets
+  status: manual
+  source: wmd_metron_manual
+  q: How many tracks and steps does WMD Metron have?
+  anchors:
+  - Each of these tracks can be up to 256 steps in length
+- id: metron-variations
+  claim: A variation holds all 16 tracks, and there are 5 variations
+  status: manual
+  source: wmd_metron_manual
+  q: How many variations does Metron have?
+  anchors:
+  - The user has 5 variations
+- id: metron-voltera-outputs
+  claim: Each Voltera adds 4 bipolar CV tracks; up to 16 Volteras for 64 CV tracks
+  status: manual
+  source: wmd_metron_manual
+  q: How many CV outputs does a Voltera add to Metron?
+  anchors:
+  - Every Voltera adds 4 bi-polar CV outputs
+- id: metron-group-probability
+  claim: Group probability letters A to D make all steps in a group share one coin toss at the start of the variation,
+    and a group can depend on another failing.
+  status: manual
+  source: wmd_metron_manual
+  q: how does group probability A to D work on Metron
+  anchors:
+  - All steps set to the same letter share a "coin toss."
+- id: metron-microtiming-gate-gotcha
+  claim: In Microtiming Mode two adjacent microsteps merge into a gate, so an empty microstep is needed between
+    them for separate triggers.
+  status: manual
+  source: wmd_metron_manual
+  q: why are my Metron microsteps coming out as one long gate instead of separate triggers
+  anchors:
+  - Entering two sequential microsteps in Microtiming Mode makes a gate
+- id: metron-per-track-shuffle
+  claim: Hold a TRACK SELECT and turn Encoder 1 to push every other step on that track back by up to 15 microsteps.
+  status: manual
+  source: wmd_metron_manual
+  q: how do I set per-track shuffle on Metron
+  anchors:
+  - push every other step on a track back in time by up to 15 microsteps
+- id: metron-external-clock-shuffle
+  claim: Global shuffle also applies to an external clock, so the source should be straight because an already swung
+    clock compounds with Metron's shuffle.
+  status: manual
+  source: wmd_metron_manual
+  q: does Metron shuffle work when I'm syncing to an external clock
+  anchors:
+  - its swing and Metron's SHUFFLE will compound
+- id: metron-voltera-slide
+  claim: Voltera per-step slide is set by holding the Voltera SELECT button, pressing Encoder 1, and pressing matrix
+    steps while still holding SELECT.
+  status: manual
+  source: wmd_metron_manual
+  q: how do I add acid style slides to Voltera steps from Metron
+  anchors:
+  - HOLD the [SELECT] button on the Voltera you want to enable slides on
+- id: metron-instant-variation-change
+  claim: Holding FX FILL while selecting a variation jumps to it instantly without moving the playhead, for live
+    cutting between variations.
+  status: manual
+  source: wmd_metron_manual
+  q: how do I switch Metron variations immediately instead of at the end of the bar
+  anchors:
+  - will instantly jump to that variation without affecting the playhead
+- id: metron-clock-input-threshold
+  claim: Clock and Reset inputs are 100k Schmitt trigger inputs with a 2.2V threshold, and the 16 channel outputs
+    are 0V or 10V.
+  status: manual
+  source: wmd_metron_manual
+  q: what voltage does a clock need to trigger the Metron clock input
+  anchors:
+  - Schmitt Trigger, 2.2V Threshold
+
+# ---- Product updates (firmware news)
+- id: metron-176-voltera-save
+  claim: Metron 1.76 fixes a Voltera session save bug that could lose save files
+  status: changelog
+  source: wmd_metron_firmware_notes
+  q: Which Metron firmware fixes losing Voltera save files?
+  anchors:
+  - Fixes a Voltera session save bug
+- id: metron-175-clock-out-always
+  claim: Metron 1.75 added the Clock Out Always global option
+  status: changelog
+  source: wmd_metron_firmware_notes
+  q: Can Metron keep sending clock while the sequencer is paused?
+  anchors:
+  - new global option for Clock Out Always
+- id: metron-174-critical
+  claim: Metron v1.74 fixed a critical bug that could delete saved sessions
+  status: changelog
+  source: wmd_metron_firmware_notes
+  q: Which Metron firmware fixed sessions being deleted?
+  anchors:
+  - fixes a critical bug that could delete saved sessions

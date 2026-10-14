@@ -1,0 +1,25 @@
+device: shakmat_sumdif
+slugs: [shakmat-modular-sumdif]
+source: shakmat_sumdif_manual
+hp: 2
+hp_page: 1
+hp_anchor: "2 HP"
+power:
+  plus12: 15
+  minus12: 15
+  page: 1
+  anchor: "15 mA @ +12V"
+jacks:
+  - {name: "A", dir: in, type: cv, page: 2, label: "A input", also: [audio, pitch]}
+  - {name: "B", dir: in, type: cv, page: 2, label: "B input", also: [audio, pitch]}
+  - {name: "A+B", dir: out, type: cv, page: 2, also: [audio, pitch]}
+  - {name: "A-B", dir: out, type: cv, page: 2, also: [audio, pitch]}
+  - {name: "C", dir: in, type: cv, page: 2, label: "C&D inputs", also: [audio, pitch]}
+  - {name: "D", dir: in, type: cv, page: 2, label: "C&D inputs", also: [audio, pitch]}
+  - {name: "C+D", dir: out, type: cv, page: 2, label: "C&D outputs", also: [audio, pitch]}
+  - {name: "C-D", dir: out, type: cv, page: 2, label: "C&D outputs", also: [audio, pitch]}
+notes: >-
+  Dual adder/differentiator for CV, audio and V/oct (p. 2). Diagram labels give "A&B inputs/outputs" and "C&D
+  inputs/outputs" with A+B and A-B printed; the second section's output labels (C+D, C-D) are inferred from the
+  "dual" description and not printed in the text. Rear -6dB jumpers not jacks. No +5V figure stated. Power
+  matches ModularGrid.

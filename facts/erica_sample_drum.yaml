@@ -1,0 +1,115 @@
+# Facts for erica_sample_drum. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: sd-32-slices
+  claim: A sample holds up to 32 slices
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 4
+  - 8
+  q: How many slices can a Sample Drum sample have?
+  anchors:
+  - Maximum number of slices per sample is 32
+- id: sd-slice-index
+  claim: 'With a CV set to 1V/Oct and SLICE: INDEX, 32 notes from C-0 play the first 32 slices'
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 4
+  q: How do I choose a slice on the Sample Drum from a pitch CV?
+  anchors:
+  - 32 notes starting from C-0 will play the first 32 slices
+- id: sd-cv-inputs
+  claim: Each channel has 3 freely assignable CV inputs
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 1
+  q: How many CV inputs does each Sample Drum channel have?
+  anchors:
+  - freely assignable CV inputs per channel
+- id: sd-sample-format
+  claim: Sample Drum loads mono 48kHz 16-bit WAV files, and lower sample rate files also work and use less RAM.
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 2
+  q: What WAV format do samples need to be in for the Erica Sample Drum?
+  anchors:
+  - The samples have to be wav, mono, 48kHz 16bit resolution.
+- id: sd-samples-folder
+  claim: All samples must be stored in the SAMPLES folder on the SD card.
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 2
+  q: Why aren't my samples showing up on the Sample Drum SD card?
+  anchors:
+  - All samples must be stored in the "SAMPLES" folder of the SD card!
+- id: sd-record-input
+  claim: Recording uses the CV3/REC input on the bottom row, with a maximum record time of 30 seconds.
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 5
+  q: Which input do I patch audio into to sample on the Sample Drum, and how long can I record?
+  anchors:
+  - To record the sample, patch the audio signal to CV3/REC (bottom row CV3) input.
+- id: sd-filter-fx-wet
+  claim: The lowpass and highpass filter effects must have dry/wet set fully wet to hear them properly.
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 6
+  q: Why can't I hear the filter effect on the Sample Drum?
+  anchors:
+  - For filter effects you need to set the dry/wet to fully wet position
+- id: sd-env-relative-range
+  claim: The RELATIVE envelope range sets attack, hold and decay from the sample or slice length, which is handy
+    for slicing.
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 7
+  q: What does the RELATIVE envelope range do on Sample Drum?
+  anchors:
+  - Attack, Hold and Decay time is automatically defined by sample or slice length
+- id: sd-double-project-interrupt
+  claim: SINGLE projects let you reload one channel while the other plays, but loading a DOUBLE project interrupts
+    playback.
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 10
+  q: Can I load a new project on the Sample Drum without stopping playback?
+  anchors:
+  - SINGLE project allows you to reload one side while the other is playing
+- id: sd-firmware-fat32
+  claim: Firmware is updated by copying the file to the SD card root, which must be FAT32 formatted, and powering
+    on.
+  status: manual
+  source: erica_sample_drum_manual
+  pages:
+  - 12
+  q: How do I update the firmware on the Erica Sample Drum?
+  anchors:
+  - Copy the latest firmware file to the root directory of the SD card
+
+# ---- Firmware changelog and version list
+- id: sd-19-loading
+  claim: Sample Drum firmware 1.9 improved the LP/HP filter FX and loads long samples faster
+  status: changelog
+  source: erica_sample_drum_firmware_notes
+  q: Which Sample Drum firmware made long samples load faster?
+  anchors:
+  - Faster long sample loading times
+- id: sd-110-latest
+  claim: Erica's Sample Drum page lists firmware v1.10 (January 30, 2026)
+  status: changelog
+  source: erica_sample_drum_product_page
+  q: What is the newest Sample Drum firmware on Erica's site?
+  anchors:
+  - Firmware v1.10

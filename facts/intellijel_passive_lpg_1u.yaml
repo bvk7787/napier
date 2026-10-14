@@ -1,0 +1,43 @@
+# Facts for intellijel_passive_lpg_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: plpg1u-cv-range
+  claim: With no positive CV the gate is fully closed, and at +5V on the CV input it is fully open and passes the
+    input through.
+  status: manual
+  source: intellijel_passive_lpg_1u_manual
+  pages:
+  - 4
+  q: How much control voltage does it take to fully open the Intellijel Passive LPG?
+  anchors:
+  - At +5V, the gate is fully open and the input signal is passed through to the output
+- id: plpg1u-no-power
+  claim: Because the module is passive it needs no power connection to operate.
+  status: manual
+  source: intellijel_passive_lpg_1u_manual
+  pages:
+  - 3
+  q: Does the Passive LPG 1U need a power cable?
+  anchors:
+  - Because this is a passive module, it requires no power to operate.
+- id: plpg1u-trigger-excite
+  claim: Sending a short trigger or noise burst into the CV IN produces a natural struck-object envelope like a
+    hand drum or marimba.
+  status: manual
+  source: intellijel_passive_lpg_1u_manual
+  pages:
+  - 5
+  q: What should I patch into the LPG's CV input to get a plucked or bongo-like sound?
+  anchors:
+  - work particularly well when a short trigger or noise burst is sent into the CV IN
+- id: plpg1u-input-dependent-tone
+  claim: Because the circuit is passive, its sonic character depends partly on the audio signal fed into it.
+  status: manual
+  source: intellijel_passive_lpg_1u_manual
+  pages:
+  - 4
+  q: Why does the Passive LPG 1U sound different depending on what I feed it?
+  anchors:
+  - its sonic characteristics are somewhat dependent upon the audio signal you feed into it

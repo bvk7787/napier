@@ -1,0 +1,1639 @@
+# Documents in the napier store. `napier fetch` downloads them into ~/.napier/files;
+# `napier ingest` extracts text (grep/read) and indexes chunks (search).
+#
+# kind: manual | changelog | community | note | code
+# format: pdf | text | markdown | html | gdoc (Google Doc, exported as markdown) | github_releases
+#   | discourse (a whole forum topic via /raw/<id>, one '## #N user (date)' per post)
+# path: a local file instead of a url; relative paths are from this repo (notes/rack.md).
+# sha256 pins a file: fetch and ingest refuse anything else (pin manuals; leave changelogs and
+#   community docs unpinned, since they update in place).
+# page_offset: printed page = PDF page - page_offset (`napier source offset <id>` detects it).
+# heading: regex for section headings in plain-text sources (markdown formats use # headings).
+# stop_at: cut a text source at the nth line matching regex (old copies in later tabs, etc.).
+# start_at: drop everything before the nth line matching regex (a product page's changelog section),
+#   so price or stock churn elsewhere on the page doesn't count as a change.
+# check: false marks a one-time snapshot that `source check` never re-fetches (forum threads, pinned
+#   code, and Google Drive files, since drive.google.com/uc is disallowed by robots.txt).
+# Polite fetching: napier sends an honest user agent, obeys robots.txt (`source add` refuses
+#   disallowed URLs), fetches each source at most once a run (weekly), spaces requests to a host
+#   by 2 s, backs off on 429/503 per Retry-After, never follows links, and never logs in.
+# Add new ones with `napier source add <url> --id ... --device ...`.
+
+# ---- Dirtywave M8 (device: m8_tracker)
+
+- id: m8_tracker_manual
+  device: m8_tracker
+  kind: manual
+  format: pdf
+  title: M8 Operation Manual
+  version: v6.5.2 (2026-04-21)
+  url: https://cdn.shopify.com/s/files/1/0455/0485/6229/files/m8_operation_manual_v20260421.pdf?v=1776791699
+  fetched: 2026-09-28
+  sha256: 006360bd2a2819e900d785b8ed4bafdc14030eb74acc4add265fdaca65dbeac7
+  page_offset: 7
+
+- id: m8_tracker_changelog
+  device: m8_tracker
+  kind: changelog
+  format: text
+  title: M8 firmware changelog
+  version: Version 6.6.3 E
+  url: https://raw.githubusercontent.com/Dirtywave/M8Firmware/main/changelog.txt
+  fetched: '2026-10-11'
+  heading: ^\d{4}-\d{2}-\d{2} - Version
+
+- id: m8_tracker_tips
+  device: m8_tracker
+  kind: community
+  format: gdoc
+  title: Open M8 Tips Tricks and Findings (Dirtywave Discord)
+  version: latest (changed upstream 2026-10-04)
+  url: https://docs.google.com/document/d/1IpUeR2s9TpkwH9w2lfqfLLkUxLvXcQWipDR046DzOYk/edit
+  fetched: '2026-10-04'
+  stop_at:
+    regex: ^# Open M8 Tips Tricks and Findings
+    nth: 2
+  notes: Main tab only. The export repeats the document as older copies in later tabs; stop_at cuts there.
+
+# ---- Elektron Digitakt II (device: digitakt_2)
+
+- id: digitakt_2_manual
+  device: digitakt_2
+  kind: manual
+  format: pdf
+  title: Digitakt II User Manual
+  version: OS 1.17 (2026-09-30)
+  url: https://www.elektron.se/wp-content/uploads/2026/10/Digitakt-2-User-Manual_ENG_OS1.17_260930.pdf
+  fetched: '2026-10-04'
+  sha256: a5c12b2b692311828f78fad18008dcda96bf26dd50e117bda5d735794e0bbd06
+  page_offset: 0
+
+- id: elektron_transfer_manual
+  device: digitakt_2
+  kind: manual
+  format: pdf
+  title: Elektron Transfer User Manual
+  version: 1.10 (2026-03-04)
+  url: https://www.elektron.se/wp-content/uploads/2026/03/Transfer-User-Manual_ENG_OS1.10_260304.pdf
+  fetched: 2026-09-28
+  sha256: be28598e429eb8470b43ed065cce5b196165cbbf3b251a9a922d28aa5ca12eab
+  page_offset: 0
+
+# ---- OXI Instruments ONE MKII (device: oxi_one_mk2)
+
+- id: oxi_one_mk2_manual
+  device: oxi_one_mk2
+  kind: manual
+  format: pdf
+  title: OXI ONE MKII Official User Manual
+  version: v2.0a (2026-05-08)
+  url: https://drive.google.com/file/d/1LdJvG-GqzzKI2qw92CyZKklE7kSoZLFE/view
+  fetched: 2026-09-28
+  sha256: c867c7bff23ed6603389f02b66927f29b32e711aff079ca288eab469e0373fb1
+  page_offset: 8
+  check: false
+  notes: Linked from oxiinstruments.com/support. Firmware has moved on since (see the release notes).
+
+- id: oxi_one_mk2_releases
+  device: oxi_one_mk2
+  kind: changelog
+  format: github_releases
+  title: OXI ONE MKII firmware release notes
+  version: latest
+  url: https://github.com/OXI-Instruments/OXI-One-MkII-Releases/releases
+
+- id: ssf_ultra_kick_manual
+  device: ssf_ultra_kick
+  kind: manual
+  format: pdf
+  title: SSF Entity Ultra-Kick manual
+  version: undated (file 2022-05-02)
+  url: https://cdn.shopify.com/s/files/1/0616/1206/4946/files/SSF-entity-ultra-kick-manual.pdf?v=1651516319
+  fetched: '2026-09-29'
+  sha256: 59fe1ebd60bfd35f610075df4de230ccf86436ceb723e1ae13f6071916a09a2f
+  page_offset: 0
+
+- id: ssf_ultra_perc_manual
+  device: ssf_ultra_perc
+  kind: manual
+  format: pdf
+  title: SSF Entity Ultra-Perc manual
+  version: beta (file 2023-03-31)
+  url: https://cdn.shopify.com/s/files/1/0616/1206/4946/files/EUP_manual_beta.pdf?v=1680290091
+  fetched: '2026-09-29'
+  sha256: 288530d22b0cfa4e0dcf1be26c7bcfb15dea8090eaca24c357d7141df0e6a417
+  page_offset: 0
+
+- id: ssf_metalloid_manual
+  device: ssf_metalloid
+  kind: manual
+  format: pdf
+  title: SSF Metalloid Percussion Entity quickstart
+  version: rev1.0 (file 2023-12-01)
+  url: https://cdn.shopify.com/s/files/1/0616/1206/4946/files/Metalloid_Quickstart_rev1.0.pdf?v=1701472927
+  fetched: '2026-09-29'
+  sha256: 76c8845936544e6bb75b5b1f872ba57f8244813cd4750819b790f25f76117a1e
+  page_offset: 0
+
+- id: intellijel_atlantix_manual
+  device: intellijel_atlantix
+  kind: manual
+  format: pdf
+  title: Intellijel Atlantix manual
+  version: rev 2024.09.12
+  url: https://intellijel.com/downloads/manuals/atlantix_manual_2024.09.12.pdf
+  fetched: '2026-09-29'
+  sha256: 5c4b195d52f7d446abd1b40fff63e1e556594df09cad509b656470988b279fe8
+  page_offset: 0
+
+- id: erica_sample_drum_manual
+  device: erica_sample_drum
+  kind: manual
+  format: pdf
+  title: Erica Synths Sample Drum user manual
+  version: undated (official download)
+  url: https://www.ericasynths.lv/service/file/download/product_id/1399/file_id/289/
+  fetched: '2026-09-29'
+  sha256: 17aa01712d4d01f372ed8583a5e81aab0ff05b7354fb4fdc9c6d5e6d7b66f909
+  page_offset: 0
+
+- id: squarp_hermod_plus_manual
+  device: squarp_hermod_plus
+  kind: manual
+  format: pdf
+  title: Squarp Hermod+ manual
+  version: hermodplusOS 3.0 (2026-07-17)
+  url: https://squarp.net/static/HERMODPLUS_manual-e8f40e77eb1796be6fa6f764f49de9b7.pdf
+  fetched: '2026-09-29'
+  sha256: 0c2fd5dc7651f5a1af00a873251f64e5979ef26f7c4f9d34145488535fa9a280
+  page_offset: 0
+
+- id: squarp_xp32_manual
+  device: squarp_hermod_plus
+  kind: manual
+  format: pdf
+  title: Squarp xp32 manual (with Hermod+)
+  version: '2026-07-21'
+  url: https://squarp.net/static/XP32_manual-9f9cfa7ec1e92edae84097ba0bf771c1.pdf
+  fetched: '2026-09-29'
+  sha256: 65c7d5a8f98f16dba772ccbdc24b6ce93a6fe72914b79beb796dda73e9f3e015
+  page_offset: 0
+
+- id: wmd_clutch_manual
+  device: wmd_clutch
+  kind: manual
+  format: html
+  title: WMD Clutch user manual
+  version: rev 1.02 (firmware 1.00)
+  url: https://docs.wmdevices.com/clutch
+  fetched: '2026-09-29'
+
+- id: squarp_hermod_plus_releases
+  device: squarp_hermod_plus
+  kind: changelog
+  format: html
+  title: Hermod+ firmware release notes
+  version: Hermod+OS 3.0 (2026.05.27)
+  url: https://squarp.net/hermodplus/firmware/
+  fetched: '2026-10-11'
+  heading: '^Hermod\+OS \d+\.\d+ '
+
+- id: knobula_monumatic_manual
+  device: knobula_monumatic
+  kind: manual
+  format: pdf
+  title: Knobula Monumatic manual
+  version: 1.0.0.0 (file 2023-12-17)
+  url: https://drive.google.com/file/d/1UGty8EshRJmAav8yHmSoVT5cFBYA7OiL/view
+  fetched: '2026-09-29'
+  sha256: 181a0d3c44cdeee0d132767df81237d0dbbeaf2a84c01c53dbad177a6106618f
+  page_offset: 1
+  check: false
+
+- id: intellijel_noise_tools_manual
+  device: intellijel_noise_tools
+  kind: manual
+  format: pdf
+  title: Intellijel Noise Tools 1U manual
+  version: rev 2021.08.04
+  url: https://intellijel.com/downloads/manuals/noise-tools-1u_manual_2021.08.04.pdf
+  fetched: '2026-09-29'
+  sha256: 5e50dd1c14ce54e32bc595aa2b3effeaf3e06d9d159f4a00e39622893c879744
+  page_offset: 1
+
+- id: make_noise_multiwave_manual
+  device: make_noise_multiwave
+  kind: manual
+  format: pdf
+  title: Make Noise MultiWAVE manual
+  version: covers firmware 4.3.5
+  url: https://www.makenoise-manuals.com/multiwave/multiwave-manual.pdf
+  fetched: '2026-09-29'
+  sha256: 51a3720dac0e9d3a3bb7839aaba1a6c43cc4c3f37fe6c915e38014ebb3938efc
+  page_offset: 0
+
+- id: make_noise_midi_inlet_manual
+  device: make_noise_multiwave
+  kind: manual
+  format: pdf
+  title: Make Noise MultiWAVE MIDI Inlet manual
+  version: undated
+  url: https://www.makenoise-manuals.com/multiwave-midi-inlet/multiwave-midi-inlet-manual.pdf
+  fetched: '2026-09-29'
+  sha256: 420a34f5f123acc1223b70ee1034b6d96cd48b35694bbf233ef60f22ac5c73e4
+  page_offset: 0
+
+- id: instruo_csl_manual
+  device: instruo_csl
+  kind: manual
+  format: pdf
+  title: Instruo Cs-L Complex Oscillator manual
+  version: undated (Analogue Haven mirror)
+  url: https://analoguehaven.com/instruo-specialist-synthesizers/cs-l/manual.pdf
+  fetched: '2026-09-29'
+  sha256: 56d9c575d06e214d8df087ef0234c32da11f994fa1b53c49ee0b96b31a225413
+  page_offset: 0
+
+- id: strymon_superkar_plus_manual
+  device: strymon_superkar_plus
+  kind: manual
+  format: pdf
+  title: Strymon SuperKar+ user manual
+  version: Rev A
+  url: https://www.strymon.net/manuals/SuperKarPlus_QuickStart_Website_RevA.pdf
+  fetched: '2026-09-29'
+  sha256: ca0dd3dfbab40ab706847d06865e236847c56eb8838478042bf10a67c1e823e2
+  page_offset: 0
+
+- id: ritual_pointeuse_manual
+  device: ritual_pointeuse
+  kind: manual
+  format: pdf
+  title: Ritual Electronics Pointeuse manual
+  version: rev1 (Juno mirror)
+  url: https://imagescdn.juno.co.uk/manual/921643-01U.pdf
+  fetched: '2026-09-29'
+  sha256: afd6b2653302ae68d1144022410ff83af137a4b26f65531db0fb02f8a8ad52c2
+  page_offset: 0
+
+- id: strymon_superkar_plus_releases
+  device: strymon_superkar_plus
+  kind: changelog
+  format: html
+  title: SuperKar+ firmware release notes
+  version: latest
+  url: https://www.strymon.net/faq/superkar-firmware-revision-release-notes/
+  fetched: '2026-09-29'
+
+- id: intellijel_metropolix_manual
+  device: metropolix_solo
+  kind: manual
+  format: pdf
+  title: Intellijel Metropolix manual
+  version: v1.6.5 (2026.09.16)
+  url: https://intellijel.com/downloads/manuals/metropolix_manual_v1.6.5_2026.09.16.pdf
+  fetched: '2026-09-29'
+  sha256: 29dfd8997f59a63b2aec875cf5512fb71f31f48731910e2fc166486874c26cab
+  page_offset: 1
+
+- id: intellijel_cascadia_manual
+  device: intellijel_cascadia
+  kind: manual
+  format: pdf
+  title: Intellijel Cascadia manual
+  version: v1.4 (2026.04.13), firmware 1.4.1
+  url: https://intellijel.com/downloads/manuals/cascadia_manual_v1.4_2026.04.13.pdf
+  fetched: '2026-09-29'
+  sha256: 21a6b2159fb3e97aa51d8977eb364b27fe34c4d3b9d1e475a20061f1ccfa9d80
+  page_offset: 0
+
+- id: make_noise_polimaths_manual
+  device: make_noise_polimaths
+  kind: manual
+  format: pdf
+  title: Make Noise PoliMATHS manual
+  version: covers firmware 1.7.3
+  url: https://www.makenoise-manuals.com/polimaths/polimaths-manual.pdf
+  fetched: '2026-09-30'
+  sha256: f8b2590c1490396f5e920d1aeaeef1ef1f978066fd06e76cc346d00cf4535d4c
+  page_offset: 0
+
+- id: make_noise_qxg_manual
+  device: make_noise_qxg
+  kind: manual
+  format: pdf
+  title: Make Noise QXG manual
+  version: undated
+  url: https://www.makenoise-manuals.com/qxg/qxg-manual.pdf
+  fetched: '2026-09-30'
+  sha256: 7c77cc91ef486f7d29228960de2510298a336073b779e1586a98eb41e8c5de07
+  page_offset: 0
+
+- id: soundforce_samples_ii_manual
+  device: soundforce_samples_ii
+  kind: manual
+  format: pdf
+  title: SoundForce Samples II user manual
+  version: v1.5 (2024-05-11)
+  url: https://sound-force.nl/Manuals/Samples_II_Manual_v1.5.pdf
+  fetched: '2026-10-01'
+  sha256: f024b69481c1e9a59ec19217cd768b7837ef89cd0eacee8eaf74f58b0fa7dd86
+  page_offset: 0
+
+- id: make_noise_maths_manual
+  device: make_noise_maths
+  kind: manual
+  format: pdf
+  title: Make Noise MATHS manual
+  version: undated (2013 circuit, 2020 panel)
+  url: https://www.makenoise-manuals.com/maths/maths-manual.pdf
+  fetched: '2026-10-04'
+  sha256: 9ba2ecd3aa5089cf823903563f57baf342105691a1bb6537cd2adb69b74433c6
+  page_offset: 0
+
+- id: wmd_metron_manual
+  device: wmd_metron
+  kind: manual
+  format: html
+  title: WMD Metron user manual
+  version: firmware 1.77+
+  url: https://docs.wmdevices.com/metron
+  fetched: '2026-10-04'
+
+- id: wmd_voltera_manual
+  device: wmd_voltera
+  kind: manual
+  format: html
+  title: WMD Voltera user manual
+  version: undated
+  url: https://docs.wmdevices.com/voltera
+  fetched: '2026-10-04'
+
+- id: alm_pams_pro_workout_manual
+  device: alm_pams_pro_workout
+  kind: manual
+  format: pdf
+  title: ALM034 Pamela's PRO Workout manual
+  version: v0.4, firmware 131 (2026-10-01)
+  url: https://assets.busycircuits.com/docs/alm034-manual.pdf
+  fetched: '2026-10-04'
+  sha256: cd77e6c31d32ca3038ebac49e5ad05faac9f51b75dafa29b7e392b5160636339
+  page_offset: 0
+
+- id: acid_rain_maestro_manual
+  device: acid_rain_maestro
+  kind: manual
+  format: pdf
+  title: Acid Rain Technology Maestro manual
+  version: firmware V2.1 (2026-07-17)
+  url: https://cdn.shopify.com/s/files/1/0053/9151/5766/files/Maestro_Manual_Firmware_V2.1_7.17.2026.pdf?v=1784331474
+  fetched: '2026-10-04'
+  sha256: afd3e47d86376192b15e355674ba525ece16d326cd0a61ec08583465ef05bf89
+  page_offset: 0
+
+- id: strymon_magneto_manual
+  device: strymon_magneto
+  kind: manual
+  format: pdf
+  title: Strymon Magneto user manual
+  version: Rev B (2018-05-18)
+  url: https://www.strymon.net/manuals/Magneto_UserManual_REVB.pdf
+  fetched: '2026-10-04'
+  sha256: 71c2992314f5848cc697ce4da75561799c518aab88ec346f496a846d2d4dd35a
+  page_offset: 0
+
+- id: mutable_beads_manual
+  device: mutable_beads
+  kind: manual
+  format: html
+  title: Mutable Instruments Beads manual
+  version: undated
+  url: https://pichenettes.github.io/mutable-instruments-documentation/modules/beads/manual/
+  fetched: '2026-10-04'
+
+- id: intellijel_quadrax_manual
+  device: intellijel_quadrax
+  kind: manual
+  format: pdf
+  title: Intellijel Quadrax manual
+  version: firmware 1.4.5 (2026.09.11)
+  url: https://intellijel.com/downloads/manuals/quadrax_manual_1.4.5_2026.09.11.pdf
+  fetched: '2026-10-04'
+  sha256: 161b1a5915ffdaf68fe081c35dfde5b5f1be361b782a26e9fe155cb2fed3a01d
+  page_offset: 0
+
+- id: intellijel_tangrams_manual
+  device: intellijel_tangrams
+  kind: manual
+  format: pdf
+  title: Intellijel Tangrams manual
+  version: 2026.01.05
+  url: https://intellijel.com/downloads/manuals/tangrams_manual_2026.01.05.pdf
+  fetched: '2026-10-04'
+  sha256: fbfc7e4f878bca8a70aee211ed8df830f64b4a27d58c2b9b9449980d93487b8f
+  page_offset: 0
+
+- id: strymon_starlab_manual
+  device: strymon_starlab
+  kind: manual
+  format: pdf
+  title: Strymon StarLab user manual
+  version: Rev A (2021-11-09)
+  url: https://www.strymon.net/manuals/StarLab_UserManual_RevA.pdf
+  fetched: '2026-10-04'
+  sha256: b242901176424cd6df5a83316215740ea2281bbf600508c1ae371e04613208a4
+  page_offset: 0
+
+- id: qubit_data_bender_manual
+  device: qubit_data_bender
+  kind: manual
+  format: pdf
+  title: Qu-Bit Data Bender manual
+  version: firmware v1.4.5
+  url: https://www.qubitelectronix.com/s/Data_Bender_v146-2.pdf
+  fetched: '2026-10-04'
+  sha256: 98bbb9174f55f11a737ebfd8ed709869f365a89503a22b2cec28afa902a1d979
+  page_offset: 2
+
+- id: venus_veno_orbit_manual
+  device: venus_veno_orbit
+  kind: manual
+  format: pdf
+  title: Venus Instruments Veno-Orbit user manual
+  version: firmware v1.2 (2026)
+  url: https://drive.google.com/uc?export=download&id=1KWQfH5iOLXx_W5HHsiGKNYTATT-cLi0Z
+  fetched: '2026-10-04'
+  sha256: 62822a842f2c33d1900f4bba00d3ed212dc42e725b05d9fd205d3b3a76ba651b
+  page_offset: 1
+  check: false
+
+- id: intellijel_steppy_1u_manual
+  device: intellijel_steppy_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Steppy 1U manual
+  version: firmware 1.2 (2020.10.26)
+  url: https://intellijel.com/downloads/manuals/steppy-1u_manual_1.2_2020.10.26.pdf
+  fetched: '2026-10-04'
+  sha256: 369e500eb995ffc6d347184df9902176ad560b3b90012151580c99ae2253f407
+  page_offset: 1
+
+- id: intellijel_amps_manual
+  device: intellijel_amps
+  kind: manual
+  format: pdf
+  title: Intellijel Amps manual
+  version: 2026.02.09
+  url: https://intellijel.com/downloads/manuals/amps_manual_2026.02.09.pdf
+  fetched: '2026-10-04'
+  sha256: 0d5d3eec9f4faaf58d40a7716a2dc03baa45e768ae3c662136c204a865227a0d
+  page_offset: 0
+
+- id: intellijel_zeroscope_1u_manual
+  device: intellijel_zeroscope_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Zeroscope 1U manual
+  version: 2020.10.26
+  url: https://intellijel.com/downloads/manuals/zeroscope-1u_manual_2020.10.26.pdf
+  fetched: '2026-10-04'
+  sha256: 8729d0884d48265d9a178a569d076eb9f1320af83c53bcd586d71db80e717e84
+  page_offset: 1
+
+- id: ssf_vortices_manual
+  device: ssf_vortices
+  kind: manual
+  format: pdf
+  title: Steady State Fate Vortices manual (with V-CV)
+  version: '2020-11-23'
+  url: https://cdn.shopify.com/s/files/1/0616/1206/4946/files/ssf-vortices-manual.pdf?v=1651516379
+  fetched: '2026-10-04'
+  sha256: b37e5a04a61f5d6f425d8e1e8d5d2aacb0b31cba84c36f6c2579ce76e9386292
+  page_offset: 1
+
+- id: ssf_stereo_dipole_cheatsheet
+  device: ssf_stereo_dipole
+  kind: manual
+  format: pdf
+  title: Steady State Fate Stereo Dipole cheat sheet
+  version: '1.50'
+  url: https://cdn.shopify.com/s/files/1/0616/1206/4946/files/ssf-stereo-dipole-cheat-sheet.pdf?v=1651524873
+  fetched: '2026-10-04'
+  sha256: 809943ab8a572129053a48b704dfad03fb7ce3317dfe051e55f8013698d7d439
+  page_offset: 0
+
+- id: ssf_steady_state_gate_manual
+  device: ssf_steady_state_gate
+  kind: manual
+  format: pdf
+  title: Steady State Fate Steady State Gate manual
+  version: rev1.0
+  url: https://cdn.shopify.com/s/files/1/0616/1206/4946/files/SSG_manual_rev1.0.pdf?v=1668198513
+  fetched: '2026-10-04'
+  sha256: c6ea0d3459cfcc6f73149a1343268fe6d5332103bb2b1a2a611f1d501b1813ae
+  page_offset: 0
+
+- id: mutable_rings_manual
+  device: msw_nrings
+  kind: manual
+  format: html
+  title: Mutable Instruments Rings manual (for MSW nRings)
+  version: firmware 1.1
+  url: https://pichenettes.github.io/mutable-instruments-documentation/modules/rings/manual/
+  fetched: '2026-10-04'
+
+- id: mutable_plaits_manual
+  device: msw_beehive
+  kind: manual
+  format: html
+  title: Mutable Instruments Plaits manual (for MSW Beehive)
+  version: firmware 1.2
+  url: https://pichenettes.github.io/mutable-instruments-documentation/modules/plaits/manual/
+  fetched: '2026-10-04'
+
+- id: bastl_ikarie_manual
+  device: bastl_ikarie
+  kind: manual
+  format: pdf
+  title: Bastl Ikarie manual
+  version: undated (2020)
+  url: https://bastl-instruments.com/files/manual-ikarie-web.pdf
+  fetched: '2026-10-04'
+  sha256: abf7875b94ab4ccddc851564b479ff4abd37692245e5b8639d202ca968c9be41
+  page_offset: 0
+
+- id: ne_lapsus_os_manual
+  device: ne_lapsus_os
+  kind: manual
+  format: html
+  title: Noise Engineering Lapsus Os manual
+  version: undated
+  url: https://noiseengineering.us/manuals/lapsus-os/
+  fetched: '2026-10-04'
+
+- id: ne_xer_mixa_manual
+  device: ne_xer_mixa
+  kind: manual
+  format: html
+  title: Noise Engineering Xer Mixa manual (with Expando Expandi)
+  version: undated
+  url: https://noiseengineering.us/manuals/xm/
+  fetched: '2026-10-04'
+
+- id: boredbrain_optx_v2_guide
+  device: boredbrain_optx_v2
+  kind: manual
+  format: pdf
+  title: Boredbrain Optx v2 user guide
+  version: '1.1'
+  url: https://www.boredbrainmusic.com/User%20Guides/Optx-v2-UserGuide_1.1.pdf
+  fetched: '2026-10-04'
+  sha256: a1ce5bfb94d2e6a00d3dbb7449530b1b629c8e4822cd697855fe47ef506d20aa
+  page_offset: 0
+
+- id: koma_kmndr_manual
+  device: koma_kmndr
+  kind: manual
+  format: pdf
+  title: KOMA Elektronik KMNDR manual
+  version: undated
+  url: https://koma-elektronik.com/new/wp-content/uploads/2023/08/KMNDR_Manual_single.pdf
+  fetched: '2026-10-04'
+  sha256: 6c940c68fa8b0a10ce0e5cda817c5cf3db2089b215b09e9720dc16a3b48a9ea1
+  page_offset: 0
+
+- id: ritual_guillotine_manual
+  device: ritual_guillotine
+  kind: manual
+  format: pdf
+  title: Ritual Electronics Guillotine manual
+  version: undated (2020)
+  url: https://www.ritualelectronics.com/web/content/2748
+  fetched: '2026-10-04'
+  sha256: 84a63d37bfe6645f720632ef8060bf34cfefbf1c9dc0818fd81d086040733906
+  page_offset: 0
+
+- id: instruo_larachd_manual
+  device: instruo_larachd
+  kind: manual
+  format: pdf
+  title: Instruō làrachd manual
+  version: undated (2022)
+  url: https://www.instruomodular.com/wp-content/uploads/2022/05/larachd-Manual.pdf
+  fetched: '2026-10-04'
+  sha256: ddd05530ecd82a96ee4432b94a1ea7e6f01f6a3b88e6a83a8a2aa5f9c23bfd3d
+  page_offset: 0
+
+- id: instruo_neoni_manual
+  device: instruo_neoni
+  kind: manual
+  format: pdf
+  title: Instruō neóni manual
+  version: undated (2022)
+  url: https://www.instruomodular.com/wp-content/uploads/2022/03/neoni-Manual.pdf
+  fetched: '2026-10-04'
+  sha256: fdc70d7597335b37a4a45df56bd305d007af68072f899a822682d82a97f95586
+  page_offset: 0
+
+- id: instruo_carn_manual
+  device: instruo_carn
+  kind: manual
+  format: pdf
+  title: Instruō càrn manual
+  version: undated (2022)
+  url: https://www.instruomodular.com/wp-content/uploads/2022/11/carn-Manual.pdf
+  fetched: '2026-10-04'
+  sha256: ca30c4382616e35d4bb1c59c73660e6e838bbf297509b3abc4f61f0a4bc981c7
+  page_offset: 0
+
+- id: instruo_eas_manual
+  device: instruo_eas
+  kind: manual
+  format: pdf
+  title: Instruō eãs manual
+  version: undated (2021)
+  url: https://www.instruomodular.com/wp-content/uploads/2021/10/Eas-Manual.pdf
+  fetched: '2026-10-04'
+  sha256: 6e2d12fae3577ae22f19d8865092079aba88beadae9859c874fbec7a59a1f1b7
+  page_offset: 0
+
+- id: instruo_cnoc_manual
+  device: instruo_cnoc
+  kind: manual
+  format: pdf
+  title: Instruō cnōc manual
+  version: undated (2022)
+  url: https://www.instruomodular.com/wp-content/uploads/2022/08/cno%CC%84c-Manual.pdf
+  fetched: '2026-10-04'
+  sha256: 4796a6fa8413d89bd8021a159c7c721047eacd4e5795993a2f6c4b7b58471e44
+  page_offset: 0
+
+- id: instruo_aradh_manual
+  device: instruo_aradh
+  kind: manual
+  format: pdf
+  title: Instruō àradh manual
+  version: undated (2023)
+  url: https://www.instruomodular.com/wp-content/uploads/2023/06/aradh-Manual.pdf
+  fetched: '2026-10-04'
+  sha256: 583402b76d5e4a32e3cb2c8436f5d3d51b43ff10a6e3b7e95ec4c8593afc4416
+  page_offset: 0
+
+- id: divkid_manic_manual
+  device: divkid_manic
+  kind: manual
+  format: pdf
+  title: DivKid x Apollo View Manic manual
+  version: V1.0
+  url: https://www.apolloviewmodular.com/manuals/modules/manic/manic-manual-v1.0.pdf
+  fetched: '2026-10-04'
+  sha256: ff3e163c447a6e4719043d1a8cce9447217283ee6c6153a229ab13f7379f6cdc
+  page_offset: 0
+
+- id: divkid_ochd_manual
+  device: divkid_ochd
+  kind: manual
+  format: pdf
+  title: Instruō x DivKid øchd manual
+  version: undated (2020)
+  url: https://www.instruomodular.com/wp-content/uploads/2020/05/Ochd-Manual-A5.pdf
+  fetched: '2026-10-04'
+  sha256: dcf2efa250dee33c2d4d9fabf7d054c6d842b7ec827b19afbf089f2794a08b7a
+  page_offset: 0
+
+- id: divkid_ochd_expander_manual
+  device: divkid_ochd_expander
+  kind: manual
+  format: pdf
+  title: Instruō x DivKid øchd expander manual
+  version: undated (2023)
+  url: https://www.instruomodular.com/wp-content/uploads/2023/10/ochd-expander-Manual-web.pdf
+  fetched: '2026-10-04'
+  sha256: 6a0b19a8691cc0a407bc3fbb82b4e52670c983d7068f503f08238f2f9b8472dc
+  page_offset: 0
+
+- id: alm_akemies_castle_manual
+  device: alm_akemies_castle
+  kind: manual
+  format: pdf
+  title: ALM011 Akemie's Castle manual
+  version: V0.2
+  url: https://assets.busycircuits.com/docs/alm011-manual.pdf
+  fetched: '2026-10-04'
+  sha256: c6560a3aa83522fae11bf2a574ecc71db4a83605825634026ec3d45de3ac8e0e
+  page_offset: 0
+
+- id: alm_oax2_manual
+  device: alm_oax2
+  kind: manual
+  format: pdf
+  title: ALM010 O/A/x2 manual
+  version: undated (2015)
+  url: https://assets.busycircuits.com/docs/alm010-manual.pdf
+  fetched: '2026-10-04'
+  sha256: 00162f01e25a77b4f6c5e648fb8cb62050810c5bff3d9f20734121d0f1e52460
+  page_offset: 0
+
+- id: alm_mfd_manual
+  device: alm_mfd
+  kind: manual
+  format: pdf
+  title: ALM044 MFD manual
+  version: v0.1
+  url: https://assets.busycircuits.com/docs/alm044-manual.pdf
+  fetched: '2026-10-04'
+  sha256: 5aac1dd4d89d04333c06c6814e3768567eaa8ce5782b7cdd1ae2c61e86121337
+  page_offset: 0
+
+- id: shakmat_bard_quartet_manual
+  device: shakmat_bard_quartet
+  kind: manual
+  format: pdf
+  title: Shakmat Bard Quartet manual
+  version: firmware 1.1
+  url: https://shakmat.com/doc/bq/BQ-User_Manual.pdf
+  fetched: '2026-10-04'
+  sha256: 3895e66cad3ffa3da4fb4d92055adedf3224d2c92f565fdb5e1126a8f43f6a6e
+  page_offset: 0
+
+- id: shakmat_bard_quartet_expander_manual
+  device: shakmat_bard_quartet_expander
+  kind: manual
+  format: pdf
+  title: Shakmat Bard Quartet Expand manual
+  version: undated (2022)
+  url: https://shakmat.com/doc/bqx/BQX-User_Manual.pdf
+  fetched: '2026-10-04'
+  sha256: 84f3cdb1789ada9d5543ba773c5d2821c0ea36a3f67b34423c4bcb7a2ee921ab
+  page_offset: 0
+
+- id: shakmat_bqx_midi_guide
+  device: shakmat_bard_quartet_expander
+  kind: manual
+  format: pdf
+  title: Shakmat Bard Quartet Expand MIDI implementation guide
+  version: undated
+  url: https://shakmat.com/doc/bqx/BQX-MIDI_Implementation_Guide.pdf
+  fetched: '2026-10-04'
+  sha256: 9d49a15c9d00d99bda6b5aaa520af9517a1f0118fc8f425bd728922cc2e42105
+  page_offset: 0
+
+- id: shakmat_sumdif_manual
+  device: shakmat_sumdif
+  kind: manual
+  format: pdf
+  title: Shakmat SumDif manual
+  version: undated (2023)
+  url: https://shakmat.com/doc/sd/SD-User_Manual.pdf
+  fetched: '2026-10-04'
+  sha256: f3c7a7c11c71491e713e99887e887fcb3148eb6cd90e0d256d467e0480554896
+  page_offset: 0
+
+- id: vpme_t43_manual
+  device: vpme_t43
+  kind: manual
+  format: pdf
+  title: vpme.de T43 manual
+  version: rev1.0
+  url: https://www.analoguehaven.com/vpmedotde/t43/manual.pdf
+  fetched: '2026-10-04'
+  sha256: a2b02e5f0ca922c61e7ca48168c518765f6feab463a493444669ee14667cd79a
+  page_offset: 0
+
+- id: intellijel_octalink_1u_manual
+  device: intellijel_octalink_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Octalink 1U manual
+  version: 2021.08.03
+  url: https://intellijel.com/downloads/manuals/octalink-1u_manual_2021.08.03.pdf
+  fetched: '2026-10-04'
+  sha256: fa0c9349ae6babea18b3770187081ad9428ce09022af9baccc3984315110fb4a
+  page_offset: 1
+
+- id: intellijel_buff_mult_1u_manual
+  device: intellijel_buff_mult_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Buff Mult 1U manual
+  version: 2018.09.13
+  url: https://intellijel.com/downloads/manuals/buff-mult-1u_manual_2018.09.13.pdf
+  fetched: '2026-10-04'
+  sha256: 66563984e3fdb9aa5a0ae1d5f1d7eeb957049726c080df557ab01b8107834ace
+  page_offset: 1
+
+- id: intellijel_quadratt_1u_manual
+  device: intellijel_quadratt_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Quadratt 1U manual
+  version: 2021.07.27
+  url: https://intellijel.com/downloads/manuals/quadratt-1u_manual_2021.07.26.pdf
+  fetched: '2026-10-04'
+  sha256: d8bd1774feed6b77d7fc6ce3ac70a9b4baf21049210271dea0191951eab43962
+  page_offset: 1
+
+- id: intellijel_passive_lpg_1u_manual
+  device: intellijel_passive_lpg_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Passive LPG 1U manual
+  version: 2021.07.27
+  url: https://intellijel.com/downloads/manuals/passive-lpg-1u_manual_2021.07.27.pdf
+  fetched: '2026-10-04'
+  sha256: f9f0cc84b49e115a609f58e3139e451c989eea15767a3275d4ae44a190fed3c7
+  page_offset: 1
+
+- id: intellijel_dual_vca_1u_manual
+  device: intellijel_dual_vca_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Dual VCA 1U manual
+  version: 2021.08.03
+  url: https://intellijel.com/downloads/manuals/dual-vca-1u_manual_2021.08.03.pdf
+  fetched: '2026-10-04'
+  sha256: 12e0bdcc6ee1bc5c7a6a309df63dc3ef837d530053cb2f78624ea3f7d4b158c5
+  page_offset: 1
+
+- id: intellijel_duatt_1u_manual
+  device: intellijel_duatt_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Duatt 1U manual
+  version: 2021.07.27
+  url: https://intellijel.com/downloads/manuals/duatt-1u_manual_2021.07.27.pdf
+  fetched: '2026-10-04'
+  sha256: fb99e6edec7b036b0b45ba234f6a044306f7224c573e9fd3f892dbb3a3fdcb2a
+  page_offset: 1
+
+- id: intellijel_stereo_line_out_1u_manual
+  device: intellijel_stereo_line_out_1u
+  kind: manual
+  format: pdf
+  title: Intellijel Stereo Line Out 1U manual
+  version: 2021.08.16
+  url: https://intellijel.com/downloads/manuals/stereo-line-out-1u_manual_2021.08.16.pdf
+  fetched: '2026-10-04'
+  sha256: 882171c7a4f4473b2afb818dd8193d1e1c7a080625243dd5df184bde9e9d2ba7
+  page_offset: 1
+
+- id: neutron_qvca_product_page
+  device: neutron_qvca
+  kind: manual
+  format: html
+  title: Neutron Sound QVCA product page (Michigan Synth Works)
+  version: checked 2026-10-04 (changed upstream 2026-10-11)
+  url: https://michigansynthworks.com/products/neutron-sound-qvca-quad-vca
+  fetched: '2026-10-11'
+
+- id: joranalogue_add_2_product_page
+  device: joranalogue_add_2
+  kind: manual
+  format: html
+  title: Joranalogue Add 2 product page
+  version: checked 2026-10-04
+  url: https://joranalogue.com/products/add-2
+  fetched: '2026-10-04'
+
+- id: entineering_midi_mult_1u_product_page
+  device: entineering_midi_mult_1u
+  kind: manual
+  format: html
+  title: Entineering MIDI Mult 1U product page
+  version: checked 2026-10-04
+  url: https://shop.entineering.eu/product-en/entineering-midi-mult-1u-618974
+  fetched: '2026-10-04'
+
+# ---- Firmware changelogs (kind: changelog, unpinned; `napier refresh` re-checks them weekly)
+
+- id: digitakt_2_os_release_notes
+  device: digitakt_2
+  kind: changelog
+  format: html
+  title: Digitakt II OS Release Notes
+  version: OS 1.17 (2026-10-01)
+  url: https://www.elektron.se/release-notes/digitakt-ii-os-release-notes
+  fetched: '2026-10-04'
+  stop_at:
+    regex: ^## Withdraw from purchase
+
+- id: intellijel_metropolix_firmware_notes
+  device: metropolix_solo
+  kind: changelog
+  format: html
+  title: Metropolix Firmware Changelog
+  version: 1.6.5.0 (2026-09-16)
+  url: https://intellijel.github.io/firmware/docs/Metropolix.html
+  fetched: '2026-10-04'
+
+- id: intellijel_cascadia_firmware_notes
+  device: intellijel_cascadia
+  kind: changelog
+  format: html
+  title: Cascadia Firmware Changelog
+  version: 1.4.4.0 (2025-05-27)
+  url: https://intellijel.github.io/firmware/docs/Cascadia.html
+  fetched: '2026-10-04'
+
+- id: intellijel_quadrax_firmware_notes
+  device: intellijel_quadrax
+  kind: changelog
+  format: html
+  title: Quadrax Firmware Changelog
+  version: 1.4.5.0 (2026-08-10)
+  url: https://intellijel.github.io/firmware/docs/Quadrax.html
+  fetched: '2026-10-04'
+
+- id: intellijel_steppy_1u_firmware_notes
+  device: intellijel_steppy_1u
+  kind: changelog
+  format: html
+  title: Steppy 1U Firmware Changelog (F4 boards)
+  version: 1.2.4 (2026-05-05)
+  url: https://intellijel.github.io/firmware/docs/Steppy_f4.html
+  fetched: '2026-10-04'
+  notes: Steppy_f0.html is the same changelog for older F0 boards.
+
+- id: intellijel_zeroscope_1u_firmware_notes
+  device: intellijel_zeroscope_1u
+  kind: changelog
+  format: html
+  title: Zeroscope 1U Firmware Changelog
+  version: 1.6 (2024-06-26)
+  url: https://intellijel.github.io/firmware/docs/Zeroscope1U.html
+  fetched: '2026-10-04'
+
+- id: make_noise_multiwave_firmware_notes
+  device: make_noise_multiwave
+  kind: changelog
+  format: html
+  title: 'MultiWAVE Appendix D: Firmware Version'
+  version: 4.3.5
+  url: https://www.makenoise-manuals.com/multiwave/multiwave-manual-append-d.html
+  fetched: '2026-10-04'
+  notes: The appendix letter can change with a release; if this URL goes, check makenoise-manuals.com/firmware.
+
+- id: make_noise_polimaths_firmware_notes
+  device: make_noise_polimaths
+  kind: changelog
+  format: html
+  title: 'PoliMATHS Appendix D: Firmware Version'
+  version: 1.7.3
+  url: https://www.makenoise-manuals.com/polimaths/polimaths-manual-append-d.html
+  fetched: '2026-10-04'
+  notes: The appendix letter can change with a release; if this URL goes, check makenoise-manuals.com/firmware.
+
+- id: wmd_metron_firmware_notes
+  device: wmd_metron
+  kind: changelog
+  format: html
+  title: Metron Product Updates (firmware news)
+  version: 1.76 (2026-06-18)
+  url: https://wmdevices.com/products/metron
+  fetched: '2026-10-04'
+  start_at:
+    regex: ^## Product Updates$
+  stop_at:
+    regex: ^Need help\?$
+
+- id: wmd_clutch_firmware_notes
+  device: wmd_clutch
+  kind: changelog
+  format: html
+  title: Clutch Product Updates (firmware news)
+  version: firmware 1.10 (2026.07.09)
+  url: https://wmdevices.com/products/clutch
+  fetched: '2026-10-11'
+  start_at:
+    regex: ^## Product Updates$
+  stop_at:
+    regex: ^Need help\?$
+
+- id: shakmat_bard_quartet_firmware_notes
+  device: shakmat_bard_quartet
+  kind: changelog
+  format: html
+  title: Bard Quartet Docs and Firmware Versions
+  version: 1.1.2 (2025-07-08)
+  url: https://shakmat.com/products/bard-quartet/
+  fetched: '2026-10-04'
+  start_at:
+    regex: ^### Docs$
+  stop_at:
+    regex: ^- STM32 Software
+
+- id: qubit_data_bender_firmware_notes
+  device: qubit_data_bender
+  kind: changelog
+  format: html
+  title: Data Bender Firmware Versions
+  version: 1.4.7
+  url: https://www.qubitelectronix.com/alternate-firmware/data-bender
+  fetched: '2026-10-04'
+  start_at:
+    regex: ^## Data Bender$
+  stop_at:
+    regex: ^#### No results found
+
+- id: erica_sample_drum_firmware_notes
+  device: erica_sample_drum
+  kind: changelog
+  format: html
+  title: Sample Drum Firmware Update Changelog
+  version: '1.9'
+  url: https://www.ericasynths.lv/news/sample-drum-update-changelog/
+  fetched: '2026-10-04'
+  start_at:
+    regex: ^# Sample Drum firmware update changelog$
+  stop_at:
+    regex: ^### We value your privacy$
+  notes: The changelog post stops at 1.9; the product page lists 1.10 (2026-01-30).
+
+- id: erica_sample_drum_product_page
+  device: erica_sample_drum
+  kind: changelog
+  format: html
+  title: Sample Drum Firmware Downloads (version list)
+  version: 1.10 (2026-01-30)
+  url: https://www.ericasynths.lv/sample-drum-427/
+  fetched: '2026-10-04'
+  start_at:
+    regex: ^Update$
+  stop_at:
+    regex: ^Download$
+
+- id: alm_pams_pro_workout_release_notes
+  device: alm_pams_pro_workout
+  kind: changelog
+  format: text
+  title: Pam's Pro Workout Release Notes
+  version: '131'
+  url: https://assets.busycircuits.com/firmware/alm034/release-notes.txt
+  fetched: '2026-10-04'
+  heading: ^\*\* alm034-ppw-\d+\.fw\s*$
+
+- id: strymon_magneto_firmware_notes
+  device: strymon_magneto
+  kind: changelog
+  format: html
+  title: Magneto Firmware Revision Release Notes
+  version: REV v1.14 (May 2018)
+  url: https://www.strymon.net/faq/magneto-firmware-revision-release-notes/
+  fetched: '2026-10-04'
+  start_at:
+    regex: ^# Magneto Firmware
+
+# ---- Mutable Instruments source code, pinned to one commit (kind: code, check: false).
+# nRings and Beehive run Rings and Plaits firmware; the code answers what the manuals don't
+# (exact ranges, hidden settings, easter eggs). One file per source; headings split on
+# class/struct/enum and Class::Method definitions.
+
+- id: mutable_rings_ui_cc
+  device: msw_nrings
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: rings/ui.cc'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/rings/ui.cc
+  fetched: '2026-10-04'
+  sha256: 16d0a567a37c72c787369ca8b54e4abb9bed567fe60ef5fdfbf613c214a4fcf6
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_rings_settings_h
+  device: msw_nrings
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: rings/settings.h'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/rings/settings.h
+  fetched: '2026-10-04'
+  sha256: 8ceb61ee6fcb77f66bdf98739b3c49f9957a2c38eb22ffcc1dc71d6facb621d3
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_rings_dsp_part_h
+  device: msw_nrings
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: rings/dsp/part.h'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/rings/dsp/part.h
+  fetched: '2026-10-04'
+  sha256: 7af88b40551bf08b5a78e63dd99394c81957cfc57817929888ae08ce30d2efef
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_rings_dsp_part_cc
+  device: msw_nrings
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: rings/dsp/part.cc'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/rings/dsp/part.cc
+  fetched: '2026-10-04'
+  sha256: d638bd8cbe79c4d63cf26c270b5cc57db7d7f59957e72b99499149e2c6b7d767
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_rings_dsp_string_synth_part_cc
+  device: msw_nrings
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: rings/dsp/string_synth_part.cc'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/rings/dsp/string_synth_part.cc
+  fetched: '2026-10-04'
+  sha256: aab71aefac848058b515f8db8787395fd09f0ea4d678eb222b2e873e6d1f00dc
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_plaits_ui_cc
+  device: msw_beehive
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: plaits/ui.cc'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/plaits/ui.cc
+  fetched: '2026-10-04'
+  sha256: 7b5e08091a77b8d1573511f25e0c90b71fa0323bcf15d4f221ac232c3dcaca0a
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_plaits_settings_h
+  device: msw_beehive
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: plaits/settings.h'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/plaits/settings.h
+  fetched: '2026-10-04'
+  sha256: e9ab430aa391bb2f15f53769048da3bed6e932277221ddeb64c97ee06f2b5ee9
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_plaits_dsp_voice_h
+  device: msw_beehive
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: plaits/dsp/voice.h'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/plaits/dsp/voice.h
+  fetched: '2026-10-04'
+  sha256: 79ee41b37d7808a7b5019ff71c2813d30ec7239f0f3dc344538113248b3801a6
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_plaits_dsp_voice_cc
+  device: msw_beehive
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: plaits/dsp/voice.cc'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/plaits/dsp/voice.cc
+  fetched: '2026-10-04'
+  sha256: ce7191f647a311b80365392d40dfb1e5fd84e3279bd221e1e59bd8e5ac73d2a9
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+- id: mutable_plaits_pot_controller_h
+  device: msw_beehive
+  kind: code
+  format: text
+  title: 'Mutable Instruments eurorack source: plaits/pot_controller.h'
+  version: pichenettes/eurorack @ 08460a6
+  url: https://raw.githubusercontent.com/pichenettes/eurorack/08460a69a7e1f7a81c5a2abcc7189c9a6b7208d4/plaits/pot_controller.h
+  fetched: '2026-10-04'
+  sha256: 0f66668cfb003585a23e08df553ef02cf2fd67fcb1a9288422e8ae1ff3fea188
+  heading: ^(?:(?:class|struct|enum)\s+\w+|\S.*\b\w+::~?\w+\(.*)
+  check: false
+
+# ---- Forum threads: one-time snapshots via Discourse /raw (robots.txt allows it), never
+# re-fetched (check: false). Opinions and workarounds, not documentation: facts citing them
+# are status `community`.
+
+- id: elektronauts_213312
+  device: digitakt_2
+  kind: community
+  format: discourse
+  title: Anyone else disappointed with the DT2's timestretch? (Elektronauts)
+  version: snapshot 2026-10-04
+  url: https://www.elektronauts.com/t/213312
+  fetched: '2026-10-04'
+  check: false
+
+- id: elektronauts_218348
+  device: digitakt_2
+  kind: community
+  format: discourse
+  title: 'Digitakt II Repitch machine: loop length suggestions (Elektronauts)'
+  version: snapshot 2026-10-04
+  url: https://www.elektronauts.com/t/218348
+  fetched: '2026-10-04'
+  check: false
+
+- id: elektronauts_222887
+  device: digitakt_2
+  kind: community
+  format: discourse
+  title: Is anyone making use of the Digitakt II Stretch machine? (Elektronauts)
+  version: snapshot 2026-10-04
+  url: https://www.elektronauts.com/t/222887
+  fetched: '2026-10-04'
+  check: false
+
+- id: elektronauts_214549
+  device: digitakt_2
+  kind: community
+  format: discourse
+  title: Digitakt II preset trig mode for jungle and DnB breaks (Elektronauts)
+  version: snapshot 2026-10-04
+  url: https://www.elektronauts.com/t/214549
+  fetched: '2026-10-04'
+  check: false
+
+- id: acid_rain_constellation_manual
+  device: acid_rain_constellation
+  kind: manual
+  format: pdf
+  title: Acid Rain Technology Constellation manual
+  version: firmware 1.3 (2026-08-26)
+  url: https://cdn.shopify.com/s/files/1/0053/9151/5766/files/Constellation_Manual_Firmware_1.3_8.26.2026.pdf?v=1787790588
+  fetched: '2026-10-04'
+  sha256: f15686ebb1b97446e1545c57d3484063a8ac08359222c14bad457256c2e9715b
+  page_offset: 0
+
+- id: hexinverter_mutant_machine_manual
+  device: hexinverter_mutant_machine
+  kind: manual
+  format: pdf
+  title: Hexinverter Mutant Machine user manual
+  version: v1.05
+  url: http://data.mutantbrainsurgery.hexinverter.net/hexinverter_MUTANT%20MACHINE_usermanual_v1.05.pdf
+  fetched: '2026-10-04'
+  sha256: 49a7ef0fe6bac977a045ec3a6de4f83db4a4cdc630945959b9ce990dab310d11
+  page_offset: 0
+
+- id: squarp_core_manual
+  device: squarp_core
+  kind: manual
+  format: html
+  title: 'Squarp Core manual: Basics'
+  version: CoreOS 1.0 (2026-10-05)
+  url: https://squarp.net/core/manual/
+  fetched: '2026-10-06'
+
+- id: squarp_core_manual_input
+  device: squarp_core
+  kind: manual
+  format: html
+  title: 'Squarp Core manual: Input'
+  version: CoreOS 1.0 (2026-10-05)
+  url: https://squarp.net/core/manual/input/
+  fetched: '2026-10-06'
+
+- id: squarp_core_manual_output
+  device: squarp_core
+  kind: manual
+  format: html
+  title: 'Squarp Core manual: Output Engines'
+  version: CoreOS 1.0 (2026-10-05)
+  url: https://squarp.net/core/manual/output/
+  fetched: '2026-10-06'
+
+- id: squarp_core_manual_preset
+  device: squarp_core
+  kind: manual
+  format: html
+  title: 'Squarp Core manual: Presets and General Settings'
+  version: CoreOS 1.0 (2026-10-05)
+  url: https://squarp.net/core/manual/preset/
+  fetched: '2026-10-06'
+
+- id: squarp_core_manual_tempo
+  device: squarp_core
+  kind: manual
+  format: html
+  title: 'Squarp Core manual: Tempo and Start'
+  version: CoreOS 1.0 (2026-10-05)
+  url: https://squarp.net/core/manual/play/
+  fetched: '2026-10-06'
+
+- id: squarp_core_manual_map
+  device: squarp_core
+  kind: manual
+  format: html
+  title: 'Squarp Core manual: Map'
+  version: CoreOS 1.0 (2026-10-05)
+  url: https://squarp.net/core/manual/map/
+  fetched: '2026-10-06'
+
+- id: squarp_core_product_page
+  device: squarp_core
+  kind: manual
+  format: html
+  title: Squarp Core product page (specifications)
+  version: checked 2026-10-06
+  url: https://squarp.net/core/
+  fetched: '2026-10-06'
+  start_at:
+    regex: Specifications
+
+- id: squarp_core_releases
+  device: squarp_core
+  kind: changelog
+  format: html
+  title: CoreOS release notes
+  version: latest
+  url: https://squarp.net/core/firmware/
+  fetched: '2026-10-06'
+
+- id: joranalogue_step_8_manual
+  device: joranalogue_step_8
+  kind: manual
+  format: pdf
+  title: Joranalogue Step 8 user manual
+  version: 2023-06-26
+  url: https://cdn.shopify.com/s/files/1/1594/2421/files/step-8-user-manual.pdf
+  fetched: '2026-10-06'
+  sha256: 494b776ee98da569cef21d8e3eb8cb1407f9bf695f6569b9af561c21ecb728ce
+  page_offset: 0
+
+- id: befaco_random8_manual
+  device: befaco_random8
+  kind: manual
+  format: gdoc
+  title: Befaco x Mylar Melodies RANDOM8 manual
+  version: V1.5 (2026-09-15)
+  url: https://docs.google.com/document/d/10kXcpsrE7tqnLdals4e8XwLQhLTdWMOxWJQBa9jnmPM/edit
+  fetched: '2026-10-06'
+  check: false
+
+- id: befaco_random8_product_page
+  device: befaco_random8
+  kind: manual
+  format: html
+  title: Befaco Random8 product page (specs)
+  version: checked 2026-10-06
+  url: https://www.befaco.org/random8/
+  fetched: '2026-10-06'
+
+- id: ne_mimetic_digitwolis_manual
+  device: ne_mimetic_digitwolis
+  kind: manual
+  format: html
+  title: Noise Engineering Mimetic Digitwolis manual
+  version: checked 2026-10-06
+  url: https://noiseengineering.us/manuals/mimetic-digitwolis/
+  fetched: '2026-10-06'
+
+- id: alm_ppexp1_product_page
+  device: alm_pams_pro_workout
+  kind: manual
+  format: html
+  title: ALM034-EX1 (PPEXP1) product page
+  version: checked 2026-10-06
+  url: https://busycircuits.com/pages/alm034-ex1
+  fetched: '2026-10-06'
+  stop_at:
+    regex: '^#+ Pairs Well With'
+    nth: 1
+
+- id: lpzw_tram8_manual
+  device: lpzw_tram8
+  kind: manual
+  format: pdf
+  title: LPZW TRAM8 manual
+  version: HW Version 1.1 (2019 upload)
+  url: http://leipzigwest.org/wp-content/uploads/2019/11/LPZW-TRAM8-Manual.pdf
+  fetched: '2026-10-06'
+  sha256: 3be390af5a0707e724443e27ae7191d2f5761ceb42a7a38e50ccf1b4edea5ad8
+  page_offset: 0
+
+- id: intellijel_fsr_1u_manual
+  device: intellijel_fsr_1u
+  kind: manual
+  format: pdf
+  title: Intellijel FSR 1U manual
+  version: 2021.07.26
+  url: https://intellijel.com/downloads/manuals/fsr-1u_manual_2021.07.26.pdf
+  fetched: '2026-10-06'
+  sha256: c136c64afdd3ac71529aed62f9f6ad23a32b3bd7e98f04564ee3cbcf2ef32201
+  page_offset: 0
+
+- id: intellijel_sealegs_manual
+  device: intellijel_sealegs
+  kind: manual
+  format: pdf
+  title: Intellijel Sealegs manual
+  version: v1.3 (2025.11.26)
+  url: https://intellijel.com/downloads/manuals/sealegs_manual_v1.3_2025.11.26.pdf
+  fetched: '2026-10-06'
+  sha256: 61d297a972d4eb06291fc58f45b51aa2a8d84826b109db411b2f624dbb32f666
+  page_offset: 0
+
+- id: intellijel_swells_manual
+  device: intellijel_swells
+  kind: manual
+  format: pdf
+  title: Intellijel Swells manual
+  version: v1.1 (2026.04.27)
+  url: https://intellijel.com/downloads/manuals/swells_manual_v1.1_2026.04.27.pdf
+  fetched: '2026-10-06'
+  sha256: 1cb1c5b7d0fefd1d9bace2d5d68831f901606654eca157a668b83d5c28c1c5e7
+  page_offset: 0
+
+- id: intellijel_multigrain_manual
+  device: intellijel_multigrain
+  kind: manual
+  format: pdf
+  title: Intellijel Multigrain manual
+  version: v1.4 (2026.10.07)
+  url: https://intellijel.com/downloads/manuals/multigrain_manual_v1.4_2026.10.07.pdf
+  fetched: '2026-10-13'
+  sha256: ff35d6c393bf250fb18a53cf2fa2c861f1d67b29768860dce06838dc745ae2a0
+  page_offset: 0
+
+- id: intellijel_planar_2_manual
+  device: intellijel_planar_2
+  kind: manual
+  format: pdf
+  title: Intellijel Planar 2 manual
+  version: v1.3 (2024.04.16)
+  url: https://intellijel.com/downloads/manuals/planar-2_manual_v1.3_2024.04.16.pdf
+  fetched: '2026-10-06'
+  sha256: 93fa599ad472ba60efcb9335bcf2bd7d513bdc719ec37d9dad845db8cc73a0ca
+  page_offset: 1
+
+- id: knobula_drum_farm_manual
+  device: knobula_drum_farm
+  kind: manual
+  format: gdoc
+  title: Knobula Drum Farm manual
+  version: checked 2026-10-06
+  url: https://docs.google.com/document/d/1ml-ccRKF4VCKpzY8U80u-QXfPHwtxwKPfRSfEYRLD48/edit
+  fetched: '2026-10-06'
+  check: false
+
+- id: wmd_bus_rider_product_page
+  device: wmd_bus_rider
+  kind: manual
+  format: html
+  title: WMD Bus Rider product page
+  version: checked 2026-10-06 (no manual published yet) (changed upstream 2026-10-11)
+  url: https://wmdevices.com/products/bus-rider
+  fetched: '2026-10-11'
+
+- id: instruo_ceithir_manual
+  device: instruo_ceithir
+  kind: manual
+  format: pdf
+  title: Instruo ceithir manual
+  version: Oct 2026
+  url: https://www.instruomodular.com/wp-content/uploads/2026/10/ceithir-manual.pdf
+  fetched: '2026-10-09'
+  sha256: 4be65d03ae60a837ebe38c2e8c159c964808b1d761a4ddece39bc111c013ec42
+  page_offset: 0
+
+- id: strymon_timeline_mx_manual
+  device: strymon_timeline_mx
+  kind: manual
+  format: pdf
+  title: Strymon TimeLine MX user manual
+  version: Rev D
+  url: https://www.strymon.net/manuals/TimeLineMX_UserManual_RevD.pdf
+  fetched: '2026-10-09'
+  sha256: c93964a3e3a00338029320aecd7d347f9e464cae638fd635dd4f50c84ff0d13b
+  page_offset: 0
+
+- id: strymon_bigsky_mx_manual
+  device: strymon_bigsky_mx
+  kind: manual
+  format: pdf
+  title: Strymon BigSky MX user manual
+  version: Rev B
+  url: https://www.strymon.net/manuals/BigSky_MX_UserManual_RevB.pdf
+  fetched: '2026-10-09'
+  sha256: 91b9058ce296e3add256523f5dc840584df1da0992e6c48cf0564abf050a669e
+  page_offset: 0
+
+- id: strymon_iridium_manual
+  device: strymon_iridium
+  kind: manual
+  format: pdf
+  title: Strymon Iridium user manual
+  version: Rev D
+  url: https://www.strymon.net/manuals/Iridium_UserManual_RevD.pdf
+  fetched: '2026-10-09'
+  sha256: b373fefdb85a5869f480a0e31a64e92bfb5f395ec843e6e755d62b7aa63a2a8b
+  page_offset: 0
+
+- id: strymon_timeline_manual
+  device: strymon_timeline
+  kind: manual
+  format: pdf
+  title: Strymon TimeLine (original) user manual
+  version: Rev F
+  url: https://www.strymon.net/manuals/TimeLine_UserManual_REVF.pdf
+  fetched: '2026-10-09'
+  sha256: b1aa6b6e75380032e30e8168318a481752a62b94599005895f84d13652bc8cf7
+  page_offset: 0
+
+- id: strymon_bigsky_manual
+  device: strymon_bigsky
+  kind: manual
+  format: pdf
+  title: Strymon BigSky (original) user manual
+  version: Rev D
+  url: https://www.strymon.net/manuals/BigSky_UserManual_RevD.pdf
+  fetched: '2026-10-09'
+  sha256: 1f61cc954ce20638c8f3dd2b6a6ad1706d36658422243ef106d474c40b2881e3
+  page_offset: 0
+
+- id: strymon_sunset_manual
+  device: strymon_sunset
+  kind: manual
+  format: pdf
+  title: Strymon Sunset user manual
+  version: Rev C
+  url: https://www.strymon.net/manuals/Sunset_UserManual_RevC.pdf
+  fetched: '2026-10-09'
+  sha256: 03d501357803a9df2252b15aee0173ab9416488dda35e880d26843925c42efd5
+  page_offset: 0
+
+- id: strymon_riverside_manual
+  device: strymon_riverside
+  kind: manual
+  format: pdf
+  title: Strymon Riverside user manual
+  version: Rev C
+  url: https://www.strymon.net/manuals/Riverside_UserManual_RevC.pdf
+  fetched: '2026-10-09'
+  sha256: 4f44e9be227360c107d47d1875a559a261101c25622b4b58a4596569959ea79f
+  page_offset: 0
+
+- id: strymon_mobius_manual
+  device: strymon_mobius
+  kind: manual
+  format: pdf
+  title: Strymon Mobius user manual
+  version: Rev F
+  url: https://www.strymon.net/manuals/Mobius_UserManual_REVF.pdf
+  fetched: '2026-10-09'
+  sha256: 5c31a82b3a57addde0d7aa75115c31f8c509ae826653e6896bfdfa4f8545785c
+  page_offset: 0
+
+- id: strymon_zuma_manual
+  device: strymon_zuma
+  kind: manual
+  format: pdf
+  title: Strymon Zuma user manual
+  version: Rev A
+  url: https://www.strymon.net/manuals/Zuma_UserManual_RevA.pdf
+  fetched: '2026-10-09'
+  sha256: 734abd5e0f1de993f6e7f74e89aadbefc6207fc51d6935a8979493a290b98ae5
+  page_offset: 0
+
+- id: strymon_ojai_manual
+  device: strymon_ojai
+  kind: manual
+  format: pdf
+  title: Strymon Ojai user manual
+  version: Rev A
+  url: https://www.strymon.net/manuals/Ojai_UserManual_REVA.pdf
+  fetched: '2026-10-09'
+  sha256: acc70115c889fbf38d82f34c1260975d687bdeacbcc8b7283d60edf4b02a0006
+  page_offset: 0
+
+- id: zvex_fat_fuzz_factory_manual
+  device: zvex_fat_fuzz_factory
+  kind: manual
+  format: pdf
+  title: ZVEX Fat Fuzz Factory instructions
+  version: undated (Vexter sheet; same circuit and controls as the hand-painted)
+  url: https://www.zvex.com/s/ZVEX-Fat-Fuzz-Factory-Instructions.pdf
+  fetched: '2026-10-09'
+  sha256: e0b4be765664f33f90b9643864c2ac86b25f8efa5b067c56f2d4fd8cae0ea9a8
+  page_offset: 0
+
+- id: ehx_micro_pog_manual
+  device: ehx_micro_pog
+  kind: manual
+  format: pdf
+  title: Electro-Harmonix Micro POG instructions
+  version: undated (2021 upload)
+  url: https://www.ehx.com/wp-content/uploads/2021/01/micro-pog-manual.pdf
+  fetched: '2026-10-09'
+  sha256: 4100439993eb14cb30c483d75a14b3cdd78aa49d86ce61d1c8d7112bd778e479
+  page_offset: 0
+
+- id: eqd_hoof_v2_manual
+  device: eqd_hoof_v2
+  kind: manual
+  format: pdf
+  title: EarthQuaker Devices Hoof V2 manual
+  version: R4 (2021)
+  url: https://www.earthquakerdevices.com/s/EQD-EU-Hoof-R4.pdf
+  fetched: '2026-10-09'
+  sha256: 0276037960d9aa8d367be22a298b701d8b4a48a471ac8182a55c4d82be6e0373
+  page_offset: 0

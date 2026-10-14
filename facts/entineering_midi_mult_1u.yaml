@@ -1,0 +1,19 @@
+# Facts for entineering_midi_mult_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: emm-four-outputs
+  claim: The MIDI Mult 1U distributes one MIDI input to four outputs and has an activity LED.
+  status: manual
+  source: entineering_midi_mult_1u_product_page
+  q: How many MIDI devices can I feed from one input with the Entineering 1U MIDI Mult?
+  anchors:
+  - Distributes one MIDI input to four outputs
+- id: emm-power-hp
+  claim: The module is 3 HP and draws 10 mA from the +12V rail with nothing from -12V or 5V.
+  status: manual
+  source: entineering_midi_mult_1u_product_page
+  q: How much current does the Entineering MIDI Mult 1U draw?
+  anchors:
+  - '12V: 10mA'

@@ -1,0 +1,86 @@
+# Facts for intellijel_tangrams. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: tangrams-pulser
+  claim: The Pulser makes two sequential pulses with CV-able lengths T1 and T2; Pulse 2 always follows Pulse 1
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 6
+  - 11
+  q: What does the Tangrams Pulser do?
+  anchors:
+  - PULSE 2 is always triggered at the conclusion of PULSE 1
+- id: tangrams-pulser-or
+  claim: Routing the Pulser to an envelope ORs its gate with that envelope's GATE IN and manual gate
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 6
+  - 11
+  q: How does the Tangrams Pulser combine with an envelope gate?
+  anchors:
+  - will OR its gate with the envelope
+- id: tangrams-level-in-8v
+  claim: ENV LEVEL IN is normalled to 8V, so the envelope peaks at 8V unpatched and scales proportionally with other
+    voltages.
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 9
+  q: What is the maximum output voltage of a Tangrams envelope?
+  anchors:
+  - 8V is normalled to this jack by default
+- id: tangrams-retrig-needs-gate
+  claim: The RETRIG input only restarts the attack while the envelope is gated; with the gate low no triggering
+    occurs.
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 9
+  q: Why does the Tangrams RETRIG input do nothing?
+  anchors:
+  - If the signal gating Envelope 1 is low, then no triggering occurs.
+- id: tangrams-t1-range
+  claim: T1 sets PULSE 1 length from 1ms to 16 seconds, with 2 seconds at noon.
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 12
+  q: What is the range of the T1 knob on Tangrams?
+  anchors:
+  - which ranges from 1ms (counterclockwise) to 16 sec (clockwise)
+- id: tangrams-cycle-autostart
+  claim: Turning Cycle on starts the Pulser automatically and turning it off stops it; START then resets the cycle
+    to PULSE 1.
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 16
+  - 17
+  q: Do I need to trigger the Tangrams pulser when cycle mode is on?
+  anchors:
+  - then the PULSER starts automatically, without requiring an external trigger
+  alt:
+  - - Turning on Cycling automatically starts the PULSER
+- id: tangrams-t2-stall
+  claim: Enough positive CV on T2 CV IN can push T2 to infinity and stall the Pulser.
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 16
+  q: can CV into T2 stall the Tangrams pulser
+  anchors:
+  - it's possible to stall the pulser if the voltage increases T2 time to infinity
+- id: tangrams-delayed-envelope
+  claim: With the envelope gated by PULSE 2, T1 sets how long the envelope start is delayed and T2 sets its gate
+    time.
+  status: manual
+  source: intellijel_tangrams_manual
+  pages:
+  - 21
+  q: How do I make a delayed envelope with Tangrams?
+  anchors:
+  - T1 determines how long the start of the envelope is delayed

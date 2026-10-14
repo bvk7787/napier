@@ -1,0 +1,19 @@
+device: koma_kmndr
+slugs: [koma-elektronik-kmndr]
+source: koma_kmndr_manual
+hp: 8
+hp_page: 1
+hp_anchor: "Width>>> 8HP"
+power:
+  plus12: 56
+  minus12: 2
+  page: 1
+  anchor: "-12V: 2mA +12V: 56mA"
+jacks:
+  - {name: "CV output", dir: out, type: cv, page: 1}
+  - {name: "Gate output", dir: out, type: gate, page: 1, label: "(gate) output"}
+notes: >-
+  1U Intellijel format, single-page manual. The panel jack labels appear to be icons that did not survive text
+  extraction ("OUTPUTS >>> [icon] outputs a continous voltage ... [icon] (gate) output"), so names are descriptive.
+  CV output max 10V; gate output goes to 10V when CV exceeds 1.3V. No inputs. No +5V figure stated. Power matches
+  ModularGrid.

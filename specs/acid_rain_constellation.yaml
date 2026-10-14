@@ -1,0 +1,39 @@
+device: acid_rain_constellation
+slugs: [acid-rain-technology-constellation]
+source: acid_rain_constellation_manual
+hp: 28
+hp_page: 3
+hp_anchor: "Constellation requires 28hp of space"
+power:
+  plus12: 75
+  minus12: 18
+  page: 3
+  anchor: "75mA of current on the +12V rail and 18mA on the -12V rail"
+jacks:
+  - {name: "Clock In", dir: in, type: clock, page: 26, label: "clock - external main clock input"}
+  - {name: "Reset In", dir: in, type: trigger, page: 26, label: "reset - a rising edge on this input will reset the module"}
+  - {name: "CV In I", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs"}
+  - {name: "CV In II", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs", normal: "CV In I"}
+  - {name: "CV In III", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs", normal: "CV In II"}
+  - {name: "CV In IV", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs", normal: "CV In III"}
+  - {name: "CV In V", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs", normal: "CV In IV"}
+  - {name: "CV In VI", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs", normal: "CV In V"}
+  - {name: "CV In VII", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs", normal: "CV In VI"}
+  - {name: "CV In VIII", dir: in, type: cv, also: [gate], page: 26, label: "I-VIII - freely assignable CV inputs", normal: "CV In VII"}
+  - {name: "Clock Out", dir: out, type: clock, page: 26, label: "clock - outputs the Constellation's main clock"}
+  - {name: "Reset Out", dir: out, type: trigger, page: 26, label: "reset - outputs a pulse whenever the constellation is reset"}
+  - {name: "Channel 1 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+  - {name: "Channel 2 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+  - {name: "Channel 3 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+  - {name: "Channel 4 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+  - {name: "Channel 5 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+  - {name: "Channel 6 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+  - {name: "Channel 7 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+  - {name: "Channel 8 Out", dir: out, type: gate, also: [trigger], page: 26, label: "channel outputs - output the binary rhythmic signal"}
+notes: >-
+  Jack list from "Inputs"/"Outputs" (p.26) plus hardware overview (p.4): clock and reset in/out, eight CV inputs
+  labelled I-VIII, and one output per channel (8 channels, p.3). Per-jack panel labels for channel outputs are not
+  printed in the text, so names are descriptive. CV inputs cascade-normal from 1 to 8 (each normalled to the one to
+  its left; disable with cv_norm = 0 in settings.txt). CV inputs expect 0-5V or -5V to +5V depending on assignment
+  (p.25) and also accept gates/triggers for mute, random and load assignments, hence also gate. All outputs are
+  digital 0V/+5V. Power +12V 75 mA, -12V 18 mA; +5V not stated. Matches ModularGrid (28HP, 75/18).

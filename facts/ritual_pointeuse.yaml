@@ -1,0 +1,87 @@
+# Facts for ritual_pointeuse. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: pointeuse-cv-switch
+  claim: Pointeuse is a CV-controlled bidirectional analog switch (1U)
+  status: manual
+  source: ritual_pointeuse_manual
+  pages:
+  - 6
+  notes: No manual found online.
+- id: pointeuse-modes
+  claim: Has momentary and latching modes; the switch is bidirectional (one common jack, two sides, works
+    as 1-to-2 or 2-to-1)
+  status: hardware
+  verified: '2026-09-29'
+  notes: Observed on the module. Which side a high control selects is still unchecked (likely the top).
+- id: pointeuse-slide-switch
+  claim: 'For 303-style slides: raw pitch and slewed pitch into the two sides, the slide gate on the control
+    input picks the slewed side'
+  status: unverified
+  notes: 'Patch idea. Use momentary mode so the side follows the slide gate step by step (latching
+    would flip on every slide). Use it 2-to-1: raw and slewed pitch into the two sides, common out to
+    the Atlantix. Check which side a high control selects.'
+- id: pointeuse-trig-threshold
+  claim: Trig In has a comparator that switches at 2.5 V; in Mom mode the switch holds its other state
+    while Trig In stays above 2.5 V
+  status: manual
+  source: ritual_pointeuse_manual
+  pages:
+  - 7
+  - 9
+  q: At what voltage does the Pointeuse Trig In switch?
+  anchors:
+  - Built in comparator on the input triggering at 2.5V
+  alt:
+  - - 2.5V CV at the Trig In
+- id: pointeuse-xor
+  claim: 'Pedal, button and Trig In are XORed: a held button inverts what the CV does'
+  status: manual
+  source: ritual_pointeuse_manual
+  pages:
+  - 10
+  q: What happens if the Pointeuse button and CV are both on?
+  anchors:
+  - They are XORed together
+- id: pointeuse-chaining
+  claim: Multiple Pointeuse modules can be chained by connecting the MASTER header on the first to the SLAVE header
+    on the next with the expander-style cable, switching them all together while keeping independent control.
+  status: manual
+  source: ritual_pointeuse_manual
+  pages:
+  - 11
+  q: can I link two Pointeuse modules so they switch together
+  anchors:
+  - plug it to the MASTER header on the back of your first Pointeuse
+- id: pointeuse-pedal-polarity
+  claim: As a footswitch adapter, a pressed pedal produces a 5V gate at Out/In I or Out/In II, and choosing which
+    jack to use sets ON when pressed versus OFF when pressed for your pedal's polarity.
+  status: manual
+  source: ritual_pointeuse_manual
+  pages:
+  - 8
+  q: my footswitch gate is inverted on Pointeuse, how do I fix it
+  anchors:
+  - This depends on the pedal you are using and its polarity
+- id: pointeuse-5v-no-input
+  claim: With nothing patched into In/Out, Pointeuse outputs a 5V signal alternately at Out/In I and Out/In II,
+    so it works as a gate generator.
+  status: manual
+  source: ritual_pointeuse_manual
+  pages:
+  - 6
+  q: what comes out of Pointeuse when nothing is plugged into In/Out
+  anchors:
+  - If no jack is connected to In/Out, a 5V signal will be present
+- id: pointeuse-latch-mode
+  claim: In Latch mode Pointeuse changes state on each pedal or button press or Trig In going above 2.5V and holds
+    it until the next press or CV high.
+  status: manual
+  source: ritual_pointeuse_manual
+  pages:
+  - 9
+  q: how does latching mode work on Pointeuse
+  anchors:
+  - hold its state until the next pedal/button press or CV high

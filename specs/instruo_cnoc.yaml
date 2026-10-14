@@ -1,0 +1,20 @@
+device: instruo_cnoc
+slugs: [instruo-cnoc]
+source: instruo_cnoc_manual
+hp: 4
+hp_page: 4
+hp_anchor: "Width: 4 HP"
+power:
+  plus12: 45
+  minus12: 40
+  page: 4
+  anchor: "+12V: 45mA"
+jacks:
+  - {name: "Signal Input", dir: in, type: gate, page: 6, label: "Signal input", also: [cv]}
+  - {name: "Bipolar Output", dir: out, type: cv, page: 6, label: "Bipolar output"}
+  - {name: "Unipolar Positive Output", dir: out, type: cv, page: 6, label: "Unipolar Positive output"}
+  - {name: "EOC Output", dir: out, type: trigger, page: 6, label: "EOC output"}
+  - {name: "Gate Output", dir: out, type: gate, page: 6, label: "Gate output"}
+  - {name: "Attack CV Input", dir: in, type: cv, page: 7, label: "Attack CV input"}
+  - {name: "Release CV Input", dir: in, type: cv, page: 7, label: "Release CV input"}
+notes: "Signal input takes trigger/gate to ping the function, or CV to slew in ASR mode. EOC is a 1ms 10V trigger. No +5V draw stated. Power matches ModularGrid."

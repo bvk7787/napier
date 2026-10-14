@@ -1,0 +1,95 @@
+# Facts for instruo_aradh. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: aradh-pre-post-switch
+  claim: With the Pre/Post Switch up the VCA sits after the filter like an east coast voice, and with it down the
+    VCA comes before the filter so it can saturate the filter.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 7
+  q: How do I drive the aradh ladder filter into saturation with its VCA?
+  anchors:
+  - the VCA is routed before the low pass filter, allowing for saturation of the low pass filter
+- id: aradh-cv-assign-colors
+  claim: Pressing CV Assign cycles the CV Input target, with white for VCA amplitude, amber for filter cutoff, and
+    white/amber for both, and the setting is kept across power cycles.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 10
+  q: What do the CV Assign button colors on aradh mean?
+  anchors:
+  - If the button is illuminated amber, the CV Input targets the cutoff frequency of the low pass filter
+- id: aradh-vca-unity-cv
+  claim: When the CV Input is assigned to the VCA with the attenuverter fully clockwise, about 3.6V gives unity
+    gain and higher voltages add gain.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 9
+  q: How much CV does the aradh VCA need to reach unity gain?
+  anchors:
+  - approximately 3.6V is present at the CV Input
+- id: aradh-self-osc-sine
+  claim: With Resonance fully clockwise, aradh self-oscillates as a sine oscillator, and auto-gain compensation
+    offsets the usual level drop as resonance rises.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 6
+  q: can the aradh filter self oscillate into a sine wave
+  anchors:
+  - àradh will selfoscillate and generate a sine waveform
+- id: aradh-strike-envelope
+  claim: Rising edges at the Strike Input fire an impulse envelope that modulates both filter cutoff and VCA level
+    at fixed depth, can run at audio rate, and its decay is set by the Decay knob.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 8
+  q: what does the strike input do on aradh
+  anchors:
+  - trigger the impulse envelope which modulates both the cutoff frequency
+- id: aradh-secondary-params
+  claim: To set secondary CV targets, hold CV Assign and press Strike 4 times, then keep pressing Strike to choose
+    resonance (white blink), decay (amber blink) or both.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 11
+  q: how do I set the secondary user-defined CV parameters on aradh
+  anchors:
+  - press and hold the CV Assign Button and then press the Strike Button 4 times
+- id: aradh-follower-comparator
+  claim: The Gate/Follow toggle picks envelope follower out (down, about 0 to +8V) or comparator gate (up), and
+    holding CV Assign plus Strike while moving Q, Decay or Bias sets follower attack, release and comparator threshold.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 13
+  q: how do I set the attack and release of the envelope follower
+  anchors:
+  - moving the Q knob will set the Attack Time of the envelope follower signal
+- id: aradh-factory-reset
+  claim: Factory reset is done by holding CV Assign and Strike and flipping the Gate/Follow toggle up and down 3
+    times, clearing CV targets and follower and comparator settings.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 14
+  q: how do I reset aradh to factory settings
+  anchors:
+  - switch the Gate/Follow Toggle up and down 3 times
+- id: aradh-compressor-patch
+  claim: As a downward compressor, set the CV Attenuverter negative as threshold, use Bias as make-up gain, assign
+    CV to the VCA (white), and set Gate/Follow down so the follower normals to the CV input.
+  status: manual
+  source: instruo_aradh_manual
+  pages:
+  - 21
+  q: can I use aradh as a compressor on a kick drum
+  anchors:
+  - patched to work as a traditional downward compressor

@@ -1,0 +1,53 @@
+# Facts for wmd_voltera. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: vlt-live-takeover
+  claim: Holding SELECT on Voltera before turning a knob enables Live Takeover, where the knob sets that output
+    directly regardless of the sequencer until SELECT is released.
+  status: manual
+  source: wmd_voltera_manual
+  q: What is Live Takeover on the Voltera?
+  anchors:
+  - regardless of the state of the sequencer
+- id: vlt-turn-gesture
+  claim: Since Voltera has no track buttons, you select a track with the turn gesture, turning its knob fully clockwise
+    then back slightly counter-clockwise.
+  status: manual
+  source: wmd_voltera_manual
+  q: How do I select a Voltera track to duplicate or clear it on Metron?
+  anchors:
+  - turning a knob to the full clockwise position, then a small turn back
+- id: vlt-knob-range
+  claim: Knob input ranges (including quantized and user scale options) only change how data is entered; the outputs
+    always span -5V to +5V and sequences play back as written.
+  status: manual
+  source: wmd_voltera_manual
+  q: Does changing Voltera's knob input range change the output voltage range?
+  anchors:
+  - The sequence will play as it was written regardless of the current input range
+- id: vlt-set-step-voltage
+  claim: To set a step voltage, hold a Metron MATRIX button and turn the Voltera knob for the output you want; the
+    value shows on Metron's step display and the track LED.
+  status: manual
+  source: wmd_voltera_manual
+  q: how do I program a voltage onto a step with Voltera
+  anchors:
+  - holding a Metron [MATRIX] button and then turning the [VOLTERA KNOB]
+- id: vlt-user-scale-reset
+  claim: In Voltera user scale mode, the brightly lit button at Metron matrix row 4 step 3 resets the selected track's
+    user scale to all twelve notes and full octave range.
+  status: manual
+  source: wmd_voltera_manual
+  q: how do I reset a Voltera track's custom scale back to default
+  anchors:
+  - resets the selected track's user scale to its defaults
+- id: vlt-expansion-cabling
+  claim: Voltera connects to Metron with the supplied 8-pin ribbon cable on an EXP header, red stripe toward the
+    white dot, with EXP TERM covers on open headers at each end of the chain.
+  status: manual
+  source: wmd_voltera_manual
+  q: which way does the ribbon cable go when connecting Voltera to Metron
+  anchors:
+  - orient the red stripe toward the white dot printed next to the

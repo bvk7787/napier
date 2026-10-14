@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you refer to napier in writing, please cite it as below."
+title: "napier"
+abstract: "Page-cited lookups in music hardware manuals, changelogs and community documents, with a ledger of checked facts, a search eval and a Eurorack rack planner, as a CLI and an MCP server."
+type: software
+authors:
+  - name: "The napier authors"
+repository-code: "https://github.com/bvk7787/napier"
+license: Apache-2.0
+version: 0.1.0
+keywords: [music hardware, manuals, synthesizer, eurorack, mcp, search, citations]

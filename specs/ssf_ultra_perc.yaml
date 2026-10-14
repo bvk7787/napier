@@ -1,0 +1,35 @@
+device: ssf_ultra_perc
+slugs: [steady-state-fate-entity-ultra-perc]
+source: ssf_ultra_perc_manual
+hp: 14
+hp_page: 8
+hp_anchor: "WIDTH: 14hp"
+power:
+  plus12: 125
+  minus12: 125
+  page: 8
+  anchor: "MAX POWER CONSUMPTION: +/- 125mA"
+jacks:
+  - {name: "TRIG", dir: in, type: trigger, also: [audio], page: 3, label: "TRIG input"}
+  - {name: "N-TRIG", dir: in, type: trigger, page: 3, label: "N-TRIG jack normal", normal: "TRIG"}
+  - {name: "DELAY CV", dir: in, type: cv, page: 3}
+  - {name: "LENGTH CV", dir: in, type: cv, page: 8, label: "LENGTH CV RANGE"}
+  - {name: "GAIN CV", dir: in, type: cv, page: 4, label: "GAIN CV input"}
+  - {name: "V/OCT", dir: in, type: pitch, page: 5, label: "V/OCT CV input"}
+  - {name: "DETUNE CV", dir: in, type: cv, also: [audio], page: 5, label: "DETUNE CV input"}
+  - {name: "HARM CV", dir: in, type: cv, also: [audio], page: 5, label: "HARM CV input"}
+  - {name: "B-DECAY", dir: in, type: cv, page: 5, label: "B-DECAY CV input"}
+  - {name: "N-FREQ", dir: in, type: cv, page: 6, label: "N-FREQ CV input"}
+  - {name: "N-DECAY", dir: in, type: cv, page: 6, label: "N-DECAY CV input"}
+  - {name: "N-VCA", dir: in, type: cv, page: 6, label: "N-VCA CV input"}
+  - {name: "EXT IN", dir: in, type: audio, also: [trigger], page: 7, label: "EXT IN jack"}
+  - {name: "OUT", dir: out, type: audio, page: 6, label: "exit through the OUT jack"}
+  - {name: "DUCK", dir: out, type: cv, page: 6, label: "DUCK output"}
+notes: >-
+  Power is a max figure (+/-125mA), matching ModularGrid; +5V not stated. Panel picture (p3) is an
+  image; jacks come from text. p3 says every function except FM DEPTH is voltage controllable and the
+  CV inputs sit on the bottom row. The LENGTH CV input is only evidenced by "LENGTH CV RANGE: ANY" in
+  the tech info (p8); its panel label is not printed. N-TRIG is normalled from TRIG. No separate
+  NOISE BIAS CV (p6: three CV inputs for the noise section: N-FREQ, N-DECAY, N-VCA); GAIN CV pairs
+  with BODY BIAS. TRIG accepts audio-rate signals (bonus feature p7); EXT IN doubles as an alternate
+  trigger input. DUCK outputs an inverted, offset ducking envelope.

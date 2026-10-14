@@ -1,0 +1,14 @@
+device: alm_pams_pro_workout
+slugs: [alm-busy-circuits-ppexp1]
+source: alm_pams_pro_workout_manual
+jacks:
+  - {name: "x24", dir: out, type: clock, page: 27}
+  - {name: "Gate", dir: out, type: gate, page: 27, label: "gate outputs"}
+  - {name: "MIDI", dir: out, type: midi, page: 27, label: "MIDI jack"}
+  - {name: "x1", dir: out, type: clock, page: 27}
+  - {name: "x2", dir: out, type: clock, page: 27}
+  - {name: "x4", dir: out, type: clock, page: 27}
+  - {name: "/4", dir: out, type: clock, page: 27}
+  - {name: "/16", dir: out, type: clock, page: 27}
+  - {name: "Stop", dir: out, type: trigger, page: 27}
+notes: "Pam's Pro Workout manual section 10.3.1 covers PPEXP1/PPEXP2 only briefly; there is no panel diagram text, HP, or power draw for the expander (power and hp omitted; Pam's own 8HP / +12V 60mA / -12V 10mA spec is for the host). Jacks are taken from the prose: Din Sync (x24 and gate outputs, combinable via ALM-UT001), a 3.5mm stereo MIDI clock output jack (TRS, Type B switch on rear), and PPEXP1-only fixed pulse outputs x1, x2, x4, /4, /16 and Stop (trigger fired when clock stops). Exact panel labels are not printed, so names are best-effort from the text; whether Din Sync uses exactly two jacks is inferred from the UT001 description. ModularGrid lists 4HP / 40mA +12V, unverifiable from this manual."

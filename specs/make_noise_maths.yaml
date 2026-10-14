@@ -1,0 +1,43 @@
+device: make_noise_maths
+slugs: [make-noise-maths-black-panel]
+source: make_noise_maths_manual
+hp: 20
+hp_page: 4
+hp_anchor: "find 20HP"
+power:
+  plus12: 60
+  minus12: 50
+  page: 4
+  anchor: "60mA of +12VDC and 50mA of -12VDC"
+jacks:
+  - {name: "Signal Input (ch 1)", dir: in, type: cv, also: [audio], page: 6, label: "Signal Input"}
+  - {name: "Trigger Input (ch 1)", dir: in, type: trigger, also: [gate], page: 6, label: "Trigger Input"}
+  - {name: "Rise CV Input (ch 1)", dir: in, type: cv, page: 6, label: "Rise CV Input"}
+  - {name: "Both CV Input (ch 1)", dir: in, type: cv, page: 6, label: "Both CV Input"}
+  - {name: "Fall CV Input (ch 1)", dir: in, type: cv, page: 6, label: "Fall CV Input"}
+  - {name: "Cycle Input (ch 1)", dir: in, type: gate, page: 7, label: "Cycle Input"}
+  - {name: "EOR", dir: out, type: gate, page: 7, label: "End Of Rise Output (EOR)"}
+  - {name: "Unity Signal Output (ch 1)", dir: out, type: cv, also: [audio], page: 7, label: "Unity Signal Output"}
+  - {name: "Signal Input (ch 4)", dir: in, type: cv, also: [audio], page: 8, label: "Signal Input"}
+  - {name: "Trigger Input (ch 4)", dir: in, type: trigger, also: [gate], page: 8, label: "Trigger Input"}
+  - {name: "Rise CV Input (ch 4)", dir: in, type: cv, page: 8, label: "Rise CV Input"}
+  - {name: "Both CV Input (ch 4)", dir: in, type: cv, page: 8, label: "Both CV Input"}
+  - {name: "Fall CV Input (ch 4)", dir: in, type: cv, page: 8, label: "Fall CV Input"}
+  - {name: "Cycle Input (ch 4)", dir: in, type: gate, page: 9, label: "Cycle Input"}
+  - {name: "EOC", dir: out, type: gate, page: 9, label: "End Of Cycle Output (EOC)"}
+  - {name: "Unity Signal Output (ch 4)", dir: out, type: cv, also: [audio], page: 9, label: "Unity Signal Output"}
+  - {name: "Signal Input (ch 2)", dir: in, type: cv, also: [audio], page: 10, label: "Channel 2 Signal Input"}
+  - {name: "Signal Input (ch 3)", dir: in, type: cv, also: [audio], page: 10, label: "Channel 3 Signal Input"}
+  - {name: "Variable Output (ch 1)", dir: out, type: cv, also: [audio], page: 11, label: "CH. 1-4 Variable Outputs"}
+  - {name: "Variable Output (ch 2)", dir: out, type: cv, also: [audio], page: 11, label: "CH. 1-4 Variable Outputs"}
+  - {name: "Variable Output (ch 3)", dir: out, type: cv, also: [audio], page: 11, label: "CH. 1-4 Variable Outputs"}
+  - {name: "Variable Output (ch 4)", dir: out, type: cv, also: [audio], page: 11, label: "CH. 1-4 Variable Outputs"}
+  - {name: "OR Bus Output", dir: out, type: cv, page: 11}
+  - {name: "SUM Bus Output", dir: out, type: cv, also: [audio], page: 11}
+  - {name: "Inverted SUM Output", dir: out, type: cv, also: [audio], page: 11}
+notes: >-
+  25 jacks. CH 2 and CH 3 Signal Inputs are normalled to internal +10V and +5V references (offset
+  generation), not to other jacks. Variable Outputs 1-4 are normalled into the SUM/OR/INV busses;
+  patching removes that channel from the busses (Unity outputs are not normalled). Signal inputs are
+  direct coupled (audio and CV); MATHS runs to audio rate (1kHz), so outputs carry also: [audio].
+  Per-channel names constructed from the manual's per-channel panel listings. +5V draw not stated.

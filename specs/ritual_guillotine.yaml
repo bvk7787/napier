@@ -1,0 +1,18 @@
+device: ritual_guillotine
+slugs: [ritual-electronics-guillotine]
+source: ritual_guillotine_manual
+hp: 14
+hp_page: 4
+hp_anchor: "14HP"
+power:
+  plus12: 26
+  minus12: 26
+  plus5: 0
+  page: 4
+  anchor: "26mA on +12V 26mA on -12V 0mA on +5V"
+jacks:
+  - {name: "In L", dir: in, type: audio, page: 6}
+  - {name: "In R", dir: in, type: audio, page: 6, normal: "In L"}
+  - {name: "Out L", dir: out, type: audio, page: 6}
+  - {name: "Out R", dir: out, type: audio, page: 6}
+notes: "1U module (Intellijel or Pulplogic format). Mono signal in In L is replicated to In R unless In R is patched. Manual notes it can also process CV/LFOs (p13), but primary use is audio. Power matches ModularGrid."

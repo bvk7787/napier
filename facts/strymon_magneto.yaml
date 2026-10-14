@@ -1,0 +1,87 @@
+# Facts for strymon_magneto. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: magneto-modes
+  claim: 'Three modes: Echo, Sound-on-Sound Looper and Phrase Sampler'
+  status: manual
+  source: strymon_magneto_manual
+  pages:
+  - 3
+  q: What modes does Strymon Magneto have?
+  anchors:
+  - Three operational modes
+- id: magneto-max-time
+  claim: Maximum delay or loop time is 15 seconds
+  status: manual
+  source: strymon_magneto_manual
+  pages:
+  - 3
+  q: What is the maximum delay or loop time on Magneto?
+  anchors:
+  - 'Maximum Delay/Loop Time: 15 seconds'
+- id: magneto-loop-tap
+  claim: In Loop mode, TAP once to splice in, again to splice out, and a third time to clear
+  status: manual
+  source: strymon_magneto_manual
+  pages:
+  - 4
+  q: How do I record a loop on Magneto?
+  anchors:
+  - Press the TAP button once to Splice In
+- id: magneto-custom-panning
+  claim: With PAN set to CENTER, each head's pan is set by holding its FEEDBACK button and turning its PLAYBACK
+    LEVEL knob.
+  status: manual
+  source: strymon_magneto_manual
+  pages:
+  - 13
+  q: How do I set custom panning for each tape head on Magneto?
+  anchors:
+  - turn the PLAYBACK LEVEL knob while pressing and holding down that head's corresponding FEEDBACK button
+- id: magneto-momentary-transport
+  claim: Powering up while holding a transport button toggles that function between momentary and latching operation.
+  status: manual
+  source: strymon_magneto_manual
+  pages:
+  - 14
+  q: Can I make Magneto's reverse button momentary instead of latching?
+  anchors:
+  - Power up Magneto while holding the desired transport control button
+- id: magneto-pitch-quantize
+  claim: Holding TAP enters Pitch Quantize mode, and holding TRANSPORT while turning SPEED/PITCH selects one of
+    15 scales.
+  status: manual
+  source: strymon_magneto_manual
+  pages:
+  - 15
+  q: How do I quantize Magneto's speed knob to a musical scale?
+  anchors:
+  - Press and hold the TAP button at any time to enter PITCH QUANTIZE mode
+- id: magneto-dual-split-dip
+  claim: DIP switch S2 enables Dual Split mode, making the left channel a mono tape delay and the right channel
+    a mono spring reverb.
+  status: manual
+  source: strymon_magneto_manual
+  pages:
+  - 19
+  q: Can I use Magneto's delay and spring reverb on separate signals?
+  anchors:
+  - Selects Dual Split mode where LEFT audio IN/ OUT is a mono four head tape delay
+
+# ---- Firmware release notes
+- id: mag-114-sendreturn
+  claim: Firmware v1.14 made Send/Return a series insert into the delay line
+  status: changelog
+  source: strymon_magneto_firmware_notes
+  q: Where does the Magneto send/return sit in the signal path?
+  anchors:
+  - Re-routed Send/Return path to be a series insert into the delay line
+- id: mag-114-mono
+  claim: Since v1.14 mono mode engages only when both SEND and RETURN are patched
+  status: changelog
+  source: strymon_magneto_firmware_notes
+  q: When does Magneto switch to mono mode?
+  anchors:
+  - engage only when both SEND and RETURN jacks are plugged in

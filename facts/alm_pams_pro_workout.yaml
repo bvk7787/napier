@@ -1,0 +1,141 @@
+# Facts for alm_pams_pro_workout. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: pam-bpm-range
+  claim: Pam's PRO Workout clocks from 10 to 330 BPM
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 5
+  q: What tempo range does Pamela's PRO Workout run at?
+  anchors:
+  - BPM based clock with tempo rates 10-330BPM
+- id: pam-ext-ppqn
+  claim: External clock input expects 24 PPQN by default; the source should match
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 20
+  q: What PPQN should I send Pamela's PRO Workout as an external clock?
+  anchors:
+  - keep this value at the default 24
+- id: pam-ppexp1
+  claim: PPEXP1 plugs into the vertical 5-pin MIDI-EX header (not the 6-pin EXPAND header) and adds DIN Sync, MIDI
+    clock and fixed-factor pulse outputs
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 27
+  q: How do I connect the PPEXP1 expander to Pamela's PRO Workout?
+  anchors:
+  - Both expanders provide Din Sync and MIDI Clock outputs
+- id: pam-extended-params
+  claim: Holding the program knob for just over a second on an output screen opens the extended output parameters,
+    and holding again exits.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 9
+  q: How do I get to the extended settings for an output on Pam?
+  anchors:
+  - pushing and holding the program knob for just over 1 second will access the extended output parameter selection
+- id: pam-level-volts
+  claim: Output Level is a percentage of 0-5V, so each 20% is roughly 1 volt.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 11
+  q: How many volts is each percent of Level on Pam's Pro Workout?
+  anchors:
+  - Each 20% is essentially 1 volt
+- id: pam-offset-constant
+  claim: Setting an output Level to 0 lets Offset act as a programmable constant voltage.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 12
+  q: How do I use Offset as a constant voltage on a Pam output?
+  anchors:
+  - Offset can then be used as programmable constant voltage output
+- id: pam-cross-op-sh
+  claim: The S&H cross operation samples the destination output on a rising trigger from the source and holds until
+    the next trigger.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 15
+  q: How does the sample and hold cross op work on Pam's?
+  anchors:
+  - A rising trigger on source will cause the current destination output value to be 'sampled'
+- id: pam-param-shortcut
+  claim: Holding start/stop and turning the program knob jumps to the same parameter on other outputs.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 18
+  q: Is there a shortcut to edit the same parameter across outputs on Pam?
+  anchors:
+  - holding start/stop button down and turning the program knob
+- id: pam-cv-range
+  claim: All Pam CV inputs respond to 0 to 5V; voltages outside that are safe but ignored.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 19
+  q: What voltage range do the CV inputs on Pam's Pro Workout accept?
+  anchors:
+  - All CVs respond to voltages between 0 and 5v.
+- id: pam-run-reset-mode
+  claim: Setting the Run input to RESET makes a trigger reset Pam to the first step, and Pam auto starts and stops
+    with an external clock.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 20
+  q: Can I use the Run input on Pam as a reset?
+  anchors:
+  - Resets a running Pam to initial step when a trigger pulse is received
+- id: pam-firmware-usb
+  claim: To update firmware, connect USB with the unit unpowered and copy the firmware file to the root of the Pam
+    drive.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 26
+  q: How do I update the firmware on Pam's Pro Workout?
+  anchors:
+  - Copy a valid firmware file to the root directory to update.
+- id: pam-axon2-tap-tempo
+  claim: An Axon-2 button can be assigned to Tap Tempo, setting the BPM from at least two taps.
+  status: manual
+  source: alm_pams_pro_workout_manual
+  pages:
+  - 28
+  q: Can I tap tempo on Pam with the Axon-2?
+  anchors:
+  - Sets the master BPM via at least 2 subsequent taps of the button.
+
+# ---- Firmware release notes
+- id: ppw-131-copy
+  claim: Firmware 131 added a Copy menu for duplicating outputs, plus clickless pulse, expo and log envelope shapes
+  status: changelog
+  source: alm_pams_pro_workout_release_notes
+  q: Is there a quick way to duplicate an output's settings on Pam's Pro Workout?
+  anchors:
+  - menu for duping outputs quickly
+- id: ppw-128-clears
+  claim: Upgrading to firmware 128 clears saved settings and banks
+  status: changelog
+  source: alm_pams_pro_workout_release_notes
+  q: Will updating Pam's Pro Workout firmware erase my saved banks?
+  anchors:
+  - clear any saved settings and banks
+- id: ppw-128-x15
+  claim: Firmware 128 added the x1.5 multiplier and the POWER OF 2 Flex op
+  status: changelog
+  source: alm_pams_pro_workout_release_notes
+  q: When did Pam's Pro Workout get the x1.5 clock multiplier?
+  anchors:
+  - Add new x1.5 multiplier

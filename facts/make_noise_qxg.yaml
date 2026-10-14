@@ -1,0 +1,73 @@
+# Facts for make_noise_qxg. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: qxg-headers
+  claim: Signal inputs 1-4 are normalled to the Signal Input header (MultiWAVE or MultiMod) and control inputs
+    1-4 to the Control Inputs header (PoliMATHS or MultiMod); patching a jack breaks that channel's normal
+  status: manual
+  source: make_noise_qxg_manual
+  pages:
+  - 8
+  q: Are the QXG inputs normalled to MultiWAVE and PoliMATHS?
+  anchors:
+  - Normalled to Control Inputs header for use with N.U.S.S. control voltage sources
+- id: qxg-vactrol-button
+  claim: Vactrol button ON gives a slow vactrol-style decay; OFF gives a fast precision response, better for
+    quick PoliMATHS functions
+  status: manual
+  source: make_noise_qxg_manual
+  pages:
+  - 9
+  q: What does the QXG Vactrol button do?
+  anchors:
+  - Selects between a Slow response emulating the decay time of a vactrol
+- id: qxg-pair-eight-voice
+  claim: A pair of QXGs takes MultiWAVE's eight channels on the signal inputs and PoliMATHS' eight channels on
+    the control inputs, completing the eight-voice N.U.S.S. core
+  status: manual
+  source: make_noise_qxg_manual
+  pages:
+  - 5
+  q: How do two QXGs work with PoliMATHS and MultiWAVE?
+  anchors:
+  - A pair of QXG modules is specially designed to connect to PoliMATHS
+- id: qxg-xpread-distribution
+  claim: XPREAD at noon centers all channels; fully clockwise places channel 1 hard left through channel 4 hard
+    right, and counterclockwise reverses that.
+  status: manual
+  source: make_noise_qxg_manual
+  pages:
+  - 9
+  q: how does the Xpread knob pan the four channels on QXG
+  anchors:
+  - At 12:00, all channels are centered
+- id: qxg-aux-mono
+  claim: Patching only the Left Aux input makes it appear at both Mix outputs for mono use, which is handy for chaining
+    a second QXG.
+  status: manual
+  source: make_noise_qxg_manual
+  pages:
+  - 7
+  q: can I chain two QXGs together using the aux inputs
+  anchors:
+  - left input will appear at both Mix outputs
+- id: qxg-channel-out-removes
+  claim: Patching a channel's individual output removes that channel from the stereo Mix outputs.
+  status: manual
+  source: make_noise_qxg_manual
+  pages:
+  - 8
+  q: why did a channel disappear from the QXG mix when I patched its output
+  anchors:
+  - Patching an output removes the channel from the Mix
+- id: qxg-power-draw
+  claim: QXG is 12HP and draws 65mA from +12V and 75mA from -12V.
+  status: manual
+  source: make_noise_qxg_manual
+  pages:
+  - 4
+  q: how much power does the Make Noise QXG need
+  anchors:
+  - requiring 65mA of +12VDC and 75mA of -12VDC

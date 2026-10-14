@@ -1,0 +1,76 @@
+# Facts for mutable_beads. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: beads-freeze-backup
+  claim: If FREEZE stays engaged for more than 10 seconds, the buffer is saved and restored at the next power-up
+  status: manual
+  source: mutable_beads_manual
+  q: Does the Beads buffer survive power off when FREEZE is held?
+  anchors:
+  - the content of the buffer is backed up
+- id: beads-density-clocked
+  claim: With latched grain generation and a clock at SEED, DENSITY becomes a divider (CCW) or probability (CW)
+    control
+  status: manual
+  source: mutable_beads_manual
+  q: What does DENSITY do on Beads when a clock is patched to SEED?
+  anchors:
+  - is repurposed as a divider or probability control
+- id: beads-manual-gain
+  claim: Beads sets input gain automatically from 0 to 32dB; holding the quality button while turning FEEDBACK sets
+    gain manually, and a long press on the quality button restores automatic gain control.
+  status: manual
+  source: mutable_beads_manual
+  q: how do I set the input gain manually on Beads
+  anchors:
+  - The manually-set gain is memorized and applied until a long press on [A] re-enables automatic gain control
+- id: beads-quality-modes
+  claim: The quality button chooses Cold digital (Clouds-like), Sunny tape (clean 48kHz) or Scorched cassette (wow
+    and flutter).
+  status: manual
+  source: mutable_beads_manual
+  q: what are the different recording quality settings on Beads
+  anchors:
+  - The Scorched cassette setting emulates wow and flutter
+- id: beads-size-reverse
+  claim: SIZE at 11 o'clock plays a 30ms grain, clockwise lengthens grains up to 4s, and counterclockwise plays
+    reversed grains up to 4s.
+  status: manual
+  source: mutable_beads_manual
+  q: how do I get reverse grains on Beads
+  anchors:
+  - Turn CCW to play a reversed grain, lasting up to 4s
+- id: beads-pitch-voct
+  claim: The PITCH CV input tracks V/oct when its attenurandomizer is turned fully clockwise, so grains can be sequenced
+    or played from a keyboard.
+  status: manual
+  source: mutable_beads_manual
+  q: can I play Beads grains from a keyboard with 1v/oct
+  anchors:
+  - The PITCH CV input tracks V/O when the attenurandomizer is turned fully CW
+- id: beads-delay-tap
+  claim: In delay mode (SIZE fully CW), clocking SEED or tapping the SEED button sets the base delay time and DENSITY
+    picks a subdivision, binary only on the CCW side.
+  status: manual
+  source: mutable_beads_manual
+  q: can I tap tempo the delay on Beads
+  anchors:
+  - the base delay time will be set as the interval between the taps or clock ticks
+- id: beads-wavetable-synth
+  claim: With both audio inputs unpatched for ten seconds, Beads granulates Plaits wavetables, with FEEDBACK selecting
+    one of 8 waveform banks.
+  status: manual
+  source: mutable_beads_manual
+  q: what does Beads do with nothing plugged into the inputs
+  anchors:
+  - Beads loses patience and granularizes a collection of internally stored buffers
+- id: beads-firmware-update
+  claim: Firmware is updated by audio, powering on with FREEZE held, playing the update file into IN L, and using
+    TIME to adjust gain while the quality LED acts as a level meter.
+  status: manual
+  source: mutable_beads_manual
+  q: how do I update Beads firmware
+  anchors:
+  - Power on your modular system with the FREEZE illuminated push-button (B) pressed

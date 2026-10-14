@@ -1,0 +1,85 @@
+# Facts for msw_beehive. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: bhv-lpg-settings
+  claim: Holding the first model button and turning TIMBRE sets the internal LPG response from VCFA to VCA, while
+    MORPH sets the LPG ringing and internal envelope decay time.
+  status: manual
+  source: mutable_plaits_manual
+  q: How do I change the low pass gate decay and response on Beehive?
+  anchors:
+  - Turn the MORPH knob to adjust the ringing time of the LPG
+- id: bhv-frequency-range
+  claim: Holding the second button and turning HARMONICS narrows the FREQUENCY knob to C0, C1 and so on plus or
+    minus 7 semitones, with the last setting giving the full 8-octave C0 to C8 range.
+  status: manual
+  source: mutable_plaits_manual
+  q: Can I limit the range of the coarse frequency knob so it is easier to tune?
+  anchors:
+  - The first 8 settings correspond to C0 +/- 7 semitones
+- id: bhv-settings-saved
+  claim: Button and knob settings such as octave range and LPG decay and response are only saved to flash when the
+    active model is changed with a button press.
+  status: manual
+  source: mutable_plaits_manual
+  q: Why does my Beehive forget its LPG and octave settings after a power cycle?
+  anchors:
+  - are saved in permanent memory only when the active model is changed
+- id: bhv-attenuverter-internal-env
+  claim: With TRIG patched and a CV input unpatched, the attenuverter sets internal envelope amount, so reset it
+    to 12 o'clock after unplugging a CV.
+  status: manual
+  source: mutable_plaits_manual
+  q: Why does Beehive keep modulating timbre after I unplug the CV cable?
+  anchors:
+  - the attenuverter adjusts the modulation amount from the internal decaying envelope generator
+- id: bhv-calibration
+  claim: Calibration is entered by pressing both model buttons, then sending 1.000V and 3.000V to V/OCT and pressing
+    a button after each.
+  status: manual
+  source: mutable_plaits_manual
+  q: How do I calibrate the V/Oct tracking on the Beehive?
+  anchors:
+  - Press both buttons (A). The first LED slowly blinks in green.
+- id: bhv-firmware-update
+  claim: Firmware is updated by playing the audio update file into the MODEL CV input after powering on with the
+    left model button held.
+  status: manual
+  source: mutable_plaits_manual
+  q: How do I update the firmware on a Plaits clone like Beehive?
+  anchors:
+  - Connect the output of your audio interface/sound card to the MODEL CV input.
+- id: bhv-trig-not-working
+  claim: If the TRIG input stops working, calibration was probably entered by mistake with TRIG patched, and recalibrating
+    fixes it.
+  status: manual
+  source: mutable_plaits_manual
+  q: My trigger input stopped working on the Beehive, what happened?
+  anchors:
+  - The calibration procedure has been entered by mistake while the TRIG input was patched.
+
+# ---- Mutable Instruments Plaits source code (Beehive runs Plaits firmware)
+- id: beehive-code-calibration
+  claim: Holding both buttons for a long press (2 s) enters calibration
+  status: code
+  source: mutable_plaits_ui_cc
+  q: How do I enter calibration on Plaits firmware with the buttons?
+  anchors:
+  - 'Long, double press: enter calibration mode'
+- id: beehive-code-hidden-param
+  claim: Holding a button while turning a pot edits a hidden parameter; afterwards the pot catches up to the main
+    parameter
+  status: code
+  source: mutable_plaits_pot_controller_h
+  q: What states can a Plaits pot be in when I hold a button to tweak a hidden parameter?
+  anchors:
+  - POT_STATE_CATCHING_UP
+- id: beehive-code-longpress
+  claim: A long press is 2000 ms
+  status: code
+  source: mutable_plaits_ui_cc
+  q: How long is a long press in the Plaits code?
+  anchors:
+  - kLongPressTime = 2000

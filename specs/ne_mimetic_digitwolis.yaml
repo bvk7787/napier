@@ -1,0 +1,13 @@
+device: ne_mimetic_digitwolis
+slugs: [noise-engineering-mimetic-digitwolis]
+source: ne_mimetic_digitwolis_manual
+hp: 10
+hp_anchor: "Size: 10 HP"
+power:
+  plus12: 80
+  minus12: 20
+  anchor: "+12 V: 80 mA"
+jacks: []
+notes: >-
+  -12 V: 20 mA is on the next line of the manual's
+  overview. Jacks not listed.

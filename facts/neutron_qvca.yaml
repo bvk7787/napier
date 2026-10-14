@@ -1,0 +1,20 @@
+# Facts for neutron_qvca. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: qvca-response-normalling
+  claim: QVCA is an 8HP quad VCA based on the 2164 with switchable linear or log response, and its audio and CV
+    inputs are chain normalled from channel 1 to 4.
+  status: manual
+  source: neutron_qvca_product_page
+  q: Does the Neutron QVCA have linear and exponential response, and are its inputs normalled?
+  anchors:
+  - The audio and CV inputs are chain normalized from 1 to 4
+- id: qvca-power-polarity
+  claim: QVCA uses PSIpower with no polarity on its power header, so the ribbon can be installed either way.
+  status: manual
+  source: neutron_qvca_product_page
+  q: Which way round does the power cable go on the Neutron QVCA?
+  anchors:
+  - has NO POLAIRTY on the power header, it can be installed EITHER WAY

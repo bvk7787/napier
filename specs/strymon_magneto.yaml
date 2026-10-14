@@ -1,0 +1,42 @@
+device: strymon_magneto
+slugs: [strymon-magneto]
+source: strymon_magneto_manual
+hp: 28
+hp_page: 21
+hp_anchor: "28hp"
+power:
+  plus12: 210
+  minus12: 210
+  plus5: 0
+  page: 21
+  anchor: "+12V rail: 210mA"
+jacks:
+  - {name: "LEFT IN", dir: in, type: audio, page: 7}
+  - {name: "RIGHT IN", dir: in, type: audio, page: 7, label: "LEFT/RIGHT IN"}
+  - {name: "LEFT OUT", dir: out, type: audio, page: 7, label: "LEFT/RIGHT OUT"}
+  - {name: "RIGHT OUT", dir: out, type: audio, page: 7, label: "LEFT/RIGHT OUT"}
+  - {name: "SEND", dir: out, type: audio, page: 7}
+  - {name: "RETURN", dir: in, type: audio, page: 7}
+  - {name: "SPEED CV", dir: in, type: pitch, also: [cv], page: 17, label: "SPEED"}
+  - {name: "WET CV", dir: in, type: cv, page: 17, label: "WET"}
+  - {name: "REPEATS CV", dir: in, type: cv, page: 17, label: "REPEATS"}
+  - {name: "SPRING CV", dir: in, type: cv, page: 17, label: "SPRING"}
+  - {name: "CLK IN", dir: in, type: clock, page: 17}
+  - {name: "REC GATE", dir: in, type: trigger, also: [gate], page: 17}
+  - {name: "SHIFT", dir: in, type: trigger, page: 17}
+  - {name: "INFINITE", dir: in, type: trigger, page: 17}
+  - {name: "FORWARD/REVERSE", dir: in, type: trigger, page: 17}
+  - {name: "RESTART", dir: in, type: trigger, also: [gate], page: 17}
+  - {name: "PAUSE", dir: in, type: trigger, page: 17}
+  - {name: "TAP", dir: in, type: trigger, also: [clock], page: 17}
+  - {name: "CLK 1 OUT", dir: out, type: clock, page: 18}
+  - {name: "CLK 2 OUT", dir: out, type: clock, page: 18}
+  - {name: "CLK 3 OUT", dir: out, type: clock, page: 18}
+  - {name: "CLK 4 OUT", dir: out, type: clock, page: 18}
+notes: >-
+  Power per spec table p21: +12V 210mA, -12V 210mA, +5V 0mA (matches ModularGrid). SPEED CV is
+  calibrated 1V/oct over -3V to +3V. WET/REPEATS/SPRING are continuous CV (-5V to +5V) summed with
+  their knobs. CLK IN, REC GATE, SHIFT, INFINITE, FORWARD/REVERSE, RESTART, PAUSE, TAP are 0-5V
+  rising-edge trigger inputs; manual suggests a gate into RESTART and a clock into TAP/RESTART.
+  With rear DIP S1 ON the transport CV jacks can instead drive the FEEDBACK ON/OFF buttons. CLK
+  1-4 OUT are 50% duty clocks phase-aligned to clock/tap. Manual describes no MIDI or USB jack.

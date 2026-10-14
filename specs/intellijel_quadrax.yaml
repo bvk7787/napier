@@ -1,0 +1,29 @@
+device: intellijel_quadrax
+slugs: [intellijel-quadrax-]
+source: intellijel_quadrax_manual
+hp: 14
+hp_page: 48
+hp_anchor: "QUADRAX - Width | 14 hp"
+power:
+  plus12: 106
+  minus12: 9
+  page: 48
+  anchor: "106 mA @ +12V 9 mA @ -12V"
+jacks:
+  - {name: "TRIG (ch 1)", dir: in, type: trigger, also: [gate, clock], page: 15, label: "TRIG Inputs (x4)"}
+  - {name: "TRIG (ch 2)", dir: in, type: trigger, also: [gate, clock], page: 15, label: "TRIG Inputs (x4)"}
+  - {name: "TRIG (ch 3)", dir: in, type: trigger, also: [gate, clock], page: 15, label: "TRIG Inputs (x4)"}
+  - {name: "TRIG (ch 4)", dir: in, type: trigger, also: [gate, clock], page: 15, label: "TRIG Inputs (x4)"}
+  - {name: "OUT (ch 1)", dir: out, type: cv, page: 15, label: "OUTS (x4)"}
+  - {name: "OUT (ch 2)", dir: out, type: cv, page: 15, label: "OUTS (x4)"}
+  - {name: "OUT (ch 3)", dir: out, type: cv, page: 15, label: "OUTS (x4)"}
+  - {name: "OUT (ch 4)", dir: out, type: cv, page: 15, label: "OUTS (x4)"}
+  - {name: "CV 1", dir: in, type: cv, also: [pitch], page: 16, label: "CV Inputs (x4)"}
+  - {name: "CV 2", dir: in, type: cv, also: [pitch], page: 16, label: "CV Inputs (x4)"}
+  - {name: "CV 3", dir: in, type: cv, also: [pitch], page: 16, label: "CV Inputs (x4)"}
+  - {name: "CV 4", dir: in, type: cv, also: [pitch], page: 16, label: "CV Inputs (x4)"}
+notes: >-
+  Manual describes jacks generically (x4) on pp. 15-16; channel numbering assumed. TRIG inputs act as
+  clock inputs in LFO mode. CV inputs are freely assignable via the CV matrix and track 1V/oct; range +/-5V
+  (accept up to +/-10V, clipped). Power +12V 106 mA, -12V 9 mA (no +5V stated). Qx expander (4hp, 8 mA +12V)
+  is a separate module and its EOR/EOF outputs are not listed here. Matches ModularGrid.

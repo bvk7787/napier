@@ -1,0 +1,40 @@
+device: joranalogue_step_8
+slugs: [joranalogue-audio-design-step-8]
+source: joranalogue_step_8_manual
+hp: 16
+hp_page: 6
+hp_anchor: "3 U, 16 HP, 35 mm deep"
+power:
+  plus12: 110
+  minus12: 45
+  page: 6
+  anchor: "+12 V: 110 mA"
+jacks:
+  - {name: "STEP IN", dir: in, type: trigger, also: [clock], page: 3, label: "STEP BUTTON, INPUT AND OUTPUT"}
+  - {name: "STEP OUT", dir: out, type: trigger, page: 3, label: "STEP BUTTON, INPUT AND OUTPUT"}
+  - {name: "SIGNAL INPUT", dir: in, type: cv, also: [audio], page: 3}
+  - {name: "PAUSE GATE INPUT", dir: in, type: gate, page: 4}
+  - {name: "REVERSE GATE INPUT", dir: in, type: gate, page: 4}
+  - {name: "RESET TRIGGER INPUT", dir: in, type: trigger, page: 4}
+  - {name: "STAGE INPUT", dir: in, type: cv, page: 4}
+  - {name: "SCAN OUTPUT", dir: out, type: cv, also: [audio], page: 4}
+  - {name: "Stage 1 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 2 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 3 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 4 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 5 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 6 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 7 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 8 output", dir: out, type: cv, also: [audio], page: 4, label: "ANALOGUE OUTPUTS"}
+  - {name: "Stage 1 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+  - {name: "Stage 2 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+  - {name: "Stage 3 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+  - {name: "Stage 4 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+  - {name: "Stage 5 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+  - {name: "Stage 6 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+  - {name: "Stage 7 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+  - {name: "Stage 8 gate", dir: out, type: gate, page: 4, label: "GATE OUTPUTS AND LEDS"}
+notes: >-
+  +5V not stated. Stages are 0 to +5V from the internal reference when
+  SIGNAL INPUT is unpatched (p3); STAGE INPUT addresses stages with 0 to +5V (p4). Per-stage jack
+  names aren't printed, so stage outputs and gates are numbered here.

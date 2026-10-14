@@ -1,0 +1,41 @@
+name: Publisher request
+description: For makers and publishers. Ask to remove, shorten or correct what napier lists from your documents
+labels: [publisher-request]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for getting in touch. docs/data-policy.md says what napier holds (links, checksums and
+        short quoted anchors; each user downloads the documents) and what you can ask for. A
+        maintainer answers within a week; removals are made first and discussed after.
+  - type: input
+    id: who
+    attributes:
+      label: Who you are
+      description: The company or publisher, and your role (or that you speak for them).
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What it concerns
+      description: Source ids from sources.yaml, URLs, or the devices.
+    validations:
+      required: true
+  - type: dropdown
+    id: ask
+    attributes:
+      label: What you'd like
+      multiple: true
+      options:
+        - Remove the source entry, with its facts and anchors
+        - Shorten or remove particular anchors
+        - Point the entry at a different URL
+        - Correct a claim, a version or a page
+        - Something else (below)
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details

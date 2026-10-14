@@ -1,0 +1,84 @@
+# Facts for instruo_carn. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: carn-ch2-normal
+  claim: With nothing patched to Channel 2's Secondary Input, the VCA modulator input is normalled to a +6V reference
+    so the fader acts as a level control.
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 10
+  q: What happens on càrn channel 2 if I don't patch a CV into the VCA input?
+  anchors:
+  - it is normalled to a +6V reference signal
+- id: carn-half-normalled
+  claim: A rear dip switch per channel sets Half Normalled (up), where patching the Mono Output removes that channel
+    from the stereo mix, or Normalled (down), where it stays in the mix.
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 14
+  q: Does taking a channel's mono output on càrn pull it out of the stereo mix?
+  anchors:
+  - If a Normalling Switch is set to its upward position, the corresponding channel is set to Half Normalled
+- id: carn-limiter-switch
+  claim: The rear Limiter Switch set to the right engages a stereo analogue soft clipping limiter on the Stereo
+    Outputs; set left, the output stays linear.
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 13
+  q: How do I turn the càrn limiter on or off?
+  anchors:
+  - limited by a stereo analogue soft clipping circuit
+- id: carn-ac-dc-coupling
+  claim: Rear dip switches set each channel to AC coupled (up, removes DC offset, for audio) or DC coupled (down,
+    for CV mixing).
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 15
+  q: how do I switch a carn channel between AC and DC coupling for CV mixing
+  anchors:
+  - This setting removes DC offsets from signals and is most suitable for audio mixing
+- id: carn-ring-mod-polarity
+  claim: For ring modulation on Channel 3, patch a bipolar modulator into the Secondary Input, set the Polarity
+    Switch right, and use the fader to offset the multiplication symmetry.
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 19
+  q: for ring mod on càrn channel 3, how should I set the Polarity Switch and Fader
+  anchors:
+  - The Fader can be used to offset the symmetry of the signal multiplication
+- id: carn-back-jack-expansion
+  claim: The Stereo Input Back Jack accepts other modules' stereo outputs over a 3.5mm stereo cable, at 100K impedance,
+    summing at unity gain into the stereo mix.
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 16
+  q: can I chain another Instruo stereo module into the carn mix through the back
+  anchors:
+  - Inputs are 100KΩ impedance and sum at unity gain with the stereo mix
+- id: carn-fader-taper
+  claim: The Channel 1 to 3 faders have an audio taper while the Channel 4 crossfade fader is linear.
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 11
+  q: are the carn faders linear or log taper
+  anchors:
+  - This fader has a linear taper response curve
+- id: carn-led-colors
+  claim: Fader LEDs show positive amplitude in white and negative in yellow, and white can dominate on fast bipolar
+    signals.
+  status: manual
+  source: instruo_carn_manual
+  pages:
+  - 25
+  q: why are the carn fader LEDs mostly white with a bipolar audio signal
+  anchors:
+  - will depict positive amplitude in white and negative amplitude in yellow

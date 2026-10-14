@@ -1,0 +1,36 @@
+device: alm_akemies_castle
+slugs: [alm-busy-circuits-akemie-s-castle]
+source: alm_akemies_castle_manual
+hp: 38
+hp_page: 3
+hp_anchor: "Size: 38 HP"
+jacks:
+  - {name: "VCO A OUT", dir: out, type: audio, page: 7, label: "corresponding VCO output jack"}
+  - {name: "VCO B OUT", dir: out, type: audio, page: 7, label: "corresponding VCO output jack"}
+  - {name: "VCO A V/Oct", dir: in, type: pitch, page: 7, label: "V/Oct input"}
+  - {name: "VCO B V/Oct", dir: in, type: pitch, page: 7, label: "V/Oct input"}
+  - {name: "Osc B Fb", dir: in, type: cv, page: 5, label: "Osc B 'Fb' input"}
+  - {name: "Chord", dir: in, type: cv, page: 11, label: "associated Chord input"}
+  - {name: "Inv", dir: in, type: cv, page: 12, label: "Chord 'Inv' input"}
+  - {name: "Op 1 Wave", dir: in, type: cv, page: 9, label: "Wave"}
+  - {name: "Op 1 Multiplier", dir: in, type: cv, page: 10, label: "Multiplier"}
+  - {name: "Op 1 Level", dir: in, type: cv, page: 10, label: "Level"}
+  - {name: "Op 2 Wave", dir: in, type: cv, page: 9, label: "Wave"}
+  - {name: "Op 2 Multiplier", dir: in, type: cv, page: 10, label: "Multiplier"}
+  - {name: "Op 2 Level", dir: in, type: cv, page: 10, label: "Level"}
+  - {name: "Op 3 Wave", dir: in, type: cv, page: 9, label: "Wave"}
+  - {name: "Op 3 Multiplier", dir: in, type: cv, page: 10, label: "Multiplier"}
+  - {name: "Op 3 Level", dir: in, type: cv, page: 10, label: "Level"}
+  - {name: "Op 4 Wave", dir: in, type: cv, page: 9, label: "Wave"}
+  - {name: "Op 4 Multiplier", dir: in, type: cv, page: 10, label: "Multiplier"}
+  - {name: "Op 4 Level", dir: in, type: cv, page: 10, label: "Level"}
+notes: >-
+  Power omitted: page 3 gives only "Current Draw: ~120ma" on a +/-12V supply with no per-rail split
+  (ModularGrid lists 120/60). The panel diagram (p6) is an image, so jack names are built from text:
+  p5 says all jacks are CV inputs except the two VCO audio outputs; V/Oct, Inv and Fb inputs have no
+  attenuators; Osc B Fb is normalled to the Osc A Feedback control (a knob, so no jack normal recorded).
+  The 12 operator inputs (Wave, Multiplier, Level for operators 1-4) are inferred from p4 ("exposes all
+  operator parameters to both voltage and direct control") and p9 ("controls and inputs for each of the
+  4 operators"); the manual never names them individually. Whether Osc A has its own Fb jack is not
+  stated; only the Osc B Fb input is listed. Algorithm select is a button with no CV input mentioned.
+  Inputs expect 0-5V except Chord and V/Oct (approx 0-10V).

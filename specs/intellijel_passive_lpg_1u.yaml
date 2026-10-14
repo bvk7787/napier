@@ -1,0 +1,20 @@
+device: intellijel_passive_lpg_1u
+slugs: [intellijel-passive-lpg-1u]
+source: intellijel_passive_lpg_1u_manual
+hp: 6
+hp_page: 6
+hp_anchor: "Width | 6 hp"
+power:
+  plus12: 0
+  minus12: 0
+  plus5: 0
+  page: 6
+  anchor: "Current Draw | None (passive module)"
+jacks:
+  - {name: "LPG IN", dir: in, type: audio, page: 5}
+  - {name: "LPG OUT", dir: out, type: audio, page: 5}
+  - {name: "CV IN", dir: in, type: cv, also: [trigger], page: 5}
+notes: >-
+  1U (Intellijel format) passive vactrol LPG; manual states it needs no power (p.3) and current draw "None (passive
+  module)" (p.6), so all rails are 0. CV IN fully opens the gate at +5V; manual recommends triggers or short
+  envelopes into CV IN. ModularGrid lists no power figures, consistent with passive.

@@ -1,0 +1,30 @@
+device: instruo_larachd
+slugs: [instruo-larachd]
+source: instruo_larachd_manual
+hp: 8
+hp_page: 4
+hp_anchor: "Width: 8 HP"
+power:
+  plus12: 75
+  minus12: 70
+  page: 4
+  anchor: "+12V: 75mA"
+jacks:
+  - {name: "Stereo Line Input", dir: in, type: audio, page: 6}
+  - {name: "Left Output", dir: out, type: audio, page: 6}
+  - {name: "Right Output", dir: out, type: audio, page: 6}
+  - {name: "Enhance Input", dir: in, type: audio, page: 7, normal: "Stereo Line Input"}
+  - {name: "Enhance Output", dir: out, type: audio, page: 7}
+  - {name: "Envelope Follower Input", dir: in, type: audio, page: 8, normal: "Stereo Line Input"}
+  - {name: "Positive Envelope Output", dir: out, type: cv, page: 9}
+  - {name: "Negative Envelope Output", dir: out, type: cv, page: 9}
+  - {name: "Comparator Gate Output", dir: out, type: gate, page: 9}
+  - {name: "Dual Footswitch Input", dir: in, type: other, page: 10}
+  - {name: "A - Button Trigger Output", dir: out, type: trigger, page: 10}
+  - {name: "A - Button Gate Output", dir: out, type: gate, page: 10}
+  - {name: "B - Button Gate Output", dir: out, type: gate, page: 10}
+notes: >-
+  Stereo Line Input is a TRS 3.5mm jack (L/R split to Left and Right Outputs; Right sums into Left when
+  unpatched). Dual Footswitch Input is a 1/4" (6.35mm) jack. Enhance Input and Envelope Follower Input
+  normals depend on the Source Toggle: up = mono sum of Stereo Line Input, centre = muted, down = on-board
+  Microphone. A - Button trigger duration 5ms to 500ms. +5V draw not stated.

@@ -1,0 +1,55 @@
+# Facts for shakmat_bard_quartet_expander. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: bqx-enable-expander
+  claim: The expander needs Bard Quartet firmware v1.1 or later and is enabled by holding EDIT at power up, pressing
+    the D# key (C# disables), then confirming with the blinking ARPG button.
+  status: manual
+  source: shakmat_bard_quartet_expander_manual
+  pages:
+  - 5
+  q: How do I turn on expander support on my Bard Quartet?
+  anchors:
+  - Enable the expander by pressing on the D# note
+- id: bqx-midi-modes
+  claim: Each channel can use one of three MIDI modes set with the MIDI button; press for quantization control,
+    hold 2 seconds for MIDI to CV/Gate, or hold 2 seconds then press again for MIDI to CV/Gate with quantization.
+  status: manual
+  source: shakmat_bqx_midi_guide
+  pages:
+  - 2
+  q: How do I switch a Bard Quartet channel between the different MIDI modes on the expander?
+  anchors:
+  - Hold MIDI button for 2 sec. then press again
+- id: bqx-midi-shift-register-poly
+  claim: In MIDI to CV/Gate mode the shift register advances on each MIDI Note-On instead of a clock, so a four
+    note chord on MIDI channel 1 is spread across all four channels.
+  status: manual
+  source: shakmat_bqx_midi_guide
+  pages:
+  - 4
+  q: Can I play chords from a MIDI keyboard and split the notes across the Bard Quartet channels?
+  anchors:
+  - playing a four note chord on MIDI channel 1 and having all notes parsed
+- id: bqx-gate-input-channel1-only
+  claim: With the expander enabled, the Bard Quartet's own gate input only serves channel 1, and channels 2 to 4
+    use the expander's gate inputs.
+  status: manual
+  source: shakmat_bard_quartet_expander_manual
+  pages:
+  - 6
+  q: Why does the gate input on my Bard Quartet only affect channel 1 after adding the expander?
+  anchors:
+  - The gate input on the Bard Quartet will only work with channel 1.
+- id: bqx-firmware-check
+  claim: The expander needs Bard Quartet firmware v1.1 or later, which can be checked by pressing ARPG and uTUNE
+    together.
+  status: manual
+  source: shakmat_bard_quartet_expander_manual
+  pages:
+  - 5
+  q: What firmware does the Bard Quartet need to work with the Expand?
+  anchors:
+  - only works with Bard Quartet modules with v1.1 firmware or later

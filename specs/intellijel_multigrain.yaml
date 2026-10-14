@@ -1,0 +1,13 @@
+device: intellijel_multigrain
+slugs: [intellijel-multigrain]
+source: intellijel_multigrain_manual
+hp: 20
+power:
+  plus12: 130
+  minus12: 13
+  plus5: 0
+  anchor: "130mA @ +12V"
+jacks: []
+notes: >-
+  Granular sampler. Jacks not listed yet;
+  add them from the manual.

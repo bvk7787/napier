@@ -1,0 +1,21 @@
+device: divkid_manic
+slugs: [divkid-manic]
+source: divkid_manic_manual
+hp: 8
+hp_page: 8
+hp_anchor: "8 HP slot"
+jacks:
+  - {name: "In 1 (Left)", dir: in, type: audio, also: [cv], page: 12}
+  - {name: "In 2 (Right)", dir: in, type: audio, also: [cv], page: 12, normal: "In 1 (Left)"}
+  - {name: "Mod 1", dir: in, type: cv, also: [audio], page: 12, label: "Mod 1 input"}
+  - {name: "Mod 2", dir: in, type: cv, also: [audio], page: 12, normal: "Mod 1"}
+  - {name: "VCA Direct Out (ch 1)", dir: out, type: audio, also: [cv], page: 13, label: "VCA DIRECT OUTPUTS"}
+  - {name: "VCA Direct Out (ch 2)", dir: out, type: audio, also: [cv], page: 13, label: "VCA DIRECT OUTPUTS"}
+  - {name: "Shape Out (ch 1)", dir: out, type: audio, also: [cv], page: 13, label: "SHAPE OUTPUTS"}
+  - {name: "Shape Out (ch 2)", dir: out, type: audio, also: [cv], page: 13, label: "SHAPE OUTPUTS"}
+notes: >-
+  Manual does not state power draw (installation section on p8 gives only HP and cable orientation), so
+  power is omitted; ModularGrid lists 180/135mA, unverified. Audio inputs are DC-coupled; with nothing
+  patched, +5V DC is normalled to In 1 (In 2 normals from In 1). Mod inputs accept CV or audio (AM/RM),
+  up to +/-11V summed with slider. Direct and Shape outputs are described per channel generically; names
+  are constructed. Shape outputs carry clip, inverted, or fold per the Shape toggle.

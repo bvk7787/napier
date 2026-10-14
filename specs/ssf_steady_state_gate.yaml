@@ -1,0 +1,26 @@
+device: ssf_steady_state_gate
+slugs: [steady-state-fate-steady-state-gate]
+source: ssf_steady_state_gate_manual
+hp: 8
+hp_page: 5
+hp_anchor: "Width: 8hp"
+power:
+  plus12: 75
+  minus12: 75
+  page: 5
+  anchor: "minimum of +/-75mA"
+jacks:
+  - {name: "Signal Input", dir: in, type: audio, page: 3, label: "signal input"}
+  - {name: "EXCITE", dir: in, type: trigger, page: 2, label: "EXCITE input", also: [gate, cv, audio]}
+  - {name: "FREQ CV", dir: in, type: cv, page: 2, label: "FREQ CV input", also: [audio]}
+  - {name: "Q-FACTOR CV", dir: in, type: cv, page: 2, label: "Q-FACTOR and CV input"}
+  - {name: "DECAY CV", dir: in, type: cv, page: 2, label: "DECAY and FREQUENCY depth controls with CV inputs"}
+  - {name: "TIMBRE CV", dir: in, type: cv, page: 4, label: "TIMBRE CV input", also: [audio]}
+  - {name: "ENV", dir: out, type: cv, page: 3, label: "ENV out"}
+  - {name: "Output", dir: out, type: audio, page: 2, label: "the output"}
+notes: >-
+  Manual has no panel legend; jacks inferred from prose. Signal input and output are never given panel labels
+  ("signal input" p. 3, "the output" p. 2). DECAY CV rests only on the synopsis line "DECAY and FREQUENCY depth
+  controls with CV inputs" (p. 2); the ENV self-patch examples only name Q-FACTOR, FREQ and TIMBRE CV, so verify
+  DECAY CV against the panel. EXCITE is level-sensitive and accepts triggers, gates, envelopes or audio (p. 2).
+  Power: manual says "requires a minimum of +/-75mA" (p. 5); ModularGrid lists 76/72 mA. No +5V figure.

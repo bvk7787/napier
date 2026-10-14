@@ -1,0 +1,75 @@
+# Facts for instruo_neoni. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: neoni-ac-dc-fm
+  claim: AC coupling filters DC offset out of the FM input for more tonal through-zero FM, while DC coupling keeps
+    the offset, which shifts the fundamental and sounds more clangorous.
+  status: manual
+  source: instruo_neoni_manual
+  pages:
+  - 9
+  q: What is the difference between AC and DC coupled through-zero FM on the neóni?
+  anchors:
+  - If set to AC coupled operation, frequency modulation can be more tonal in T.Z. configuration
+  alt:
+  - - The AC setting will have smoother polarity switching
+- id: neoni-signal-router
+  claim: The FM Signal Router Toggle sends the clipped positive part of the FM signal to Hard Sync in the left position,
+    disables extra routing in the centre, and feeds the CV Input before the FM attenuator in the right position.
+  status: manual
+  source: instruo_neoni_manual
+  pages:
+  - 12
+  q: What does the signal router toggle on the neóni do?
+  anchors:
+  - the positive portion of the incoming signal is clipped and then routed to the Hard Sync Input
+- id: neoni-hard-sync-direction
+  claim: With the Hard Sync Direction toggle centred, the reset polarity follows the triangle's charge direction
+    at the moment of sync, while up always resets positive and down always resets negative.
+  status: manual
+  source: instruo_neoni_manual
+  pages:
+  - 10
+  q: How does the hard sync direction switch change the neóni's sync behavior?
+  anchors:
+  - the new cycle's polarity is dictated by the charge direction at the time of sync
+- id: neoni-split-sawtooth
+  claim: Turning Split Sawtooth toward centre morphs to a sawtooth at half amplitude and double frequency.
+  status: manual
+  source: instruo_neoni_manual
+  pages:
+  - 6
+  q: What does the split sawtooth knob on neoni do?
+  anchors:
+  - morphs to a sawtooth waveform at half the amplitude and double the frequency
+- id: neoni-cv-negative-mutes-fold
+  claim: With the CV destination set to wavefold and the Wavefold fader below 90 percent, negative CV mutes the
+    Wavefold Output.
+  status: manual
+  source: instruo_neoni_manual
+  pages:
+  - 13
+  q: Why does neoni's wavefold output go silent when I send negative CV?
+  anchors:
+  - negative CV will mute the Wavefold Output
+- id: neoni-lfo-mode
+  claim: The LFO Toggle puts neoni into LFO Mode, forcing all waveform outputs into subsonic ranges.
+  status: manual
+  source: instruo_neoni_manual
+  pages:
+  - 14
+  q: Can neoni be used as an LFO?
+  anchors:
+  - LFO Mode forces all waveform outputs to oscillate within subsonic frequency ranges.
+- id: neoni-saw-polarity-switch
+  claim: Negative CV at the FM Input flips the sawtooth polarity via a threshold comparator regardless of the FM
+    Attenuator, enabling sync-like effects.
+  status: manual
+  source: instruo_neoni_manual
+  pages:
+  - 21
+  q: How do I get hard sync style effects by flipping neoni's sawtooth polarity?
+  anchors:
+  - A threshold comparator selects the polarity of the sawtooth wave.

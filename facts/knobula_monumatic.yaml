@@ -1,0 +1,93 @@
+# Facts for knobula_monumatic. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: mono-poly-midi
+  claim: In poly mode, up to 8 voices are assigned to notes arriving on the MIDI input
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 6
+  q: How many voices does the Monumatic play from MIDI?
+  anchors:
+  - Up to 8 voices are assigned to notes coming from the Midi input
+- id: mono-midi-channel
+  claim: 'MIDI receive channel: hold Shift and turn Resonance (All by default, or 1 to 16)'
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 4
+  q: How do I set the Monumatic MIDI channel?
+  anchors:
+  - To select a midi receive channel hold Shift and turn the filter Resonance
+- id: mono-cv-gate-single
+  claim: CV and gate is one V/Oct input and one Gate input; in poly mode successive CV notes overlap by
+    the release time rather than playing true chords
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 4
+  - 6
+  q: What happens when the Monumatic plays polyphonically from CV and gate instead of MIDI?
+  anchors:
+  - each successive note will overlap the last according to the release setting
+- id: mono-glide
+  claim: Shift + Decay sets a constant-time glide, like a TB-303 slide
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 5
+  q: Does the Monumatic have glide?
+  anchors:
+  - Hold Shift to adjust glide time
+- id: mono-cv-assign
+  claim: Plugging a cable into CV A or CV B starts CV assign with the red LED flashing for 2 seconds; turn any knob
+    in that window to assign the CV to it.
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 15
+  q: how do I assign CV A to a knob on Monumatic
+  anchors:
+  - Quickly turn any knob within this time and it will be assigned that CV
+- id: mono-store-chord
+  claim: To store a custom chord, enter polyphonic mode and play the chord from a MIDI keyboard; the last chord
+    played is saved to the active chord memory slot.
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 8
+  q: how do I save my own chord into the chord memory
+  anchors:
+  - Monumatic will memorise the last chord you played
+- id: mono-firmware-boot-mode
+  claim: For a firmware update, connect Micro USB to the Daisy board, press Reset then Boot within 2 seconds to
+    enter boot mode, and flash Monumatic.bin from the Daisy Programmer in Chrome.
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 17
+  q: how do I put the Monumatic into boot mode to update firmware
+  anchors:
+  - Press and release the Reset button, then within 2 seconds press and release the Boot button
+- id: mono-auto-calibration
+  claim: Automatic V/Oct calibration is started by booting while holding Trigger, Shift and Mono/Poly, then sending
+    0V followed by 1V into the V/Oct input.
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 19
+  q: how do I calibrate the V/Oct input
+  anchors:
+  - Boot up the module while holding down all three buttons
+- id: mono-hermode-temperament
+  claim: Shift + Detune sets the self-adjusting hermode temperament, with 12 o'clock giving full just intonation,
+    fully anticlockwise turning it off, and about 10 o'clock as the default.
+  status: manual
+  source: knobula_monumatic_manual
+  pages:
+  - 16
+  q: how do I turn off the just intonation tuning correction on chords
+  anchors:
+  - To switch off the system hold Shift and turn Detune fully anti-clockwise

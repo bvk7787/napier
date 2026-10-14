@@ -1,0 +1,93 @@
+# Facts for intellijel_zeroscope_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: zs1u-thru-outputs
+  claim: Each channel input is normalled to its output jack, so signals pass through the Zeroscope 1U and can be
+    monitored without a mult.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 6
+  q: Can I monitor a signal on the Zeroscope 1U without splitting it first?
+  anchors:
+  - This allows you to monitor signals without needing to re-patch or use signal multipliers.
+- id: zs1u-tune-min-level
+  claim: In Tune mode the input signal must be at least +2V for the pitch detector to work, and pressing the encoder
+    toggles between Hz and note name display.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 9
+  q: How strong does a signal need to be for the Zeroscope 1U pitch detector?
+  anchors:
+  - must be at least +2V in order for the pitch detector to work
+- id: zs1u-advanced-menu
+  claim: Long-pressing the encoder for over a second opens the Advanced Settings menu with scope type, trigger source,
+    trigger level, channel offsets, and grid display.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 8
+  q: How do I get to the trigger and X-Y settings on the Zeroscope 1U?
+  anchors:
+  - Long-press (>1 sec) the encoder to open the Advanced Settings menu.
+  - There are six options accessible in this menu.
+- id: zs1u-timebase
+  claim: The time base ranges from 10 s/div down to 10 microseconds/div in seventeen steps, and only CH 1 shows
+    at the fastest setting.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 7
+  q: What time per division settings does the Zeroscope 1U have?
+  anchors:
+  - with seventeen incremental values between these two extremes
+- id: zs1u-tune-avg
+  claim: In Tune mode, turning the encoder in Hz display sets averaging (slow, norm, fast), and in Note Name display
+    it sets the reference pitch.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 10
+  q: How do I change the A440 reference on the Zeroscope tuner?
+  anchors:
+  - With Hz display active, turn the encoder (without pushing it) to change the avg setting
+- id: zs1u-trigger-fail
+  claim: If the trigger threshold is outside the waveform range, a T? icon appears in the lower left of the display.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 11
+  q: What does the T? icon on the Zeroscope 1U mean?
+  anchors:
+  - a small T? icon appear in the lower left corner of the display
+- id: zs1u-channel-offset-split
+  claim: Setting CH 1 offset to +5V and CH 2 to -5V at 5 V/div puts CH 1 in the top half and CH 2 in the bottom
+    half of the screen.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 12
+  q: how do I offset the Zeroscope waveforms so CH 1 shows above CH 2
+  anchors:
+  - If you set the CH 1 Offset to +5000 (+5V)
+- id: zs1u-screensaver-time
+  claim: The screen saver timeout is set from the Tune mode menu with options from 1 minute to 2 hours or never.
+  status: manual
+  source: intellijel_zeroscope_1u_manual
+  pages:
+  - 13
+  q: How do I change the screen saver time on Zeroscope 1U?
+  anchors:
+  - 'You can choose between: 1 min, 2 min, 5 min, 10 min, 30 min, 1 hour'
+
+# ---- Firmware changelog
+- id: zs-16-tuner
+  claim: Firmware 1.6 fixed tuner settings not being saved
+  status: changelog
+  source: intellijel_zeroscope_1u_firmware_notes
+  q: My Zeroscope 1U forgets its tuner settings; which firmware fixed that?
+  anchors:
+  - Tuner settings may not have been saving

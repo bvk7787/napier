@@ -1,0 +1,28 @@
+device: instruo_neoni
+slugs: [instruo-neoni]
+source: instruo_neoni_manual
+hp: 12
+hp_page: 4
+hp_anchor: "Width: 12 HP"
+power:
+  plus12: 90
+  minus12: 90
+  page: 4
+  anchor: "+12V: 90mA"
+jacks:
+  - {name: "Square Output", dir: out, type: audio, page: 5}
+  - {name: "Sawtooth Output", dir: out, type: audio, page: 5}
+  - {name: "Triangle Output", dir: out, type: audio, page: 5}
+  - {name: "Sine Output", dir: out, type: audio, page: 5}
+  - {name: "Wavefold Output", dir: out, type: audio, page: 5}
+  - {name: "FM Input", dir: in, type: cv, page: 5, also: [audio]}
+  - {name: "Hard Sync Input", dir: in, type: gate, page: 5, also: [audio]}
+  - {name: "Soft Sync Input", dir: in, type: gate, page: 5, also: [audio]}
+  - {name: "CV Input", dir: in, type: cv, page: 5, normal: "FM Input"}
+  - {name: "1V/Oct Input", dir: in, type: pitch, page: 5}
+notes: >-
+  Jack names from the panel key (p5). FM Input is a linear bipolar input meant for audio-rate FM (p8).
+  Sync inputs respond to rising edges and are shown at both LFO and audio rate (p10-11). The CV Input
+  normal from FM Input only applies with the Signal Router Toggle in the right position (p12); the
+  left position also routes clipped FM Input to the Hard Sync Input internally. Waveform outputs also
+  serve as LFOs in LFO mode. No +5V draw stated. Power matches ModularGrid (90/90 mA).

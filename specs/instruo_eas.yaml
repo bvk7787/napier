@@ -1,0 +1,30 @@
+device: instruo_eas
+slugs: [instruo-eas]
+source: instruo_eas_manual
+hp: 4
+hp_page: 4
+hp_anchor: "Width: 4 HP"
+power:
+  plus12: 5
+  minus12: 0
+  page: 4
+  anchor: "+12V: 5mA"
+jacks:
+  - {name: "AND Input 1", dir: in, type: gate, also: [audio], page: 5}
+  - {name: "AND Input 2", dir: in, type: gate, also: [audio], page: 5, normal: "AND Input 1"}
+  - {name: "AND Output", dir: out, type: gate, also: [audio], page: 5}
+  - {name: "NAND Output", dir: out, type: gate, also: [audio], page: 5}
+  - {name: "OR Input 1", dir: in, type: gate, also: [audio], page: 5, normal: "NAND Output"}
+  - {name: "OR Input 2", dir: in, type: gate, also: [audio], page: 5}
+  - {name: "OR Output", dir: out, type: gate, also: [audio], page: 5}
+  - {name: "NOR Output", dir: out, type: gate, also: [audio], page: 5}
+  - {name: "XOR Input 1", dir: in, type: gate, also: [audio], page: 5}
+  - {name: "XOR Input 2", dir: in, type: gate, also: [audio], page: 5, normal: "NOR Output"}
+  - {name: "XOR Output", dir: out, type: gate, also: [audio], page: 5}
+  - {name: "XNOR Output", dir: out, type: gate, also: [audio], page: 7}
+  - {name: "NOT Input", dir: in, type: gate, also: [audio], page: 5, normal: "XOR Output"}
+  - {name: "NOT Output", dir: out, type: gate, also: [audio], page: 5}
+notes: >-
+  14 jacks per the panel key (p5). Normals per pp6-7: AND In 1 -> AND In 2, NAND Out -> OR In 1,
+  NOR Out -> XOR In 2, XOR Out -> NOT In (normal field is on the receiving input). Key misspells
+  "XNOR Ouput", so it is cited from p7. Audio-rate use at any gate per pp14-15. +5V draw not stated.

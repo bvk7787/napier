@@ -1,0 +1,28 @@
+device: strymon_superkar_plus
+slugs: [strymon-superkar]
+source: strymon_superkar_plus_manual
+jacks:
+  - {name: "Solo TRIG", dir: in, type: trigger, page: 6, label: "TRIG"}
+  - {name: "Solo ATTACK", dir: in, type: cv, page: 6, label: "ATTACK"}
+  - {name: "Solo V/OCT", dir: in, type: pitch, page: 6, label: "V/OCT"}
+  - {name: "Solo DAMP", dir: in, type: cv, page: 6, label: "DAMP"}
+  - {name: "DETUNE", dir: in, type: cv, page: 6}
+  - {name: "Solo DECAY", dir: in, type: cv, page: 6, label: "DECAY"}
+  - {name: "PITCH", dir: in, type: cv, page: 6}
+  - {name: "MIDI IN", dir: in, type: midi, page: 4}
+  - {name: "Solo IN", dir: in, type: audio, page: 6, label: "IN"}
+  - {name: "OUT L", dir: out, type: audio, page: 7}
+  - {name: "OUT R", dir: out, type: audio, page: 7}
+  - {name: "Chord V/OCT", dir: in, type: pitch, page: 7, label: "V/OCT"}
+  - {name: "Chord ATTACK", dir: in, type: cv, page: 7, label: "ATTACK"}
+  - {name: "Chord TRIG", dir: in, type: trigger, page: 7, label: "TRIG"}
+  - {name: "Chord DECAY", dir: in, type: cv, page: 7, label: "DECAY"}
+  - {name: "HARMONY", dir: in, type: cv, page: 7}
+  - {name: "Chord DAMP", dir: in, type: cv, page: 7, label: "DAMP"}
+  - {name: "Chord IN", dir: in, type: audio, page: 7, label: "IN"}
+notes: >-
+  Manual states no power draw and no HP width; power omitted (ModularGrid lists 120/120mA, 12HP,
+  unverified). Jacks taken from the Solo Voice CV table (p6) and Chord Voice CV table (p7); the
+  p6 table's extracted text is scrambled, so DETUNE and PITCH are assigned to the Solo Voice by
+  table placement. MIDI IN connector type (TRS/DIN) is not stated. Solo V/OCT range 0-6V, Chord
+  V/OCT 0-5V quantized. Solo/Chord IN accept audio up to 20Vpp for string excitation.

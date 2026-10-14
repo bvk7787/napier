@@ -1,0 +1,72 @@
+# Facts for ritual_guillotine. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: guil-input-normal
+  claim: A mono signal patched into In L is copied to In R, and patching a cable into In R breaks that connection
+    for true stereo or serial use.
+  status: manual
+  source: ritual_guillotine_manual
+  pages:
+  - 6
+  q: Do I need to patch both inputs on Guillotine for a mono source?
+  anchors:
+  - If you patch a mono signal in In L it will be replicated to In R
+- id: guil-serial-gain
+  claim: Feeding the left output back into the right input chains both distortion stages for close to +50dB of gain
+    and doubles the tone control.
+  status: manual
+  source: ritual_guillotine_manual
+  pages:
+  - 8
+  q: How can I get more than 25dB of gain out of Guillotine with a mono signal?
+  anchors:
+  - By reinjecting the left output in the right input you double the amount of gain
+- id: guil-color-switches
+  claim: Each channel's color switch gives high frequency emphasis in the upper position, neutral in the middle,
+    and low frequency emphasis in the lower position.
+  status: manual
+  source: ritual_guillotine_manual
+  pages:
+  - 5
+  q: What do the three positions of the Guillotine color switches do?
+  anchors:
+  - the middle position is straight up distortion, with no coloration
+- id: guil-gain-range
+  claim: The Gain knob is silent fully counterclockwise and reaches +25dB of gain fully clockwise.
+  status: manual
+  source: ritual_guillotine_manual
+  pages:
+  - 6
+  q: How much gain does the Guillotine gain knob give?
+  anchors:
+  - Fully CCW the module is silent Fully CW you go to +25dB of gain
+- id: guil-hf-color-peak
+  claim: The high frequency color adds a resonant peak that moves down in frequency as gain increases.
+  status: manual
+  source: ritual_guillotine_manual
+  pages:
+  - 7
+  q: What does the high emphasis color on Guillotine sound like?
+  anchors:
+  - brings a resonant peak which moves down in frequency as the gain increases
+- id: guil-serial-self-osc
+  claim: In serial mode, some color combinations at low gain settings can self oscillate.
+  status: manual
+  source: ritual_guillotine_manual
+  pages:
+  - 8
+  q: Why is my Guillotine oscillating when chained in series?
+  anchors:
+  - certain color combinations at low gain setting can self oscillate
+- id: guil-vca-pseudo-cv
+  claim: Putting a VCA before Guillotine gives pseudo voltage control over the distortion amount, since less input
+    means less distortion.
+  status: manual
+  source: ritual_guillotine_manual
+  pages:
+  - 9
+  q: Can I voltage control the Guillotine distortion amount?
+  anchors:
+  - you can get pseudo voltage control over the gain of the distortion by patching a VCA

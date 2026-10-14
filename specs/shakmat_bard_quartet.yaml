@@ -1,0 +1,30 @@
+device: shakmat_bard_quartet
+slugs: [shakmat-bard-quartet]
+source: shakmat_bard_quartet_manual
+hp: 10
+hp_page: 14
+hp_anchor: "10 HP"
+power:
+  plus12: 60
+  minus12: 10
+  page: 14
+  anchor: "60 mA @ +12V"
+jacks:
+  - {name: "Trigger output", dir: out, type: trigger, page: 3}
+  - {name: "Gate input", dir: in, type: gate, page: 3, also: [trigger]}
+  - {name: "Channel CV input (ch 1)", dir: in, type: cv, page: 3, label: "Channel CV inputs", also: [trigger]}
+  - {name: "Channel CV input (ch 2)", dir: in, type: cv, page: 3, label: "Channel CV inputs", also: [trigger]}
+  - {name: "Channel CV input (ch 3)", dir: in, type: cv, page: 3, label: "Channel CV inputs", also: [trigger]}
+  - {name: "Channel CV input (ch 4)", dir: in, type: cv, page: 3, label: "Channel CV inputs", also: [trigger]}
+  - {name: "Transpose CV input", dir: in, type: cv, page: 3}
+  - {name: "Channel CV output (ch 1)", dir: out, type: pitch, page: 3, label: "Channel CV outputs"}
+  - {name: "Channel CV output (ch 2)", dir: out, type: pitch, page: 3, label: "Channel CV outputs"}
+  - {name: "Channel CV output (ch 3)", dir: out, type: pitch, page: 3, label: "Channel CV outputs"}
+  - {name: "Channel CV output (ch 4)", dir: out, type: pitch, page: 3, label: "Channel CV outputs"}
+  - {name: "Harmony CV input", dir: in, type: cv, page: 3}
+notes: >-
+  Panel legend is in the raw text of p. 3 (diagram labels); per-channel count of 4 from "4 channels". Trigger
+  output [1], Gate input [2] and Transpose input [4] are single shared jacks assignable to channels via the Edit
+  menu (p. 5). Channel CV inputs react to triggers when a channel is in arpeggiator mode (p. 6); Gate input can be
+  a Reset in for arpeggiated channels (p. 6). Outputs default to V/Oct, switchable to Hz/V or 1.2V/Oct (p. 10).
+  Expander not covered. No +5V figure stated. Power matches ModularGrid.

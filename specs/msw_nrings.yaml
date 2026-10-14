@@ -1,0 +1,28 @@
+device: msw_nrings
+slugs: [michigan-synth-works-nrings-black-panel]
+source: mutable_rings_manual
+power:
+  plus12: 120
+  minus12: 5
+  page: null
+  anchor: "drawing 5mA from the -12V rail and 120mA from the +12V rail"
+jacks:
+  - {name: "FREQUENCY CV", dir: in, type: cv, page: null, label: "FREQUENCY CV input"}
+  - {name: "STRUCTURE CV", dir: in, type: cv, page: null, label: "Resonator parameters CV inputs"}
+  - {name: "BRIGHTNESS CV", dir: in, type: cv, page: null, label: "Resonator parameters CV inputs"}
+  - {name: "DAMPING CV", dir: in, type: cv, page: null, label: "Resonator parameters CV inputs"}
+  - {name: "POSITION CV", dir: in, type: cv, page: null, label: "Resonator parameters CV inputs"}
+  - {name: "STRUM", dir: in, type: trigger, page: null, label: "STRUM input"}
+  - {name: "V/OCT", dir: in, type: pitch, page: null, label: "V/OCT input"}
+  - {name: "IN", dir: in, type: audio, page: null, label: "Audio INPUT for the excitation signal"}
+  - {name: "ODD", dir: out, type: audio, page: null, label: "Odd and even audio outputs"}
+  - {name: "EVEN", dir: out, type: audio, page: null, label: "Odd and even audio outputs"}
+notes: >-
+  Source is Mutable Instruments' Rings web manual; nRings is Michigan Synth Works' 8HP clone, so the manual's
+  "14 HP" refers to the original Rings and hp is omitted here. Power (120 mA +12V, 5 mA -12V) is also the
+  original Rings figure, assumed to carry over to the clone; +5V not stated. The manual lists the resonator
+  parameter CV inputs generically ("1. Resonator parameters CV inputs", each with an attenuverter, H) and only
+  names FREQUENCY explicitly; the other four names assume one CV input per resonator parameter control D-G
+  (structure, brightness, damping, position). FREQUENCY CV unpatched is normalled to an internal 1/12V for fine
+  tuning. STRUM is normalled to internal step/transient detectors, IN to an internal exciter. ODD/EVEN are mixed
+  when only one is patched. Power matches ModularGrid.

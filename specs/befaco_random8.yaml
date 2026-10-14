@@ -1,0 +1,15 @@
+device: befaco_random8
+slugs: [mylar-melodies-random8]
+source: befaco_random8_product_page
+hp: 8
+hp_anchor: "Width: 8HP"
+power:
+  plus12: 60
+  minus12: 12
+  plus5: 0
+  anchor: "Current draw: +12V: 60mA, -12: 12mA, 5v:0"
+jacks: []
+notes: >-
+  Power also stated in the manual (befaco_random8_manual, POWER &
+  PLACEMENT). Outputs are 0-10V unipolar. Jacks not listed yet: 8 cascading TRIG inputs and 8
+  attenuated outputs per the manual; add them from the manual text.

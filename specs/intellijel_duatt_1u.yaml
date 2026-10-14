@@ -1,0 +1,20 @@
+device: intellijel_duatt_1u
+slugs: [intellijel-duatt]
+source: intellijel_duatt_1u_manual
+hp: 14
+hp_page: 9
+hp_anchor: "14 hp"
+power:
+  plus12: 12
+  minus12: 10
+  page: 9
+  anchor: "12 mA @ +12V 10 mA @ -12V"
+jacks:
+  - {name: "IN A", dir: in, type: cv, page: 7, also: [audio]}
+  - {name: "IN B", dir: in, type: cv, page: 7, also: [audio]}
+  - {name: "OUT A", dir: out, type: cv, page: 7, also: [audio]}
+  - {name: "OUT B", dir: out, type: cv, page: 7, also: [audio]}
+notes: >-
+  1U (Intellijel format) module. Unpatched IN A/IN B receive an internal +5V DC (IN A doubled to 10V with Ax2).
+  OUT A is bussed into OUT B (summed) unless a cable is plugged into OUT A (p. 7). Audio mixing is a documented use
+  (p. 9). No +5V draw stated. Power matches ModularGrid.

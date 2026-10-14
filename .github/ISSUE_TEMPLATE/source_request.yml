@@ -1,0 +1,35 @@
+name: Source request
+description: Ask for a manual, changelog or community document napier doesn't have yet
+labels: [source]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        If you own the device, a pull request adding the source is the fastest route (CONTRIBUTING.md
+        shows the three commands). Otherwise, the details below are what a source needs.
+  - type: input
+    id: device
+    attributes:
+      label: Device
+      placeholder: Maker and model
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Where the document lives
+      description: The maker's own link (PDF, changelog page, GitHub releases), and its version.
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [manual, changelog, community, code]
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else
+      description: Firmware version you run, questions you'd want answered from it, facts you've checked on the hardware.

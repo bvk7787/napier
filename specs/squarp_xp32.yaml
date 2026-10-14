@@ -1,0 +1,45 @@
+device: squarp_hermod_plus
+slugs: [squarp-instruments-xp32]
+source: squarp_xp32_manual
+jacks:
+  - {name: "TR1 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR1 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR1 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR1 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR2 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR2 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR2 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR2 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR3 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR3 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR3 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR3 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR4 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR4 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR4 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR4 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR5 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR5 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR5 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR5 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR6 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR6 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR6 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR6 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR7 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR7 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR7 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR7 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR8 A", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR8 B", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR8 C", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+  - {name: "TR8 D", dir: out, type: cv, also: [pitch, gate, clock], page: 6, label: "four outputs: A B C D"}
+notes: >-
+  xp32 is a Hermod+ expander with 32 configurable CV outputs, organised as 8 tracks (TR1-TR8) of
+  four outputs A B C D (p4, p6). Panel labels per jack are not printed in the text; names are
+  TR<n> <output>. Each output is configurable as PITCH, GATE, VELO, MOD1-4, AFTC, CLCK or CC
+  (p7), bipolar up to +/-10V (p5); defaults are PITCH, GATE, VELO, MOD. No input jacks; the
+  8 track buttons are not jacks. Connects to Hermod+ via a 14-pin expander ribbon that "provides
+  power to the expander" (p3); manual states no current draw or HP, so power and hp are omitted
+  (ModularGrid lists 70/80/20mA, 14HP, unverified). Note the Hermod+ manual p95 says xp32 adds "24
+  extra CV/Gate outputs", which conflicts with the xp32 manual's 32.

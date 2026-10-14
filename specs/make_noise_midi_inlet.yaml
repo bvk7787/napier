@@ -1,0 +1,19 @@
+device: make_noise_multiwave
+slugs: [make-noise-multiwave-midi-inlet]
+source: make_noise_midi_inlet_manual
+hp: 2
+hp_page: 4
+hp_anchor: "find 2HP"
+power:
+  plus12: 0
+  minus12: 0
+  plus5: 0
+  page: 4
+  anchor: "requiring no power to operate"
+jacks:
+  - {name: "USB-C input", dir: in, type: usb, page: 5, also: [midi]}
+notes: >-
+  Passive 2HP expander for MultiWAVE; manual says it requires no power, so all rails are 0. The only
+  panel connector the manual names is the USB-C input (USB MIDI/MPE from a USB host, also used for
+  firmware updates and wavetable upload). It connects to MultiWAVE with an included USB cable, which is
+  a rear connection and not listed. The manual has no front-panel diagram text.

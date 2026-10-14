@@ -1,0 +1,28 @@
+device: intellijel_octalink_1u
+slugs: [intellijel-octalink-1u]
+source: intellijel_octalink_1u_manual
+hp: 14
+hp_page: 6
+hp_anchor: "WIDTH: 14 hp"
+power:
+  plus12: 0
+  minus12: 0
+  plus5: 0
+  page: 6
+  anchor: "CURRENT DRAW: None (passive module)"
+jacks:
+  - {name: "Jack 1", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "Jack 2", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "Jack 3", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "Jack 4", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "Jack 5", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "Jack 6", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "Jack 7", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "Jack 8", dir: io, type: other, page: 3, label: "1/8\" Jacks"}
+  - {name: "RJ45 Port", dir: io, type: other, page: 3}
+notes: >-
+  Passive patchbay; manual says "CURRENT DRAW: None (passive module)", so all rails are 0.
+  The eight numbered 1/8" jacks are described generically on p3 ("eight numbered jacks") and pass any
+  signal (clocks, gates, CV, audio) bidirectionally to the like-numbered jack on the linked unit, so
+  dir io / type other. The RJ45 port is a front-panel connector (FRONT PANEL [B]) linking two units.
+  Package ships two identical modules; this spec describes one.

@@ -1,0 +1,11 @@
+napier
+Copyright 2026 The napier authors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It uses, but does not include, third-party software and models that keep their own licenses, and
+it downloads manuals and other documents from their publishers for each user's own use; see
+THIRD_PARTY_NOTICES.md and docs/data-policy.md.
+
+napier is an independent project, not affiliated with or endorsed by the makers of the hardware
+and software it documents.

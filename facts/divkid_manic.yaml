@@ -1,0 +1,95 @@
+# Facts for divkid_manic. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: manic-shape-toggle
+  claim: The three-position Shape toggle routes the clipper (TanH on Shape 1, hard clip on Shape 2) in the up position,
+    the inverter in the middle, and the wavefolder (Serge on Shape 1, Buchla on Shape 2) in the down position.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 12
+  q: Which switch position on Manic gives me the wavefolder on the shape output?
+  anchors:
+  - In the middle position, the Inverter signal is routed to the Shape output
+- id: manic-bipolar-bias-slider
+  claim: In bipolar VCA mode the Input Bias slider's maximum attenuation is at its midpoint, and moving it down
+    from centre adds gain while reversing output polarity; the sliders supply 0V to 5V unipolar or -5V to +5V bipolar.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 11
+  q: Why is Manic silent with the bias slider in the middle in ring mod mode?
+  anchors:
+  - the maximum attenuation occurs at the midpoint of the slider's travel
+- id: manic-mod-input-headroom
+  claim: The CV modulation inputs handle up to ±11V (slider plus CV combined) before internal clamping, letting
+    you drive the clipping and folding stages harder.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 13
+  q: How hot a CV can I send into the Manic mod inputs?
+  anchors:
+  - MANIC's CV inputs can handle up to ±11V
+- id: manic-am-vs-rm
+  claim: Manic does amplitude modulation in Unipolar mode with an audio-rate modulator, and in Bipolar mode the
+    Input Bias blends between RM and AM character.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 5
+  q: how do I get AM instead of ring mod on Manic
+  anchors:
+  - by adjusting the Input Bias while in Bipolar mode, you can seamlessly transition between RM and AM
+- id: manic-mod1-normal-mod2
+  claim: The Mod 1 input is normalled to Mod 2 so one CV source modulates both channels until a cable is patched
+    into Mod 2.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 12
+  q: does one envelope in Mod 1 control both channels on Manic
+  anchors:
+  - The Mod 1 input is normalled to Mod 2
+- id: manic-input-5v-offset
+  claim: With nothing patched, +5V DC is normalled to the audio inputs so Manic can output a 0 to +5V offset, inverted
+    to 0 to -5V via the inverter or bipolar mode.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 12
+  q: can I use Manic as a DC offset voltage source with nothing plugged in
+  anchors:
+  - Without any signal patched, +5V DC is normalled to the input
+- id: manic-ringmod-blend-fundamental
+  claim: Raising the input bias during bipolar ring modulation blends back in the input's fundamental for more low
+    end.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 17
+  q: how do I add low end back into ring modulated sounds on Manic
+  anchors:
+  - By turning up the input bias you can blend in the fundamental tone
+- id: manic-drum-bus-tanh
+  claim: Running a drum mix into Channel 1 with the shape switch on clipping uses the TanH soft clipper for compression-style
+    drum bus saturation.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 18
+  q: can Manic work as drum bus saturation
+  anchors:
+  - which gives a compression style, classy saturation feel to beats
+- id: manic-stereo-fold-mono
+  claim: Patching a mono oscillator into Channel 1 and taking both shape outputs in fold mode creates stereo from
+    the Serge vs Buchla folder differences.
+  status: manual
+  source: divkid_manic_manual
+  pages:
+  - 20
+  q: how do I get a stereo wavefold out of a single oscillator with Manic
+  anchors:
+  - will create a stereo image from a mono source here

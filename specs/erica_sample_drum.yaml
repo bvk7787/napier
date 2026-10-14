@@ -1,0 +1,30 @@
+device: erica_sample_drum
+slugs: [erica-synths-sample-drum-]
+source: erica_sample_drum_manual
+hp: 14
+hp_page: 1
+hp_anchor: "Panel width | 14HP"
+power:
+  plus12: 65
+  minus12: 2
+  page: 1
+  anchor: "65mA@+12V, 2mA@-12V"
+jacks:
+  - {name: "TRIG 1", dir: in, type: trigger, page: 1, label: "These are trigger inputs"}
+  - {name: "TRIG 2", dir: in, type: trigger, page: 1, label: "These are trigger inputs"}
+  - {name: "CV1 (ch 1)", dir: in, type: cv, also: [pitch, trigger], page: 7, label: "CV1"}
+  - {name: "CV2 (ch 1)", dir: in, type: cv, also: [pitch, trigger], page: 7, label: "CV2"}
+  - {name: "CV3 (ch 1)", dir: in, type: cv, also: [pitch, trigger], page: 7, label: "CV3"}
+  - {name: "CV1 (ch 2)", dir: in, type: cv, also: [pitch, trigger], page: 8, label: "bottom row CV1"}
+  - {name: "CV2 (ch 2)", dir: in, type: cv, also: [pitch, trigger], page: 8, label: "CV2"}
+  - {name: "CV3/REC (ch 2)", dir: in, type: cv, also: [audio, pitch, trigger], page: 5, label: "CV3/REC (bottom row CV3) input"}
+  - {name: "OUT 1", dir: out, type: audio, page: 1, label: "These are audio outputs of the module"}
+  - {name: "OUT 2", dir: out, type: audio, page: 1, label: "These are audio outputs of the module"}
+notes: >-
+  Power matches ModularGrid (65/2 mA); +5V not stated. Panel callouts (p1) only say "trigger inputs",
+  "assignable CV inputs" (three per channel) and "audio outputs"; individual jack labels are not
+  printed. Two trigger inputs inferred from the per-channel TR1/TR2 delay setting (p11); two outputs
+  from the per-side output level setting (p11). CV inputs are assignable (tune, sample select, slice
+  reset, FX, level, etc.) with selectable ranges including 1V/Oct (p8-9). Channel 2 CV3 doubles as
+  the audio input for sample recording (CV3/REC, p5). The microSD slot is not a patch jack and is
+  not listed.

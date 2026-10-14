@@ -1,0 +1,21 @@
+device: neutron_qvca
+slugs: [neutron-sound-qvca]
+source: neutron_qvca_product_page
+hp: 8
+hp_page: null
+hp_anchor: "Neutron QVCA is an 8HP"
+jacks:
+  - {name: "Audio In (ch 1)", dir: in, type: audio, page: null, label: "audio and CV inputs are chain normalized"}
+  - {name: "Audio In (ch 2)", dir: in, type: audio, page: null, label: "audio and CV inputs are chain normalized", normal: "Audio In (ch 1)"}
+  - {name: "Audio In (ch 3)", dir: in, type: audio, page: null, label: "audio and CV inputs are chain normalized", normal: "Audio In (ch 2)"}
+  - {name: "Audio In (ch 4)", dir: in, type: audio, page: null, label: "audio and CV inputs are chain normalized", normal: "Audio In (ch 3)"}
+  - {name: "CV In (ch 1)", dir: in, type: cv, page: null, label: "audio and CV inputs are chain normalized"}
+  - {name: "CV In (ch 2)", dir: in, type: cv, page: null, label: "audio and CV inputs are chain normalized", normal: "CV In (ch 1)"}
+  - {name: "CV In (ch 3)", dir: in, type: cv, page: null, label: "audio and CV inputs are chain normalized", normal: "CV In (ch 2)"}
+  - {name: "CV In (ch 4)", dir: in, type: cv, page: null, label: "audio and CV inputs are chain normalized", normal: "CV In (ch 3)"}
+notes: >-
+  Source is a thin retailer product page. It states 8HP, a 2164-based quad VCA with switchable lin/log response,
+  DC-coupled inputs, and that "the audio and CV inputs are chain normalized from 1 to 4" (so each channel's input
+  normals from the previous channel). It does not mention outputs at all, so the four VCA outputs (and any mix
+  output) are not listed; jack list is incomplete. No current draw stated, so power is omitted (ModularGrid's
+  50/50 mA unverified); the page only notes PSIpower with a non-polarized power header.

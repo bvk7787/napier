@@ -1,0 +1,41 @@
+device: make_noise_polimaths
+slugs: [make-noise-polimaths]
+source: make_noise_polimaths_manual
+hp: 20
+hp_page: 5
+hp_anchor: "find 20HP in your Eurorack synthesizer case"
+power:
+  plus12: 230
+  minus12: 5
+  page: 5
+  anchor: "230mA of +12VDC and 5mA of -12VDC"
+jacks:
+  - {name: "Activate IN", dir: in, type: gate, page: 8, label: "Activate Input"}
+  - {name: "Span CV IN", dir: in, type: cv, page: 8, label: "Span CV Input"}
+  - {name: "Accumulate IN", dir: in, type: gate, page: 8, label: "Accumulate Input"}
+  - {name: "Channel Index OUT", dir: out, type: cv, page: 8, label: "Channel Index Ouput"}
+  - {name: "Spread CV IN", dir: in, type: cv, page: 8, label: "Spread CV Input"}
+  - {name: "Curve CV IN", dir: in, type: cv, page: 9, label: "Curve CV Input"}
+  - {name: "Rise CV IN", dir: in, type: cv, page: 9, label: "Rise CV Input"}
+  - {name: "Fall CV IN", dir: in, type: cv, page: 9, label: "Fall CV Input"}
+  - {name: "Shape CV IN", dir: in, type: cv, page: 10, label: "Shape CV Input"}
+  - {name: "Strength CV IN", dir: in, type: cv, page: 10, label: "Strength CV Input"}
+  - {name: "Rate CV IN", dir: in, type: cv, also: [pitch], page: 10, label: "Rate CV Input"}
+  - {name: "Osc CV IN", dir: in, type: cv, page: 10, label: "Osc CV Input"}
+  - {name: "Cycle IN", dir: in, type: gate, page: 11, label: "Cycle Input"}
+  - {name: "Reset IN", dir: in, type: trigger, also: [gate], page: 11, label: "Reset Input"}
+  - {name: "Channel OUT 1", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+  - {name: "Channel OUT 2", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+  - {name: "Channel OUT 3", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+  - {name: "Channel OUT 4", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+  - {name: "Channel OUT 5", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+  - {name: "Channel OUT 6", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+  - {name: "Channel OUT 7", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+  - {name: "Channel OUT 8", dir: out, type: cv, also: [audio], page: 11, label: "Channel Outputs 1-8"}
+notes: >-
+  Power matches ModularGrid (230/5 mA); +5V not stated. Jack names follow the Panel Controls pages
+  (p8-11); the manual misspells "Channel Index Ouput". Activate, Accumulate, Cycle and Reset are
+  described as gate inputs; Reset acts on rising edge so it is typed trigger. Rate CV IN tracks
+  1V/oct when its attenuverter is fully CW (p20). Channel outputs carry functions and audio-rate
+  oscillations (p6) and can form submixes of unpatched channels to their left when SubMixing is on
+  (p25). The rear output header for QXG is not a jack and is not listed.

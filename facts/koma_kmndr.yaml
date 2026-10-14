@@ -1,0 +1,23 @@
+# Facts for koma_kmndr. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: kmndr-gate-threshold
+  claim: The gate output delivers a 10V gate whenever the CV output rises above 1.3V.
+  status: manual
+  source: koma_kmndr_manual
+  pages:
+  - 1
+  q: When does the KMNDR gate output fire?
+  anchors:
+  - delivers a 10V gate signal as soon as the CV output goes beyond 1.3V
+- id: kmndr-cv-output
+  claim: The CV output is a continuous voltage up to 10V that rises the closer something is to the sensor.
+  status: manual
+  source: koma_kmndr_manual
+  pages:
+  - 1
+  q: What voltage range does the KMNDR motion sensor output?
+  anchors:
+  - Proximity to the sensor translates into higher voltages

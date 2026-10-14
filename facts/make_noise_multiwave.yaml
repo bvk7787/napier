@@ -1,0 +1,132 @@
+# Facts for make_noise_multiwave. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: mw-midi-channels
+  claim: 'With MPE off: ch 1 plays through the Span modes, ch 2 to 9 each activate one MultiWAVE channel,
+    ch 10 is global transpose; there is no channel filter'
+  status: manual
+  source: make_noise_midi_inlet_manual
+  pages:
+  - 6
+  - 7
+  q: Which MIDI channels does the MultiWAVE respond to?
+  anchors:
+  - The next eight MIDI channels each Activate a specific channel
+  alt:
+  - - responds to messages received on MIDI channel 1
+    - Span Modes
+  notes: So a MIDI thru that copies every channel will play the MultiWAVE from all of them.
+- id: mw-no-note-off
+  claim: MultiWAVE ignores Note-Off; long-press MODE sends a MIDI panic that resets channel pitches
+  status: manual
+  source: make_noise_multiwave_manual
+  pages:
+  - 23
+  q: Does the MultiWAVE respond to MIDI note off?
+  anchors:
+  - does not respond to Note-Off messages
+  notes: Same text in the MIDI Inlet manual, p. 6.
+- id: mw-inlet-usb-host
+  claim: The MIDI Inlet takes USB MIDI from a USB host (computer or a host port like Hermod+ USB HOST);
+    MultiWAVE needs firmware 4.1.6+
+  status: manual
+  source: make_noise_midi_inlet_manual
+  pages:
+  - 5
+  - 6
+  q: What does the MultiWAVE MIDI Inlet need to receive MIDI?
+  anchors:
+  - from a USB MIDI host
+- id: mw-cc5-glide
+  claim: CC5 (Portamento Time) sets Glide; CC2 Spread, CC4 Detune, CC8 Blend (global channels only)
+  status: manual
+  source: make_noise_midi_inlet_manual
+  pages:
+  - 8
+  q: Which MIDI CC controls MultiWAVE glide?
+  anchors:
+  - CC5 (Portamento Time)
+- id: mw-eight-channels
+  claim: Eight channels (voices), each with two wavetable oscillators, Osc A and Osc B
+  status: manual
+  source: make_noise_multiwave_manual
+  pages:
+  - 13
+  q: How many voices does the MultiWAVE have?
+  anchors:
+  - MultiWAVE contains eight channels or voices
+- id: mw-follow
+  claim: Osc A can follow Osc B in modes including Linear Detune, Octaves and harmonic intervals
+  status: manual
+  source: make_noise_multiwave_manual
+  pages:
+  - 13
+  q: Can the MultiWAVE oscillators follow each other at an interval?
+  anchors:
+  - Follow the pitch of Osc B in any of several modes
+- id: mw-glide
+  claim: Glide smooths the change from the old to the new pitch when a channel is Activated; a Glide control
+    and CV input set it
+  status: manual
+  source: make_noise_multiwave_manual
+  pages:
+  - 10
+  - 16
+  q: Does the MultiWAVE have glide?
+  anchors:
+  - Sets glide amount between old and new pitch value
+- id: mw-polimaths-poly-voice
+  claim: With MultiWAVE's Channel Index out patched to PoliMATHS' Span in (follower in Channel Index mode), each
+    activated MultiWAVE channel is gated at the QXG by the matching PoliMATHS channel, making a polyphonic note
+  status: manual
+  source: make_noise_multiwave_manual
+  pages:
+  - 14
+  q: How does MultiWAVE work with PoliMATHS and QXG for polyphony?
+  anchors:
+  - resulting in the creation of a traditional poliphonic note event
+- id: mw-midi-round-robin
+  claim: MIDI notes on ch 1 in Round mode with Span at 1 give round-robin polyphony, and the ChI output follows
+    MIDI activations, so the PoliMATHS patch still works
+  status: manual
+  source: make_noise_midi_inlet_manual
+  pages:
+  - 6
+  q: What is the simplest way to play MultiWAVE polyphonically over MIDI?
+  anchors:
+  - simplest way to play MultiWAVE with a keyboard
+  notes: Envelope length then comes from the PoliMATHS function, not the MIDI note length (no Note-Off). Same
+    text in the MultiWAVE manual, p. 23.
+- id: mw-transpose-channel-conflict
+  claim: MIDI transpose channel is documented inconsistently; the 4.3.5 changelog says ch 9, the MIDI Inlet
+    manual says ch 10
+  status: unverified
+  source: make_noise_multiwave_manual
+  pages:
+  - 26
+  notes: Check on hardware by sending a note on ch 9 and ch 10.
+
+# ---- Firmware appendix
+- id: mw-435-crossmod
+  claim: 'Firmware 4.3.5 added the Cross Mod mod shape (lime green): each oscillator modulates the other''s wave position'
+  status: changelog
+  source: make_noise_multiwave_firmware_notes
+  q: What is the lime green Cross Mod mod shape on MultiWAVE?
+  anchors:
+  - 'New Mod Shape: Cross Mod'
+- id: mw-435-scala
+  claim: 'Firmware 4.3.5 added Scala quantize: the SD card gets a scala folder with eight default .scl files'
+  status: changelog
+  source: make_noise_multiwave_firmware_notes
+  q: Can MultiWAVE quantize to Scala tunings, and where do the scl files go?
+  anchors:
+  - eight default .scl files
+- id: mw-435-midi-scala
+  claim: In Scala mode MIDI notes are quantized to the selected file; MPE and pitch bend are not
+  status: changelog
+  source: make_noise_multiwave_firmware_notes
+  q: Does MultiWAVE Scala quantize apply to incoming MIDI notes?
+  anchors:
+  - MIDI notes are quantized according to the scala file

@@ -1,0 +1,24 @@
+device: alm_mfd
+slugs: [alm-busy-circuits-mfd]
+source: alm_mfd_manual
+hp: 6
+hp_page: 1
+hp_anchor: "Size: 6HP"
+power:
+  plus12: 70
+  minus12: 70
+  page: 1
+  anchor: "+12V 70mA / -12V 70mA"
+jacks:
+  - {name: "A In L", dir: in, type: audio, also: [cv], page: 1, label: "A & B INPUTS"}
+  - {name: "A In R", dir: in, type: audio, also: [cv], page: 1, label: "A & B INPUTS", normal: "A In L"}
+  - {name: "B In L", dir: in, type: audio, also: [cv], page: 1, label: "A & B INPUTS"}
+  - {name: "B In R", dir: in, type: audio, also: [cv], page: 1, label: "A & B INPUTS", normal: "B In L"}
+  - {name: "X Fade CV Input", dir: in, type: cv, page: 1}
+  - {name: "Main Out L", dir: out, type: audio, page: 1, label: "MAIN OUT"}
+  - {name: "Main Out R", dir: out, type: audio, page: 1, label: "MAIN OUT"}
+  - {name: "Cue Out L", dir: out, type: audio, page: 1, label: "CUE OUT"}
+  - {name: "Cue Out R", dir: out, type: audio, page: 1, label: "CUE OUT"}
+notes: >-
+  Manual describes stereo L/R pairs generically (A & B INPUTS, MAIN OUT, CUE OUT); per-side names are
+  constructed. Left input normalled to Right for mono. Inputs DC coupled (audio and CV). +5V draw not stated.

@@ -1,0 +1,29 @@
+device: bastl_ikarie
+slugs: [bastl-instruments-ikarie]
+source: bastl_ikarie_manual
+hp: 8
+hp_page: 3
+hp_anchor: "8HP"
+power:
+  plus12: 100
+  minus12: 95
+  page: 3
+  anchor: "+12V: 100mA, - 12V: 95mA"
+jacks:
+  - {name: "L IN", dir: in, type: audio, page: 8}
+  - {name: "R IN", dir: in, type: audio, page: 8, normal: "L IN"}
+  - {name: "L OUT", dir: out, type: audio, page: 8}
+  - {name: "R OUT", dir: out, type: audio, page: 8}
+  - {name: "MOD", dir: in, type: cv, page: 9, normal: "FOLLOW"}
+  - {name: "RESONANCE", dir: in, type: cv, page: 9, label: "RESONANCE input"}
+  - {name: "V/OCT", dir: in, type: pitch, page: 10}
+  - {name: "STEREO", dir: in, type: cv, page: 10, label: "STEREO jack", also: [audio]}
+  - {name: "VCA CV", dir: in, type: cv, page: 11}
+  - {name: "FOLLOW", dir: out, type: cv, page: 11, label: "FOLLOW output"}
+  - {name: "BEYOND", dir: out, type: audio, page: 12, label: "BEYOND output", also: [cv]}
+notes: >-
+  Jack list from the numbered CONTROLS sections (p7-12). R IN is normalled to L IN; MOD input is
+  normalled to the FOLLOW output. RESONANCE and STEREO jacks turn their fader/knob into an attenuator
+  (STEREO into an attenuverter); STEREO is documented for audio-rate modulation. VCA CV responds 0-5V.
+  BEYOND can also be used as modulation. V/OCT scaling trimmer is on the back. No +5V draw stated.
+  Power matches ModularGrid (100/95 mA).

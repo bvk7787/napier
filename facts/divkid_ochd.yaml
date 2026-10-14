@@ -1,0 +1,44 @@
+# Facts for divkid_ochd. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: ochd-rate-range
+  claim: With the Rate knob fully clockwise the fastest LFO reaches 160Hz, fully anticlockwise the slowest LFO drops
+    to a 25 minute cycle, and at center LFO 1 sits at vibrato rate between 3Hz and 7Hz.
+  status: manual
+  source: divkid_ochd_manual
+  pages:
+  - 6
+  q: What frequency range do the øchd LFOs cover?
+  anchors:
+  - LFO 1 is set to vibrato rate - between 3Hz and 7Hz
+- id: ochd-negative-cv-stall
+  claim: Applying negative CV to the Rate CV input can stall every LFO completely, acting like a track and hold.
+  status: manual
+  source: divkid_ochd_manual
+  pages:
+  - 7
+  q: Can I freeze the øchd LFOs with control voltage?
+  anchors:
+  - Applying negative control voltage can force each individual LFO to completely stall
+- id: ochd-output-range
+  claim: The eight outputs are bipolar triangle LFOs ordered fastest to slowest from top to bottom, with a 10Vpp
+    output range.
+  status: manual
+  source: divkid_ochd_manual
+  pages:
+  - 7
+  q: What is the output voltage of the øchd LFOs and which output is fastest?
+  anchors:
+  - 'Output range: 10Vpp'
+- id: ochd-feedback-waveshape
+  claim: Patching any LFO output back into the Rate CV input, scaled by the attenuverter, creates feedback-waveshaped
+    LFOs.
+  status: manual
+  source: divkid_ochd_manual
+  pages:
+  - 8
+  q: what happens if I patch an ochd LFO output back into the Rate CV input
+  anchors:
+  - Connect any of the LFO Outputs to the Rate CV Input

@@ -1,0 +1,29 @@
+device: ssf_stereo_dipole
+slugs: [steady-state-fate-stereo-dipole-black-and-gold]
+source: ssf_stereo_dipole_cheatsheet
+jacks:
+  - {name: "Input A", dir: in, type: audio, also: [cv], page: 1}
+  - {name: "Input B", dir: in, type: audio, also: [cv], page: 1, normal: "Input A"}
+  - {name: "FM-A", dir: in, type: cv, page: 2}
+  - {name: "RES-A", dir: in, type: cv, page: 2}
+  - {name: "SPRD-A", dir: in, type: pitch, also: [cv], page: 2}
+  - {name: "V/OCT-A", dir: in, type: pitch, page: 2}
+  - {name: "FM-B", dir: in, type: cv, page: 2}
+  - {name: "RES-B", dir: in, type: cv, page: 3, label: "RES-A/B"}
+  - {name: "SPRD-B", dir: in, type: pitch, also: [cv], page: 2, label: "SPRD-A"}
+  - {name: "V/OCT-B", dir: in, type: pitch, page: 2, label: "V/OCT-A"}
+  - {name: "V/OCT (stereo)", dir: in, type: pitch, page: 2, label: "V/OCT - controls the pitch tracking on all four filters"}
+  - {name: "ST-FM", dir: in, type: cv, page: 2}
+  - {name: "ST-RES", dir: in, type: cv, page: 3}
+  - {name: "POLE-A", dir: out, type: audio, page: 4}
+  - {name: "DIPOLE-A", dir: out, type: audio, page: 4}
+  - {name: "POLE-B", dir: out, type: audio, page: 4}
+  - {name: "DIPOLE-B", dir: out, type: audio, page: 4}
+  - {name: "DIPOLE AB", dir: out, type: audio, page: 1}
+notes: >-
+  Source is a 4-page cheat sheet with no power or HP specs; power and width not stated. Channel B CV jacks
+  (SPRD-B, V/OCT-B) are not printed by name; the sheet says "each channel has dedicated CV inputs" and
+  describes channel A only, so B equivalents are inferred from that statement (cited to the A entries).
+  Inputs are DC-coupled and accept CV as well as audio. SPRD has no attenuator so it can be used as a
+  1V/oct input for the secondary peak. Panel diagram is image-only, so the jack list cannot be verified
+  against a panel drawing.

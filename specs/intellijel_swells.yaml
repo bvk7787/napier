@@ -1,0 +1,13 @@
+device: intellijel_swells
+slugs: [intellijel-swells]
+source: intellijel_swells_manual
+hp: 20
+power:
+  plus12: 117
+  minus12: 6
+  plus5: 0
+  anchor: "117mA at +12V"
+jacks: []
+notes: >-
+  Stereo reverb. Module depth 30 mm. Jacks not listed yet;
+  add them from the manual.

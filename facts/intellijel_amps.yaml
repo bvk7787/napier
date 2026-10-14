@@ -1,0 +1,95 @@
+# Facts for intellijel_amps. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: amps-boost-switch
+  claim: Each BOOST switch gives unity max gain in the middle, about +6dB (double the voltage) to the left, and
+    about +20dB (10x) to the right for line level inputs or clipping.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 7
+  q: How much gain do the boost switch positions on Amps add?
+  anchors:
+  - The signal is boosted by approximately +20 dB (10x the voltage)
+- id: amps-normalling
+  claim: CV B and IN B fall back to CV A and IN A when unpatched, and with OUT A unpatched its signal is mixed into
+    OUT B.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 9
+  q: Can I use one input to feed both VCAs on Amps and get a mixed output?
+  anchors:
+  - If nothing is connected to this jack, the output is mixed into OUT B
+- id: amps-ring-mod
+  claim: For ring modulation, set the VCA B phase invert switch up, CV A polarity + and CV B polarity -, both attenuators
+    centred and both level sliders at minimum, then patch the carrier into IN A and the modulator into CV A IN and
+    take OUT B.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 11
+  q: How do I set up Amps as a ring modulator?
+  anchors:
+  - Set the CV B POLARITY [H] switch to - , and the CV B attenuator [D] to center.
+- id: amps-level-slider-unity
+  claim: With the VCA LEVEL slider fully up the channel reaches unity gain, roughly the same as +5V at the CV input,
+    and the slider sums with CV.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 7
+  q: does the level slider on Amps add to the CV input or replace it
+  anchors:
+  - The slider level is summed with the channel's CV input
+- id: amps-chaining
+  claim: Chaining two Amps with the rear 4-wire cable makes them behave like a 4-channel 12hp module, with OUT B,
+    IN B and CV B normalled into the next module's A channel.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 10
+  q: how do I chain two Intellijel Amps into a 4 channel mixer
+  anchors:
+  - connect the CHAIN OUT connector on the back of the first AMPS
+- id: amps-crossfader-unipolar
+  claim: For a unipolar CV crossfader, set CV A polarity to minus and CV B to plus with both attenuators full, VCA
+    A level up and B down, then sweep 0V to +5V into CV A.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 12
+  q: how do I set up Amps as a voltage controlled crossfader with an envelope
+  anchors:
+  - Sweeping the control voltage from 0V to +5V will crossfade
+- id: amps-crossfader-bipolar
+  claim: For a bipolar CV crossfader, set both attenuators to noon and both level sliders halfway up, then patch
+    a bipolar CV into CV A.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 13
+  q: can I crossfade two signals on Amps with a bipolar LFO
+  anchors:
+  - to the same height, halfway up the sliders
+- id: amps-led-colors
+  claim: The CV LEDs show post-attenuator, post-polarity voltage, green for positive and red for negative, brighter
+    for higher absolute voltage.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 8
+  q: what does it mean when the CV LED on Amps turns red
+  anchors:
+  - after passing through both the CV A Attenuator [C] and the CV A Polarity [G] switch
+- id: amps-power-specs
+  claim: Amps is 6hp, 36mm deep (42mm with the link cable), and draws 40mA at +12V and 46mA at -12V.
+  status: manual
+  source: intellijel_amps_manual
+  pages:
+  - 14
+  q: how deep is Intellijel Amps and how much current does it draw
+  anchors:
+  - 42mm with 4-pin Link cable attached

@@ -1,0 +1,23 @@
+device: entineering_midi_mult_1u
+slugs: [entineering-midi-mult-1u]
+source: entineering_midi_mult_1u_product_page
+hp: 3
+hp_page: null
+hp_anchor: "3 HP"
+power:
+  plus12: 10
+  minus12: 0
+  plus5: 0
+  page: null
+  anchor: "12V: 10mA"
+jacks:
+  - {name: "MIDI Input", dir: in, type: midi, page: null, label: "one MIDI input"}
+  - {name: "MIDI Out 1", dir: out, type: midi, page: null, label: "four outputs"}
+  - {name: "MIDI Out 2", dir: out, type: midi, page: null, label: "four outputs"}
+  - {name: "MIDI Out 3", dir: out, type: midi, page: null, label: "four outputs"}
+  - {name: "MIDI Out 4", dir: out, type: midi, page: null, label: "four outputs"}
+notes: >-
+  Source is a thin shop product page: "Distributes one MIDI input to four outputs." It does not
+  give panel labels or the connector type (TRS vs DIN), so jack names are descriptive. Power is
+  stated as max current (+12V 10mA, -12V 0mA, 5V 0mA) and matches ModularGrid. Width is stated as
+  3 HP; ModularGrid lists 10 HP, which disagrees.

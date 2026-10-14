@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/bvk7787/napier/discussions
+    about: How do I..., is my gear covered, show what you built. Issues are for bugs and requests.
+  - name: Report a security problem
+    url: https://github.com/bvk7787/napier/security/advisories/new
+    about: Privately, as SECURITY.md describes. Please don't open a public issue for it.

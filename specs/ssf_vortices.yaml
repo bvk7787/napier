@@ -1,0 +1,42 @@
+device: ssf_vortices
+slugs: [steady-state-fate-vortices]
+source: ssf_vortices_manual
+hp: 16
+hp_page: 9
+hp_anchor: "Width: 16hp"
+power:
+  plus12: 110
+  minus12: 105
+  page: 9
+  anchor: "+110mA, -105mA"
+jacks:
+  - {name: "Mono Input 1", dir: in, type: audio, page: 3, label: "Main Monophonic Inputs 1, 2 , 3, 4"}
+  - {name: "Mono Input 2", dir: in, type: audio, page: 3, label: "Main Monophonic Inputs 1, 2 , 3, 4"}
+  - {name: "Mono Input 3", dir: in, type: audio, page: 3, label: "Main Monophonic Inputs 1, 2 , 3, 4"}
+  - {name: "Mono Input 4", dir: in, type: audio, page: 3, label: "Main Monophonic Inputs 1, 2 , 3, 4"}
+  - {name: "M-AUX 1", dir: in, type: audio, page: 2}
+  - {name: "M-AUX 2", dir: in, type: audio, page: 2}
+  - {name: "Stereo Input 1 L", dir: in, type: audio, page: 4, label: "Main Stereophonic Inputs 1, 2 , 3"}
+  - {name: "Stereo Input 1 R", dir: in, type: audio, page: 4, label: "Main Stereophonic Inputs 1, 2 , 3", normal: "Stereo Input 1 L"}
+  - {name: "Stereo Input 2 L", dir: in, type: audio, page: 4, label: "Main Stereophonic Inputs 1, 2 , 3"}
+  - {name: "Stereo Input 2 R", dir: in, type: audio, page: 4, label: "Main Stereophonic Inputs 1, 2 , 3", normal: "Stereo Input 2 L"}
+  - {name: "Stereo Input 3 L", dir: in, type: audio, page: 4, label: "Main Stereophonic Inputs 1, 2 , 3"}
+  - {name: "Stereo Input 3 R", dir: in, type: audio, page: 4, label: "Main Stereophonic Inputs 1, 2 , 3", normal: "Stereo Input 3 L"}
+  - {name: "ST-AUX L", dir: in, type: audio, page: 4, label: "Left (L) ST-AUX"}
+  - {name: "ST-AUX R", dir: in, type: audio, page: 4, label: "Right (R) ST-AUX", normal: "ST-AUX L"}
+  - {name: "PAN CV (ch 1)", dir: in, type: cv, page: 2, label: "CV inputs for PAN"}
+  - {name: "PAN CV (ch 4)", dir: in, type: cv, page: 2, label: "CV inputs for PAN"}
+  - {name: "X-FADE CV", dir: in, type: cv, page: 2}
+  - {name: "MONO MIXER OUTPUT L", dir: out, type: audio, page: 2, label: "LEFT (L) and RIGHT (R) MONO MIXER OUTPUTs"}
+  - {name: "MONO MIXER OUTPUT R", dir: out, type: audio, page: 2, label: "LEFT (L) and RIGHT (R) MONO MIXER OUTPUTs"}
+  - {name: "X-FADE", dir: out, type: audio, page: 2, label: "X-FADE breakout jack"}
+  - {name: "STEREO MIXER OUTPUT L", dir: out, type: audio, page: 4, label: "STEREO MIXER OUTPUT jacks"}
+  - {name: "STEREO MIXER OUTPUT R", dir: out, type: audio, page: 4, label: "STEREO MIXER OUTPUT jacks"}
+  - {name: "MASTER MIX OUT L", dir: out, type: audio, page: 4, label: "MASTER MIX OUT"}
+  - {name: "MASTER MIX OUT R", dir: out, type: audio, page: 4, label: "MASTER MIX OUT"}
+notes: >-
+  Manual cites 14 inputs and 7 outputs; all 14 audio inputs, 3 CV inputs (PAN CV for ch 1 and 4,
+  X-FADE CV for ch 2/3) and 7 front-panel outputs listed. A rear stereo jack carrying a copy of MASTER MIX
+  is excluded (rear). Stereo inputs and ST-AUX are L>R normalled. X-FADE direct out breaks ch 2/3 out of
+  the mix outputs when patched. Per-side L/R and per-channel PAN CV names are constructed from the
+  manual's generic descriptions. V-CV expander (2hp, 0mA) is a separate module and not listed. +5V not stated.

@@ -1,0 +1,52 @@
+# Facts for alm_mfd. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: mfd-xfade-cv-offset
+  claim: The X Fade CV input accepts -5V to 5V, and the X Fade knob acts as an offset to the incoming CV.
+  status: manual
+  source: alm_mfd_manual
+  pages:
+  - 1
+  q: What voltage range does the MFD crossfade CV input expect and how does the knob interact with it?
+  anchors:
+  - The X Fade knob acts as an offset to incoming CV signals
+- id: mfd-input-normalling-dc
+  claim: On the A and B inputs, the left input is normalled to the right for mono signals, and the inputs are DC
+    coupled so they work with both audio and CV.
+  status: manual
+  source: alm_mfd_manual
+  pages:
+  - 1
+  q: Can I patch a mono signal into the MFD and can it crossfade CV as well as audio?
+  anchors:
+  - Left input normalised to Right for mono signals
+- id: mfd-cue-buttons
+  claim: The Cue A and B latching buttons route each input pair to the Cue Out for pre-crossfader monitoring through
+    a headphone amp, with LEDs showing which input is cued.
+  status: manual
+  source: alm_mfd_manual
+  pages:
+  - 1
+  q: How do I preview a channel before bringing it into the mix on the MFD?
+  anchors:
+  - Additional Cue controls provide preview monitoring of either input
+- id: mfd-equal-power-crossfade
+  claim: The MFD uses equal power crossfading so the level stays constant while blending between the A and B sources.
+  status: manual
+  source: alm_mfd_manual
+  pages:
+  - 1
+  q: does the MFD crossfader dip in volume in the middle of the fade
+  anchors:
+  - employs equal power crossfading for smooth constant level blending
+- id: mfd-cue-out-headphone
+  claim: The Cue Out is a stereo pair meant to feed a headphone amp for monitoring A and B before the crossfader.
+  status: manual
+  source: alm_mfd_manual
+  pages:
+  - 1
+  q: how do I preview a track in headphones before fading it in on the MFD
+  anchors:
+  - pre crossfader monitoring of A & B input signals via a headphone amp

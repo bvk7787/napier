@@ -1,0 +1,151 @@
+# Facts for qubit_data_bender. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: db-mode-macro-micro
+  claim: The Mode button switches between Macro Mode (blue LED, automated Bend and Break) and Micro Mode (green
+    LED, direct control of Bend and Break).
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 7
+  q: How do I switch Data Bender between automated and manual control of Bend and Break?
+  anchors:
+  - Pressing the Mode button selects between Macro Mode (Blue LED) and Micro Mode (Green LED).
+- id: db-micro-bend-voct
+  claim: In Micro Mode, Bend sets playback speed over 3 octaves down to 3 octaves up and its CV input tracks 1V/Oct;
+    pressing Bend toggles reverse.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 9
+  q: How does Bend control playback speed in Data Bender Micro mode?
+  anchors:
+  - playback speed going down 3 octaves and up 3 octaves
+- id: db-voct-calibration
+  claim: To calibrate Bend for 1V/Oct, boot holding Mode, patch 1V into Bend CV and press Bend, then patch 3V and
+    press Bend, and press Shift to save.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 17
+  q: How do I calibrate the Data Bender Bend input to track 1V/Oct?
+  anchors:
+  - Hold down Mode, and boot up Data Bender.
+- id: db-time-internal-range
+  claim: In internal clock mode the Time knob ranges smoothly from 16 seconds at the bottom to 80Hz at the top.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 5
+  q: what's the range of the Time knob on Data Bender with the internal clock
+  anchors:
+  - from 16 seconds at the bottom of the knob to 80Hz at the top
+- id: db-repeats-stutter
+  claim: Sending clocked CV to the Repeats CV input in external clock mode gives instant stutters and beat repeats.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 6
+  q: how do I get beat repeat stutters out of Data Bender
+  anchors:
+  - send clocked CV to the Repeats CV input for instant stutters
+- id: db-break-silence
+  claim: In Micro mode, Break toggles between Traverse and Silence; in Silence the knob replaces up to 90% of the
+    playback buffer with silence.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 10
+  q: how much silence can the Break knob add in Silence mode on Data Bender
+  anchors:
+  - 90% of the playback buffer will be replaced with silence
+- id: db-corrupt-dj-filter
+  claim: The DJ Filter corrupt effect (purple LED) is flat at noon, lowpass below noon and highpass above.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 11
+  q: how does the DJ filter work in Data Bender's corrupt section
+  anchors:
+  - No filtering occurs when Corrupt is at 12 o'clock
+- id: db-freeze-mix-wet
+  claim: With Mix fully dry, engaging Freeze instantly sets the mix fully wet, so you can cue up glitches while
+    audio passes through.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 12
+  q: why does Data Bender go fully wet when I hit freeze
+  anchors:
+  - engaging freeze will instantly set the mix to be fully wet
+- id: db-no-clock-dim-white
+  claim: If no external clock arrives for four beats, the Clock LED goes dim white and the clock keeps running at
+    the last rate.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 12
+  q: what does a dim white clock LED mean on Data Bender
+  anchors:
+  - the LED will illuminate a DIM white to indicate that there is no clock source present
+- id: db-glitch-windowing
+  claim: Shift plus Time sets glitch windowing, from hard clicky edges when fully down to fully faded stutters when
+    fully up.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 13
+  q: how do I get rid of clicks on Data Bender's stutters
+  anchors:
+  - you can scale an amount of windowing to be applied to the individual stutters
+- id: db-restore-defaults
+  claim: Holding Shift and pressing Break restores default settings, including Macro mode, latching gates, and 2%
+    windowing.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 15
+  q: how do I factory reset settings on Data Bender
+  anchors:
+  - pressing the Break button will restore all settings back to their defaults
+- id: db-corrupt-reset-jack
+  claim: Shift plus Corrupt can set the Corrupt gate input as a reset jack that resyncs the internal or external
+    clock.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 15
+  q: can I reset or resync Data Bender's buffer with a trigger from my DAW
+  anchors:
+  - the corrupt input will cause the internal or external clock to resync
+- id: db-firmware-update
+  claim: Firmware is flashed with the Electrosmith Web Programmer in Chrome by holding BOOT, pressing RESET, and
+    connecting as DFU in FS Mode.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 18
+  q: how do I update the firmware on Qu-Bit Data Bender
+  anchors:
+  - navigate to the Electrosmith Web Programmer
+- id: db-v144-changelog
+  claim: Firmware v1.4.4 added the DJ Filter and Vinyl Simulator corrupt effects plus 1V/oct calibration for Micro
+    mode Bend.
+  status: manual
+  source: qubit_data_bender_manual
+  pages:
+  - 23
+  q: which Data Bender firmware added the DJ filter and vinyl sim effects
+  anchors:
+  - Added Vinyl Simulator Corrupt effect
+
+# ---- Firmware versions
+- id: db-147-latest
+  claim: Qu-Bit's firmware page lists Data Bender v1.4.7 as the newest firmware
+  status: changelog
+  source: qubit_data_bender_firmware_notes
+  q: What is the latest Data Bender firmware version?
+  anchors:
+  - Data Bender v1.4.7

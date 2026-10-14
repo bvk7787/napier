@@ -1,0 +1,228 @@
+# Facts for metropolix_solo. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: metro-trs-midi-clock
+  claim: The Metropolix Solo follows MIDI clock on its TRS MIDI input, not only over USB
+  status: unverified
+  source: intellijel_metropolix_manual
+  pages:
+  - 14
+  - 49
+  cite: https://intellijel.com/shop/accessories/metropolix-backpack/
+  notes: 'Likely yes, not yet tested. Evidence: manual p. 181 says the Solo TRS In/Out/Thru jacks are
+    enabled by default and all MIDI settings also work over USB-C; the MIDI chapter (p. 182) describes
+    Clk Src = MIDI and MIDI Transport received over MIDI without limiting it to USB; Intellijel says the
+    Backpack offers the same MIDI functionality as the Solo and lists MIDI Clock In over the case DIN/TRS
+    jacks. Against: pp. 49 and 180 still say external MIDI clock arrives over USB (likely older wording).
+    No firsthand report found (Elektronauts Feb 2026 post is untested advice; Intellijel forum threads
+    use USB; ModWiggler thread blocked).'
+- id: metro-midi-clock-usb
+  claim: The manual only describes locking to external MIDI clock over USB (pp. 49, 180); clock out and
+    transport go to both USB and TRS (p. 52)
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 49
+  - 180
+  q: Where does the Metropolix receive MIDI clock?
+  anchors:
+  - uses an external MIDI clock that arrives over its USB port
+  notes: Earlier version wrongly said the TRS jack is MIDI out only.
+- id: metro-solo-trs-jacks
+  claim: 'Metropolix Solo has USB-C plus three TRS MIDI jacks: In, Out and Thru'
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 181
+  q: What MIDI jacks does the Metropolix Solo have?
+  anchors:
+  - TRS Type-A MIDI TRS In/Out/Thru jacks
+  notes: Confirmed in the manual. The TRS jacks are enabled by default, and all
+    MIDI settings also work over USB-C.
+- id: metro-solo-kit-contents
+  claim: The Metropolix Solo Kit includes a dedicated case with power, USB and MIDI circuitry, a power adapter,
+    an internal USB cable and one TRS-to-DIN MIDI adapter.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 13
+  q: what comes in the Metropolix Solo kit box
+  anchors:
+  - internal USB connecting cable, and a single TRS-to-DIN MIDI adapter
+- id: metro-pulse-count
+  claim: Each stage's PULSE COUNT switch sets how many clock pulses (1 to 8) the sequencer stays on that stage before
+    advancing.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 23
+  q: what does the PULSE COUNT setting do for each stage on Metropolix
+  anchors:
+  - Each stage's pulse count can be set from 1 pulse to 8 pulses
+- id: metro-loopy-target
+  claim: Loopy settings have LOOP PULSES (Auto or 1 to 64) and LOOP TARGET (current track or both note tracks),
+    and Loopy never applies to the MOD Lanes.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 40
+  q: does Loopy work on the mod lanes or just the note tracks
+  anchors:
+  - Loopy works only with TRK 1 and TRK 2, and not on the MOD Lanes
+- id: metro-mute-tracks
+  claim: Hold LOOPY and press a TRACK button or a LANE (stage) button to mute or unmute that track or MOD Lane;
+    mutes take effect on the next pulse and are saved with presets.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 46
+  q: how do I mute track 2 on the Metropolix
+  anchors:
+  - to mute TRK 2, press LOOPY + TRK 2
+- id: metro-tuner-mode
+  claim: Tuner Mode in the SETUP menu sends a static, octave-selectable pitch and a high or pulsing gate to the
+    outputs so you can tune oscillators.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 50
+  q: is there a tuning mode to send a fixed note to my oscillators
+  anchors:
+  - sends a static, octave-selectable pitch to the PITCH out jacks
+- id: metro-scale-lock
+  claim: Pressing the encoder on a scale locks it, so you can browse other scales (magnifying glass icon) without
+    loading them until you press again.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 66
+  q: how do I scroll through scales without them changing mid song
+  anchors:
+  - scroll through the scale list without actually loading the scales as you view them
+- id: metro-user-scale-edit
+  claim: To create a User Scale, select one of the User Bank scales and long-press the encoder to enter Scale Edit
+    Mode, toggling notes with the encoder and the root with ALT; User Scales store their root note.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 67
+  q: do Metropolix User Scales remember their root note
+  anchors:
+  - User Scales store and recall both the Scale pattern and the Root note
+- id: metro-swing-range
+  claim: Swing per track ranges from 50% (straight) to 78%, and holding SWING while pressing a stage button jumps
+    to MPC-style preset swing values.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 79
+  q: what's the maximum swing amount and are there swing presets
+  anchors:
+  - Metropolix' supports swing percentages from 50% to 78%
+  alt:
+  - - default swing shortcuts conform to MPC 'standard' values
+- id: metro-prob-target
+  claim: PROB sets a stage's gate probability from 0 to 100%, and pressing the encoder toggles the target between
+    the whole Stage and each individual Pulse.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 98
+  q: can probability apply to each pulse separately instead of the whole stage
+  anchors:
+  - Determines the probability that each pulse plays on the corresponding stage
+- id: metro-accum-trigger
+  claim: The per-stage ACCUM accumulator transposes pitch by scale degrees (default 7) each time the Stage, Pulse
+    or Ratchet plays, selected by pressing the encoder.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 100
+  q: how does the accumulator transpose notes on each pass
+  anchors:
+  - diatonically and cumulatively increase or decrease a stage's pitch
+- id: metro-queue-pulses-load
+  claim: With LOAD/PC DELAY set to Queue Pulses, a queued preset loads only on a multiple of the SETUP Queue Pulses
+    count since the last reset, or only on manual reset if set to "-".
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 110
+  q: when does a queued preset load if Queue Pulses is set to 32 on Metropolix
+  anchors:
+  - the preset will load only when a multiple of 'n' pulses has transpired
+- id: metro-aux-inputs
+  claim: The X, Y and Z AUX inputs each have an attenuverter and need about ±5V to sweep the full range of their
+    assigned destination.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 154
+  q: what voltage range do the X Y Z aux inputs need
+  anchors:
+  - An input voltage of ±5V is required to span the full range of an assigned destination
+- id: metro-quick-chain
+  claim: Quick Chain builds a preset chain by holding SETUP on the PRESET CHAIN screen and pressing stage buttons
+    for each preset, pressing the same one again to add repeats.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 175
+  q: how do I build a preset chain with Quick Chain on Metropolix
+  anchors:
+  - Each time you press the stage button, the link's repeat count will advance by one
+- id: metro-randomize-aux
+  claim: In ALT mode, AUX X fully randomizes the current screen, AUX Y morphs values slightly, and AUX Z restores
+    the values from before you entered ALT mode.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 179
+  q: what do the AUX X, Y and Z buttons do when randomizing in ALT mode on Metropolix
+  anchors:
+  - Pressing the AUX Y button modifies (morphs) the screen's current values
+- id: metro-erase-presets
+  claim: Factory Reset (via the Factory Menu, or holding SETUP at power-on) keeps presets; to erase all presets,
+    hold the Stage 2 (SAVE) button while powering on.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 189
+  q: how do I wipe all saved presets on Metropolix
+  anchors:
+  - Press and hold the Stage 2 (SAVE) button while turning on the power
+- id: metro-calibrate-outputs
+  claim: Output calibration is done in the Factory Menu (SETUP, highlight Version, hold MOD and press the encoder),
+    trimming each output to 0.000V and +1.000V on a voltmeter, then Save All.
+  status: manual
+  source: intellijel_metropolix_manual
+  pages:
+  - 187
+  q: how do I calibrate the pitch outputs with a voltmeter
+  anchors:
+  - Patch the OUT A into a calibrated voltmeter with .001V accuracy
+
+# ---- Firmware changelog
+- id: mx-165-mod-trig
+  claim: Firmware 1.6.5.0 lets the A/B outputs derive trigs from a selected Mod Lane
+  status: changelog
+  source: intellijel_metropolix_firmware_notes
+  q: Which Metropolix firmware lets the A/B outputs make triggers from a mod lane?
+  anchors:
+  - Derives Trigs from a selected Mod Lane
+- id: mx-165-midi-note
+  claim: Since 1.6.5.0 the Mx outputs can send MIDI notes (Setup > MIDI Mx Output) to trigger MIDI devices
+  status: changelog
+  source: intellijel_metropolix_firmware_notes
+  q: Can the Metropolix Mx outputs send MIDI notes to trigger a drum machine?
+  anchors:
+  - output MIDI Note messages derived from the Mx outputs
+- id: mx-165-trig-length
+  claim: Mod-derived triggers are 10 ms long
+  status: changelog
+  source: intellijel_metropolix_firmware_notes
+  q: How long are the triggers Metropolix derives from mod lanes?
+  anchors:
+  - Triggers are 10ms long

@@ -1,0 +1,51 @@
+# Facts for intellijel_dual_vca_1u. Managed by `napier facts` (hand edits are fine; comments other than this
+# header are not kept when napier rewrites the file).
+# status: manual | changelog | community | hardware | unverified | refuted
+# pages are printed page numbers in `source`. q + anchors make the fact an eval case.
+
+- id: dvca1u-cv-range-gain
+  claim: The CV inputs accept 0 V to 10 V, with 5 V giving unity gain and 10 V giving the maximum gain of +6 dB.
+  status: manual
+  source: intellijel_dual_vca_1u_manual
+  pages:
+  - 6
+  q: What CV voltage gives unity gain on the Intellijel Dual VCA 1U?
+  anchors:
+  - with a 10 V CV input resulting in a maximum gain of +6 dB
+- id: dvca1u-input-cv-normals
+  claim: IN A is normalled to IN B and CV A is normalled to CV B, so one input and one CV can drive both VCAs.
+  status: manual
+  source: intellijel_dual_vca_1u_manual
+  pages:
+  - 6
+  q: If I only patch IN A on the Dual VCA 1U, does VCA B get the signal too?
+  anchors:
+  - then IN A feeds both VCA A and VCA B
+- id: dvca1u-output-mix
+  claim: When nothing is plugged into VCA A out, VCA A's output is mixed with VCA B and sent to the VCA B out jack.
+  status: manual
+  source: intellijel_dual_vca_1u_manual
+  pages:
+  - 6
+  q: How do I get a summed output of both channels on the Dual VCA 1U?
+  anchors:
+  - then the output of VCA A is mixed with the output of VCA B
+- id: dvca1u-cv-led
+  claim: Each channel's LED brightness shows how much voltage is present at its CV input, and 0 V at the CV gives
+    no output.
+  status: manual
+  source: intellijel_dual_vca_1u_manual
+  pages:
+  - 6
+  q: what does the LED on the Dual VCA 1U indicate
+  anchors:
+  - is indicated by the brightness of the LED
+- id: dvca1u-specs
+  claim: The Dual VCA 1U is 8 hp wide with a 29 mm maximum depth and draws 37 mA on +12V and 40 mA on -12V.
+  status: manual
+  source: intellijel_dual_vca_1u_manual
+  pages:
+  - 7
+  q: how much power does the intellijel dual vca 1u need
+  anchors:
+  - 37 mA @ +12V 40 mA @ -12V

@@ -1,0 +1,25 @@
+device: shakmat_bard_quartet_expander
+slugs: [shakmat-bard-quartet-expander]
+source: shakmat_bard_quartet_expander_manual
+hp: 2
+hp_page: 1
+hp_anchor: "2HP Eurorack Module"
+power:
+  plus12: 5
+  minus12: 5
+  page: 8
+  anchor: "5 mA @ -12V"
+jacks:
+  - {name: "Gate IN 2", dir: in, type: gate, page: 6, label: "dedicated gate input"}
+  - {name: "Gate IN 3", dir: in, type: gate, page: 6, label: "dedicated gate input"}
+  - {name: "Gate IN 4", dir: in, type: gate, page: 6, label: "dedicated gate input"}
+  - {name: "Trig OUT 2", dir: out, type: trigger, page: 6, label: "Individual Trigger Outputs"}
+  - {name: "Trig OUT 3", dir: out, type: trigger, page: 6, label: "Individual Trigger Outputs"}
+  - {name: "Trig OUT 4", dir: out, type: trigger, page: 6, label: "Individual Trigger Outputs"}
+notes: >-
+  Panel diagrams are images; jacks come from page 6 text: gate inputs for Bard Quartet channels 2-4
+  (callouts [5,6,7]) and trigger outputs for channels 2-4 (callouts [2,3,4]); channel 1 stays on the
+  host. Gate inputs and trigger outputs are 0 to +5V (p8). The module receives MIDI (p6-7 and the
+  separate MIDI implementation guide) but neither text names the MIDI input jack or its format
+  (presumably callout [1]), so it is not listed. Power matches ModularGrid (5/5 mA); +5V not stated.
+  Trigger outputs become gate outputs in MIDI-to-CV mode (MIDI guide p4).

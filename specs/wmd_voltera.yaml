@@ -1,0 +1,21 @@
+device: wmd_voltera
+slugs: [wmd-voltera]
+source: wmd_voltera_manual
+hp: 4
+hp_page: null
+hp_anchor: "Width: 4HP"
+power:
+  plus12: 60
+  minus12: 15
+  plus5: 0
+  page: null
+  anchor: "+12V: 60mA, -12V: 15mA"
+jacks:
+  - {name: "Channel Output 1", dir: out, type: cv, page: null, label: "Channel Outputs 1-4"}
+  - {name: "Channel Output 2", dir: out, type: cv, page: null, label: "Channel Outputs 1-4"}
+  - {name: "Channel Output 3", dir: out, type: cv, page: null, label: "Channel Outputs 1-4"}
+  - {name: "Channel Output 4", dir: out, type: cv, page: null, label: "Channel Outputs 1-4"}
+notes: >-
+  Web manual (no page numbers). Power is "typical" consumption; +5V stated as none ("No power is consumed
+  from the +5V rail"). Only jacks are 4 bipolar CV outputs (-5V to +5V); per-output names constructed
+  from "Channel Outputs 1-4". EXP connectors are rear ribbon headers, not listed.
