@@ -64,8 +64,9 @@ Issues worth reporting privately include:
 
 ## Reporting a vulnerability
 
-Please report it privately through GitHub: on the repository's **Security** tab, choose **Report a
-vulnerability** (a private security advisory). Don't open a public issue for it. Include the
+Please report it privately through GitHub's private vulnerability reporting:
+<https://github.com/bvk7787/napier/security/advisories/new> (or, on the repository's **Security**
+tab, **Report a vulnerability**). Don't open a public issue for it. Include the
 version (`napier --version`), your OS and Python version, and the steps or files that show the
 problem.
 

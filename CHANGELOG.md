@@ -7,10 +7,20 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-10-13
+
+### Fixed
+
+- The project page on PyPI: README links and the screenshot now point at GitHub, so they work
+  there too. The package summary matches the README.
+- `napier read DEVICE` (and the MCP `read` tool) picks the device's `<device>_manual` when it has
+  several manuals. MCP errors from the CLI layer read plainly, without an exception name.
+
 ### Changed
 
 - `napier refresh --merge` queues a squash merge that lands once CI passes, matching the
   repository's merge rules.
+- SECURITY.md links the private reporting form; README shows PyPI and OpenSSF Scorecard badges.
 
 ## [0.1.0] - 2026-10-13
 
@@ -45,5 +55,6 @@ First public release.
 - docs: MCP setup for Claude Desktop, Claude Code, Cursor, VS Code, Codex and Windsurf; sources;
   how it works; the rack planner; the data policy and a publisher request form.
 
-[Unreleased]: https://github.com/bvk7787/napier/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/bvk7787/napier/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/bvk7787/napier/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/bvk7787/napier/releases/tag/v0.1.0

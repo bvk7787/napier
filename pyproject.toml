@@ -4,8 +4,8 @@ build-backend = "hatchling.build"
 
 [project]
 name = "napier"
-version = "0.1.0"
-description = "Ask your music gear's manuals, changelogs and forum lore, with printed-page citations, a ledger of checked facts and a Eurorack rack planner"
+version = "0.1.1"
+description = "Page-cited answers from your music gear's manuals, for you and your AI assistant: a CLI and MCP server, with a ledger of checked facts and a Eurorack rack planner"
 readme = "README.md"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
