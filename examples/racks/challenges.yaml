@@ -22,5 +22,5 @@ challenges:
     test: Play two sessions with them swapped
     outcome: accepted
     response: Better reach, and the patch cable from the Sample Drum out to Ikarie got shorter
-    learned: Placement follows which module is touched most, not signal order alone
+    learned: Placement follows which module gets touched most, as much as signal order
     modules: [erica-synths-sample-drum-, bastl-instruments-ikarie]

@@ -5,9 +5,10 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for getting in touch. docs/data-policy.md says what napier holds (links, checksums and
-        short quoted anchors; each user downloads the documents) and what you can ask for. A
-        maintainer answers within a week; removals are made first and discussed after.
+        Thanks for getting in touch. napier holds links, checksums and short quoted anchors, and each
+        user downloads the documents from you; docs/data-policy.md has the details and what you can
+        ask for. A maintainer replies within a week. Anything you ask to remove comes out first, and
+        we can talk after.
   - type: input
     id: who
     attributes:

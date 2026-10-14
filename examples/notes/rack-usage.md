@@ -4,7 +4,7 @@ Written from racks/usage.yaml (hand-maintained with the owner). Each module's jo
 
 ## How to treat this
 
-Everything here is a working default, not an axiom. Challenge any rule, case mode or module job when there's a clear hypothesis for an alternative: name the default, what changes, and what should play better as a result. The owner decides; an accepted challenge gets written back here.
+Everything here is a working default. Challenge any rule, case mode or module job when there's a clear hypothesis for an alternative: name the default, what changes, and what should play better as a result. The owner decides, and an accepted challenge gets written back here.
 
 ## Working defaults (challengeable)
 
@@ -14,7 +14,7 @@ Everything here is a working default, not an axiom. Challenge any rule, case mod
 
 ## The case
 
-### Main case (example figures, not a real supply)
+### Main case (made-up example figures)
 
 Mode: one bass voice, a small drum kit and a mixer with one effect.
 Supply limits: +12V 2000mA, -12V 1000mA, +5V 500mA.
@@ -57,4 +57,4 @@ Supply limits: +12V 2000mA, -12V 1000mA, +5V 500mA.
 Challenges to these defaults and the owner's responses, oldest first. A rejected challenge needs new evidence before it comes back.
 
 - c001 (2026-10-01, sale, rejected): Sell Beads. Hypothesis: Beads is used on one patch in five; selling it frees 14 HP for Step 8 and 110 mA of +12V. The owner: The granular send is what makes the drum loops feel alive; it stays until something replaces that job.
-- c002 (2026-10-05, layout, accepted): Swap Ikarie and Sample Drum. Hypothesis: The Sample Drum is played more than Ikarie, so it should sit nearer the centre. The owner: Better reach, and the patch cable from the Sample Drum out to Ikarie got shorter. Learned: Placement follows which module is touched most, not signal order alone.
+- c002 (2026-10-05, layout, accepted): Swap Ikarie and Sample Drum. Hypothesis: The Sample Drum is played more than Ikarie, so it should sit nearer the centre. The owner: Better reach, and the patch cable from the Sample Drum out to Ikarie got shorter. Learned: Placement follows which module gets touched most, as much as signal order.

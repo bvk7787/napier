@@ -1,8 +1,8 @@
 # Sources
 
-A source is one document napier can fetch: a manual, a firmware changelog, a forum thread, a
-pinned file of firmware source code, or a note of your own. The public list is `sources.yaml` in the
-clone; your own go in your overlay's `local/sources.yaml`, which is read first.
+A source is one document napier can fetch: a manual, a firmware changelog, a forum thread, a pinned
+file of firmware source code, or a note of your own. The public list is `sources.yaml` in the clone.
+Your own sources go in `local/sources.yaml` in your overlay, which napier reads first.
 
 ## Adding one
 
@@ -13,72 +13,79 @@ napier ingest --source maker_module_manual          # --text-only to skip the se
 napier grep "a phrase you know is on page 12" --device maker_module
 ```
 
-`source add` checks robots.txt, downloads the file once and writes the entry; for a PDF it also pins
-it (sha256) and detects the printed-page offset from page footers and headers. `ingest` extracts the text for `grep` and `read`
-and, with the `index` extra, adds it to the search index. Check the offset `source add` printed:
-grep for something on a known page and see that the cite matches.
+`source add` checks robots.txt, downloads the file once and writes the entry. For a PDF it also pins
+the sha256 and works out the printed-page offset from the page footers and headers. `ingest`
+extracts the text for `grep` and `read`, and with the `index` extra it also adds the document to the
+search index. To check the offset, grep for something on a page you know and see whether the cite
+matches.
 
-- **`--local`** writes to your overlay (`local/sources.yaml`; create `local/` first). Without it the
-  entry goes into the public `sources.yaml`, which is right when you're preparing a pull request and
-  awkward otherwise: a dirty public file makes `git pull` conflict.
-- **Ids** are lowercase letters, digits and underscores. By convention `<device>_manual`,
-  `<device>_changelog`, `<device>_tips`. The device id groups a device's sources (`maker_module`).
-- **A local file** works the same way: `napier source add ~/Documents/rig-notes.md --id my_rig_notes
-  --device my_rig --kind note --local`. Local files only go in the overlay.
+`--local` writes the entry to your overlay (create `local/` first). Leave it off only when you're
+preparing a pull request. Otherwise the public `sources.yaml` stays modified and `git pull` can
+conflict.
+
+Ids are lowercase letters, digits and underscores. The convention is `<device>_manual`,
+`<device>_changelog` and `<device>_tips`. The device id (`maker_module`) groups a device's sources.
+
+A local file works the same way, and only belongs in the overlay:
+
+```bash
+napier source add ~/Documents/rig-notes.md --id my_rig_notes --device my_rig --kind note --local
+```
 
 ## Kinds
 
 | Kind | What it is | Pinned? | Re-checked? |
 |---|---|---|---|
-| `manual` | The maker's manual (PDF, or a manual web page) | PDFs: yes (sha256); web pages: no | yes |
+| `manual` | The maker's manual, as a PDF or web page | PDFs only | yes |
 | `changelog` | Firmware release notes, a GitHub releases page, a product page's changelog | no | yes |
-| `community` | A forum thread or shared doc: opinions and workarounds | no | forum threads: snapshot (`--no-check`); shared docs: yes |
+| `community` | A forum thread or shared doc with tips and workarounds | no | forum threads are snapshots; shared docs yes |
 | `code` | Firmware source at one commit, for details the manuals skip | by URL | snapshot |
 | `note` | Your own files, in your overlay | no | no |
 
-Results always say which kind they came from, and `--kind` filters by it.
+Every result says which kind it came from, and `--kind` filters by it. A snapshot (`--no-check`) is
+fetched once and never re-checked.
 
 ## Formats
 
-`--format` is guessed from the URL (PDF, Google Doc, GitHub releases, `.md`; anything else is
-`text`). Pass `--format html` for a web page.
+napier guesses `--format` from the URL: PDFs, Google Docs, GitHub releases pages and `.md` files are
+recognized, and anything else is treated as `text`. Pass `--format html` for a web page.
 
 | Format | For |
 |---|---|
-| `pdf` | PDF manuals. Text by page, so cites are printed page numbers |
+| `pdf` | PDF manuals, read page by page so cites use printed page numbers |
 | `html`, `text`, `markdown` | Web pages and plain files, split into sections by heading (`--heading REGEX` for unusual headings) |
 | `gdoc` | A public Google Doc, exported as markdown |
 | `github_releases` | A repository's releases page |
 | `discourse` | A Discourse forum topic, through its public `/raw` page |
 
-For a product or shop page that carries a changelog, crop it with `--start-at REGEX` and
-`--stop-at REGEX` so price or stock changes don't read as a new version.
+If a product or shop page carries a changelog, crop it with `--start-at REGEX` and `--stop-at REGEX`
+so a price or stock change doesn't look like a new version.
 
 ## Printed pages
 
-Cites use the number printed on the page, so you can turn to it in the PDF or on paper. Each PDF
-has a `page_offset` (printed page = PDF page - offset), detected from page footers like `12`,
-`pg 48` or `Manual Title 13` when at least three pages carry a number and at least half of them
-agree. When they
-don't, `source add` writes 0 and warns; `napier source offset ID` shows what it found, and you can
-set `page_offset` by hand.
+Cites use the number printed on the page, so you can turn straight to it. Each PDF has a
+`page_offset`, where printed page = PDF page - offset. napier detects it from footers like `12`,
+`pg 48` or `Manual Title 13`, as long as at least three pages have a number and at least half of
+them agree. If they don't, `source add` writes 0 and warns you. `napier source offset ID` shows what
+it found, and you can set `page_offset` by hand.
 
-Pages before the numbering starts (cover, contents) show as `PDF p. N`; `napier read ID --pdf-page N`
-reads them. Manuals that restart numbering per chapter (3-12) cite correctly only in the main run.
+Pages before the numbering starts, like the cover and contents, show up as `PDF p. N`, and
+`napier read ID --pdf-page N` reads them. Manuals that restart numbering in each chapter (3-12) only
+cite correctly in the main numbered run.
 
-## When a site doesn't allow automated downloads
+## When robots.txt disallows a download
 
-napier follows robots.txt: if a site disallows the URL, `source add` and `fetch` refuse. Download
-the file in your browser instead and hand it over:
+If a site's robots.txt disallows a URL, `source add` and `fetch` won't download it. Get the file in
+your browser and hand it over:
 
 ```bash
 napier fetch --source maker_module_manual --from ~/Downloads/module-manual.pdf
 ```
 
-The file is checked against the pin in `sources.yaml`, so you get exactly the version the facts
-cite. For a document that isn't in the list yet, add the downloaded file to your overlay
-(`napier source add ~/Downloads/module-manual.pdf --id ... --device ... --local`). Only use
-`--ignore-robots` when the publisher has told you it's fine.
+napier checks the file against the pin in `sources.yaml`, so you end up with the exact version the
+facts cite. For a document that isn't listed yet, add the downloaded file to your overlay with
+`napier source add ~/Downloads/module-manual.pdf --id ... --device ... --local`. Only use
+`--ignore-robots` if the publisher has told you it's fine.
 
 ## Keeping sources current
 
@@ -90,14 +97,15 @@ napier facts recheck --source maker_module_manual   # facts whose quoted anchor 
 ```
 
 A changed file waits in `~/.napier/pending` until you apply it. `facts recheck --fix-pages` updates
-facts whose anchor just moved to another page; a vanished anchor means the claim needs checking
-against the new text: re-anchor it if it still holds, or `napier facts verify ID --refute`.
+facts whose anchor moved to another page. When an anchor disappears, check the claim against the new
+text: re-anchor it if it still holds, or mark it wrong with `napier facts verify ID --refute`.
 
-`source check` sees a document change at the same URL. It can't see a newer manual published under
-a new file name; check the maker's download page, then `napier source apply ID --url NEW_URL`.
+`source check` only sees changes at the same URL. When a maker publishes a new manual under a new
+file name, find it on their download page and run `napier source apply ID --url NEW_URL`.
 
 ## Contributing a source
 
-Gear anyone could own belongs in the public list. Add it without `--local`, add a few facts with
-their printed pages, run `pytest -q`, and open a pull request. [CONTRIBUTING.md](../CONTRIBUTING.md)
-has the checklist, and [data-policy.md](data-policy.md) says what may be quoted.
+If other people are likely to own it too, add it to the public list: leave off `--local`, add a few
+facts with their printed pages, run `pytest -q` and open a pull request.
+[CONTRIBUTING.md](../CONTRIBUTING.md) has the checklist, and [data-policy.md](data-policy.md) covers
+what you can quote.

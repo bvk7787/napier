@@ -4,9 +4,9 @@
 # Status: anchor (never fire) | keep | candidate (could go) | leaving | planned (buying) | considered.
 
 stance: >-
-  Everything here is a working default, not an axiom. Challenge any rule, case mode or module job when
-  there's a clear hypothesis for an alternative: name the default, what changes, and what should play
-  better as a result. The owner decides; an accepted challenge gets written back here.
+  Everything here is a working default. Challenge any rule, case mode or module job when there's a
+  clear hypothesis for an alternative: name the default, what changes, and what should play better as
+  a result. The owner decides, and an accepted challenge gets written back here.
 
 rules:
   - id: left-to-right
@@ -19,7 +19,7 @@ rules:
 
 cases:
   main:
-    power: example figures, not a real supply
+    power: made-up example figures
     limits: {plus12: 2000, minus12: 1000, plus5: 500}
     mode: one bass voice, a small drum kit and a mixer with one effect
     layout:
