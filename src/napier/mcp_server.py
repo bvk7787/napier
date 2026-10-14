@@ -50,8 +50,8 @@ def tool(fn):
         except (ValueError, KeyError, LookupError, FileNotFoundError, PermissionError) as e:
             raise ToolError(str(e).strip("'\"")) from e
         except Exception as e:  # noqa: BLE001  click errors and the like carry a readable message
-            msg = getattr(e, "message", None) or str(e)
-            raise ToolError(f"{type(e).__name__}: {msg}") from e
+            msg = getattr(e, "message", None)
+            raise ToolError(msg or f"{type(e).__name__}: {e}") from e
     return server.tool()(run)
 
 

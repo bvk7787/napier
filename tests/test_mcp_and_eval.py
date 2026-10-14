@@ -57,6 +57,8 @@ def test_mcp_tools_grep_read_and_fact_guards(box):
     assert f["via"] == "mcp" and mcp.facts(device_id="box")[0]["id"] == f["id"]
     with pytest.raises(mcp.ToolError, match="needs a note"):
         mcp.verify_fact(f["id"], "refuted")
+    with pytest.raises(mcp.ToolError, match="^no source or device 'nope'"):   # a click error reads plainly
+        mcp.read("nope", page=1)
     with pytest.raises(mcp.ToolError, match="no device 'bx'; did you mean box"):
         mcp.grep("x", device_id="bx")
     with pytest.raises(mcp.ToolError, match="no device"):

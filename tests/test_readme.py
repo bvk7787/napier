@@ -74,3 +74,10 @@ def test_offline_commands_run_on_the_shipped_data(argv, monkeypatch, tmp_path):
     r = CliRunner().invoke(cli.main, argv)
     assert r.exit_code == 0, r.output
     assert "Traceback" not in r.output
+
+
+def test_readme_links_work_on_pypi_too():
+    """PyPI shows README.md as the project page, where a relative link or image is broken."""
+    text = (ROOT / "README.md").read_text()
+    relative = [t for t in re.findall(r"\]\(([^)\s]+)\)", text) if not t.startswith(("http://", "https://", "#"))]
+    assert not relative, relative

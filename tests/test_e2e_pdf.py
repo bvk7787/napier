@@ -103,6 +103,17 @@ def test_robots_disallow_refuses_and_writes_nothing(env):
     assert srcs.read_text() == "# test sources\n"
 
 
+def test_a_device_with_several_manuals_reads_its_main_one(env):
+    srcs, _ = env
+    srcs.write_text("- {id: box_manual, device: box, url: 'https://x.test/a.pdf'}\n"
+                    "- {id: box_editor_manual, device: box, url: 'https://x.test/b.pdf'}\n"
+                    "- {id: cab_one, device: cab, url: 'https://x.test/c.pdf'}\n"
+                    "- {id: cab_two, device: cab, url: 'https://x.test/d.pdf'}\n")
+    from napier.sources import load_sources
+    assert cli.resolve("box", load_sources()).id == "box_manual"
+    assert "pick one: cab_one, cab_two" in run("read", "cab", "--page", "1", code=1)
+
+
 def test_unknown_ids_and_missing_source_list_are_errors(env, monkeypatch, tmp_path):
     assert "no device 'nope'" in run("grep", "x", "--device", "nope", code=1)
     assert "no source or device 'nope'" in run("read", "nope", "--page", "1", code=1)

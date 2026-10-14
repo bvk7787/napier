@@ -82,6 +82,8 @@ def resolve(ref: str, sources: list[Source]) -> Source:
     manuals = [s for s in dev if s.kind == "manual"]
     if len(manuals) == 1 or len(dev) == 1:
         return (manuals or dev)[0]
+    if f"{ref}_manual" in by_id and by_id[f"{ref}_manual"].device == ref:   # the main manual, by convention
+        return by_id[f"{ref}_manual"]
     if dev:
         raise click.ClickException(f"{ref} has several sources; pick one: {', '.join(s.id for s in dev)}")
     raise click.ClickException(f"no source or device {ref!r} (see `napier source list`)")

@@ -22,6 +22,8 @@ labeled as such.
 [![CI](https://github.com/bvk7787/napier/actions/workflows/ci.yml/badge.svg)](https://github.com/bvk7787/napier/actions/workflows/ci.yml)
 ![Python 3.11 | 3.12 | 3.13 | 3.14](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue)
 [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](https://github.com/bvk7787/napier/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/napier)](https://pypi.org/project/napier/)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/bvk7787/napier/badge)](https://scorecard.dev/viewer/?uri=github.com/bvk7787/napier)
 ![Status: alpha](https://img.shields.io/badge/status-alpha-orange)
 
 **Who it's for:** people with synths, grooveboxes and Eurorack who are comfortable with a terminal
@@ -77,7 +79,7 @@ Then connect your assistant. For Claude Code:
 claude mcp add --scope user napier -- "$(which napier)" mcp
 ```
 
-[docs/mcp.md](docs/mcp.md) has the configs for Claude Desktop, Cursor, VS Code, Codex and Windsurf,
+[docs/mcp.md](https://github.com/bvk7787/napier/blob/main/docs/mcp.md) has the configs for Claude Desktop, Cursor, VS Code, Codex and Windsurf,
 the tool list, and what a lookup looks like from the assistant's side.
 
 ## What it does
@@ -143,8 +145,8 @@ napier facts add maker_module "Holding SHIFT at power-up resets calibration" --s
 `source add` checks robots.txt and downloads the file; for a PDF it also pins it by sha256 and
 detects the printed-page offset, so check the offset it prints. `--local` keeps the entry in your
 overlay, and facts for a device only your overlay knows are written there too. Gear anyone could own
-is worth a pull request to the public list instead ([CONTRIBUTING.md](CONTRIBUTING.md)).
-[docs/sources.md](docs/sources.md) covers kinds, formats, page offsets, sites that don't allow
+is worth a pull request to the public list instead ([CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md)).
+[docs/sources.md](https://github.com/bvk7787/napier/blob/main/docs/sources.md) covers kinds, formats, page offsets, sites that don't allow
 automated downloads, and keeping sources current.
 
 ## The facts ledger
@@ -171,9 +173,9 @@ case against your supply, and what-if layouts that `napier rack scenarios` check
 seams, power, and modules that ended up far from their partners. `napier rack view --open` draws it
 all as one HTML page that loads nothing from the network.
 
-![The example rack with a what-if layout: Step 8 replaces Beads, power per rail, one module leaving](docs/images/example-scenario.png)
+![The example rack with a what-if layout: Step 8 replaces Beads, power per rail, one module leaving](https://github.com/bvk7787/napier/raw/main/docs/images/example-scenario.png)
 
-Try it on the example rack with `napier rack view --open`. [docs/rack.md](docs/rack.md) shows how
+Try it on the example rack with `napier rack view --open`. [docs/rack.md](https://github.com/bvk7787/napier/blob/main/docs/rack.md) shows how
 to start your own and how to write a plug-in that reads a rack from somewhere else.
 
 ## Your own data
@@ -207,7 +209,7 @@ Also, if you used them:
 
 - the clone. Your overlay is `local/` inside it, so copy anything you want to keep first;
 - the search models in `~/.cache/huggingface/hub`: the `models--*` folders for the two models in
-  [docs/how-it-works.md](docs/how-it-works.md#search) and Docling's layout models. `uv cache clean`
+  [docs/how-it-works.md](https://github.com/bvk7787/napier/blob/main/docs/how-it-works.md#search) and Docling's layout models. `uv cache clean`
   clears uv's download cache;
 - the `napier` entry in your assistant's MCP config (`claude mcp remove napier` for Claude Code);
 - any scheduled `napier refresh`.
@@ -215,7 +217,7 @@ Also, if you used them:
 ## FAQ
 
 **Is my gear covered?** `napier source list` shows every device, or browse
-[sources.yaml](sources.yaml). If yours isn't, `napier source add` takes one command, and a
+[sources.yaml](https://github.com/bvk7787/napier/blob/main/sources.yaml). If yours isn't, `napier source add` takes one command, and a
 [source request](https://github.com/bvk7787/napier/issues/new?template=source_request.yml) works
 too.
 
@@ -235,7 +237,7 @@ and napier respects that. `napier fetch` prints the URL; download it in a browse
 
 **Is it OK to quote manuals in facts?** The repository holds links, checksums and short quoted
 phrases, and each user downloads the documents from their publishers. The
-[data policy](docs/data-policy.md) has the details, and how publishers can ask for changes.
+[data policy](https://github.com/bvk7787/napier/blob/main/docs/data-policy.md) has the details, and how publishers can ask for changes.
 
 ## Limitations
 
@@ -256,8 +258,8 @@ least 2 seconds between requests to a site, backoff when a site asks, no crawlin
 It opens no port, sends no telemetry, and writes only to `~/.napier`, the Hugging Face cache, the
 YAML and generated notes in your clone and overlay, and any path you give `--out`. Passages from
 manuals and forums go to your assistant marked as document content; the MCP server tells it not to
-act on instructions inside them, and the only tools that write change fact files you review in git. [docs/how-it-works.md](docs/how-it-works.md)
-has the details and [SECURITY.md](SECURITY.md) how to report a problem.
+act on instructions inside them, and the only tools that write change fact files you review in git. [docs/how-it-works.md](https://github.com/bvk7787/napier/blob/main/docs/how-it-works.md)
+has the details and [SECURITY.md](https://github.com/bvk7787/napier/blob/main/SECURITY.md) how to report a problem.
 
 Provided as is, under Apache-2.0, without warranty. When a fact matters (calibration, firmware
 updates, anything that can brick a module), follow the manual page it cites.
@@ -286,12 +288,12 @@ pass `--no-push`. If you only use napier, `git pull` gets you the maintainers' u
 ## Contributing and license
 
 Issues and pull requests are welcome, especially sources and facts for gear you own. See
-[CONTRIBUTING.md](CONTRIBUTING.md), the [code of conduct](CODE_OF_CONDUCT.md), [SUPPORT.md](SUPPORT.md)
-for questions, and the [changelog](CHANGELOG.md).
+[CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md), the [code of conduct](https://github.com/bvk7787/napier/blob/main/CODE_OF_CONDUCT.md), [SUPPORT.md](https://github.com/bvk7787/napier/blob/main/SUPPORT.md)
+for questions, and the [changelog](https://github.com/bvk7787/napier/blob/main/CHANGELOG.md).
 
-Copyright 2026 the napier authors. Code and contributors' text are Apache-2.0 ([LICENSE](LICENSE),
-[NOTICE](NOTICE)); quoted anchors stay their publishers' ([data policy](docs/data-policy.md));
-third-party terms are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Copyright 2026 the napier authors. Code and contributors' text are Apache-2.0 ([LICENSE](https://github.com/bvk7787/napier/blob/main/LICENSE),
+[NOTICE](https://github.com/bvk7787/napier/blob/main/NOTICE)); quoted anchors stay their publishers' ([data policy](https://github.com/bvk7787/napier/blob/main/docs/data-policy.md));
+third-party terms are in [THIRD_PARTY_NOTICES.md](https://github.com/bvk7787/napier/blob/main/THIRD_PARTY_NOTICES.md).
 
 Named for John Napier, whose tables of logarithms turned a hard calculation into a lookup.
 
