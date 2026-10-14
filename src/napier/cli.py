@@ -640,7 +640,7 @@ def eval_cmd(device, k, no_rerank, min_hit3, show_misses, as_json):
 
 
 @main.command("refresh")
-@click.option("--merge", is_flag=True, help="Merge the PR when the eval gate and tests pass")
+@click.option("--merge", is_flag=True, help="Squash-merge the PR once CI passes, if the eval gate and tests passed here")
 @click.option("--no-push", is_flag=True, help="Apply locally only; no branch, commit or PR")
 @click.option("--model", default=None, help="Local Ollama model (default qwen3.5:9b, or NAPIER_LOCAL_MODEL)")
 def refresh_cmd(merge, no_push, model):

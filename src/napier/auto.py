@@ -373,14 +373,16 @@ def run(merge: bool = False, push: bool = True, log=print) -> dict:
             return finish(f"updated {len(rep['updated'])} sources, branch {branch} pushed but no PR ({rep['pr'][:200]})")
         model_text = bool(rep["reworded"])          # questions the local model wrote: a person reviews them
         if merge and passing and not model_text:
-            m = subprocess.run(["gh", "pr", "merge", branch, "--merge", "--delete-branch"], cwd=paths.REPO_ROOT,
-                               capture_output=True, text=True)
+            # squash, queued until the required CI checks pass (the repository allows only squash merges)
+            m = subprocess.run(["gh", "pr", "merge", branch, "--squash", "--auto", "--delete-branch"],
+                               cwd=paths.REPO_ROOT, capture_output=True, text=True)
             git("checkout", "-q", "main")
             git("pull", "-q", "--ff-only", check=False)
             if m.returncode:
                 return finish(f"updated {len(rep['updated'])} sources, PR open (merge failed: "
                               f"{(m.stderr or m.stdout).strip()[:200]})")
-            return finish(f"updated {len(rep['updated'])} sources, merged (hit@3 {rep['eval']['hit3']:.0%})")
+            return finish(f"updated {len(rep['updated'])} sources, merge queued for when CI passes "
+                          f"(hit@3 {rep['eval']['hit3']:.0%})")
         git("checkout", "-q", "main")
         why = ("eval or tests below the gate" if not passing else
                "questions reworded by the local model need review" if model_text else "left for review")
