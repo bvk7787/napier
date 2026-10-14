@@ -50,4 +50,5 @@ request to a site in each run and follows it, including `Crawl-delay`.
 - Write claims in your own words, and quote only what an anchor needs (25 words at most).
 - Add documents by their URL on the publisher's site, or on a public page that links to them.
   Re-hosted copies, paywalled documents and anything behind a login don't belong here.
-- Forum threads are snapshots of public pages and are cited as community reports.
+- Forum threads are snapshots of public pages and are cited as community reports. Facts from a
+  forum paraphrase the thread and link to it, and never quote individual posters.

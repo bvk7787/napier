@@ -89,6 +89,13 @@ def _anchors():
             yield name, str(a)
 
 
+def test_forum_facts_quote_no_one(srcs):
+    """Forum facts paraphrase and link the thread; they never quote an individual poster."""
+    forums = {s.id for s in srcs if s.format == "discourse"}
+    quoted = [f["id"] for f in facts.load() if f.get("source") in forums and (f.get("anchors") or f.get("alt"))]
+    assert not quoted, f"forum facts with quoted anchors: {quoted}"
+
+
 def test_anchors_are_short_quotations():
     long = [(where, len(a.split())) for where, a in _anchors() if len(a.split()) > ANCHOR_MAX_WORDS]
     assert not long, f"anchors over {ANCHOR_MAX_WORDS} words: {long}"
