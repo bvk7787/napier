@@ -363,14 +363,17 @@ def source_list(device, as_json):
 
 
 def guess_format(ref: str) -> str:
-    r = ref.lower()
-    if "docs.google.com/document" in r:
+    """The likely --format for a URL or local path, from its host and file extension."""
+    from urllib.parse import urlsplit
+    u = urlsplit(ref)
+    host, path = (u.hostname or "").lower(), u.path.lower()
+    if host == "docs.google.com" and path.startswith("/document"):
         return "gdoc"
-    if "github.com" in r and ("/releases" in r or r.startswith("github:")):
+    if host in ("github.com", "www.github.com") and "/releases" in path:
         return "github_releases"
-    if r.split("?")[0].endswith(".pdf") or "drive.google.com" in r:
+    if path.endswith(".pdf") or host == "drive.google.com":
         return "pdf"
-    if r.split("?")[0].endswith((".md", ".markdown")):
+    if path.endswith((".md", ".markdown")):
         return "markdown"
     return "text"
 
