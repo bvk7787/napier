@@ -40,16 +40,17 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: ${{ matrix.python-version }}
-          cache: pip
       # the versions in uv.lock, base + dev (which includes mcp): the tests need no network, models
       # or manuals, so the [index] extra stays out
-      - name: Install (locked versions)
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.13.0"
+      # uv checks every locked package against its hash in uv.lock
+      - name: Install (locked versions, hash-checked)
         shell: bash
         run: |
-          python -m pip install --upgrade pip uv
-          uv export --frozen --no-hashes --extra dev --no-emit-project > "$RUNNER_TEMP/requirements.lock.txt"
-          python -m pip install -r "$RUNNER_TEMP/requirements.lock.txt"
-          python -m pip install -e . --no-deps
+          uv sync --locked --extra dev --python "$(command -v python)"
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
       - name: Lint
         run: ruff check src tests
       - name: Tests
@@ -81,14 +82,15 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
-          cache: pip
-      - name: Install (locked versions)
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.13.0"
+      # uv checks every locked package against its hash in uv.lock
+      - name: Install (locked versions, hash-checked)
         shell: bash
         run: |
-          python -m pip install --upgrade pip uv
-          uv export --frozen --no-hashes --extra dev --no-emit-project > "$RUNNER_TEMP/requirements.lock.txt"
-          python -m pip install -r "$RUNNER_TEMP/requirements.lock.txt"
-          python -m pip install -e . --no-deps
+          uv sync --locked --extra dev --python "$(command -v python)"
+          echo "$PWD/.venv/bin" >> "$GITHUB_PATH"
       - name: mypy (settings in pyproject.toml)
         run: mypy
 
@@ -106,14 +108,15 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: "3.12"
-          cache: pip
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+        with:
+          version: "0.13.0"
       - name: Build the sdist and wheel
         run: |
-          python -m pip install --upgrade pip uv
           uv build
           ls -l dist
       - name: Check the metadata
-        run: uvx twine check --strict dist/*
+        run: uvx --from twine==7.0.0 twine check --strict dist/*
       - name: Check what the sdist holds
         shell: bash
         run: |
@@ -124,8 +127,8 @@ jobs:
           if grep -q "/local/" "$RUNNER_TEMP/sdist.txt"; then echo "the sdist holds a local/ overlay"; exit 1; fi
       - name: Install the wheel into a clean venv
         run: |
-          python -m venv "$RUNNER_TEMP/venv"
-          "$RUNNER_TEMP/venv/bin/pip" install dist/*.whl
+          uv venv "$RUNNER_TEMP/venv" --python "$(command -v python)"
+          uv pip install --python "$RUNNER_TEMP/venv/bin/python" dist/*.whl
       - name: The installed command says where to get the data
         working-directory: ${{ runner.temp }}     # away from the checkout
         shell: bash
