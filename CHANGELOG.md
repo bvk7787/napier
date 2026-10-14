@@ -7,6 +7,11 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+### Changed
+
+- CI and the release workflow install through uv from `uv.lock`, checking every package's hash,
+  with uv and twine pinned. The lockfile now has to match `pyproject.toml` for CI to pass.
+
 ### Fixed
 
 - `source add` guesses a document's format from the URL's host and extension instead of

@@ -86,7 +86,7 @@ listed.
 
 ## Releases
 
-A maintainer bumps `version` in `pyproject.toml` (the one place it's written), moves the
-changelog's entries under the new version with the date, and pushes the tag `v<version>`. The
-release workflow builds the package, checks it installs and runs, and publishes it to PyPI with
-Trusted Publishing.
+A maintainer bumps `version` in `pyproject.toml` (the one place it's written), runs `uv lock` (CI
+installs with `uv sync --locked`, which fails on a stale lock), moves the changelog's entries under
+the new version with the date, and pushes the tag `v<version>`. The release workflow builds the
+package, checks it installs and runs, and publishes it to PyPI with Trusted Publishing.
