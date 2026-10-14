@@ -9,8 +9,9 @@ repo holds, the terms it's under, and how a publisher can ask for a change.
   offset. The documents themselves are never committed. Each user's napier downloads its own copy
   from the publisher and keeps it on their machine.
 - `facts/*.yaml` holds claims in the contributor's own words, each with its status and the source
-  and page it came from. Some facts also have an eval question and **anchors**, short phrases quoted
-  from the page so search and `facts recheck` can find the passage.
+  and page it came from. Every fact also has an eval question and **anchors**, short phrases quoted
+  from the page so search and `facts recheck` can find the passage. Claims nobody else can check,
+  like a user's hardware tests or open questions, stay in that user's private overlay.
 - `specs/*.yaml` lists a module's power draw and jack names with the page each is on, plus a short
   anchor for the power figures.
 - `catalog/modules.yaml` maps rack slugs to napier devices, with a role and tags.
@@ -50,5 +51,6 @@ request to a site in each run and follows it, including `Crawl-delay`.
 - Write claims in your own words, and quote only what an anchor needs (25 words at most).
 - Add documents by their URL on the publisher's site, or on a public page that links to them.
   Re-hosted copies, paywalled documents and anything behind a login don't belong here.
-- Forum threads are snapshots of public pages and are cited as community reports. Facts from a
-  forum paraphrase the thread and link to it, and never quote individual posters.
+- Forum threads are snapshots of public pages and are cited as community reports. The public
+  ledger has no facts from forums, because it doesn't quote individual posters and every public
+  fact quotes its source.

@@ -146,39 +146,7 @@
   q: What does the BARS parameter do on the Digitakt II?
   anchors: ["Bars sets the total duration of the sample measured in bars"]
 
-# ---- community claims and open questions
-- id: dt-bars-values
-  claim: BARS only offers 1, 2, 4 and 8
-  status: community
-  notes: Reported by Digitakt II users on Elektronauts.
-- id: dt-strt-len-range
-  claim: STRT and LEN run 0 to 120 across the file
-  status: community
-  notes: Forum reports.
-- id: dt-repitch-tune
-  claim: The REPITCH machine has no TUNE parameter
-  status: unverified
-  source: digitakt_2_manual
-  notes: The manual lists none; midi.guide lists one.
-- id: dt-trig-len-two-bars
-  claim: Trig LEN shows two bars as "2", and AMP HOLD NOTE lets one trig play a 2-bar REPITCH loop
-  status: unverified
-- id: dt-legato-ties
-  claim: SETUP > TRACK > LEGATO ties overlapping sequencer notes
-  status: unverified
-- id: dt-slice-tune-resolution
-  claim: TUNE on the SLICE machine can reach +2.44 or +2.45 semitones
-  status: unverified
-- id: dt-empty-src-knobs
-  claim: Which SRC knobs (C, G) are empty on each machine, and the AMP page layout
-  status: unverified
-- id: dt-ptim-port-knobs
-  claim: PTIM and PORT sit on knobs G and H of TRIG page 2
-  status: unverified
-- id: dt-vel-audio-level
-  claim: Trig VEL changes an audio track's level by default
-  status: unverified
-  notes: If velocity doesn't change the level, lock AMP VOL instead.
+# ---- Transfer and file handling
 - id: dt-transfer-folder-name
   claim: Samples dropped onto Transfer's Drop page land in a dated /transfers-YYMMDD folder and are auto-converted
     to the device's native format.
@@ -219,7 +187,7 @@
   anchors:
   - a project can be exported as a single file containing all project and pattern data
 
-# ---- Firmware release notes, forum snapshots
+# ---- Firmware release notes
 - id: dt-os117-outbox8
   claim: OS 1.17 added routing the Main outputs' audio through Outbox 8
   status: changelog
@@ -234,19 +202,3 @@
   q: How do I move between channels in the Digitakt II Outbox 8 channel config menu?
   anchors:
   - '[FUNC] + [UP/DOWN] to navigate between channels'
-- id: dt-forum-stretch-pitch
-  claim: 'Some Elektronauts users find the STRETCH machine doesn''t hold pitch: loops sound out of tune at other tempos'
-  status: community
-  source: elektronauts_213312
-- id: dt-forum-repitch-1bar
-  claim: 'A common REPITCH complaint: the shortest loop interval is 1 bar'
-  status: community
-  source: elektronauts_218348
-- id: dt-forum-stretch-ableton
-  claim: Some users give up on STRETCH and prepare samples to tempo in Ableton instead
-  status: community
-  source: elektronauts_222887
-- id: dt-forum-preset-trig-jungle
-  claim: 'Jungle idea: 8 to 16 presets holding slices in order, played live with preset trig mode'
-  status: community
-  source: elektronauts_214549

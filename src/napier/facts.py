@@ -10,6 +10,11 @@ from. Status says how far a claim has been checked:
 
 A fact with `q` and `anchors` is also an eval case: `napier eval` asks q and checks that a top
 result contains every anchor.
+
+A device's facts can sit in two files, the public facts/<device>.yaml and the overlay's
+local/facts/<device>.yaml, and napier reads both. Every public fact quotes an anchor from its source,
+so `facts recheck` can test it. Hardware checks, open questions and anything without a quotable
+source stay in the overlay, which is where new facts go when you have one.
 """
 from __future__ import annotations
 
@@ -22,6 +27,7 @@ import yaml
 from napier import paths
 
 STATUSES = ("manual", "changelog", "community", "hardware", "code", "unverified", "refuted")
+PERSONAL = ("hardware", "unverified")      # never in the public ledger: they quote no source
 HEADER = """\
 # Facts for {device}. Managed by `napier facts` (hand edits are fine; comments other than this
 # header are not kept when napier rewrites the file).
@@ -31,60 +37,63 @@ HEADER = """\
 ORDER = ["id", "claim", "status", "source", "pages", "cite", "verified", "via", "q", "anchors", "alt", "notes"]
 
 
-def _overlay_only(device: str) -> bool:
-    """True when only the overlay's source list knows the device (gear you added with --local)."""
-    from napier.sources import _load_one
-    lf = paths.local_sources_file()
-    if not lf or not lf.exists():
-        return False
-    in_overlay = any(s.device == device for s in _load_one(lf))
-    return in_overlay and not any(s.device == device for s in _load_one(paths.sources_file()))
+def _dirs(root: Path | None) -> list[Path]:
+    return [root] if root else paths.facts_dirs()
+
+
+def files(device: str, root: Path | None = None) -> list[Path]:
+    """The files holding facts about DEVICE: the public one, then the overlay's, where they exist."""
+    paths.check_name("device", device)
+    return [paths.inside(r, r / f"{device}.yaml") for r in _dirs(root) if (r / f"{device}.yaml").exists()]
 
 
 def facts_file(device: str, root: Path | None = None) -> Path:
-    """Where a device's facts live: `root` if given; else wherever a file for the device already is
-    (the overlay's local/facts first); else local/facts for a device only the overlay's sources know;
-    else the public facts/."""
+    """Where a new fact about DEVICE goes: `root` if given; else the overlay's local/facts when there is an
+    overlay, so what you record stays yours; else the public facts/, for a pull request. A public fact
+    also needs anchors on a cited page, which you add by hand (tests/test_data.py checks)."""
     paths.check_name("device", device)
     if root:
         return paths.inside(root, root / f"{device}.yaml")
-    for r in reversed(paths.facts_dirs()):
-        if (r / f"{device}.yaml").exists():
-            return paths.inside(r, r / f"{device}.yaml")
     lr = paths.local_root()
-    if lr and _overlay_only(device):
-        return paths.inside(lr / "facts", lr / "facts" / f"{device}.yaml")
-    return paths.inside(paths.facts_dir(), paths.facts_dir() / f"{device}.yaml")
+    base = lr / "facts" if lr else paths.facts_dir()
+    return paths.inside(base, base / f"{device}.yaml")
+
+
+def _read(file: Path, device: str) -> list[dict]:
+    rows = (yaml.safe_load(file.read_text()) or []) if file.exists() else []
+    for d in rows:
+        d.setdefault("device", device)
+    return rows
 
 
 def load(device: str | None = None, root: Path | None = None) -> list[dict]:
-    roots = [root] if root else paths.facts_dirs()
     if device:
-        files = [facts_file(device, root)]
+        found = files(device, root)
     else:
         # one list sorted by file name across public and overlay folders, as if they were one folder
-        files = sorted((f for r in roots for f in r.glob("*.yaml")), key=lambda f: f.name)
-    out = []
-    for f in files:
-        if not f.exists():
-            continue
-        for d in yaml.safe_load(f.read_text()) or []:
-            d.setdefault("device", f.stem)
-            out.append(d)
-    return out
+        found = sorted((f for r in _dirs(root) for f in r.glob("*.yaml")), key=lambda f: f.name)
+    return [d for f in found for d in _read(f, f.stem)]
 
 
-def save(device: str, facts: list[dict], root: Path | None = None) -> Path:
-    f = facts_file(device, root)
-    f.parent.mkdir(parents=True, exist_ok=True)
+def file_of(fid: str, root: Path | None = None) -> Path:
+    """The file a fact is in."""
+    for r in _dirs(root):
+        for f in sorted(r.glob("*.yaml")):
+            if any(d.get("id") == fid for d in yaml.safe_load(f.read_text()) or []):
+                return f
+    raise KeyError(f"no fact {fid!r}")
+
+
+def _write(file: Path, device: str, facts: list[dict]) -> Path:
+    file.parent.mkdir(parents=True, exist_ok=True)
     rows = []
     for d in facts:
         row = {k: d[k] for k in ORDER if k in d and d[k] not in (None, "", [])}
         row.update({k: v for k, v in d.items() if k not in ORDER and k != "device"})
         rows.append(row)
-    f.write_text(HEADER.format(device=device) + "\n" +
-                 yaml.safe_dump(rows, sort_keys=False, allow_unicode=True, width=100))
-    return f
+    file.write_text(HEADER.format(device=device) + "\n" +
+                    yaml.safe_dump(rows, sort_keys=False, allow_unicode=True, width=100))
+    return file
 
 
 def slug(text: str, n: int = 6) -> str:
@@ -113,7 +122,8 @@ def add(device: str, claim: str, status: str = "unverified", source: str = "", p
     if status not in STATUSES:
         raise ValueError(f"status {status!r} is not one of {', '.join(STATUSES)}")
     _check_citation(status, source, pages)
-    facts = load(device, root)
+    file = facts_file(device, root)
+    facts = _read(file, device)
     ids = {f["id"] for f in load(root=root)}
     base = fid or f"{device.split('_')[0]}-{slug(claim)}"
     fid, k = base, 2
@@ -126,7 +136,7 @@ def add(device: str, claim: str, status: str = "unverified", source: str = "", p
     if via:
         fact["via"] = via
     facts.append(fact)
-    save(device, facts, root)
+    _write(file, device, facts)
     return fact
 
 
@@ -141,8 +151,12 @@ def set_status(fid: str, status: str, note: str = "", cite: str = "", root: Path
                via: str = "") -> dict:
     if status not in STATUSES:
         raise ValueError(f"status {status!r} is not one of {', '.join(STATUSES)}")
-    device = find(fid, root)["device"]
-    facts = load(device, root)
+    file = file_of(fid, root)
+    if status in PERSONAL and not root and file.parent.resolve() == paths.facts_dir().resolve():
+        raise ValueError(f"{fid} is in the public ledger, where every fact quotes its source. Record your own "
+                         f"check as a new fact, which goes to your overlay: napier facts add {file.stem} "
+                         f"\"<what you found>\" --status {status}")
+    facts = _read(file, file.stem)
     for f in facts:
         if f["id"] == fid:
             f["status"] = status
@@ -156,7 +170,7 @@ def set_status(fid: str, status: str, note: str = "", cite: str = "", root: Path
             if note:
                 f["notes"] = (f.get("notes", "") + ("\n" if f.get("notes") else "") +
                               f"{f['verified']}: {note}").strip()
-            save(device, facts, root)
+            _write(file, file.stem, facts)
             return f
     raise KeyError(fid)
 

@@ -110,8 +110,7 @@ def device_name(device: str) -> str:
 
 def set_fact_fields(fid: str, **fields) -> None:
     """Rewrite one fact's block with new field values; the rest of the file is untouched."""
-    device = factsmod.find(fid)["device"]
-    file = factsmod.facts_file(device)
+    file = factsmod.file_of(fid)
     text = file.read_text()
     a, b = refresh._block_span(text, "id", fid)
     fact = yaml.safe_load(text[a:b])[0]

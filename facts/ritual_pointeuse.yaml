@@ -9,20 +9,10 @@
   source: ritual_pointeuse_manual
   pages:
   - 6
+  q: what is the Ritual Pointeuse
+  anchors:
+  - Pointeuse is a CV controlled bidirectional analog switch
   notes: No manual found online.
-- id: pointeuse-modes
-  claim: Has momentary and latching modes; the switch is bidirectional (one common jack, two sides, works
-    as 1-to-2 or 2-to-1)
-  status: hardware
-  verified: '2026-09-29'
-  notes: Observed on the module. Which side a high control selects is still unchecked (likely the top).
-- id: pointeuse-slide-switch
-  claim: 'For 303-style slides: raw pitch and slewed pitch into the two sides, the slide gate on the control
-    input picks the slewed side'
-  status: unverified
-  notes: 'Patch idea. Use momentary mode so the side follows the slide gate step by step (latching
-    would flip on every slide). Use it 2-to-1: raw and slewed pitch into the two sides, common out to
-    the Atlantix. Check which side a high control selects.'
 - id: pointeuse-trig-threshold
   claim: Trig In has a comparator that switches at 2.5 V; in Mom mode the switch holds its other state
     while Trig In stays above 2.5 V

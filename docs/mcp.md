@@ -156,8 +156,10 @@ draws next to the current rack.
 ## Facts written by an assistant
 
 `add_fact` and `verify_fact` write to the same YAML files as `napier facts add` and
-`napier facts verify`. The device has to be one napier knows, every fact gets a `via: mcp` stamp,
-and `hardware` or `refuted` needs a note saying what was observed and on which firmware. Nothing is
+`napier facts verify`, so with an overlay new facts go to `local/facts/`. The device has to be one
+napier knows, every fact gets a `via: mcp` stamp, and `hardware` or `refuted` needs a note saying
+what was observed and on which firmware. A fact in the public ledger can't be marked `hardware` or
+`unverified`, so the assistant adds the user's check as a new fact instead. Nothing is
 committed for you, so check `git diff` in the clone (and in `local/` if your overlay is a repo)
 before you commit.
 

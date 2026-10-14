@@ -582,7 +582,7 @@ def facts_verify(fid, mode, status, note, cite):
         raise click.UsageError(f"a {st} check needs --note saying what you checked (and on which firmware)")
     try:
         f = factsmod.set_status(fid, st, note, cite)
-    except KeyError as e:
+    except (KeyError, ValueError) as e:
         raise click.ClickException(str(e)) from e
     say(f"{f['id']}: {f['status']} ({f['verified']})")
 

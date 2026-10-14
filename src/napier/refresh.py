@@ -253,8 +253,7 @@ def recheck(device: str | None = None, source: str | None = None) -> list[Rechec
 
 def set_fact_pages(fid: str, pages: list[int], root: Path | None = None) -> Path:
     """Rewrite only one fact's block with new pages, leaving the rest of the file untouched."""
-    device = factsmod.find(fid, root)["device"]
-    file = factsmod.facts_file(device, root)
+    file = factsmod.file_of(fid, root)
     text = file.read_text()
     a, b = _block_span(text, "id", fid)
     fact = yaml.safe_load(text[a:b])[0]

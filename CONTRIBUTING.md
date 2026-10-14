@@ -48,17 +48,19 @@ napier grep "a phrase you know is on page 12" --device maker_module   # does the
   unpinned, and crop them with `--start-at` and `--stop-at` so a price or stock change doesn't look
   like an update.
 - Forum threads are `community` snapshots (`--no-check`), cited as opinions and workarounds.
-  Paraphrase what people said and link the thread. Don't quote individual posters, so forum facts
-  have no anchors (`tests/test_data.py` checks this).
-- Write facts in your own words and say where they came from:
-  `--status manual --source <id> --pages <printed page>`. A fact with `q` and `anchors` becomes a
-  search test, so run `napier eval --device <id>` and put the score in the pull request.
+  They're searchable, but facts from them stay in your overlay, since a public fact quotes its
+  source and forum posts aren't quoted.
+- Every public fact can be tested. Write the claim in your own words, name its source, and give a
+  question (`q`) and one or more anchors, short phrases copied from the passage that backs it up.
+  A fact from a PDF also gives the printed page. Add these by hand in `facts/<device>.yaml` (without
+  an overlay, `facts add` writes there), then run `napier facts recheck --device <id>` and
+  `napier eval --device <id>`, and put the eval score in the pull request.
 - Anchors are short quotations, 25 words at most, just enough to find the passage. See
   [docs/data-policy.md](docs/data-policy.md); `tests/test_data.py` enforces the limit.
-- For a `hardware` fact, say what you checked and on which firmware. The status depends on that
-  note.
-- When a fact turns out wrong, mark it with `napier facts verify <id> --refute --note "..."`. It
-  stays in the ledger so nobody adds it again.
+- Hardware checks and open questions don't go in the public ledger. They're useful to you, but
+  nobody else can test them, so keep them in your overlay.
+- When a fact turns out wrong, mark it with `napier facts verify <id> --refute --note "..."` and
+  anchor the passage that contradicts it. It stays in the ledger so nobody adds it again.
 - Specs (`specs/<module>.yaml`) take power and jacks from the manual only, with the page and an
   exact anchor. Run `napier specs check <name>` with the manual fetched.
 - The catalog (`catalog/modules.yaml`) maps a module's slug to its napier device, role and tags.

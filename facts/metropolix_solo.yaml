@@ -3,21 +3,6 @@
 # status: manual | changelog | community | hardware | unverified | refuted
 # pages are printed page numbers in `source`. q + anchors make the fact an eval case.
 
-- id: metro-trs-midi-clock
-  claim: The Metropolix Solo follows MIDI clock on its TRS MIDI input, not only over USB
-  status: unverified
-  source: intellijel_metropolix_manual
-  pages:
-  - 14
-  - 49
-  cite: https://intellijel.com/shop/accessories/metropolix-backpack/
-  notes: 'Likely yes, not yet tested. Evidence: manual p. 181 says the Solo TRS In/Out/Thru jacks are
-    enabled by default and all MIDI settings also work over USB-C; the MIDI chapter (p. 182) describes
-    Clk Src = MIDI and MIDI Transport received over MIDI without limiting it to USB; Intellijel says the
-    Backpack offers the same MIDI functionality as the Solo and lists MIDI Clock In over the case DIN/TRS
-    jacks. Against: pp. 49 and 180 still say external MIDI clock arrives over USB (likely older wording).
-    No firsthand report found (Elektronauts Feb 2026 post is untested advice; Intellijel forum threads
-    use USB; ModWiggler thread blocked).'
 - id: metro-midi-clock-usb
   claim: The manual only describes locking to external MIDI clock over USB (pp. 49, 180); clock out and
     transport go to both USB and TRS (p. 52)

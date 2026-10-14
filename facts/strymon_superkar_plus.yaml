@@ -14,11 +14,6 @@
   q: What does MIDI control on the Strymon SuperKar+?
   anchors:
   - MIDI input controls the Solo Voice
-- id: sk-midi-ch1
-  claim: SuperKar+ receives MIDI on channel 1 only; the channel cannot be changed
-  status: hardware
-  verified: '2026-09-30'
-  notes: Observed on the hardware; the manual does not mention a channel setting.
 - id: sk-chord-voice
   claim: The Chord Voice builds chords from the root on its own V/OCT (0 to 5 V, quantized to half steps),
     with smart harmonies
