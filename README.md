@@ -1,12 +1,18 @@
 # napier
 
-Search your music gear's manuals and get the printed page number with every answer. Your AI
-assistant can use it too.
+Your gear's manuals and your Eurorack rack, in one place you and your AI assistant can work from.
 
-Ask an assistant how to cue a song row on the M8 and you'll get a confident answer with no source.
-napier keeps the manuals, firmware changelogs and a few community docs on your machine, and every
-hit tells you the document, its version and the printed page. It runs as a command-line tool and as
-an MCP server, so Claude and other assistants can run the same lookups and cite the page.
+[![CI](https://github.com/bvk7787/napier/actions/workflows/ci.yml/badge.svg)](https://github.com/bvk7787/napier/actions/workflows/ci.yml)
+![Python 3.11 | 3.12 | 3.13 | 3.14](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue)
+[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](https://github.com/bvk7787/napier/blob/main/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/napier)](https://pypi.org/project/napier/)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/bvk7787/napier/badge)](https://scorecard.dev/viewer/?uri=github.com/bvk7787/napier)
+![Status: alpha](https://img.shields.io/badge/status-alpha-orange)
+
+## Look it up
+
+napier keeps the manuals, firmware changelogs and a few community docs for your gear on your
+machine. Every answer tells you the document, its version and the page number printed on the page.
 
 ```
 $ napier grep "cue the" --device m8_tracker -C 0
@@ -19,12 +25,26 @@ m8_tracker_tips § Live Mode Shortcuts
 The first hit is page 11 of the M8 Operation Manual (v6.5.2). The second comes from the community
 tips doc and is labeled that way.
 
-[![CI](https://github.com/bvk7787/napier/actions/workflows/ci.yml/badge.svg)](https://github.com/bvk7787/napier/actions/workflows/ci.yml)
-![Python 3.11 | 3.12 | 3.13 | 3.14](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue)
-[![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](https://github.com/bvk7787/napier/blob/main/LICENSE)
-[![PyPI](https://img.shields.io/pypi/v/napier)](https://pypi.org/project/napier/)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/bvk7787/napier/badge)](https://scorecard.dev/viewer/?uri=github.com/bvk7787/napier)
-![Status: alpha](https://img.shields.io/badge/status-alpha-orange)
+## Plan the rack
+
+Keep your Eurorack rack as YAML next to the manuals: what's in each case, what each module is for
+and how much power each case can supply. Sketch what-if layouts, and napier checks each one for HP,
+power per rail, case seams and modules that ended up far from the ones they pair with, then draws it
+next to the rack you have.
+
+![The example rack with Step 8 in place of Beads: one case, power per rail, Step 8 highlighted as new and Beads listed as leaving](https://github.com/bvk7787/napier/raw/main/docs/images/example-scenario.png)
+
+That's the example rack with Step 8 in place of Beads. The -12V rail goes from 89% to 92% of the
+supply, nothing overlaps, and Beads is listed as leaving. Power draw and jack lists come from the
+manuals, with the page they're on.
+
+## With an assistant
+
+napier is also an MCP server, so Claude and other assistants can use both halves. Ask how to cue a
+song row and it quotes page 11. Ask what in your rack takes a clock and it lists the matching jacks
+from the manuals. Ask whether Step 8 should replace Beads and it can read what each module is for
+and what you decided last time, propose a layout as a scenario file, and let napier check and draw
+it before you move anything.
 
 It's built for people with synths, grooveboxes and Eurorack who don't mind a terminal and git. The
 source list covers 101 devices: mostly Eurorack, plus the Dirtywave M8, Elektron Digitakt II, OXI
@@ -45,10 +65,13 @@ napier ingest --text-only --device m8_tracker
 napier grep "cue the" --device m8_tracker
 napier read m8_tracker --page 11           # the whole printed page
 napier facts list --device m8_tracker      # what's been checked, and how far
+
+napier rack view --open                    # the example rack and its what-if layout, in your browser
+napier rack scenarios                      # the checks behind it
 ```
 
-The fetch downloads three files and takes 10 to 20 seconds. If your shell can't find `napier`, run
-`uv tool update-shell` and open a new terminal.
+The fetch downloads three files and takes 10 to 20 seconds. The rack commands need no downloads. If
+your shell can't find `napier`, run `uv tool update-shell` and open a new terminal.
 
 napier runs from its clone. The sources, facts and specs are files in the repo, and `-e` keeps the
 installed command pointed at them.
@@ -56,7 +79,7 @@ installed command pointed at them.
 Without uv: `python3 -m venv .venv && .venv/bin/pip install -e .` with Python 3.11 or later, then
 run `.venv/bin/napier`.
 
-## Search and assistants
+## Add search and the MCP server
 
 For questions in your own words ("how do I stop the delay feeding back"), install the `index` extra.
 The MCP server needs the `mcp` extra. A reinstall replaces the previous one, so list every extra you
@@ -84,6 +107,8 @@ assistant's side.
 
 ## What you get
 
+For looking things up:
+
 - `grep` and `read` find exact text, like button combos and parameter names, and return whole pages
   or sections. There's no model involved, and a lookup takes a fraction of a second.
 - `search` handles open questions. It combines keyword and vector search, reranks the results, and
@@ -99,7 +124,21 @@ assistant's side.
   answers, so treat this as a regression test.
 - `napier source check` re-downloads each source and reports what changed. After you apply an
   update, `napier facts recheck` lists the facts whose quoted text moved or disappeared.
-- A Eurorack rack planner ([Your rack](#your-rack)).
+
+For your rack:
+
+- `napier rack view --open` draws the rack and every what-if layout as one HTML page that works
+  offline. You can switch between layouts, highlight what changed, find a module, and see power per
+  rail for each case.
+- `napier rack scenarios` checks the rack and each layout for overlaps, modules crossing a case
+  seam, 1U modules in 3U rows, power per case against its supply, partner modules more than 20 cm
+  apart, and free space split into slivers.
+- Power draw and jack lists come from the manuals (`specs/`, with the page), and `napier rack check`
+  shows where your rack's power figures disagree with the manual.
+- `usage.yaml` records what each module is for and your placement rules. `challenges.yaml` logs each
+  suggested change and what you decided, so a rejected idea doesn't keep coming back.
+- Cases can have any mix of 1U and 3U rows, and several cases can sit in a grid. The rack itself
+  comes from a file you write or, through a plug-in, from another tool.
 
 ## Compared with NotebookLM or pasting the PDF
 
@@ -165,16 +204,20 @@ them easy to spot in the diff.
 
 ## Your rack
 
-The rack planner is for Eurorack. Your rack lives in YAML next to the manuals, along with what each
-module is for, each case's power budget and any what-if layouts. `napier rack scenarios` checks
-those layouts for overlaps, case seams, power, and modules that ended up far from their partners.
-`napier rack view --open` draws all of it as a single HTML page that works offline.
+The rack commands show the example rack until you set up your own:
 
-![The example rack with a what-if layout: Step 8 replaces Beads, power per rail, one module leaving](https://github.com/bvk7787/napier/raw/main/docs/images/example-scenario.png)
+```bash
+mkdir -p local && cp -r examples/racks local/racks
+$EDITOR local/racks/layout.yaml            # your modules: slug, HP, power, position ("row 2, hp 43")
+$EDITOR local/racks/devices.yaml           # your cases: rows, how they're arranged, off-rack modules
+napier rack sync                           # writes the snapshot; reports moves and overlaps
+napier rack view --open
+```
 
-Until you set up your own, the rack commands show the example rack.
-[docs/rack.md](https://github.com/bvk7787/napier/blob/main/docs/rack.md) covers setup and how to
-write a plug-in that reads your rack from another tool.
+Then describe what each module is for in `usage.yaml`, and write what-if layouts in `scenarios/`, by
+hand or with your assistant.
+[docs/rack.md](https://github.com/bvk7787/napier/blob/main/docs/rack.md) covers the file formats and
+how to write a plug-in that reads your rack from another tool.
 
 ## Your own data
 

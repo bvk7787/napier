@@ -127,6 +127,32 @@ From that it can answer: hold **LEFT** and press **PLAY** (M8 Operation Manual v
 can also note that the community tips doc says this works on smaller selections, labeled as a
 community report.
 
+Rack questions work the same way. On the example rack, asking what takes a clock calls:
+
+```
+rack(jack_type="clock", jack_dir="in")
+```
+
+and gets each matching module with its jacks and, where the manual gives one, the page (abridged;
+Quadrax and Beads also match):
+
+```json
+{"modules": [
+  {"name": "Pamela's Pro Workout", "owned": true,
+   "jacks": [{"name": "Clk", "dir": "in", "type": "clock", "also": ["cv", "trigger"], "page": 20}]},
+  {"name": "Steppy 1U", "owned": true,
+   "jacks": [{"name": "CLOCK (CLK) IN", "dir": "in", "type": "clock", "page": 11}]},
+  {"name": "Step 8", "owned": false,
+   "jacks": [{"name": "STEP IN", "dir": "in", "type": "trigger", "also": ["clock"], "page": 3}]}],
+ "case_power": {"main": {"pct": {"plus12": 75, "minus12": 89, "plus5": 0}}}}
+```
+
+The same result carries your usage notes, placement rules and the challenge log, so the assistant
+can suggest a change with your earlier decisions in view. Wishlist modules come back with
+`owned: false`, and the tool tells the assistant never to describe them as owned. A suggested layout
+becomes a file in `racks/scenarios/`, which `napier rack scenarios` checks and `napier rack view`
+draws next to the current rack.
+
 ## Facts written by an assistant
 
 `add_fact` and `verify_fact` write to the same YAML files as `napier facts add` and

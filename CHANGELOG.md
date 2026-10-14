@@ -9,6 +9,12 @@ the CLI or the data formats).
 
 ### Changed
 
+- The README gives the rack planner equal billing with lookups: a "Plan the rack" section with the
+  scenario screenshot near the top, rack commands in the quick start, and what the rack commands do.
+  docs/mcp.md shows a rack question from the assistant's side.
+
+### Changed
+
 - CI and the release workflow install through uv from `uv.lock`, checking every package's hash,
   with uv and twine pinned. The lockfile now has to match `pyproject.toml` for CI to pass.
 
