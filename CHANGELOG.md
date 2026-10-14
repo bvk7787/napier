@@ -7,6 +7,8 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+## [0.1.3] - 2026-10-14
+
 ### Added
 
 - `napier init` sets up your private overlay (`local/`, or `$NAPIER_LOCAL`): `facts/`, `notes/`, an
@@ -98,7 +100,8 @@ First public release.
 - docs: MCP setup for Claude Desktop, Claude Code, Cursor, VS Code, Codex and Windsurf; sources;
   how it works; the rack planner; the data policy and a publisher request form.
 
-[Unreleased]: https://github.com/bvk7787/napier/compare/v0.1.2...HEAD
+[Unreleased]: https://github.com/bvk7787/napier/compare/v0.1.3...HEAD
+[0.1.3]: https://github.com/bvk7787/napier/compare/v0.1.2...v0.1.3
 [0.1.2]: https://github.com/bvk7787/napier/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/bvk7787/napier/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/bvk7787/napier/releases/tag/v0.1.0
