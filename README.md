@@ -117,7 +117,7 @@ For looking things up:
   or your own notes), and you can filter on it.
 - The [facts ledger](#the-facts-ledger) records claims with where they came from and how far they've
   been checked. A claim that turns out wrong stays in the ledger marked `refuted`.
-- `napier eval` tests search against the ledger. 681 facts carry a question and anchors, short
+- `napier eval` tests search against the ledger. Most facts carry a question and anchors, short
   phrases quoted from the page that answers it. The eval fails if fewer than 90% of the questions
   find their answer in the top three results. On 2026-10-13 all 681 did, 80% ranked it first, and
   all 549 with a cited page found it on that page. The questions were written by people who knew the

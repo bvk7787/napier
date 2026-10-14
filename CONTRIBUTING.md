@@ -48,6 +48,8 @@ napier grep "a phrase you know is on page 12" --device maker_module   # does the
   unpinned, and crop them with `--start-at` and `--stop-at` so a price or stock change doesn't look
   like an update.
 - Forum threads are `community` snapshots (`--no-check`), cited as opinions and workarounds.
+  Paraphrase what people said and link the thread. Don't quote individual posters, so forum facts
+  have no anchors (`tests/test_data.py` checks this).
 - Write facts in your own words and say where they came from:
   `--status manual --source <id> --pages <printed page>`. A fact with `q` and `anchors` becomes a
   search test, so run `napier eval --device <id>` and put the score in the pull request.

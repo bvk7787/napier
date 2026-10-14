@@ -238,27 +238,15 @@
   claim: 'Some Elektronauts users find the STRETCH machine doesn''t hold pitch: loops sound out of tune at other tempos'
   status: community
   source: elektronauts_213312
-  q: Does the Digitakt II stretch machine keep loops in tune at a different BPM?
-  anchors:
-  - the Stretch Machine doesn't preserve the pitch at all really
 - id: dt-forum-repitch-1bar
   claim: 'A common REPITCH complaint: the shortest loop interval is 1 bar'
   status: community
   source: elektronauts_218348
-  q: What do people find limiting about Digitakt II repitch loop lengths?
-  anchors:
-  - the shortest interval being 1 bar
 - id: dt-forum-stretch-ableton
   claim: Some users give up on STRETCH and prepare samples to tempo in Ableton instead
   status: community
   source: elektronauts_222887
-  q: Does anyone actually use the Digitakt II Stretch machine or do they prep samples elsewhere?
-  anchors:
-  - always end up prepering my samples in Ableton
 - id: dt-forum-preset-trig-jungle
   claim: 'Jungle idea: 8 to 16 presets holding slices in order, played live with preset trig mode'
   status: community
   source: elektronauts_214549
-  q: How can I play jungle breaks live with Digitakt II preset trig mode?
-  anchors:
-  - creating 8-16 presets of slices in order
