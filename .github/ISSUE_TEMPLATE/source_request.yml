@@ -5,8 +5,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        If you own the device, a pull request adding the source is the fastest route (CONTRIBUTING.md
-        shows the three commands). Otherwise, the details below are what a source needs.
+        If you own the device, the fastest route is a pull request that adds the source
+        (CONTRIBUTING.md shows the commands). Otherwise, fill in the details below.
   - type: input
     id: device
     attributes:

@@ -1,13 +1,13 @@
 # Connecting an assistant (MCP)
 
-`napier mcp` serves napier's lookups to any assistant that speaks the
-[Model Context Protocol](https://modelcontextprotocol.io) over stdio. The assistant runs the same
-`grep`, `read` and `search` you would, and quotes the printed page.
+`napier mcp` runs napier as an MCP server over stdio, so any assistant that supports the [Model
+Context Protocol](https://modelcontextprotocol.io) can look things up the way you would on the
+command line and quote the printed page.
 
 ## Install the extra
 
-The server needs the `mcp` extra; add `index` too if you want `search`. List every extra you want
-each time you install, because reinstalling with fewer drops the others:
+The server needs the `mcp` extra, and `search` also needs `index`. A reinstall replaces the previous
+one, so list every extra you want each time:
 
 ```bash
 cd /path/to/your/napier/clone
@@ -15,16 +15,16 @@ uv tool install -e ".[index,mcp]"     # or ".[mcp]" for every tool except search
 which napier                          # the full path the configs below need
 ```
 
-With pip instead of uv, install into a virtual environment and use that environment's `napier`
-(for example `/path/to/napier/.venv/bin/napier`) as the command.
+If you installed with pip into a virtual environment, use that environment's `napier` instead, for
+example `/path/to/napier/.venv/bin/napier`.
 
-Desktop apps don't see your shell's `PATH`, so give them the full path `which napier` printed.
-Below it's `/Users/you/.local/bin/napier`; use yours.
+Desktop apps don't see your shell's `PATH`, so give them the full path. The examples below use
+`/Users/you/.local/bin/napier`; swap in yours.
 
 ## Clients
 
-**Claude Desktop.** Settings, Developer, Edit Config opens `claude_desktop_config.json`. Add the
-server and restart Claude Desktop:
+**Claude Desktop.** Open Settings, then Developer, then Edit Config to get to
+`claude_desktop_config.json`. Add the server and restart the app:
 
 ```json
 {
@@ -51,7 +51,7 @@ claude mcp add --scope user napier -- "$(which napier)" mcp
 ```
 
 **VS Code** (Copilot agent mode). Run **MCP: Open User Configuration**, or create `.vscode/mcp.json`
-in a workspace. Note the top-level key is `servers`:
+in a workspace. The top-level key here is `servers`:
 
 ```json
 {
@@ -61,7 +61,7 @@ in a workspace. Note the top-level key is `servers`:
 }
 ```
 
-**Codex** (CLI, IDE extension and app share it). `~/.codex/config.toml`:
+**Codex.** The CLI, IDE extension and app all read `~/.codex/config.toml`:
 
 ```toml
 [mcp_servers.napier]
@@ -79,8 +79,8 @@ args = ["mcp"]
 }
 ```
 
-**Anything else.** The command is the full path to `napier` and the one argument is `mcp`. To point
-the server at data you moved, add an environment variable to the entry, for example
+**Anything else.** Use the full path to `napier` as the command and `mcp` as the only argument. If
+you moved napier's data, add `NAPIER_HOME` to the entry's environment, for example
 `"env": {"NAPIER_HOME": "/Volumes/data/napier"}` (in TOML, a `[mcp_servers.napier.env]` table).
 
 ## Tools
@@ -96,12 +96,11 @@ the server at data you moved, add an environment variable to the entry, for exam
 | `verify_fact(id, status, note?, cite?)` | Record a check: `hardware`, `manual`, `refuted`... |
 | `rack(device_id?, role?, jack_type?, jack_dir?, include_wishlist?)` | Your rack's modules, power and jacks |
 
-The device filter is named `device_id` because Claude's desktop app uses an argument named `device`
+The device filter is called `device_id` because Claude's desktop app uses an argument named `device`
 for its own routing and drops it before the call reaches napier.
 
-Errors come back with the reason, so the assistant can tell you what to do: an unknown device
-suggests the closest names, a source that isn't downloaded says which command fetches it, and a
-missing extra names the install command.
+Errors say what went wrong. A mistyped device comes back with the closest matches, a source that
+isn't downloaded names the command that fetches it, and a missing extra names the install command.
 
 ## What it looks like
 
@@ -124,22 +123,24 @@ and gets (abridged; the `heading` comes from Docling's parse, with the `index` e
  "not_extracted": []}
 ```
 
-So it can answer: hold **LEFT** and press **PLAY** (M8 Operation Manual v6.5.2, p. 11), and add that
-the community tips doc says the same works on smaller selections, labeled as a community report.
+From that it can answer: hold **LEFT** and press **PLAY** (M8 Operation Manual v6.5.2, p. 11). It
+can also note that the community tips doc says this works on smaller selections, labeled as a
+community report.
 
 ## Facts written by an assistant
 
-`add_fact` and `verify_fact` write to the YAML files in your clone or overlay, the same as
-`napier facts add` and `napier facts verify`. Each one is stamped `via: mcp`, the device must be one napier knows,
-and `hardware` or `refuted` need a note saying what was observed and on which firmware. Nothing is
-committed for you: review the diff (`git diff facts/`) before you commit it.
+`add_fact` and `verify_fact` write to the same YAML files as `napier facts add` and
+`napier facts verify`. The device has to be one napier knows, every fact gets a `via: mcp` stamp,
+and `hardware` or `refuted` needs a note saying what was observed and on which firmware. Nothing is
+committed for you, so check `git diff` in the clone (and in `local/` if your overlay is a repo)
+before you commit.
 
 ## Safety
 
-Manuals and forum posts are text written by other people. napier returns them as document content
-and tells the assistant, in its server instructions, not to act on requests that appear inside
-them. Treat a passage that tells the assistant to do something as you would a suspicious email. The
-only tools that write are `add_fact` and `verify_fact`, and they write only to fact files.
+Manuals and forum posts are written by other people. napier returns their text as document content,
+and its server instructions tell the assistant not to act on requests inside it. If a passage tells
+the assistant to do something, treat it like a suspicious email. The only tools that write are
+`add_fact` and `verify_fact`, and they only touch fact files.
 
 ## Troubleshooting
 
@@ -149,7 +150,8 @@ only tools that write are `add_fact` and `verify_fact`, and they write only to f
 - **"needs the index extra".** `search` needs `uv tool install -e ".[index,mcp]"` and a full
   `napier ingest`. `grep` and `read` work without it.
 - **Empty results.** Look at `not_extracted` (grep) or `not_indexed` (search), or ask the assistant
-  to call `status`. Fetch and ingest the device: `napier fetch --device ID && napier ingest --device ID`.
-- **Still running old code after `git pull`.** Restart the assistant app; it keeps the server process
-  running.
+  to call `status`, then fetch and ingest the device:
+  `napier fetch --device ID && napier ingest --device ID`.
+- **Still running old code after `git pull`.** Restart the assistant app. It keeps the server
+  process running between chats.
 - **The device filter does nothing.** The argument is `device_id`.

@@ -1,9 +1,9 @@
 # The rack planner
 
-napier's rack commands keep your Eurorack rack next to the manuals: what's racked, how you use each
-module, power per case, and what-if layouts checked before you move anything. Everything here is
-plain YAML in a racks folder: `local/racks` in your [overlay](../README.md#your-own-data), or
-`examples/racks` (read only) until you have one.
+The rack commands keep your Eurorack rack next to the manuals. You describe what's racked, each
+case's power supply and how you use each module, then try out layouts before moving anything. It's
+all YAML in a racks folder: `local/racks` in your [overlay](../README.md#your-own-data), or the
+read-only `examples/racks` until you set one up.
 
 ```
 racks/
@@ -15,28 +15,33 @@ racks/
   scenarios/*.yaml    what-if layouts (hand-written)
 ```
 
-Start by copying `examples/racks` to `local/racks` (`mkdir -p local && cp -r examples/racks local/racks`)
-and editing `layout.yaml` and `devices.yaml`. The copied snapshot (`example_rack.yaml`) is replaced
-on your first `napier rack sync`; if you rename the rack, sync removes the old snapshot.
+To start, copy the example and edit `layout.yaml` and `devices.yaml`:
 
-**Finding a module's slug.** Slugs follow ModularGrid's style: lowercase maker and module name joined
-by hyphens, as in the module page's URL (`make-noise-maths`). Some carry a trailing hyphen or a
-variant suffix (`intellijel-quadrax-`, `make-noise-maths-black-panel`), copied as is. Use the slug
-from `catalog/modules.yaml` when the module is there, so its manual, specs and facts attach; any
-stable id works for a module that isn't (sync reports it as unmapped).
+```bash
+mkdir -p local && cp -r examples/racks local/racks
+```
+
+Your first `napier rack sync` replaces the copied snapshot (`example_rack.yaml`), and if you rename
+the rack later, sync removes the old snapshot.
+
+Module slugs follow ModularGrid's style: maker and module name in lowercase, joined by hyphens, as
+in the module page's URL (`make-noise-maths`). Some have a trailing hyphen or a variant suffix
+(`intellijel-quadrax-`, `make-noise-maths-black-panel`); copy those as they are. If the module is in
+`catalog/modules.yaml`, use the slug from there so its manual, specs and facts attach. Any stable id
+works for a module that isn't listed, and sync reports it as unmapped.
 
 ## Commands
 
 | Command | What it does |
 |---|---|
-| `napier rack sync` | Read the rack from its rack source, write the snapshot and `notes/rack.md`, report added, removed, moved and unmapped modules and any overlaps |
-| `napier rack sources` | Rack sources installed, and which one `devices.yaml` enables |
-| `napier rack usage` | Check `usage.yaml` and `challenges.yaml` against the rack; write `notes/rack-usage.md` |
-| `napier rack scenarios` | Check the actual rack and every what-if layout (below); exits non-zero when any has a problem |
-| `napier rack power` | Each case's load against its supply limits |
-| `napier rack check` | Where the rack source's power figures disagree with the manual's |
-| `napier rack export` | Everything above as JSON, for scripts and agents |
-| `napier rack view --open` | Draw the rack and every scenario as one HTML page that loads nothing from the network (`--web-fonts` for the display fonts) |
+| `napier rack sync` | Reads the rack from its rack source, writes the snapshot and `notes/rack.md`, and reports modules that were added, removed, moved or unmapped, plus any overlaps |
+| `napier rack sources` | Lists the installed rack sources and which one `devices.yaml` uses |
+| `napier rack usage` | Checks `usage.yaml` and `challenges.yaml` against the rack and writes `notes/rack-usage.md` |
+| `napier rack scenarios` | Checks the actual rack and every what-if layout, and exits non-zero if any has a problem |
+| `napier rack power` | Shows each case's load against its supply limits |
+| `napier rack check` | Shows where the rack source's power figures disagree with the manual |
+| `napier rack export` | Prints all of the above as JSON, for scripts and agents |
+| `napier rack view --open` | Draws the rack and every scenario as one HTML page that works offline (`--web-fonts` loads the display fonts) |
 
 ## devices.yaml
 
@@ -58,14 +63,11 @@ wishlist:                  # modules you don't own; scenarios can place them, no
   - {slug: ..., name: ..., hp: 16, status: "considered"}
 ```
 
-Rows are numbered from the top across all cases, and HP from the left edge of the whole rack, so a
-2x2 grid of 104 HP cases with a 1U row over two 3U rows is 6 rows by 208 HP. napier uses the
-geometry to say which case a module is in, to add up power per case, and to measure how far apart
-two modules sit: Manhattan distance, row centre to row centre plus the gap in HP (1U tiles 39.65 mm
-tall, 3U panels 128.5 mm, one HP 5.08 mm).
-
-Module slugs follow ModularGrid's style (`make-noise-maths`), which `catalog/modules.yaml` maps to
-napier devices so each racked module's manual, specs and facts attach to it.
+Rows are numbered from the top across all cases, and HP from the left edge of the whole rack. A 2x2
+grid of 104 HP cases, each with a 1U row over two 3U rows, is 6 rows by 208 HP. napier uses the
+geometry to work out which case a module is in, to add up power per case, and to measure the
+distance between two modules. That distance is Manhattan distance from row centre to row centre plus
+the gap in HP, using 39.65 mm for a 1U row, 128.5 mm for a 3U row and 5.08 mm per HP.
 
 ## layout.yaml (the built-in `file` source)
 
@@ -81,33 +83,34 @@ modules:
     at: ["row 2, hp 43"]                           # one position per copy
 ```
 
-`examples/racks/layout.yaml` is a complete one.
+`examples/racks/layout.yaml` is a complete example.
 
 ## usage.yaml, challenges.yaml and scenarios
 
-These three record what the rack is for. napier never generates them.
+You write these by hand to record what the rack is for. `examples/racks` has one of each.
 
-- **usage.yaml**: `stance` (how to treat the file), `rules` (placement rules, each with the modules it
-  covers), `cases` (each case's supply `limits` in mA per rail, `mode`, row-by-row `layout`) and
-  `modules`. Each module entry has a `job`, a `status` (anchor, keep, candidate, leaving, planned,
-  considered), and optionally `pairs_with`, `keep_near`, `distance_ok` (pairs whose distance you've
-  accepted), `notes` and `open` questions. Only write what you've decided; open questions go under
-  `open`.
-- **challenges.yaml**: every challenge to a default, with its hypothesis, outcome (open, testing,
-  accepted, partial, rejected) and your response. Read it before raising one; a rejected challenge
-  needs new evidence before it comes back.
-- **scenarios/<id>.yaml**: start from the actual rack, `remove` slugs and `place` slugs at full
-  position lists. `napier rack scenarios` reports overlaps, modules crossing a case seam, 1U modules
-  in 3U rows and the reverse, power per case against `limits`, `pairs_with` and `keep_near` pairs
-  farther than 20 cm or in different cases (unless `distance_ok`), and case rows whose free space is
-  split into slivers.
+`usage.yaml` has a `stance` (how to treat the file), placement `rules` with the modules each one
+covers, and `cases` with each case's supply `limits` in mA per rail, its `mode` and a row-by-row
+`layout`. Under `modules`, each entry has a `job` and a `status` (anchor, keep, candidate, leaving,
+planned or considered). It can also list `pairs_with`, `keep_near`, `distance_ok` for pairs whose
+distance you've accepted, `notes`, and `open` questions. Only write down what you've decided, and
+put anything unsettled under `open`.
 
-`examples/racks` has one of each.
+`challenges.yaml` logs each challenge to one of your defaults: the hypothesis, the outcome (open,
+testing, accepted, partial or rejected) and your response. Read it before raising a new one. A
+rejected challenge needs new evidence before it comes back.
+
+`scenarios/<id>.yaml` starts from the actual rack, lists slugs to `remove`, and lists slugs to
+`place` with their full positions. `napier rack scenarios` reports overlaps, modules crossing a case
+seam, 1U modules in 3U rows (and the reverse), power per case against `limits`, and case rows where
+the free space is split into slivers. It also flags `pairs_with` and `keep_near` pairs that are more
+than 20 cm apart or in different cases, unless they're marked `distance_ok`.
 
 ## Writing a rack source plug-in
 
-A rack source turns some description of a rack (a page on a rack-planning site, an export from
-another tool) into one plain structure. It's any object with a `name` and a `read` method:
+A rack source turns a rack described somewhere else, like a page on a rack-planning site or an
+export from another tool, into the structure napier reads. It's any object with a `name` and a
+`read` method:
 
 ```python
 # my_package/source.py
@@ -148,9 +151,11 @@ rack_source: myplanner
 rack: {url: "https://..."}
 ```
 
-Installing a plug-in changes nothing until `devices.yaml` names it. `napier rack sync --set KEY=VALUE`
-passes one-off settings to the source for a run (for example a saved copy of a page, for testing).
-A plug-in that fetches over the network must be polite the way napier is: check robots.txt, send an
+Installing a plug-in does nothing until `devices.yaml` names it. `napier rack sync --set KEY=VALUE`
+passes a one-off setting to the source for a single run, which is handy for testing against a saved
+copy of a page.
+
+A plug-in that fetches over the network should be as polite as napier: check robots.txt, send an
 honest user agent and fetch each page once per run. `napier.sources` has `robots_allows` and `_get`
-for that. Read a site's terms before automating it; a plug-in that reads your own data from a
-service you use is usually best kept private, in your overlay.
+for this. Read a site's terms before automating it. Keep a plug-in that reads data from your own
+account on a service private, in your overlay.

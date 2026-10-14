@@ -1,9 +1,9 @@
 # Contributing
 
-Thanks for looking. napier is a small project, kept in spare time, and answers are best effort.
-Issues are for bugs, source requests and feature ideas. Everyone taking part is expected to follow
-the [code of conduct](CODE_OF_CONDUCT.md). Report security problems privately, as
-[SECURITY.md](SECURITY.md) says.
+Thanks for taking a look. napier is a small project kept up in spare time, so replies are best
+effort. Issues are for bugs, source requests and feature ideas. Please follow the [code of
+conduct](CODE_OF_CONDUCT.md), and report security problems privately as [SECURITY.md](SECURITY.md)
+describes.
 
 ## Setup
 
@@ -16,21 +16,21 @@ ruff check src tests
 mypy                                            # settings in pyproject.toml
 ```
 
-Without uv: `python -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"`. CI also runs
-`pytest --cov` with a coverage floor, a package build, and the CLI from an installed wheel.
+Without uv: `python -m venv .venv && . .venv/bin/activate && pip install -e ".[dev]"`. CI also
+enforces a coverage floor, builds the package and runs the CLI from an installed wheel.
 
 The tests run against fixtures and the shipped YAML. `tests/test_data.py` checks that sources,
-facts, specs and the module catalog stay consistent; `tests/test_examples.py` checks the example
-rack; `tests/test_readme.py` checks that every command the docs show still parses.
-`tests/conftest.py` clears every `NAPIER_*` variable, points `NAPIER_HOME` at a temp folder and
-switches the private overlay off, so your own setup never changes a result.
+facts, specs and the module catalog stay consistent, `tests/test_examples.py` checks the example
+rack, and `tests/test_readme.py` makes sure every command in the docs still parses.
+`tests/conftest.py` clears the `NAPIER_*` variables, uses a temp folder for `NAPIER_HOME` and turns
+the private overlay off, so your own setup can't change a result.
 
-[CLAUDE.md](CLAUDE.md) describes the layout and the rules the code keeps. Read it before a larger
-change.
+Read [CLAUDE.md](CLAUDE.md) before a larger change. It describes the layout and the rules the code
+follows.
 
-## The most useful contribution: sources and facts
+## Adding sources and facts
 
-Add the manual for gear you own:
+The most useful contribution is the manual for gear you own:
 
 ```bash
 napier source add https://maker.example/manual.pdf --id maker_module_manual --device maker_module \
@@ -39,54 +39,57 @@ napier ingest --source maker_module_manual
 napier grep "a phrase you know is on page 12" --device maker_module   # does the cite say p. 12?
 ```
 
-[docs/sources.md](docs/sources.md) covers kinds, formats and page offsets.
+[docs/sources.md](docs/sources.md) covers kinds, formats and page offsets. A few ground rules:
 
-- **One fetch, politely.** `source add` checks robots.txt. Don't use `--ignore-robots` unless the
-  publisher has told you it's fine, and say so in the pull request. No crawls, search-result
-  scrapes, logins or paywalled documents.
-- **Pin PDF manuals** (`sha256`, which `source add` writes for PDFs). Leave changelogs and product pages
-  unpinned, cropped with `--start-at`/`--stop-at` so price or stock changes don't read as updates.
-- **Forum threads** are `community` snapshots (`--no-check`), cited as opinions and workarounds.
-- **Facts** say where they came from: `--status manual --source <id> --pages <printed page>`, in
-  your own words. A fact you add with `q` and `anchors` becomes a search test; run
-  `napier eval --device <id>` and say in the pull request what it scored.
-- **Anchors are short quotations**, at most 25 words each, just enough to find the passage
-  ([docs/data-policy.md](docs/data-policy.md); `tests/test_data.py` enforces the limit).
-- **Confirmed on the hardware?** Say what you checked and on which firmware. That's what the
-  `hardware` status means, so it's worth the detail.
-- **Wrong facts stay in the ledger as `refuted`** (`napier facts verify <id> --refute --note "..."`).
-- **Specs** (`specs/<module>.yaml`): power and jacks only from the manual, with the page and an exact
-  anchor. Run `napier specs check <name>` with the manual fetched.
-- **Catalog** (`catalog/modules.yaml`): map a module's slug to its napier device, role and tags.
+- `source add` checks robots.txt. Only use `--ignore-robots` if the publisher has told you it's
+  fine, and say so in the pull request. Crawls, search-result scrapes and anything behind a login or
+  paywall don't belong here.
+- PDF manuals get pinned (`source add` writes the sha256). Leave changelogs and product pages
+  unpinned, and crop them with `--start-at` and `--stop-at` so a price or stock change doesn't look
+  like an update.
+- Forum threads are `community` snapshots (`--no-check`), cited as opinions and workarounds.
+- Write facts in your own words and say where they came from:
+  `--status manual --source <id> --pages <printed page>`. A fact with `q` and `anchors` becomes a
+  search test, so run `napier eval --device <id>` and put the score in the pull request.
+- Anchors are short quotations, 25 words at most, just enough to find the passage. See
+  [docs/data-policy.md](docs/data-policy.md); `tests/test_data.py` enforces the limit.
+- For a `hardware` fact, say what you checked and on which firmware. The status depends on that
+  note.
+- When a fact turns out wrong, mark it with `napier facts verify <id> --refute --note "..."`. It
+  stays in the ledger so nobody adds it again.
+- Specs (`specs/<module>.yaml`) take power and jacks from the manual only, with the page and an
+  exact anchor. Run `napier specs check <name>` with the manual fetched.
+- The catalog (`catalog/modules.yaml`) maps a module's slug to its napier device, role and tags.
 
 ## Before you start on code
 
-Open an issue, or comment on an existing one, and wait for a maintainer's go-ahead before writing
-code. That goes for pull requests that only add or reshape tests too. Pull requests without that
-agreement may be closed. Sources and facts for gear you own don't need an issue first.
+Open an issue, or comment on an existing one, and wait for a maintainer to agree before you write
+code. That includes pull requests that only add or reorganize tests. Pull requests that skip this
+step may be closed. Sources and facts for gear you own don't need an issue.
 
 ## What a pull request needs
 
-- **Tests.** A behavior change comes with a test, and `pytest -q` and `ruff check src tests` pass.
-- **No one's personal data.** Code, tests, docs and commit messages name no real person, rig or
-  private rack. Fixtures use invented names and `example.test` URLs. Personal setups belong in an
+- A behavior change comes with a test, and `pytest -q` and `ruff check src tests` pass.
+- No personal data. Code, tests, docs and commit messages shouldn't name a real person, rig or
+  private rack. Fixtures use made-up names and `example.test` URLs, and personal setups go in an
   overlay (`local/`), which is never committed here.
-- **Stable JSON.** `napier rack export` and the MCP tools are read by scripts and agents: new fields
-  are fine, and existing names and fields stay.
-- **Docs.** Update the README, CLAUDE.md or docs/ where the behavior they describe changed, and add
-  a line to the changelog under Unreleased.
+- `napier rack export` and the MCP tools are read by scripts and agents. You can add fields, but
+  existing fields keep their names and stay in the output.
+- Update the README, CLAUDE.md or docs/ when the behavior they describe changes, and add a line to
+  the changelog under Unreleased.
 
 ## Rack-source plug-ins
 
-A plug-in for a rack-planning service or format lives in its own package, registered under the
-`napier.rack_sources` entry-point group ([docs/rack.md](docs/rack.md)). We'll link to plug-ins that
-are polite (robots.txt, honest user agent, one fetch per page per run) and respect the service's
+A plug-in for a rack-planning service or file format lives in its own package, registered under the
+`napier.rack_sources` entry point ([docs/rack.md](docs/rack.md)). We'll link to plug-ins that fetch
+politely (robots.txt, an honest user agent, one fetch per page per run) and follow the service's
 terms. Plug-ins that log in to other people's accounts or scrape against a site's terms won't be
 listed.
 
 ## Releases
 
-A maintainer bumps `version` in `pyproject.toml` (the one place it's written), runs `uv lock` (CI
-installs with `uv sync --locked`, which fails on a stale lock), moves the changelog's entries under
-the new version with the date, and pushes the tag `v<version>`. The release workflow builds the
-package, checks it installs and runs, and publishes it to PyPI with Trusted Publishing.
+A maintainer bumps `version` in `pyproject.toml`, the only place it's written, and runs `uv lock`
+(CI installs with `uv sync --locked` and fails on a stale lock). Then they move the changelog's
+Unreleased entries under the new version with today's date and push the tag `v<version>`. The
+release workflow builds the package, checks that it installs and runs, and publishes it to PyPI with
+Trusted Publishing.

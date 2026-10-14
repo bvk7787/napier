@@ -1,12 +1,12 @@
 # napier
 
-Page-cited answers from your music gear's manuals, for you and your AI assistant.
+Search your music gear's manuals and get the printed page number with every answer. Your AI
+assistant can use it too.
 
-Ask an assistant how to cue a song row on the M8 and you get a confident answer with no source.
-napier keeps the makers' manuals, firmware changelogs and a few forum write-ups on your machine, and
-every hit names the document, its version and the page number printed on the page. It's a
-command-line tool and an MCP server, so Claude and other assistants run the same lookup and quote
-the page.
+Ask an assistant how to cue a song row on the M8 and you'll get a confident answer with no source.
+napier keeps the manuals, firmware changelogs and a few community docs on your machine, and every
+hit tells you the document, its version and the printed page. It runs as a command-line tool and as
+an MCP server, so Claude and other assistants can run the same lookups and cite the page.
 
 ```
 $ napier grep "cue the" --device m8_tracker -C 0
@@ -16,8 +16,8 @@ m8_tracker_tips § Live Mode Shortcuts
   > * Hold Left and press Play to cue the whole row(Similarly smaller selections work also.)
 ```
 
-The first hit is the M8 Operation Manual v6.5.2, page 11. The second is the community tips document,
-labeled as such.
+The first hit is page 11 of the M8 Operation Manual (v6.5.2). The second comes from the community
+tips doc and is labeled that way.
 
 [![CI](https://github.com/bvk7787/napier/actions/workflows/ci.yml/badge.svg)](https://github.com/bvk7787/napier/actions/workflows/ci.yml)
 ![Python 3.11 | 3.12 | 3.13 | 3.14](https://img.shields.io/badge/python-3.11%20%7C%203.12%20%7C%203.13%20%7C%203.14-blue)
@@ -26,11 +26,10 @@ labeled as such.
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/bvk7787/napier/badge)](https://scorecard.dev/viewer/?uri=github.com/bvk7787/napier)
 ![Status: alpha](https://img.shields.io/badge/status-alpha-orange)
 
-**Who it's for:** people with synths, grooveboxes and Eurorack who are comfortable with a terminal
-and git. It ships with sources for 101 devices: mostly Eurorack, plus the Dirtywave M8, Elektron
-Digitakt II, OXI One MKII and a set of Strymon and other effects pedals. Adding your own takes one
-command. Exact lookups install in seconds; meaning-based search needs a few GB of libraries and
-models.
+It's built for people with synths, grooveboxes and Eurorack who don't mind a terminal and git. The
+source list covers 101 devices: mostly Eurorack, plus the Dirtywave M8, Elektron Digitakt II, OXI
+One MKII and a handful of Strymon and other pedals. Adding a manual for anything else takes one
+command.
 
 ## Try it
 
@@ -48,20 +47,20 @@ napier read m8_tracker --page 11           # the whole printed page
 napier facts list --device m8_tracker      # what's been checked, and how far
 ```
 
-That downloads three files, about 20 seconds with napier's 2-second spacing between requests to a
-site. If your shell can't find `napier` afterwards, run `uv tool update-shell` and open a new
-terminal. napier runs from its clone because the sources, facts and specs are data you read and
-edit there, and `-e` keeps the installed command pointing at it. It isn't installable from PyPI on
-its own.
+The fetch downloads three files and takes 10 to 20 seconds. If your shell can't find `napier`, run
+`uv tool update-shell` and open a new terminal.
 
-Without uv: `python3 -m venv .venv && .venv/bin/pip install -e .` (Python 3.11 or later), then use
-`.venv/bin/napier`.
+napier runs from its clone. The sources, facts and specs are files in the repo, and `-e` keeps the
+installed command pointed at them.
 
-## Add search and your assistant
+Without uv: `python3 -m venv .venv && .venv/bin/pip install -e .` with Python 3.11 or later, then
+run `.venv/bin/napier`.
 
-Meaning-based search ("how do I stop the delay feeding back") needs the `index` extra, and the MCP
-server needs `mcp`. List every extra you want each time you install, because a reinstall with fewer
-drops the others:
+## Search and assistants
+
+For questions in your own words ("how do I stop the delay feeding back"), install the `index` extra.
+The MCP server needs the `mcp` extra. A reinstall replaces the previous one, so list every extra you
+want each time:
 
 ```bash
 uv tool install -e ".[index,mcp]"
@@ -70,71 +69,68 @@ napier search "how do I cue a song row" --device m8_tracker
 ```
 
 The first `ingest` downloads the embedding and layout models from Hugging Face, and the first
-`search` the reranker: about 4.7 GB in all, once. `napier fetch --all` gets every source (about 150
-documents, 350 MB, a few minutes at one request every 2 seconds per site).
+`search` downloads the reranker. That's about 4.7 GB, once. `napier fetch --all` gets every source:
+about 150 documents and 350 MB, which takes a few minutes.
 
-Then connect your assistant. For Claude Code:
+To connect Claude Code:
 
 ```bash
 claude mcp add --scope user napier -- "$(which napier)" mcp
 ```
 
-[docs/mcp.md](https://github.com/bvk7787/napier/blob/main/docs/mcp.md) has the configs for Claude Desktop, Cursor, VS Code, Codex and Windsurf,
-the tool list, and what a lookup looks like from the assistant's side.
+[docs/mcp.md](https://github.com/bvk7787/napier/blob/main/docs/mcp.md) has the setup for Claude
+Desktop, Cursor, VS Code, Codex and Windsurf, and shows what a lookup looks like from the
+assistant's side.
 
-## What it does
+## What you get
 
-- **Exact lookups** (`grep`, `read`) for button combos, parameter names and whole sections or
-  pages. No AI model involved; a lookup takes well under a second.
-- **Meaning-based search** (`search`) for open questions. It combines keyword and vector search,
-  then reranks, and every hit cites title, version and printed page.
-- **Source kinds kept apart.** Manuals, changelogs, community write-ups, pinned firmware source and
-  your own notes are labeled in every result and can be filtered, so a forum workaround never
-  passes for the manual.
-- **A ledger of checked facts.** Each claim records where it came from and how far it's been
-  checked: in the manual, in a changelog, reported by the community, or confirmed on the hardware.
-  A claim that turns out wrong is kept as `refuted`, so nobody repeats it.
-- **A regression test for search.** 681 facts carry a question and the phrases that answer it.
-  `napier eval` asks each one and fails below 90% with the answer in the top three. On 2026-10-13
-  all 681 found their answer in the top three, 80% ranked it first, and every one with a cited page
-  (549) found it on that page. The questions were written by people who knew the answer, so it
-  guards against regressions on them.
-- **Change tracking.** `napier source check` re-downloads each source once and reports which
-  changed; after you apply an update, `napier facts recheck` lists the facts whose quoted text
-  moved or vanished, so you can re-check them.
-- **A Eurorack rack planner**: what's racked, power per case against your supply, and what-if
-  layouts checked before you move anything ([Your rack](#your-rack)).
+- `grep` and `read` find exact text, like button combos and parameter names, and return whole pages
+  or sections. There's no model involved, and a lookup takes a fraction of a second.
+- `search` handles open questions. It combines keyword and vector search, reranks the results, and
+  cites title, version and printed page for each hit.
+- Every result is labeled with its kind of source (manual, changelog, community doc, firmware source
+  or your own notes), and you can filter on it.
+- The [facts ledger](#the-facts-ledger) records claims with where they came from and how far they've
+  been checked. A claim that turns out wrong stays in the ledger marked `refuted`.
+- `napier eval` tests search against the ledger. 681 facts carry a question and anchors, short
+  phrases quoted from the page that answers it. The eval fails if fewer than 90% of the questions
+  find their answer in the top three results. On 2026-10-13 all 681 did, 80% ranked it first, and
+  all 549 with a cited page found it on that page. The questions were written by people who knew the
+  answers, so treat this as a regression test.
+- `napier source check` re-downloads each source and reports what changed. After you apply an
+  update, `napier facts recheck` lists the facts whose quoted text moved or disappeared.
+- A Eurorack rack planner ([Your rack](#your-rack)).
 
-## Why not NotebookLM, or hand the PDF to an assistant?
+## Compared with NotebookLM or pasting the PDF
 
-Both answer questions about a document in front of them. What napier adds:
+Those work well for questions about one document.
 
 | | Upload-and-ask tools | napier |
 |---|---|---|
-| Exact strings like `[SHIFT]+[PLAY]` | Usually found, in a way you can't inspect | `grep` is exact and repeatable; `search` handles open questions |
-| Citations | A link to a passage in your upload | The page number printed in the manual, with title and version |
-| Firmware and manual updates | You notice and re-upload | `source check` finds changed documents; `facts recheck` lists the facts to re-check |
-| Is the answer right? | You judge each answer | A ledger of checked facts, and an eval that fails when search regresses |
-| Forum workarounds | Weighted like anything else | Kept as `community`, labeled apart from the manual |
-| 150 documents | Whatever you've added to that notebook | One store; every device at once, or one with `--device` |
-| What you've checked | Lives in that chat | In the ledger, shared by every assistant you connect |
+| Exact strings like `[SHIFT]+[PLAY]` | Usually found, but you can't see how | `grep` matches exactly, every time |
+| Citations | A link into your upload | The printed page number, with title and version |
+| Firmware updates | You notice and re-upload | `source check` finds changed documents, `facts recheck` the affected facts |
+| Checking answers | Up to you, each time | A ledger of checked facts and an eval that catches regressions |
+| Forum tips | Mixed in with everything else | Labeled `community` and filterable |
 
-napier is a local store: nothing leaves your machine unless an assistant you connected asks for it,
-and then the passages it returns go to that assistant like anything else you paste in.
+Nothing leaves your machine except the passages a connected assistant asks for, which go to that
+assistant like anything else you paste into it.
 
 ## What's in it
 
 149 sources for 101 devices: 113 manuals, 21 changelogs, 10 pinned firmware sources and 5 community
-documents. Dirtywave M8, Elektron Digitakt II, OXI One MKII, Intellijel, Instruō, Make Noise, ALM,
-Steady State Fate, Noise Engineering, Strymon, Squarp, WMD, Joranalogue, Erica Synths and more;
-`napier source list` shows them all. The ledger holds 713 facts: 624 stated in a manual, 50 in a
-changelog, 15 from the community, 6 from firmware source, 2 confirmed on hardware and 16 open
-questions. 88 modules have spec files: 77 with manual-cited power draw, 80 with their jacks.
+docs. That includes the Dirtywave M8, Elektron Digitakt II, OXI One MKII and modules from
+Intellijel, Instruō, Make Noise, ALM, Steady State Fate, Noise Engineering, Squarp, WMD, Joranalogue
+and Erica Synths, plus Strymon and a few other pedals. `napier source list` shows everything.
+
+The ledger holds 713 facts: 624 from manuals, 50 from changelogs, 15 from the community, 6 from
+firmware source, 2 confirmed on hardware and 16 open questions. 88 modules have spec files, with
+manual-cited power draw for 77 and jack lists for 80.
 
 ## Add your own gear
 
 ```bash
-mkdir -p local                             # your private overlay (below)
+mkdir -p local                             # your private overlay (see below)
 napier source add https://maker.example/module-manual.pdf --id maker_module_manual \
     --device maker_module --version "v1.2" --local
 napier ingest --source maker_module_manual
@@ -142,12 +138,14 @@ napier facts add maker_module "Holding SHIFT at power-up resets calibration" --s
     --source maker_module_manual --pages 12
 ```
 
-`source add` checks robots.txt and downloads the file; for a PDF it also pins it by sha256 and
-detects the printed-page offset, so check the offset it prints. `--local` keeps the entry in your
-overlay, and facts for a device only your overlay knows are written there too. Gear anyone could own
-is worth a pull request to the public list instead ([CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md)).
-[docs/sources.md](https://github.com/bvk7787/napier/blob/main/docs/sources.md) covers kinds, formats, page offsets, sites that don't allow
-automated downloads, and keeping sources current.
+`source add` checks robots.txt and downloads the file. For a PDF it also pins the checksum and works
+out the printed-page offset, which is worth checking against a page you know. `--local` puts the
+entry in your private overlay, and facts for that device go there too.
+
+For gear other people are likely to own too, send a pull request to the public list instead
+([CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md)).
+[docs/sources.md](https://github.com/bvk7787/napier/blob/main/docs/sources.md) covers formats, page
+offsets, sites that don't allow automated downloads and keeping sources current.
 
 ## The facts ledger
 
@@ -155,47 +153,47 @@ automated downloads, and keeping sources current.
 |---|---|
 | `manual` | stated in the manual (source and printed pages) |
 | `changelog` | stated in a firmware changelog or release notes |
-| `community` | reported by a forum, doc or video; cites the URL |
+| `community` | reported in a forum post, doc or video; cites the URL |
 | `code` | read from firmware source pinned to one commit |
 | `hardware` | confirmed on the device, the strongest status |
 | `unverified` | an open question, or a claim with no source yet |
 | `refuted` | checked and found wrong |
 
-`napier facts verify ID --hardware --note "..."` records a check on the device, and `--refute`
-marks a claim wrong. A fact with a question and anchors (short phrases quoted from its page) is
-also a search test. Facts written by an assistant over MCP are stamped `via: mcp` so you can review
-them in the diff.
+Record a check on your own hardware with `napier facts verify ID --hardware --note "..."`, or mark a
+claim wrong with `--refute`. Facts an assistant writes over MCP get a `via: mcp` stamp, which makes
+them easy to spot in the diff.
 
 ## Your rack
 
-For Eurorack: keep your rack as YAML next to the manuals, with what each module is for, power per
-case against your supply, and what-if layouts that `napier rack scenarios` checks for overlaps, case
-seams, power, and modules that ended up far from their partners. `napier rack view --open` draws it
-all as one HTML page that loads nothing from the network.
+The rack planner is for Eurorack. Your rack lives in YAML next to the manuals, along with what each
+module is for, each case's power budget and any what-if layouts. `napier rack scenarios` checks
+those layouts for overlaps, case seams, power, and modules that ended up far from their partners.
+`napier rack view --open` draws all of it as a single HTML page that works offline.
 
 ![The example rack with a what-if layout: Step 8 replaces Beads, power per rail, one module leaving](https://github.com/bvk7787/napier/raw/main/docs/images/example-scenario.png)
 
-Try it on the example rack with `napier rack view --open`. [docs/rack.md](https://github.com/bvk7787/napier/blob/main/docs/rack.md) shows how
-to start your own and how to write a plug-in that reads a rack from somewhere else.
+Until you set up your own, the rack commands show the example rack.
+[docs/rack.md](https://github.com/bvk7787/napier/blob/main/docs/rack.md) covers setup and how to
+write a plug-in that reads your rack from another tool.
 
 ## Your own data
 
-Anything personal lives in a private **overlay**, `local/` inside your clone, which git ignores and
-which can be its own private repository. Its `sources.yaml` and `facts/` merge with the public ones
-(your notes list first), and it holds your rack, your notes and a `napier.toml` with your name for
-generated pages. `source add --local` writes there, and so does `facts add` for a device whose file
-lives there. Nothing in it is ever committed to the public repository.
+Anything personal goes in `local/`, a private overlay inside your clone. Git ignores it, and it can
+be its own private repo. Its `sources.yaml` and `facts/` merge with the public ones, with yours
+listed first. It also holds your rack, your notes and a `napier.toml` with your name.
+`source add --local` writes there, and so does `facts add` for any device only your overlay knows
+about. Nothing in `local/` gets committed to the public repo.
 
 ## Updating
 
 ```bash
 cd /path/to/napier && git pull
-uv tool install -e ".[index,mcp]"          # the same extras you use; picks up new dependencies
+uv tool install -e ".[index,mcp]"          # the extras you use; picks up new dependencies
 napier fetch --device m8_tracker           # anything new or re-pinned for your devices
 napier ingest --device m8_tracker
 ```
 
-Restart your assistant app afterwards so it starts the new server. `napier status` shows what's
+Restart your assistant app afterwards so it runs the new version. `napier status` shows what's
 downloaded, extracted and indexed for each device.
 
 ## Uninstall
@@ -205,99 +203,111 @@ uv tool uninstall napier
 rm -rf ~/.napier                           # downloads, text layer, index, reports
 ```
 
-Also, if you used them:
+If you used them, also remove:
 
-- the clone. Your overlay is `local/` inside it, so copy anything you want to keep first;
-- the search models in `~/.cache/huggingface/hub`: the `models--*` folders for the two models in
-  [docs/how-it-works.md](https://github.com/bvk7787/napier/blob/main/docs/how-it-works.md#search) and Docling's layout models. `uv cache clean`
-  clears uv's download cache;
-- the `napier` entry in your assistant's MCP config (`claude mcp remove napier` for Claude Code);
-- any scheduled `napier refresh`.
+- the clone, after copying anything you want to keep from `local/`
+- the models in `~/.cache/huggingface/hub`: the `models--*` folders for the models in
+  [docs/how-it-works.md](https://github.com/bvk7787/napier/blob/main/docs/how-it-works.md#search)
+  and Docling's layout models (`uv cache clean` clears uv's own download cache)
+- the `napier` entry in your assistant's MCP config (`claude mcp remove napier` for Claude Code)
+- any scheduled `napier refresh`
 
 ## FAQ
 
-**Is my gear covered?** `napier source list` shows every device, or browse
-[sources.yaml](https://github.com/bvk7787/napier/blob/main/sources.yaml). If yours isn't, `napier source add` takes one command, and a
-[source request](https://github.com/bvk7787/napier/issues/new?template=source_request.yml) works
-too.
+**Is my gear covered?** Run `napier source list`, or look through
+[sources.yaml](https://github.com/bvk7787/napier/blob/main/sources.yaml). If it isn't there, add it
+with `napier source add` or open a [source
+request](https://github.com/bvk7787/napier/issues/new?template=source_request.yml).
 
-**Can I `pip install napier`?** The PyPI package only points you here: napier needs its data files,
-which live in the clone.
+**Can I `pip install napier`?** The PyPI package just points you to the repo. napier needs its data
+files, and those live in the clone.
 
 **Does anything get uploaded?** No. napier downloads the documents in its lists and the search
-models, and sends nothing anywhere. An assistant you connect sees what its lookups return.
+models, and sends nothing out. An assistant you connect sees whatever its lookups return.
 
-**Do I need a GPU?** No. Search runs on a laptop CPU, faster on Apple Silicon or with CUDA.
+**Do I need a GPU?** No. Search runs fine on a laptop CPU, and faster on Apple Silicon or with CUDA.
 
-**Windows?** Untested. macOS and Linux are what CI runs.
+**Windows?** Untested. CI runs on macOS and Linux.
 
-**Why are some manuals "not downloaded"?** A few sites' robots.txt disallows automated downloads,
-and napier respects that. `napier fetch` prints the URL; download it in a browser and run
-`napier fetch --source ID --from FILE`.
+**Why are some manuals "not downloaded"?** A few sites' robots.txt doesn't allow automated
+downloads, and napier respects that. `napier fetch` prints the URL. Download the file in a browser
+and run `napier fetch --source ID --from FILE`.
 
-**Is it OK to quote manuals in facts?** The repository holds links, checksums and short quoted
-phrases, and each user downloads the documents from their publishers. The
-[data policy](https://github.com/bvk7787/napier/blob/main/docs/data-policy.md) has the details, and how publishers can ask for changes.
+**Is it OK to quote manuals in facts?** The repo holds links, checksums and short quoted phrases.
+Each user downloads the documents from the publisher. The [data
+policy](https://github.com/bvk7787/napier/blob/main/docs/data-policy.md) has the details, including
+how publishers can ask for changes.
 
 ## Limitations
 
-- **`grep` needs a text layer.** A scanned manual with no text layer reaches `read` and `search`
-  only through Docling's OCR (with the `index` extra), and its printed pages can't be detected.
-- **One page offset per document.** Manuals that restart numbering per chapter (3-12) or mix roman
-  and arabic numerals cite the right page only in the main numbered run.
-- **Grep is literal.** It's case-insensitive substring matching, so `mA` also finds "Manual" (use
-  `--case` or `--regex`), and brackets matter: `LEFT+PLAY` won't find `[LEFT]+[PLAY]`.
-- **New manuals under new file names** aren't detected by `source check`; it sees changes at the
-  same URL. Check the maker's page when a firmware comes out.
-- **The source list follows its contributors' gear** until more people add theirs.
+- `grep` needs the PDF's text layer. A scanned manual only reaches `read` and `search` through
+  Docling's OCR (with the `index` extra), and its printed page numbers can't be detected.
+- Each document gets one page offset. Manuals that restart numbering per chapter (3-12) or switch
+  from roman to arabic numerals only cite correctly in the main numbered run.
+- Grep is a case-insensitive substring match, so `mA` also finds "Manual" (use `--case` or
+  `--regex`). Brackets matter: `LEFT+PLAY` won't find `[LEFT]+[PLAY]`.
+- `source check` sees changes at the same URL. A new manual published under a new file name won't
+  show up, so check the maker's page when new firmware comes out.
+- The source list reflects the gear its contributors own.
 
-## Safety and trust
+## Safety
 
-napier downloads only the URLs in its lists, politely: robots.txt first, an honest user agent, at
-least 2 seconds between requests to a site, backoff when a site asks, no crawling and no logins.
-It opens no port, sends no telemetry, and writes only to `~/.napier`, the Hugging Face cache, the
-YAML and generated notes in your clone and overlay, and any path you give `--out`. Passages from
-manuals and forums go to your assistant marked as document content; the MCP server tells it not to
-act on instructions inside them, and the only tools that write change fact files you review in git. [docs/how-it-works.md](https://github.com/bvk7787/napier/blob/main/docs/how-it-works.md)
-has the details and [SECURITY.md](https://github.com/bvk7787/napier/blob/main/SECURITY.md) how to report a problem.
+napier only downloads the URLs in its source lists. It checks robots.txt first, identifies itself
+honestly, waits at least 2 seconds between requests to a site, backs off when a site asks it to and
+never logs in. It doesn't open any ports or send telemetry. It only writes to `~/.napier`, the
+Hugging Face cache, the YAML and generated notes in your clone and overlay, and anywhere you point
+`--out`.
 
-Provided as is, under Apache-2.0, without warranty. When a fact matters (calibration, firmware
-updates, anything that can brick a module), follow the manual page it cites.
+Text from manuals and forums reaches your assistant marked as document content, and the MCP server
+tells it not to follow instructions found in that text. The only tools that write are the two fact
+tools, and their changes show up in `git diff`.
+[docs/how-it-works.md](https://github.com/bvk7787/napier/blob/main/docs/how-it-works.md) has the
+details, and [SECURITY.md](https://github.com/bvk7787/napier/blob/main/SECURITY.md) explains how to
+report a problem.
+
+napier is provided as is under Apache-2.0. When a fact matters, like calibration or a firmware
+update that could brick a module, check the manual page it cites.
 
 ## Requirements
 
-- **macOS or Linux**, Python 3.11 or later (uv brings one).
-- **Disk.** The base install is small. The `index` extra pulls in PyTorch through
-  sentence-transformers and Docling: about 1.5 GB on macOS, and several GB on Linux, where PyTorch's
-  default wheels include the CUDA libraries. The models add about 4.7 GB in the Hugging Face cache.
-  All sources take about 350 MB in `~/.napier/files`, and the index and parse cache about 300 MB
-  more.
-- **Time.** Parsing and indexing every source the first time takes a while on a laptop; later
-  ingests only redo what changed.
+- macOS or Linux with Python 3.11 or later (uv can install one for you).
+- The base install is small. The `index` extra pulls in PyTorch through sentence-transformers and
+  Docling, about 1.5 GB on macOS and several GB on Linux, where PyTorch's default wheels include
+  CUDA. The models take another 4.7 GB. All sources together take about 350 MB in `~/.napier/files`,
+  plus about 300 MB for the index and parse cache.
+- Parsing and indexing every source the first time takes a while on a laptop. After that, `ingest`
+  only redoes what changed.
 
-## Maintainers: keeping the public list current
+## For maintainers
 
-`napier refresh` runs the update pass unattended: source check, rack sync, apply, ingest, recheck,
-specs check, eval and tests, then a pull request for the public changes with what changed and what
-needs a human. It can use a local [Ollama](https://ollama.com) model to reword questions whose
-source changed. Changes to your overlay are committed and pushed straight to the overlay's own
-repository. It's for maintainers and forks: it needs a clean git clone on `main` (and a clean
-overlay), the `index` extra and pytest, plus the GitHub CLI and push access to `origin` unless you
-pass `--no-push`. If you only use napier, `git pull` gets you the maintainers' updates.
+`napier refresh` runs the whole update pass unattended: it checks sources, syncs the rack, applies
+updates, re-ingests, rechecks facts and specs, and runs the eval and tests. Then it opens a pull
+request for the public changes, listing anything that needs a person to look at it. It can use a
+local [Ollama](https://ollama.com) model to reword eval questions for sources that changed. Changes
+to your overlay are committed and pushed straight to the overlay's repo.
+
+It needs a clean clone on `main` (and a clean overlay), the `index` extra and pytest, plus the
+GitHub CLI and push access to `origin` unless you pass `--no-push`. If you just use napier,
+`git pull` gets you the maintainers' updates.
 
 ## Contributing and license
 
 Issues and pull requests are welcome, especially sources and facts for gear you own. See
-[CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md), the [code of conduct](https://github.com/bvk7787/napier/blob/main/CODE_OF_CONDUCT.md), [SUPPORT.md](https://github.com/bvk7787/napier/blob/main/SUPPORT.md)
-for questions, and the [changelog](https://github.com/bvk7787/napier/blob/main/CHANGELOG.md).
+[CONTRIBUTING.md](https://github.com/bvk7787/napier/blob/main/CONTRIBUTING.md), the [code of
+conduct](https://github.com/bvk7787/napier/blob/main/CODE_OF_CONDUCT.md),
+[SUPPORT.md](https://github.com/bvk7787/napier/blob/main/SUPPORT.md) for questions, and the
+[changelog](https://github.com/bvk7787/napier/blob/main/CHANGELOG.md).
 
-Copyright 2026 the napier authors. Code and contributors' text are Apache-2.0 ([LICENSE](https://github.com/bvk7787/napier/blob/main/LICENSE),
-[NOTICE](https://github.com/bvk7787/napier/blob/main/NOTICE)); quoted anchors stay their publishers' ([data policy](https://github.com/bvk7787/napier/blob/main/docs/data-policy.md));
-third-party terms are in [THIRD_PARTY_NOTICES.md](https://github.com/bvk7787/napier/blob/main/THIRD_PARTY_NOTICES.md).
+Copyright 2026 the napier authors. The code and contributors' text are Apache-2.0
+([LICENSE](https://github.com/bvk7787/napier/blob/main/LICENSE),
+[NOTICE](https://github.com/bvk7787/napier/blob/main/NOTICE)). Quoted anchors remain their
+publishers' work ([data policy](https://github.com/bvk7787/napier/blob/main/docs/data-policy.md)),
+and third-party terms are in
+[THIRD_PARTY_NOTICES.md](https://github.com/bvk7787/napier/blob/main/THIRD_PARTY_NOTICES.md).
 
 Named for John Napier, whose tables of logarithms turned a hard calculation into a lookup.
 
 Dirtywave, M8, Elektron, Digitakt, OXI, Intellijel, Instruō, Make Noise, ALM, Steady State Fate,
 Noise Engineering, Strymon, Squarp, WMD, Joranalogue, Erica Synths, ModularGrid, NotebookLM and the
 other product and company names here are trademarks of their owners. napier is an independent
-project, not affiliated with or endorsed by any of them.
+project and isn't affiliated with or endorsed by any of them.

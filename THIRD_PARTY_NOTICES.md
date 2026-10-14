@@ -1,21 +1,21 @@
 # napier: third-party notices
 
-napier is Apache-2.0. It uses, but does not include, the following. Each is installed or downloaded
-separately and keeps its own license.
+napier is Apache-2.0. It uses the following but doesn't include them. Each one is installed or
+downloaded separately and keeps its own license.
 
 ## Manuals, changelogs and other documents
 
-`sources.yaml` lists where each document lives: a URL, a checksum, a version, a page offset. napier
-downloads each one from its publisher onto the user's machine, for that user's own reference. The
-repository doesn't contain the documents. Facts in `facts/` and specs in `specs/` paraphrase what a
-page says and quote short anchor phrases from it, with the source and page, so the claim can be
-checked against the original (at most 25 words each). The documents and the quoted anchors remain
-their publishers' work under their terms; [docs/data-policy.md](docs/data-policy.md) says how a
-publisher can ask for a change.
+`sources.yaml` records where each document lives, with its URL, checksum, version and page offset.
+napier downloads each document from its publisher to the user's machine for their own reference, and
+the repo doesn't contain the documents. Facts in `facts/` and specs in `specs/` paraphrase a page
+and quote short anchor phrases from it (25 words at most), with the source and page, so the claim
+can be checked against the original. The documents and the quoted anchors remain their publishers'
+work under their terms, and [docs/data-policy.md](docs/data-policy.md) explains how a publisher can
+ask for a change.
 
 Forum threads are fetched once through Discourse's public `/raw` pages, where the forum's robots.txt
-allows it, and are cited as community reports. Firmware source code sources point at public
-repositories, pinned to one commit, under those repositories' licenses.
+allows it, and cited as community reports. Firmware source entries point at public repositories,
+pinned to one commit, under those repositories' licenses.
 
 ## Search models (the `[index]` extra)
 
