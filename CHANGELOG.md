@@ -7,6 +7,11 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+### Changed
+
+- `napier refresh --merge` queues a squash merge that lands once CI passes, matching the
+  repository's merge rules.
+
 ## [0.1.0] - 2026-10-13
 
 First public release.
