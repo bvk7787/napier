@@ -7,6 +7,12 @@ the CLI or the data formats).
 
 ## [Unreleased]
 
+### Added
+
+- `former:` in `racks/devices.yaml` lists modules you've sold or traded. The challenge log can keep
+  naming them, so `rack usage` no longer flags past decisions about gear that's gone.
+- The module catalog maps the Instruō ceithir to its manual.
+
 ## [0.1.3] - 2026-10-14
 
 ### Added

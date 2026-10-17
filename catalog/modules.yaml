@@ -114,6 +114,10 @@ modules:
     device: instruo_carn
     role: mixer
     tags: [attenuator, dual/stereo, dynamics, mixer, panning, ring modulator, utility, vca]
+  instruo-ceithir:
+    device: instruo_ceithir
+    role: filter
+    tags: [filter]
   instruo-eas:
     device: instruo_eas
     role: utility

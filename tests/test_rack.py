@@ -172,6 +172,11 @@ def test_usage_attaches_to_export_and_flags_unknown_slugs(cfg, monkeypatch, tmp_
     cprobs = rack.check_challenges()
     assert any("duplicate id" in p for p in cprobs) and any("outcome 'maybe'" in p for p in cprobs)
     assert any("unknown slug nope" in p for p in cprobs)
+    dev = yaml.safe_load((cfg / "racks" / "devices.yaml").read_text())
+    (cfg / "racks" / "devices.yaml").write_text(yaml.safe_dump({**dev, "former": [
+        dict(slug="nope", vendor="Gone", name="Sold Module", left="2026-10-17")]}))
+    assert not any("unknown slug nope" in p for p in rack.check_challenges())   # sold gear stays in the history
+    assert rack.former_slugs() == {"nope": "Gone Sold Module"}
     probs = rack.check_usage()
     assert any("not-a-module" in p and "not a racked" in p for p in probs)
     assert any("status 'maybe'" in p for p in probs)
