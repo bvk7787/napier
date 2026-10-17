@@ -61,6 +61,8 @@ off_rack:                  # modules you own that aren't in the rack (scenarios 
   - {slug: ..., vendor: ..., name: ..., hp: 8, format: 3U, power: {plus12: 50, minus12: 10, plus5: 0}}
 wishlist:                  # modules you don't own; scenarios can place them, nothing treats them as owned
   - {slug: ..., name: ..., hp: 16, status: "considered"}
+former:                    # modules you've sold or traded; only challenges.yaml can still name them
+  - {slug: ..., vendor: ..., name: ..., left: 2026-10-17}
 ```
 
 Rows are numbered from the top across all cases, and HP from the left edge of the whole rack. A 2x2

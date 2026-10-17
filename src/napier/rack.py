@@ -91,6 +91,7 @@ def load_config() -> dict:
     cfg["modules"] = mods
     cfg["off_rack"] = list(cfg.get("off_rack") or [])
     cfg["wishlist"] = list(cfg.get("wishlist") or [])
+    cfg["former"] = list(cfg.get("former") or [])
     return cfg
 
 
@@ -553,7 +554,7 @@ def load_challenges() -> list[dict]:
 def check_challenges(challenges: list | None = None, slugs=None) -> list[str]:
     """Problems in challenges.yaml: missing or duplicate ids, a bad outcome, unknown module slugs."""
     challenges = load_challenges() if challenges is None else challenges
-    slugs = known_slugs() if slugs is None else slugs
+    slugs = {**former_slugs(), **known_slugs()} if slugs is None else slugs   # history may name sold modules
     probs, seen = [], set()
     for i, c in enumerate(challenges):
         cid = c.get("id") or f"[{i}]"
@@ -580,6 +581,13 @@ def known_slugs() -> dict:
         if m.get("slug"):
             out.setdefault(m["slug"], f"{m.get('vendor') or ''} {m.get('name') or m['slug']}".strip())
     return out
+
+
+def former_slugs() -> dict:
+    """slug -> display name for modules you've sold or traded (devices.yaml `former`). Only the
+    challenge log may name them, since a past decision can be about gear that's gone."""
+    return {m["slug"]: f"{m.get('vendor') or ''} {m.get('name') or m['slug']}".strip()
+            for m in load_config()["former"] if m.get("slug")}
 
 
 def check_usage(usage: dict | None = None, slugs=None) -> list[str]:
@@ -699,7 +707,7 @@ def render_usage_md(usage: dict, names: dict, challenges: list | None = None) ->
 def write_usage_md() -> tuple[Path, bool]:
     """Write notes/rack-usage.md; returns (path, changed)."""
     out = notes_dir() / "rack-usage.md"
-    text = render_usage_md(load_usage(), known_slugs(), load_challenges())
+    text = render_usage_md(load_usage(), {**former_slugs(), **known_slugs()}, load_challenges())
     changed = not out.exists() or out.read_text() != text
     if changed:
         out.parent.mkdir(parents=True, exist_ok=True)
