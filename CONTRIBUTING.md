@@ -74,6 +74,8 @@ step may be closed. Sources and facts for gear you own don't need an issue.
 ## What a pull request needs
 
 - A behavior change comes with a test, and `pytest -q` and `ruff check src tests` pass.
+- The template's Testing, Risk and How to revert sections are filled in: what you ran and what it
+  printed, the risk tier from [REVIEW.md](REVIEW.md), and how to undo the change.
 - No personal data. Code, tests, docs and commit messages shouldn't name a real person, rig or
   private rack. Fixtures use made-up names and `example.test` URLs, and personal setups go in an
   overlay (`local/`), which is never committed here.
@@ -97,3 +99,7 @@ A maintainer bumps `version` in `pyproject.toml`, the only place it's written, a
 Unreleased entries under the new version with today's date and push the tag `v<version>`. The
 release workflow builds the package, checks that it installs and runs, and publishes it to PyPI with
 Trusted Publishing.
+
+If a release breaks something, revert the change on `main` and ship a patch release. Yank the
+broken version on PyPI so `pip` stops choosing it (yanking keeps it downloadable for anyone who
+pinned it).

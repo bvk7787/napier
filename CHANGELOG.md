@@ -15,6 +15,10 @@ the CLI or the data formats).
 - Noise Engineering blog posts as `community` snapshots: how-tos for the Lapsus Os, Xer Mixa, Expando
   Expandi and Mimetic Digitwolis, plus their general patching guides (CV, utilities, mixing, gain
   staging, clocks, I/O) under the device `eurorack`.
+- REVIEW.md: how changes are reviewed, what failure looks like in each area, risk tiers set by the
+  paths a change touches, and rules that keep review rounds converging. The pull request template
+  asks for Testing, Risk and How to revert, and a Claude Code hook runs `ruff check --fix` on each
+  Python file Claude edits.
 
 ## [0.1.3] - 2026-10-14
 
