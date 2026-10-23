@@ -1637,3 +1637,327 @@
   fetched: '2026-10-09'
   sha256: 0276037960d9aa8d367be22a298b701d8b4a48a471ac8182a55c4d82be6e0373
   page_offset: 0
+
+- id: ne_lapsus_os_blog_in_action
+  device: ne_lapsus_os
+  kind: community
+  format: html
+  title: 'They can''t control Os: a buncha stuff to do with Lapsus Os (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/they-can-t-control-os-a-buncha-stuff-to-do-with-lapsus-os/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_xer_mixa_blog_intro
+  device: ne_xer_mixa
+  kind: community
+  format: html
+  title: Introducing Xer Mixa (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/introducing-xer-mixa/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_xer_mixa_blog_firmware_update
+  device: ne_xer_mixa
+  kind: community
+  format: html
+  title: Xer Mixa firmware update now available (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/xer-mixa-update/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_xer_mixa_blog_creative_cv
+  device: ne_xer_mixa
+  kind: community
+  format: html
+  title: CVing the heck out of Xer Mixa (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/creative-cv-with-xer-mixa/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_xer_mixa_blog_cv_mutes
+  device: ne_xer_mixa
+  kind: community
+  format: html
+  title: CV over mutes on Xer Mixa (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/cv-over-mutes-on-xer-mixa/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_xer_mixa_blog_multitrack
+  device: ne_xer_mixa
+  kind: community
+  format: html
+  title: Multitrack recording with Xer Mixa and MIDI (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/multitrack-recording-with-xer-mixa-and-midi/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_xer_mixa_blog_fx_sends
+  device: ne_xer_mixa
+  kind: community
+  format: html
+  title: Pedal FX sends with Xer Mixa and Nive Grad (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/send-effects-with-batverb/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_xer_mixa_blog_expando_expandi
+  device: ne_xer_mixa
+  kind: community
+  format: html
+  title: Introducing Expando Expandi (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/introducing-expando-expandi/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_mimetic_digitwolis_blog_intro
+  device: ne_mimetic_digitwolis
+  kind: community
+  format: html
+  title: Introducing Mimetic Digitwolis (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/introducing-mimetic-digitwolis/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_modifying_cv
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting Started: Modifying CV (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/getting-started-modifying-cv/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_precision
+  device: eurorack
+  kind: community
+  format: html
+  title: 'That''s fine: increasing precision when patching (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/thats-just-fine/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_controllers
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting started: controllers (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/getting-started-controllers/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_random
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting started: random signals (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/getting-started-random/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_gain_staging
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting started: Gain staging (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/getting-started-gain-staging/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_lesser_known_utilities
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting Started: Lesser-known utilities (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/lesser-known-utilities/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_utility_of_utilities
+  device: eurorack
+  kind: community
+  format: html
+  title: The Utility of Utilities (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blog/utilityutilities
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_one_cv_many
+  device: eurorack
+  kind: community
+  format: html
+  title: Turning one CV signal into a lot of related-but-different CV signals (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blog/one-cv
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_mixers_revisited
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting Started: Mixers Revisited (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/getting-started-mixers-revisited/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_mixing_for_modular
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Mixing for Modular: the Long-Awaited Prequel to That Other Thing (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/mixing-for-modular-the-long-awaited-prequel-to-that-other-thing/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_inputs_outputs
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting started: inputs and outputs revisited (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/inputs-and-outputs-revisited/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_signals_in_out
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Getting started: Signals in and out of Eurorack (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/getting-started-signals-in-and-out-of-eurorack/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_clocks
+  device: eurorack
+  kind: community
+  format: html
+  title: Clocks don't have to be boring (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blog/clocks
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_variable_clock
+  device: eurorack
+  kind: community
+  format: html
+  title: Creating sequences with variable step length (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blog/variable-clock
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_notes_arent_gates
+  device: eurorack
+  kind: community
+  format: html
+  title: 'Give it a Rest: Notes Aren''t Gates (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/give-it-a-rest-notes-arent-gates/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_humanization
+  device: eurorack
+  kind: community
+  format: html
+  title: Humanization and variation (Noise Engineering blog)
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/humanization-and-variation/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_techno_system
+  device: eurorack
+  kind: community
+  format: html
+  title: 'We have the techno-logy: building a Eurorack system for live techno (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/we-have-the-techno-logy-building-a-eurorack-system-for-live-techno/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false
+
+- id: ne_guide_techno_sequencing
+  device: eurorack
+  kind: community
+  format: html
+  title: 'We have the techno-logy, part 2: Sequencing and modulation (Noise Engineering blog)'
+  version: snapshot 2026-10-23
+  url: https://noiseengineering.us/blogs/loquelic-literitas-the-blog/building-systems-techno-part-2/
+  fetched: '2026-10-23'
+  stop_at:
+    regex: ^#+ *Read Next
+  check: false

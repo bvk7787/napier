@@ -12,6 +12,9 @@ the CLI or the data formats).
 - `former:` in `racks/devices.yaml` lists modules you've sold or traded. The challenge log can keep
   naming them, so `rack usage` no longer flags past decisions about gear that's gone.
 - The module catalog maps the Instruō ceithir to its manual.
+- Noise Engineering blog posts as `community` snapshots: how-tos for the Lapsus Os, Xer Mixa, Expando
+  Expandi and Mimetic Digitwolis, plus their general patching guides (CV, utilities, mixing, gain
+  staging, clocks, I/O) under the device `eurorack`.
 
 ## [0.1.3] - 2026-10-14
 
