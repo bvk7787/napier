@@ -67,7 +67,7 @@ packages = ["src/napier"]
 [tool.hatch.build.targets.sdist]
 include = ["src/", "tests/", "docs/", "examples/", "facts/", "specs/", "catalog/", "sources.yaml",
            "README.md", "LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md", "CHANGELOG.md", "SECURITY.md",
-           "SUPPORT.md", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", "AGENTS.md", "CITATION.cff",
+           "SUPPORT.md", "CODE_OF_CONDUCT.md", "CONTRIBUTING.md", "AGENTS.md", "REVIEW.md", "CITATION.cff",
            "pyproject.toml", "uv.lock", ".github/"]
 
 [tool.pytest.ini_options]
